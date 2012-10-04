@@ -1,0 +1,228 @@
+@import url("menuMaster.css");
+@import url("message.css");
+@import url("table.css");
+body 
+{
+    font-family:DroidSansRegular,"Segoe UI","Lucida Sans Unicode","Lucida Grande",sans-serif;
+    font-size:12px;
+    color:#333;
+    line-height:20px;
+}
+*
+{
+    margin:0 0 0 0;
+    padding:0 0 0 0;
+}
+#main
+{
+    width:100%;
+}
+#headspace
+{
+    height:10px;
+    width:100%;
+    background:none repeat scroll 0 0 #333333;
+    border-bottom:1px solid #222222;
+}
+#headcontent
+{
+    width:100%;
+    border-bottom:3px solid #272727;
+    border-top:1px solid #444444;
+    background:url(../Iconpage/master/texturebg.png) repeat scroll 0 0 #333333;
+    padding-top:5px;
+    height:80px;
+}
+#contentmain
+{
+    width:100%;
+}
+#left-c
+{
+   width:220px;
+   background-image:url(../Iconpage/master/leftbg.png);
+   background-repeat:repeat-y;
+   padding-top:20px;
+    
+}
+#left-c .contentmenuleft
+{
+    margin:10px 0 20px;
+    display:block;
+}
+#left-c h3.open
+{
+    background:url(../Iconpage/master/arrow.png) no-repeat scroll 10px -37px transparent;
+}
+.logopn-s{
+    margin-left: 30px;
+}
+#left-c h3
+{
+    color:#333333;
+    cursor:pointer;
+    font-size:12px;
+    text-transform:uppercase;
+    padding-left:30px;
+    padding-top:2px;
+    display:inline-block;
+}
+#right-c
+{
+    width:100%;
+    min-height:526px;
+    float:left;
+    background-color:#fff;
+}
+#search-c
+{
+    width:100%;
+    height:40px;
+}
+.searchmain
+{
+    background:url(../Iconpage/master/searchbar.png) no-repeat scroll 0 0 #333333;
+    border:0 none;
+    height:25px;
+    padding:2px 3px 3px 75px;
+    color:#999999;
+    float:left;
+    outline:0 none;
+    margin:0;
+    width:127px;
+}
+.buttonsearch
+{
+    background:url(../Iconpage/master/searchicon.png) no-repeat scroll 0 0 #333333;
+    border:0 none;
+    cursor:pointer;
+    float:left;
+    height:30px;
+    width:27px;
+    outline:0 none;
+}
+#inforaccount
+{
+    background:url(../Iconpage/master/blacktrans.png) repeat scroll 0 0 transparent;
+    line-height:15px;
+    overflow:hidden;
+    padding-top:10px;
+    right:10px;
+    padding-left:10px;
+    padding-bottom:10px;
+    position:relative;
+    border-radius:3px;
+    moz-border-radius:3px;
+    radius:3px;
+}
+#inforaccount img
+{
+    float:left;
+}
+#inforaccount #infortext
+{
+    float:left;
+    margin-left:10px;
+}
+#inforaccount #infortext h3
+{
+    color:#FFFFFF;
+    font-size:12px;
+    font-weight:normal;
+}
+#inforaccount #infortext small
+{
+    color:#999999;
+    font-size:11px;
+}
+#inforaccount #infortext p
+{
+    margin-top:5px;
+}
+#inforaccount #infortext p a
+{
+    color:#BBD0E8;
+    display:inline-block;
+    font-size:11px;
+}
+a
+{
+    text-decoration:none;
+    outline:medium none;
+}
+#inforaccount #infortext p a:first-child
+{
+    border-right:1px solid #666666;
+    margin-right:5px;
+    padding-right:7px;
+}
+small
+{
+    line-height:12px;
+}
+#footerpage
+{
+    background:none repeat scroll 0 0 #333333;
+    padding:10px 0;
+    margin:0;
+}
+.footerinner
+{
+    color:#CCCCCC;
+    font-size:11px;
+    padding:0 20px;
+    text-align:right;
+}
+.t-title
+{
+    box-shadow:1px 2px 2px 2px #CCCCCC;
+    margin-bottom:10px;
+    /*border:1px solid #CCCCCC;*/
+}
+.t-title .t-in
+{
+    width:99%;
+    margin:2px auto;
+    padding-bottom:10px;
+}
+.t-title h3
+{
+    background:url(../Iconpage/master/titlebg.png) repeat-x scroll left top #688AB5;
+    border:1px solid #6082AD;
+    border-radius:3px 3px 0 0;
+    moz-border-radius:3px 3px 0 0;
+    color:#FFFFFF;
+    font-size:12px;
+    font-weight:normal;
+    text-transform:uppercase;
+    text-shadow:1px 1px #4B6592;
+    padding-bottom:5px;
+    padding-top:5px;
+    padding-left:10px;
+}
+.t-clear
+{
+    clear:both;
+    margin: 2px 0 1px 0;   
+}
+#message_on_master
+{
+    position:fixed;
+    width:100%;
+    z-index:100;
+}
+.expoler-window
+{
+    color:#666666;
+    font-size:12px;
+    border:1px solid #d1d0d1;
+    padding:2px 6px 2px 6px;
+    cursor: pointer;
+    margin-top: 3px;
+    background-color:#384E73;
+    color:#fff;
+}
+.expoler-window:hover
+{
+  margin-left: 1px;
+}

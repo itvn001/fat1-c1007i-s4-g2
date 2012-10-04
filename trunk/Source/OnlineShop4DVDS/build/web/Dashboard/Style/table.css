@@ -1,0 +1,59 @@
+.paddicon
+{
+    padding-left:10px;
+}
+.post_ul
+{
+    list-style-type:none outside none;
+}
+.post_ul li
+{
+    display:inline-block;
+    float:left;
+    margin:0 10px 10px 0;
+    width:130px;
+}
+.post_ul li a
+{
+    border-radius:3px 3px 3px 3px;
+    moz-border-radius:3px 3px 3px 3px;
+    border:1px solid #CCCCCC;
+    color:#006699;
+    background:none repeat scroll 0 0 #F7F7F7;
+    display:block;
+    padding:15px;
+    text-align:center;
+}
+.post_ul li a:hover
+{
+    text-decoration:underline;
+}
+.post_ul li a span
+{
+    display:block;
+    font-size:12px;
+    margin-top:10px;
+}
+.t-form-s1
+{
+    height:24px;
+    background-color:#c3dbf8;
+    color:#fff;
+    padding-top:1px;
+    padding-bottom:1px;
+    padding-right:2px;
+    border-radius:3px;
+    moz-border-radius:3px;
+    margin-top:2px;
+}
+.cate-form-mini{
+    width: 100%;
+    border-left: 2px solid #e47911;
+    padding-left: 2px;
+}
+.cate-form-mini h2{
+    font-family: serif;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.498em;
+}
