@@ -10,6 +10,7 @@ package dvd.libraries;
  */
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -27,9 +28,11 @@ public class MapperData<T> {
     private Connection cn = null;
     private ResultSet rs;
     private PreparedStatement ps;
+    private CallableStatement cl;
 
     public MapperData() {
         this.rs = null;
+        this.cl = null;
         this.cn = new Connection();
     }
 
@@ -50,8 +53,8 @@ public class MapperData<T> {
         try 
         {
             String squey = "SELECT * FROM " + nameView;
-            this.ps = cn.GetConnect().prepareCall(squey);
-            rs2 = this.ps.executeQuery();
+            this.cl = cn.GetConnect().prepareCall(squey);
+            rs2 = this.cl.executeQuery();
             List<T> t1 = mapRersultSetToObject(rs2, outputClass);
             return t1;
         } 
