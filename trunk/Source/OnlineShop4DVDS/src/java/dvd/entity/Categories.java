@@ -1,0 +1,55 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dvd.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Categories {
+
+    @Column(name = "CateID")
+    @Id
+    private int cateID;
+    @Column(name = "CateTypeID")
+    private String cateTypeID;
+    @Column(name = "CateName")
+    private String cateName;
+    @Column(name = "CateStatus")
+    private String cateStatus;
+
+    public int getCateID() {
+        return cateID;
+    }
+
+    public void setCateID(int cateID) {
+        this.cateID = cateID;
+    }
+
+    public String getCateTypeID() {
+        return cateTypeID;
+    }
+
+    public void setCateTypeID(String cateTypeID) {
+        this.cateTypeID = cateTypeID;
+    }
+
+    public String getCateName() {
+        return cateName;
+    }
+
+    public void setCateName(String cateName) {
+        this.cateName = cateName;
+    }
+
+    public String getCateStatus() {
+        return cateStatus;
+    }
+
+    public void setCateStatus(String cateStatus) {
+        this.cateStatus = cateStatus;
+    }
+}
