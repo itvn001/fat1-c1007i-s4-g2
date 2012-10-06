@@ -20,13 +20,13 @@ public class Connection {
 
     public java.sql.Connection GetConnect() {
         try {
-            FacesContext ctx = FacesContext.getCurrentInstance();
-            String myConstantValue =
-                    ctx.getExternalContext().getInitParameter("connectionstr");
-            System.out.println(myConstantValue);
+//            FacesContext ctx = FacesContext.getCurrentInstance();
+//            String myConstantValue =
+//                    ctx.getExternalContext().getInitParameter("connectionstr");
+//            System.out.println(myConstantValue);
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             java.sql.Connection connection = 
-                    DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=fracn;user=sa;password=!vh04782$");
+                    DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=SHOPDVDS;user=sa;password=!vh04782$");
             return connection;
         } catch (Exception e) {
             return null;
