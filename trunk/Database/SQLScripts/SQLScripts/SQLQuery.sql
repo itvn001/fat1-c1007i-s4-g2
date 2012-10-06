@@ -172,3 +172,13 @@ CREATE TABLE UserAdmin
 	Name NVARCHAR(50),
 	Email NVARCHAR(50)
 )
+-- Insert into database
+-- Insert into Cate Type
+GO
+INSERT INTO CateType VALUES('Music'),('Game'),('Movie')
+
+-- Insert into Categories
+GO
+INSERT INTO Categories VALUES(1,'Music FIFA','true')
+INSERT INTO Categories VALUES(2,'ACTION','true')
+INSERT INTO Categories VALUES(3,'COMEDY','true')
