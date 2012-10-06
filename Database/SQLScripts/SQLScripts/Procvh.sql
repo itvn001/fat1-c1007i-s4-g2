@@ -19,7 +19,7 @@ BEGIN
 		AlbumStatus
 		FROM Album
 END
-ELSE
+ELSE IF @CateID != 0
 BEGIN
 SELECT AlbumID,
 		CateID,
@@ -29,3 +29,6 @@ SELECT AlbumID,
 		AlbumStatus
 		FROM Album WHERE CateID = @CateID
 END
+exec aShowAlbum '0'
+
+SELECT * FROM Album
