@@ -11,38 +11,49 @@
     <h:body>
         <ui:composition template="../Master/MasterPage.xhtml">
             <ui:define name="isa1">
-                Categories
-                <h:selectOneMenu onchange="submit()" value="#{mdvd_Index.idCategories}"
-                                 valueChangeListener="#{mdvd_Index.categoriesValuesChange}">
-                    <f:selectItems value="#{mdvd_Index.listCategories}"  />
-                </h:selectOneMenu>
-                <p:dataTable id="dataTable" var="album" value="#{mdvd_Index.listAlbum}"  
-                             paginator="true" rows="10"  
-                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
-                             rowsPerPageTemplate="5,10,15,50">  
-                    <f:facet name="header">  
-                        Ajax Pagination  
-                    </f:facet>  
-                    <p:column>  
-                        <f:facet name="header">  
-                            <h:outputText value="Model" />  
-                        </f:facet>  
-                        <h:outputText value="#{album.albumName}" />  
-                    </p:column>  
+                <div class="t-title">
+                    <h3>ALBUM MANAGER</h3>
+                    <div class="t-in">
+                        Categories
+                        <h:selectOneMenu onchange="submit()" value="#{mdvd_Index.idCategories}"
+                                         valueChangeListener="#{mdvd_Index.categoriesValuesChange}">
+                            <f:selectItems value="#{mdvd_Index.listCategories}"/>
+                        </h:selectOneMenu>
+                        <p:dataTable id="dataTable" var="album" value="#{mdvd_Index.listAlbum}"  
+                                     paginator="true" rows="10"  
+                                     paginatorTemplate="{CurrentPageReport}  
+                                     {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                                     {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                                     rowsPerPageTemplate="5,10,15,50">  
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Name Album" />  
+                                </f:facet>  
+                                  <img src="../../pic1.jpg " width="70px"/>
+                                <h:outputText value="#{album.albumName}" />  
+                            </p:column>  
 
-                    <p:column>  
-                        <f:facet name="header">  
-                            <h:outputText value="Year" />  
-                        </f:facet>  
-                        <h:outputText value="" />  
-                    </p:column>  
-                    <p:column>  
-                        <f:facet name="header">  
-                            <h:outputText value="Year" />  
-                        </f:facet>  
-                        <p:graphicImage value="../Iconpage/off.jpg" style="background-repeat: no-repeat; "/>   
-                    </p:column>  
-                </p:dataTable>  
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Price" />  
+                                </f:facet>  
+                                <h:outputText value="$ #{album.albumPrice}" />  
+                            </p:column>  
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Date Create" />  
+                                </f:facet>  
+                                <h:outputText value="#{album.albumDateCreate}" />  
+                            </p:column>  
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Option" />  
+                                </f:facet>  
+                                <p:graphicImage value="../Iconpage/off.jpg" style="background-repeat: no-repeat; "/>   
+                            </p:column>  
+                        </p:dataTable>  
+                    </div>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>
