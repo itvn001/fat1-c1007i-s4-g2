@@ -28,7 +28,16 @@ public class Album {
     private String albumDateCreate;
     @Column(name = "AlbumStatus")
     private Boolean albumStatus;
+    @Column(name = "AlbumImage")
+    private String albumImage;
 
+    public String getAlbumImage() {
+        return albumImage;
+    }
+
+    public void setAlbumImage(String albumImage) {
+        this.albumImage = albumImage;
+    }
     public int getAlbumID() {
         return albumID;
     }
