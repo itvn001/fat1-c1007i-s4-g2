@@ -182,3 +182,8 @@ GO
 INSERT INTO Categories VALUES(1,'Music FIFA','true')
 INSERT INTO Categories VALUES(2,'ACTION','true')
 INSERT INTO Categories VALUES(3,'COMEDY','true')
+
+--
+GO
+ALTER TABLE Album
+ADD AlbumImage NVARCHAR(100)
