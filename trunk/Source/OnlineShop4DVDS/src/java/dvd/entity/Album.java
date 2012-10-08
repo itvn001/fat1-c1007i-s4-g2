@@ -20,6 +20,16 @@ public class Album {
     private int albumID;
     @Column(name = "CateID")
     private String cateID;
+    @Column(name = "CateName")
+    private String cateName;
+
+    public String getCateName() {
+        return cateName;
+    }
+
+    public void setCateName(String cateName) {
+        this.cateName = cateName;
+    }
     @Column(name = "AlbumName")
     private String albumName;
     @Column(name = "AlbumPrice")
@@ -30,6 +40,16 @@ public class Album {
     private Boolean albumStatus;
     @Column(name = "AlbumImage")
     private String albumImage;
+    @Column(name = "Quantity")
+    private int quantity;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public String getAlbumImage() {
         return albumImage;
@@ -38,6 +58,7 @@ public class Album {
     public void setAlbumImage(String albumImage) {
         this.albumImage = albumImage;
     }
+
     public int getAlbumID() {
         return albumID;
     }
