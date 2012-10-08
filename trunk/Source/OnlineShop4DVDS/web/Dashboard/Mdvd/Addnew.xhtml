@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Master/MasterPage.xhtml">
+            <ui:define name="isa1">
+                <div class="t-title">
+                    <h3>Manager Album -> Add New Album</h3>
+                    <div class="t-in">
+                        <table>
+                            <tr>
+                                <td>
+                                    Categories
+                                </td>
+                                <td>
+                                    <h:selectOneMenu onchange="submit()" value="#{mdvd_Addnew.idCategories}"
+                                                     valueChangeListener="#{mdvd_Addnew.categoriesValuesChange}">
+                                        <f:selectItems value="#{mdvd_Addnew.listCategories}"/>
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="120px">
+                                    Name Album
+                                </td>
+                                <td>
+                                    <h:inputText  id="namealbum"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

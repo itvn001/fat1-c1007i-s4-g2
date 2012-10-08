@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <script type="text/javascript" language="javascript" src="../../Script/jquery-1.4.1.js"> 
+        </script>
+        <script type="text/javascript" language="javascript" src="../../Script/player.js"></script>
+        <ui:composition template="../Master/MasterPage.xhtml">
+            <ui:define name="isa1">
+                <div class="t-title">
+                    <h3>Manager Album -> Edit Album</h3>
+                    <div class="t-in">
+                        <ui:repeat value="#{mdvd_Edit.listAlbumedit}" var="albumedit">
+                            <table>
+                                <tr>
+                                    <td width="120px">
+                                        <img width="100px" align="top" src="../../pic1.jpg"/> 
+                                    </td>
+                                    <td valign="top">
+                                        <span style="font-weight: 600" >
+                                            #{albumedit.albumName}</span>
+                                        <small>Date create/ #{albumedit.albumDateCreate}</small>
+                                        <div style="margin-top: 10px">
+                                            Categories:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h:outputText value="#{albumedit.cateName}"/>
+                                        </div>
+                                        <div style="margin-top: 10px">
+                                            Album Price:&nbsp;<h:inputText value="#{albumedit.albumPrice}"/>
+                                            &nbsp;<span style="font-weight: 600">$</span>
+                                        </div>
+                                        <div style="margin-top: 10px">
+                                            Quantity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <h:inputText value="#{albumedit.quantity}"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </ui:repeat>
+                        <div style="width: 350px">
+                            <fieldset style="border:3px solid #e47911; padding-left: 5px">
+                                <legend>
+                                    Album details
+                                </legend>
+                                <ui:repeat var="listdtstrore" value="#{mdvd_Edit.listDataSrote}">
+                                    <span style="font-weight: 600; color: #000">#{listdtstrore.dataName}
+                                    </span><br/>
+                                    <a href="../../DVDStore/music/Everytime.mp3" style="color: #333">121212</a><br/>
+                                    <a href="http://www.youtube.com/watch?v=spgEJhvygZg6" style="color: #666">#{listdtstrore.dataPath}</a><br/>
+                                </ui:repeat>
+                            </fieldset>
+                            <span><h:commandButton class="expoler-window" value="Done"/></span>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
