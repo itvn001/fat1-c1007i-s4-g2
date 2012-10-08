@@ -187,3 +187,7 @@ INSERT INTO Categories VALUES(3,'COMEDY','true')
 GO
 ALTER TABLE Album
 ADD AlbumImage NVARCHAR(100)
+
+GO
+ALTER TABLE Album
+ADD Quantity INT
