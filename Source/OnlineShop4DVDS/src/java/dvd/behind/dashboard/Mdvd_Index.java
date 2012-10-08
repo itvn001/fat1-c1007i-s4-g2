@@ -13,7 +13,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
-import javax.faces.render.ResponseStateManager;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -23,13 +23,13 @@ import javax.faces.render.ResponseStateManager;
 @RequestScoped
 public class Mdvd_Index {
     //Id keep categories
-    
+
     private String idCategories = "0";
-    
+
     public String getIdCategories() {
         return idCategories;
     }
-    
+
     public void setIdCategories(String idCategories) {
         this.idCategories = idCategories;
     }
@@ -37,26 +37,31 @@ public class Mdvd_Index {
     private dvd.business.dashboard.Album albumhand = new Album();
 
     public Mdvd_Index() {
-        ResponseStateManager rsm = FacesContext.getCurrentInstance().getRenderKit().getResponseStateManager();
-        if (!rsm.isPostback(FacesContext.getCurrentInstance())) {            
+
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+        if (session.getAttribute("dvdc") == null) {
             listCategories = new ArrayList<SelectItem>();
             List<dvd.entity.Categories> lis = this.categories.listCategories();
+            this.listCategories.add(new SelectItem(0, "all"));
             for (dvd.entity.Categories catelist : lis) {
                 this.listCategories.add(new SelectItem(catelist.getCateID(),
                         catelist.getCateName()));
             }
         }
+        else{
+            session.setAttribute("dvdc", "123");
+        }
     }
     private List<SelectItem> listCategories;
-    
+
     public List<SelectItem> getListCategories() {
         return listCategories;
     }
-    
+
     public void setListCategories(List<SelectItem> listCategories) {
         this.listCategories = listCategories;
     }
-    
+
     public List<dvd.entity.Album> ListAlbum() {
         return this.albumhand.getListAlbum(idCategories);
     }
@@ -70,12 +75,13 @@ public class Mdvd_Index {
         this.idCategories = e.getNewValue().toString();
     }
     private List<dvd.entity.Album> ListAlbum;
-    
+
     public List<dvd.entity.Album> getListAlbum() {
+        this.ListAlbum = new ArrayList<dvd.entity.Album>();
         this.ListAlbum = this.albumhand.getListAlbum(this.idCategories);
         return ListAlbum;
     }
-    
+
     public void setListAlbum(List<dvd.entity.Album> ListAlbum) {
         this.ListAlbum = ListAlbum;
     }
