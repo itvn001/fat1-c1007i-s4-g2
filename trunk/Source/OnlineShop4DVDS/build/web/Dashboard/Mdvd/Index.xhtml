@@ -29,8 +29,10 @@
                                 <f:facet name="header">  
                                     <h:outputText value="Name Album" />  
                                 </f:facet>  
-                                  <img src="../../pic1.jpg " width="70px"/>
-                                <h:outputText value="#{album.albumName}" />  
+                                <img src="../../pic1.jpg " width="70px" align="middle"/>
+                                <a href="#" id="ik" class="text-table-title" style="color:#333;font-weight: 600">
+                                    #{album.albumName}
+                                </a>
                             </p:column>  
 
                             <p:column>  
@@ -49,7 +51,14 @@
                                 <f:facet name="header">  
                                     <h:outputText value="Option" />  
                                 </f:facet>  
-                                <p:graphicImage value="../Iconpage/off.jpg" style="background-repeat: no-repeat; "/>   
+                                <a href="#">
+                                    <img width="65px" 
+                                         src="../Iconpage/off.jpg" 
+                                         title="on/off"/></a>
+                                <a href="Edit.xhtml?sd=#{album.albumID}"><img width="25px" title="Edit" 
+                                                                              src="../Iconpage/table/118432_36002_32_dvd_edit_icon.png"/></a>
+                                <a href="#"><img width="25px" title="Delete"
+                                                 src="../Iconpage/table/cd_delete.png"/></a>
                             </p:column>  
                         </p:dataTable>  
                     </div>
