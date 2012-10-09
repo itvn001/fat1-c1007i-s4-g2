@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.primefaces.event.FileUploadEvent;
 
 @ManagedBean(name = "fileUploadController")
@@ -24,15 +25,16 @@ public class uploadFilesBean {
      */
     public uploadFilesBean() {
     }
+    HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 
     public void handleFileUpload(FileUploadEvent event) {
 
         ExternalContext extContext =
                 FacesContext.getCurrentInstance().getExternalContext();
-        File result = new File(extContext.getRealPath("//WEB-INF//files//" + 
-                event.getFile().getFileName()));
-        System.out.println(extContext.getRealPath("//WEB-INF//files//" +
-                event.getFile().getFileName()));
+        File result = new File(extContext.getRealPath("//WEB-INF//files//"
+                + event.getFile().getFileName()));
+        System.out.println(extContext.getRealPath("//WEB-INF//files//"
+                + event.getFile().getFileName()));
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(result);
             byte[] buffer = new byte[BUFFER_SIZE];
@@ -49,7 +51,9 @@ public class uploadFilesBean {
             }
             fileOutputStream.close();
             inputStream.close();
-
+            this.file = event.getFile().getFileName();
+            // Set file name to session
+            session.setAttribute("se_nameonlyBean", this.file);
             FacesMessage msg =
                     new FacesMessage("File Description", "file name: "
                     + event.getFile().getFileName() + "file size: " + event.getFile().getSize() / 1024 + " Kbcontent type: "
@@ -61,5 +65,14 @@ public class uploadFilesBean {
                     "The files were not uploaded!", "");
             FacesContext.getCurrentInstance().addMessage(null, error);
         }
+    }
+    private String file;
+
+    public String getFile() {
+        return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
     }
 }

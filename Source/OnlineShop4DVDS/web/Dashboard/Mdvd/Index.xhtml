@@ -14,11 +14,14 @@
                 <div class="t-title">
                     <h3>ALBUM MANAGER</h3>
                     <div class="t-in">
-                        Categories
-                        <h:selectOneMenu onchange="submit()" value="#{mdvd_Index.idCategories}"
+                        Filter
+                        <h:selectOneMenu class="commoboxIm" onchange="submit()" value="#{mdvd_Index.idCategories}"
                                          valueChangeListener="#{mdvd_Index.categoriesValuesChange}">
                             <f:selectItems value="#{mdvd_Index.listCategories}"/>
-                        </h:selectOneMenu>
+                        </h:selectOneMenu>&nbsp;
+                        <a class="expoler-window" href="Addnew.xhtml">
+                            Add new
+                        </a>
                         <p:dataTable id="dataTable" var="album" value="#{mdvd_Index.listAlbum}"  
                                      paginator="true" rows="10"  
                                      paginatorTemplate="{CurrentPageReport}  
@@ -29,12 +32,11 @@
                                 <f:facet name="header">  
                                     <h:outputText value="Name Album" />  
                                 </f:facet>  
-                                <img src="../../pic1.jpg " width="70px" align="middle"/>
+                                <img src="../../pic1.jpg " width="50px" align="middle"/>
                                 <a href="#" id="ik" class="text-table-title" style="color:#333;font-weight: 600">
                                     #{album.albumName}
                                 </a>
                             </p:column>  
-
                             <p:column>  
                                 <f:facet name="header">  
                                     <h:outputText value="Price" />  

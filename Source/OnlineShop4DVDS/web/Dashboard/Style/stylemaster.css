@@ -39,11 +39,11 @@ body
 }
 #left-c
 {
-   width:220px;
-   background-image:url(../Iconpage/master/leftbg.png);
-   background-repeat:repeat-y;
-   padding-top:20px;
-    
+    width:220px;
+    background-image:url(../Iconpage/master/leftbg.png);
+    background-repeat:repeat-y;
+    padding-top:20px;
+
 }
 #left-c .contentmenuleft
 {
@@ -213,16 +213,15 @@ small
 }
 .expoler-window
 {
-    color:#666666;
-    font-size:12px;
-    border:1px solid #d1d0d1;
-    padding:2px 6px 2px 6px;
+    margin-top: 5px;
+    background: none repeat scroll 0 0 #50789D;
+    border: 1px solid #50789D;
+    color: #FFFFFF;
     cursor: pointer;
-    margin-top: 3px;
-    background-color:#384E73;
-    color:#fff;
+    font-weight: bold;
+    padding: 2px 10px;
 }
 .expoler-window:hover
 {
-  margin-left: 1px;
+    background: none repeat scroll 0 0 #2C5479;
 }
