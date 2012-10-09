@@ -60,4 +60,15 @@ SELECT DataID,
 		DataPublic,
 		DataStatus
 		FROM DataStore
-WHERE AlbumID = @AlbumID		
+WHERE AlbumID = @AlbumID	
+--
+GO
+CREATE PROC aInsertAlbum
+	@CateID INT,
+	@NameAlbum NVARCHAR(50),
+	@AlbumPrice DECIMAL,
+	@Quantity INT,
+	@AlbumImage NVARCHAR(100)
+	AS
+	INSERT INTO Album(CateID,AlbumName,AlbumPrice,AlbumDateCreate,AlbumStatus,AlbumImage,Quantity)
+	VALUES(@CateID,@NameAlbum,@AlbumPrice,GETDATE(),'TRUE',@AlbumImage,@Quantity)
