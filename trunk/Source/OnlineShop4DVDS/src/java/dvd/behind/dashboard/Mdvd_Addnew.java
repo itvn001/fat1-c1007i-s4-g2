@@ -107,13 +107,13 @@ public class Mdvd_Addnew {
             album.setAlbumName(this.albumName);
             album.setAlbumPrice(this.albumPrice);
             album.setQuantity(Integer.parseInt(this.numberQuantity));
-            album.setAlbumImage(filename);
+            album.setAlbumImage("DVDStore/album/" + filename);
             this.albumhand = new dvd.business.dashboard.Album();
             // Excute create record
             if(this.albumhand.CreateAlbum(album) ==true){
                 this.message = dvd.libraries.UImessage.generalMessage("blue", "Create New Album Success", "", "");
             }else{
-                this.message = dvd.libraries.UImessage.generalMessage("red", "Add Fail", "please try again!", "#");
+                this.message = dvd.libraries.UImessage.generalMessage("red", "Add Fail", "#", "please try again!");
             }
         } catch (Exception e) {
         }

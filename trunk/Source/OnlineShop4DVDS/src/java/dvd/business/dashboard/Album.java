@@ -62,4 +62,15 @@ public class Album {
             return false;
         }
     }
+
+    public boolean Setpublish(String id)throws Exception  {
+        this.paramnumber = new int[]{
+            1
+        };
+        this.paramvalues = new String[]{
+            id
+        };
+        this.handbus = new HandlingBusiness();
+        return this.handbus.UpdateToDB("SetPublisAlbum", "?", this.paramnumber, this.paramvalues);
+    }
 }

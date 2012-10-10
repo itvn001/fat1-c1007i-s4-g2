@@ -6,18 +6,19 @@ AS
 SELECT CateID,CateTypeID,CateName,CateStatus FROM Categories
 --
 GO
-alter PROC aShowAlbum
+ALTER PROC aShowAlbum
 @CateID INT
 AS
 IF @CateID = 0
 BEGIN
-	SELECT AlbumID,
+	SELECT  AlbumID,
 		CateID,
 		AlbumName,
 		AlbumPrice,
 		AlbumDateCreate,
+		AlbumImage,
 		AlbumStatus
-		FROM Album
+		FROM Album ORDER BY AlbumID DESC
 END
 ELSE IF @CateID != 0
 BEGIN
@@ -26,8 +27,9 @@ SELECT AlbumID,
 		AlbumName,
 		AlbumPrice,
 		AlbumDateCreate,
+		AlbumImage,
 		AlbumStatus
-		FROM Album WHERE CateID = @CateID
+		FROM Album WHERE CateID = @CateID ORDER BY AlbumID DESC
 END
 exec aShowAlbum '1'
 GO
@@ -72,3 +74,17 @@ CREATE PROC aInsertAlbum
 	AS
 	INSERT INTO Album(CateID,AlbumName,AlbumPrice,AlbumDateCreate,AlbumStatus,AlbumImage,Quantity)
 	VALUES(@CateID,@NameAlbum,@AlbumPrice,GETDATE(),'TRUE',@AlbumImage,@Quantity)
+--
+GO
+ALTER PROC SetPublisAlbum
+	@AlbumID INT
+	AS
+	IF (SELECT Album.AlbumStatus FROM Album WHERE Album.AlbumID = @AlbumID) = 'true'
+	BEGIN
+		UPDATE Album SET AlbumStatus = 'false' WHERE AlbumID = @AlbumID
+	END
+	ELSE IF(SELECT Album.AlbumStatus FROM Album WHERE Album.AlbumID = @AlbumID) = 'false'
+	BEGIN
+		UPDATE Album SET AlbumStatus = 'true' WHERE AlbumID = @AlbumID
+	END
+	

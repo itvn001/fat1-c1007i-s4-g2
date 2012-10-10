@@ -11,6 +11,7 @@
     <h:body>
         <ui:composition template="../Master/MasterPage.xhtml">
             <ui:define name="isa1">
+                <h:outputText escape="false" value="#{mdvd_Index.message}"/>
                 <div class="t-title">
                     <h3>ALBUM MANAGER</h3>
                     <div class="t-in">
@@ -32,8 +33,8 @@
                                 <f:facet name="header">  
                                     <h:outputText value="Name Album" />  
                                 </f:facet>  
-                                <img src="../../pic1.jpg " width="50px" align="middle"/>
-                                <a href="#" id="ik" class="text-table-title" style="color:#333;font-weight: 600">
+                                <img src="../../#{album.albumImage}" width="50px" align="middle"/>
+                                <a href="#" id="ik" class="text-table-title" style="color:#274974;font-weight: 600">
                                     #{album.albumName}
                                 </a>
                             </p:column>  
@@ -53,14 +54,15 @@
                                 <f:facet name="header">  
                                     <h:outputText value="Option" />  
                                 </f:facet>  
-                                <a href="#">
-                                    <img width="65px" 
-                                         src="../Iconpage/off.jpg" 
-                                         title="on/off"/></a>
-                                <a href="Edit.xhtml?sd=#{album.albumID}"><img width="25px" title="Edit" 
-                                                                              src="../Iconpage/table/118432_36002_32_dvd_edit_icon.png"/></a>
-                                <a href="#"><img width="25px" title="Delete"
-                                                 src="../Iconpage/table/cd_delete.png"/></a>
+                                <h:commandButton class="optionicon-#{album.albumStatus}" 
+                                                 value="#{mdvd_Index.returnStatus(album.albumStatus)}" 
+                                                 id="btnOnOffAlbum" 
+                                                 action="#{mdvd_Index.btnOnOffAlbum_Click(album.albumID)}"/>&nbsp;| 
+                                <a href="Edit.xhtml?sd=#{album.albumID}" class="optionicon" style="color: #333">
+                                    Edit</a> |
+                                <h:commandButton class="optionicon" 
+                                                 value="Remove"
+                                                 onclick="javascript:return deleteconfirm();"/>
                             </p:column>  
                         </p:dataTable>  
                     </div>

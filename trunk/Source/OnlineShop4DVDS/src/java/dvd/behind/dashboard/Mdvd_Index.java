@@ -8,6 +8,8 @@ import dvd.business.dashboard.Album;
 import dvd.business.dashboard.Categories;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -47,8 +49,7 @@ public class Mdvd_Index {
                 this.listCategories.add(new SelectItem(catelist.getCateID(),
                         catelist.getCateName()));
             }
-        }
-        else{
+        } else {
             session.setAttribute("dvdc", "123");
         }
     }
@@ -63,7 +64,12 @@ public class Mdvd_Index {
     }
 
     public List<dvd.entity.Album> ListAlbum() {
-        return this.albumhand.getListAlbum(idCategories);
+        try {
+            return this.albumhand.getListAlbum(idCategories);
+        } catch (Exception ex) {
+            Logger.getLogger(Mdvd_Index.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
     /**
@@ -77,12 +83,42 @@ public class Mdvd_Index {
     private List<dvd.entity.Album> ListAlbum;
 
     public List<dvd.entity.Album> getListAlbum() {
-        this.ListAlbum = new ArrayList<dvd.entity.Album>();
-        this.ListAlbum = this.albumhand.getListAlbum(this.idCategories);
-        return ListAlbum;
+        try {
+            this.ListAlbum = new ArrayList<dvd.entity.Album>();
+            this.ListAlbum = this.albumhand.getListAlbum(this.idCategories);
+            return ListAlbum;
+        } catch (Exception ex) {
+            Logger.getLogger(Mdvd_Index.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
     public void setListAlbum(List<dvd.entity.Album> ListAlbum) {
         this.ListAlbum = ListAlbum;
+    }
+
+    public String returnStatus(String st) {
+        if (st.trim().equals("true")) {
+            return "ON";
+        } else {
+            return "OFF";
+        }
+    }
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    public void btnOnOffAlbum_Click(String idalbum) throws Exception{
+        String id = idalbum;
+        if(this.albumhand.Setpublish(id) == true){
+            this.message = dvd.libraries.UImessage.generalMessage("blue", "You Action Success", "#", "");
+        }else{
+            this.message = dvd.libraries.UImessage.generalMessage("red", "Error System", "#", "Please try again!");
+        }
     }
 }
