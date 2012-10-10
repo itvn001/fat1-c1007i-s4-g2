@@ -8,6 +8,8 @@ import dvd.business.dashboard.Album;
 import dvd.business.dashboard.DataStore;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -29,10 +31,15 @@ public class Mdvd_Edit {
     private List<dvd.entity.Album> listAlbumedit;
     String id = "";
     public List<dvd.entity.Album> getListAlbumedit() {
-        listAlbumedit = new ArrayList<dvd.entity.Album>();
-        id = (String) req.getParameter("sd");
-        this.listAlbumedit = this.albumhand.getListAlbumEditForm(id);
-        return listAlbumedit;
+        try {
+            listAlbumedit = new ArrayList<dvd.entity.Album>();
+            id = (String) req.getParameter("sd");
+            this.listAlbumedit = this.albumhand.getListAlbumEditForm(id);
+            return listAlbumedit;
+        } catch (Exception ex) {
+            Logger.getLogger(Mdvd_Edit.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 
     public void setListAlbum(List<dvd.entity.Album> listAlbumedit) {

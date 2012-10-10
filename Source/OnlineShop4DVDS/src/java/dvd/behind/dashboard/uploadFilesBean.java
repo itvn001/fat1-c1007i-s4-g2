@@ -31,9 +31,9 @@ public class uploadFilesBean {
 
         ExternalContext extContext =
                 FacesContext.getCurrentInstance().getExternalContext();
-        File result = new File(extContext.getRealPath("//WEB-INF//files//"
+        File result = new File(extContext.getRealPath("//DVDStore//album//"
                 + event.getFile().getFileName()));
-        System.out.println(extContext.getRealPath("//WEB-INF//files//"
+        System.out.println(extContext.getRealPath("//DVDStore//album//"
                 + event.getFile().getFileName()));
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(result);

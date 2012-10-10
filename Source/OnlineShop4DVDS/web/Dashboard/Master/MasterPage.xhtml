@@ -7,10 +7,10 @@
         <title>4DVDS Shop Manager</title>
         <link href="../Style/stylemaster.css" type="text/css" rel="stylesheet"/>
     </h:head>
-    <h:body>
+    <h:body onload="setccc()">
         <h:form>
-            <script type="text/javascript" language="javascript" src="../../Script/jquery-1.4.1.js"></script>
             <script type="text/javascript" language="javascript" src="../../Script/player.js"></script>
+            #{masterPage.setSeesionChildMenu()}
             <script type="text/javascript" language="javascript">
                 //Jquery close window message 
                 $(document).ready(function () {
@@ -22,6 +22,31 @@
                 function deleteconfirm() {
                     var result = confirm("Bạn muốn xóa bản ghi này?");
                     return result;
+                }
+            </script>
+            <script language="javascript" type="text/javascript">
+                function setccc() {
+                    var shl = "";
+                    var hor = "";
+                    var sessionid = "#{sessionScope['childmenu']}";  
+                    if(sessionid == 1){
+                        shl = document.getElementById("casf1");
+                        shl.style.backgroundColor="#fff";
+                    }else if(sessionid == 2){
+                        shl = document.getElementById("casf2");
+                        shl.style.backgroundColor="#fff";
+                    }else if(sessionid == 3){
+                        shl = document.getElementById("casf3");
+                        shl.style.backgroundColor="#fff";
+                    }
+                    else if(sessionid == 4){
+                        shl = document.getElementById("casf4");
+                        shl.style.backgroundColor="#fff";
+                    }
+                    else if(sessionid == 5){
+                        shl = document.getElementById("casf5");
+                        shl.style.backgroundColor="#fff";
+                    }
                 }
             </script>
             <div id="main">
@@ -92,10 +117,10 @@
                                             <a href="#" class="article">Manage Artists</a>
                                         </li>
                                         <li id="casf3">
-                                            <a href="#" class="file">Manage Albums</a>
+                                            <a href="../Mdvd/Index.xhtml" class="file">Manage Albums</a>
                                         </li>
                                         <li id="casf4">
-                                            <a href="../Mdvd/Index.xhtml" class="file">Manage DVD</a>
+                                            <a href="#" class="file">Manage DVD</a>
                                         </li>
                                         <li id="casf5">
                                             <a href="#" class="file">Manage Feedback</a>

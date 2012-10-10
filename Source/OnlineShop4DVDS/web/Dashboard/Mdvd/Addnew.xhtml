@@ -9,12 +9,13 @@
         <title>4DVDS Shop Manager</title>
     </h:head>
     <h:body>
-        <ui:composition template="../Master/MasterNoScript.xhtml">
+        <ui:composition template="../Master/MasterPage.xhtml">
             <ui:define name="isa1">
                 <h:outputText value="#{mdvd_Addnew.message}" escape="false"/>
                 <div class="t-title">
                     <h3>Manager Album -> Add new Album</h3>
                 </div>
+              
                 <div style="margin: 0 auto; width: 70%">
                     <table>
                         <tr>
@@ -34,7 +35,10 @@
                                 Name Album
                             </td>
                             <td>
-                                <h:inputText class="inputIm" id="namealbum" value="#{mdvd_Addnew.albumName}"/>
+                                <h:inputText class="inputIm" requiredMessage="Enter name album" required="true" id="namealbum" value="#{mdvd_Addnew.albumName}">
+                                 
+                                </h:inputText>
+
                             </td>
                         </tr>
                         <tr>
@@ -42,7 +46,9 @@
                                 Price
                             </td>
                             <td>
-                                <h:inputText class="inputIm" id="albumprice" value="#{mdvd_Addnew.albumPrice}"/>
+                                <h:inputText class="inputIm" required="true" requiredMessage="Enter Price" id="albumprice" value="#{mdvd_Addnew.albumPrice}">
+                                    
+                                </h:inputText>
                             </td>
                         </tr>
                         <tr>
@@ -77,7 +83,7 @@
                             </td>
                             <tr>
                                 <td>
-                                    
+
                                 </td>
                                 <td align="right">
                                     <h:commandButton id="btnumaddnew" value="Add new" class="expoler-window" action="#{mdvd_Addnew.btnumaddnew_Click}"/>

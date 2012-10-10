@@ -14,7 +14,7 @@
         <script type="text/javascript" language="javascript" src="../../Script/player.js"></script>
         <ui:composition template="../Master/MasterPage.xhtml">
             <ui:define name="isa1">
-                <div class="t-title">
+                <div class="t-title" style="border-bottom: 1px solid #d1d0d1">
                     <h3>Manager Album -> Edit Album</h3>
                     <div class="t-in">
                         <ui:repeat value="#{mdvd_Edit.listAlbumedit}" var="albumedit">
@@ -42,20 +42,75 @@
                                 </tr>
                             </table>
                         </ui:repeat>
-                        <div style="width: 350px; margin: 0 auto;">
-                            <div class="t-title">
-                                <h3>List Album</h3>
-                                <div class="t-in" style="padding-left: 5px">
-                                    <ui:repeat var="listdtstrore" value="#{mdvd_Edit.listDataSrote}">
-                                        <span style="font-weight: 600; color: #000">#{listdtstrore.dataName}
-                                        </span><br/>
-                                        <a href="http://www.youtube.com/watch?v=spgEJhvygZg6" style="color: #666">#{listdtstrore.dataPath}</a><br/>
-                                    </ui:repeat>
-                                    <span><h:commandButton class="expoler-window" value="Save"/></span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                </div>
+                <div>
+                    <table width="100%">
+                        <tr>
+                            <td width="48%">
+                                <div class="t-title">
+                                    <h3>Song Store</h3>
+                                    <div class="t-in">
+                                        <p:dataTable id="dataTable" var="listdtstrore" value="#{mdvd_Edit.listDataSrote}"  
+                                                     paginator="true" rows="10"  
+                                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                                                     rowsPerPageTemplate="5,10,15">  
+                                            <p:column>  
+                                                <h:selectBooleanCheckbox>
+                                                </h:selectBooleanCheckbox>
+                                            </p:column>  
+                                            <p:column>  
+                                                <f:facet name="header">  
+                                                    <h:outputText value="Song Name" />  
+                                                </f:facet>  
+                                                <h:outputText style="color: #000" value="#{listdtstrore.dataName}" />  
+                                            </p:column>  
+
+                                            <p:column>  
+                                                <f:facet name="header">  
+                                                    <h:outputText value="Path" />  
+                                                </f:facet>  
+                                                <h:outputText value="#{listdtstrore.dataPath}" />  
+                                            </p:column>  
+                                        </p:dataTable>  
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="4%">
+                                <h:commandButton class="expoler-window" value="&lArr;"/>
+                                <h:commandButton class="expoler-window" value="&rArr;"/>
+                            </td>
+                            <td width="48%">
+                                <div class="t-title">
+                                    <h3>List Album</h3>
+                                    <div class="t-in">
+                                        <p:dataTable id="dataTable" var="listdtstrore" value="#{mdvd_Edit.listDataSrote}"  
+                                                     paginator="true" rows="10"  
+                                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                                                     rowsPerPageTemplate="5,10,15">  
+                                            <p:column>  
+                                                <h:selectBooleanCheckbox>
+                                                </h:selectBooleanCheckbox>
+                                            </p:column>  
+                                            <p:column>  
+                                                <f:facet name="header">  
+                                                    <h:outputText value="Song Name" />  
+                                                </f:facet>  
+                                                <h:outputText style="color: #000" value="#{listdtstrore.dataName}" />  
+                                            </p:column>  
+
+                                            <p:column>  
+                                                <f:facet name="header">  
+                                                    <h:outputText value="Path" />  
+                                                </f:facet>  
+                                                <h:outputText value="#{listdtstrore.dataPath}" />  
+                                            </p:column>  
+                                        </p:dataTable>  
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </ui:define>
         </ui:composition>
