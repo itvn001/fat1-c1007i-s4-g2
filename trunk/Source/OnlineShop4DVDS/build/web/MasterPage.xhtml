@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Online Shop DVDS</title>
         <link href="Style/styles.css" rel="stylesheet" type="text/css" />
@@ -49,34 +50,17 @@
             <div id="sidebar1">
                 <h2>Categories</h2>
                 <ul>
-                    <li><a href="#">Lorem Ipsum has been the</a></li>
-                    <li><a href="#">Industry's standard dummy</a></li>
-                    <li><a href="#">Text ever since the 1500s</a></li>
-                    <li><a href="#">When an unknown printer</a></li>
-                    <li><a href="#">Took a galley of type</a></li>
-                    <li><a href="#">And scrambled it to make</a></li>
-                    <li><a href="#">Lorem Ipsum has been the</a></li>
-                    <li><a href="#">Industry's standard dummy</a></li>
-                    <li><a href="#">Lorem Ipsum has been the</a></li>
-                    <li><a href="#">Industry's standard dummy</a></li>
-                    <li><a href="#">Text ever since the 1500s</a></li>
-                    <li><a href="#">When an unknown printer</a></li>
-                    <li><a href="#">Took a galley of type</a></li>
-                    <li><a href="#">And scrambled it to make</a></li>
-                    <li><a href="#">Took a galley of type</a></li>
-                    <li><a href="#">And scrambled it to make</a></li>
-                    <li><a href="#">Lorem Ipsum has been the</a></li>
-                    <li><a href="#">Industry's standard dummy</a></li>
-                    <li><a href="#">Lorem Ipsum has been the</a></li>
-                    <li><a href="#">Industry's standard dummy</a></li>
-                    <li><a href="#">Text ever since the 1500s</a></li>
-                    <li><a href="#">When an unknown printer</a></li>
+                    <ui:repeat value="#{masterPageManagerBean.showMenuCategory()}" var="cate">
+                        <li><a href="#">#{cate.cateName}</a></li>
+                    </ui:repeat>
                 </ul>
             </div>
             <!-- end #sidebar1 -->
             <!-- begin #mainContent -->
             <div id="mainContent">
-                <div class="box">
+                <ui:insert name="contents">
+                </ui:insert>
+<!--                <div class="box">
                     <div><img src="Images/pic1.jpg" alt="" /></div>
                     <div class="boxTitle">Slacker</div>
                     <div class="boxPrice">$22.44</div>
@@ -123,7 +107,7 @@
                     <div class="boxTitle">Her Fatal Flaw</div>
                     <div class="boxPrice">$22.44</div>
                     <div class="boxLink"><a href="">Add to Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Details</a></div>
-                </div>
+                </div>-->
             </div>
             <div class="clearfloat"></div>
 
