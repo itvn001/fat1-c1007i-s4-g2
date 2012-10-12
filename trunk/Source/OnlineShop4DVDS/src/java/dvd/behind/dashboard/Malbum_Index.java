@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  */
 @ManagedBean
 @RequestScoped
-public class Mdvd_Index {
+public class Malbum_Index {
     //Id keep categories
 
     private String idCategories = "0";
@@ -54,13 +54,13 @@ public class Mdvd_Index {
     private dvd.business.dashboard.Categories categories = new Categories();
     private dvd.business.dashboard.Album albumhand = new Album();
 
-    public Mdvd_Index() {
+    public Malbum_Index() {
 
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
         if (session.getAttribute("dvdc") == null) {
             listCategories = new ArrayList<SelectItem>();
             List<dvd.entity.Categories> lis = this.categories.listCategories();
-            this.listCategories.add(new SelectItem(0, "all"));
+            this.listCategories.add(new SelectItem(0, "All Categories"));
             for (dvd.entity.Categories catelist : lis) {
                 this.listCategories.add(new SelectItem(catelist.getCateID(),
                         catelist.getCateName()));
@@ -83,7 +83,7 @@ public class Mdvd_Index {
         try {
             return this.albumhand.getListAlbum(idCategories);
         } catch (Exception ex) {
-            Logger.getLogger(Mdvd_Index.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Malbum_Index.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -104,7 +104,7 @@ public class Mdvd_Index {
             this.ListAlbum = this.albumhand.getListAlbum(this.idCategories);
             return ListAlbum;
         } catch (Exception ex) {
-            Logger.getLogger(Mdvd_Index.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Malbum_Index.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

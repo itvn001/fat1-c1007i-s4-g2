@@ -7,6 +7,7 @@ package dvd.behind.dashboard;
 import dvd.entity.Album;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpSession;
  */
 @ManagedBean
 @RequestScoped
-public class Mdvd_Addnew {
+public class Malbum_Addnew {
 
     private List<SelectItem> listCategories;
     private dvd.business.dashboard.Categories categories = new dvd.business.dashboard.Categories();
@@ -35,10 +36,11 @@ public class Mdvd_Addnew {
     public void setMessage(String message) {
         this.message = message;
     }
-    public Mdvd_Addnew() {
+
+    public Malbum_Addnew() {
         List<dvd.entity.Categories> lis = this.categories.listCategories();
         this.listCategories = new ArrayList<SelectItem>();
-        this.listCategories.add(new SelectItem(0, "--select--"));
+        this.listCategories.add(new SelectItem(0, "--Select--"));
         for (dvd.entity.Categories catelist : lis) {
             this.listCategories.add(new SelectItem(catelist.getCateID(),
                     catelist.getCateName()));
@@ -95,25 +97,38 @@ public class Mdvd_Addnew {
     }
     HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 
+    /**
+     * Method add album to database
+     */
     public void btnumaddnew_Click() {
         try {
-            dvd.entity.Album album = new Album();
-            String filename = "";
-            if (session.getAttribute("se_nameonlyBean") != null) {
-                filename = session.getAttribute("se_nameonlyBean").toString();
-            }
-            //Set class to album
-            album.setCateID(this.idCategories);
-            album.setAlbumName(this.albumName);
-            album.setAlbumPrice(this.albumPrice);
-            album.setQuantity(Integer.parseInt(this.numberQuantity));
-            album.setAlbumImage("DVDStore/album/" + filename);
-            this.albumhand = new dvd.business.dashboard.Album();
-            // Excute create record
-            if(this.albumhand.CreateAlbum(album) ==true){
-                this.message = dvd.libraries.UImessage.generalMessage("blue", "Create New Album Success", "", "");
-            }else{
-                this.message = dvd.libraries.UImessage.generalMessage("red", "Add Fail", "#", "please try again!");
+            if (this.idCategories.equals("0")) {
+                FacesMessage msg =
+                        new FacesMessage(FacesMessage.SEVERITY_FATAL, "Please Choice Categories", "");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
+            } else {
+                dvd.entity.Album album = new Album();
+                String filename = "";
+                if (session.getAttribute("se_nameonlyBean") != null) {
+                    filename = session.getAttribute("se_nameonlyBean").toString();
+                }
+                if (filename.trim().equals("")) {
+                    filename = "albumDefault.png";
+                }
+                //Set class to album
+                album.setCateID(this.idCategories);
+                album.setAlbumName(this.albumName);
+                album.setAlbumPrice(this.albumPrice);
+                album.setQuantity(Integer.parseInt(this.numberQuantity));
+                album.setAlbumImage("DVDStore/album/" + filename);
+                album.setAlbumDetails(this.detailsAlbum);
+                this.albumhand = new dvd.business.dashboard.Album();
+                // Excute create record
+                if (this.albumhand.CreateAlbum(album) == true) {
+                    this.message = dvd.libraries.UImessage.generalMessage("blue", "Create New Album Success", "", "");
+                } else {
+                    this.message = dvd.libraries.UImessage.generalMessage("red", "Add Fail", "#", "please try again!");
+                }
             }
         } catch (Exception e) {
         }
@@ -144,5 +159,14 @@ public class Mdvd_Addnew {
 
     public void setFilestr(String filestr) {
         this.filestr = filestr;
+    }
+    private String detailsAlbum;
+
+    public String getDetailsAlbum() {
+        return detailsAlbum;
+    }
+
+    public void setDetailsAlbum(String detailsAlbum) {
+        this.detailsAlbum = detailsAlbum;
     }
 }

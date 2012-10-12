@@ -24,9 +24,9 @@ import javax.servlet.http.HttpSession;
  */
 @ManagedBean
 @RequestScoped
-public class Mdvd_Edit {
+public class Malbum_Edit {
 
-    public Mdvd_Edit() {
+    public Malbum_Edit() {
     }
     HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
     private dvd.business.dashboard.Album albumhand = new Album();
@@ -48,7 +48,7 @@ public class Mdvd_Edit {
             }
             return listAlbumedit;
         } catch (Exception ex) {
-            Logger.getLogger(Mdvd_Edit.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Malbum_Edit.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -154,6 +154,7 @@ public class Mdvd_Edit {
         String[] get2 = requestParameterValuesMap.get("intxtidAlbum");
         String[] get3 = requestParameterValuesMap.get("intxtpricealbum");
         String[] get4 = requestParameterValuesMap.get("intxtquantity");
+        String[] get5 = requestParameterValuesMap.get("intxtDetailsAlbum");
         // Initial class
         dvd.entity.Album albs = new dvd.entity.Album();
         // Set data to class
@@ -161,6 +162,7 @@ public class Mdvd_Edit {
         albs.setAlbumID(Integer.parseInt(get2[0]));
         albs.setAlbumPrice(get3[0]);
         albs.setQuantity(Integer.parseInt(get4[0]));
+        albs.setAlbumDetails(get5[0]);
         // Action Update to database
         if (this.albumhand.UpdateAlbum(albs) == true) {
             this.message = dvd.libraries.UImessage.generalMessage("blue",
