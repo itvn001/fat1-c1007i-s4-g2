@@ -15,6 +15,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -30,6 +31,21 @@ public class Mdvd_Index {
 
     public String getIdCategories() {
         return idCategories;
+    }
+    private int idalb;
+
+    public int getIdalb() {
+        return idalb;
+    }
+
+    public void setIdalb(int idalb) {
+        this.idalb = idalb;
+    }
+
+    public String setIDAlbum(int id) {
+        HttpSession session =  (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+        session.setAttribute("re_albumid", id);
+        return "Edit.xhtml";
     }
 
     public void setIdCategories(String idCategories) {
@@ -113,11 +129,12 @@ public class Mdvd_Index {
     public void setMessage(String message) {
         this.message = message;
     }
-    public void btnOnOffAlbum_Click(String idalbum) throws Exception{
+
+    public void btnOnOffAlbum_Click(String idalbum) throws Exception {
         String id = idalbum;
-        if(this.albumhand.Setpublish(id) == true){
+        if (this.albumhand.Setpublish(id) == true) {
             this.message = dvd.libraries.UImessage.generalMessage("blue", "You Action Success", "#", "");
-        }else{
+        } else {
             this.message = dvd.libraries.UImessage.generalMessage("red", "Error System", "#", "Please try again!");
         }
     }

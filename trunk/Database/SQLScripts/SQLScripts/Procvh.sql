@@ -1,7 +1,7 @@
 USE SHOPDVDS
 --
 GO
-alter VIEW aShowCategories
+CREATE VIEW aShowCategories
 AS
 SELECT CateID,CateTypeID,CateName,CateStatus FROM Categories
 --
@@ -20,7 +20,7 @@ BEGIN
 		AlbumStatus
 		FROM Album ORDER BY AlbumID DESC
 END
-ELSE IF @CateID != 0
+IF @CateID != 0
 BEGIN
 SELECT AlbumID,
 		CateID,
@@ -34,7 +34,7 @@ END
 exec aShowAlbum '1'
 GO
 -----
-ALTER PROC aShowEditAlbum
+CREATE PROC aShowEditAlbum
 @AlbumID INT
 AS
 SELECT AlbumID,
@@ -53,7 +53,7 @@ GO
 CREATE PROC aShowDataStore
 @AlbumID INT
 AS
-SELECT DataID,
+SELECT	DataID,
 		AlbumID,
 		SupID,
 		DataName,
@@ -61,9 +61,24 @@ SELECT DataID,
 		DataDescription,
 		DataPublic,
 		DataStatus
-		FROM DataStore
-WHERE AlbumID = @AlbumID	
+		FROM DataStore WHERE AlbumID = @AlbumID	 ORDER BY DataID DESC
 --
+GO
+CREATE PROC aShowAllDataStore
+@ID int
+AS
+SELECT	DataID,
+		Album.AlbumName,
+		SupID,
+		DataName,
+		DataPath,
+		DataDescription,
+		DataPublic,
+		DataStatus
+		FROM DataStore,Album 
+		WHERE DataStore.AlbumID = Album.AlbumID ORDER BY DataID DESC
+		
+	
 GO
 CREATE PROC aInsertAlbum
 	@CateID INT,
@@ -76,7 +91,7 @@ CREATE PROC aInsertAlbum
 	VALUES(@CateID,@NameAlbum,@AlbumPrice,GETDATE(),'TRUE',@AlbumImage,@Quantity)
 --
 GO
-ALTER PROC SetPublisAlbum
+CREATE PROC SetPublisAlbum
 	@AlbumID INT
 	AS
 	IF (SELECT Album.AlbumStatus FROM Album WHERE Album.AlbumID = @AlbumID) = 'true'
@@ -87,4 +102,28 @@ ALTER PROC SetPublisAlbum
 	BEGIN
 		UPDATE Album SET AlbumStatus = 'true' WHERE AlbumID = @AlbumID
 	END
-	
+--
+GO
+CREATE PROC aAddDataStoreToList
+@AlbumID INT,
+@DataID INT
+AS
+UPDATE DataStore SET AlbumID = @AlbumID WHERE DataID = @DataID
+--
+GO
+CREATE PROC aAddListAlbumToStore
+@DataID INT
+AS
+UPDATE DataStore SET AlbumID = 1 WHERE DataID = @DataID
+--
+GO
+CREATE PROC aUpdateAlbumInfo
+@AlbumID INT,
+@NameAlbum NVARCHAR(50),
+@AlbumPrice DECIMAL,
+@AlbumQuantity INT
+AS
+UPDATE Album SET AlbumName = @NameAlbum,
+				AlbumPrice = @AlbumPrice,
+				Quantity = @AlbumQuantity
+				WHERE AlbumID = @AlbumID

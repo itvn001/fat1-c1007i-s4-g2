@@ -8,7 +8,7 @@
         <link href="../Style/stylemaster.css" type="text/css" rel="stylesheet"/>
     </h:head>
     <h:body onload="setccc()">
-        <h:form>
+        <h:form id="dashboardform">
             <script type="text/javascript" language="javascript" src="../../Script/player.js"></script>
             #{masterPage.setSeesionChildMenu()}
             <script type="text/javascript" language="javascript">
@@ -133,7 +133,8 @@
                             </td>
                             <td id="right-c" valign="top">
                                 <div style="width: 99%; margin: 3px auto">
-                                    <ui:insert name="isa1" id="isbodymain">     
+                                    <ui:insert name="isa1" id="isbodymain"> 
+                                        
                                     </ui:insert>
                                 </div>
                             </td>
