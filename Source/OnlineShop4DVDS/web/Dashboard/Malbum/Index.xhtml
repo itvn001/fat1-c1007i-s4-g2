@@ -11,19 +11,19 @@
     <h:body>
         <ui:composition template="../Master/MasterPage.xhtml">
             <ui:define name="isa1">
-                <h:outputText escape="false"  value="#{mdvd_Index.message}"/>
+                <h:outputText escape="false"  value="#{malbum_Index.message}"/>
                 <div class="t-title">
                     <h3>ALBUM MANAGER</h3>
                     <div class="t-in">
                         Filter
-                        <h:selectOneMenu class="commoboxIm" onchange="submit()" value="#{mdvd_Index.idCategories}"
-                                         valueChangeListener="#{mdvd_Index.categoriesValuesChange}">
-                            <f:selectItems value="#{mdvd_Index.listCategories}"/>
+                        <h:selectOneMenu class="commoboxIm" onchange="submit()" value="#{malbum_Index.idCategories}"
+                                         valueChangeListener="#{malbum_Index.categoriesValuesChange}">
+                            <f:selectItems value="#{malbum_Index.listCategories}"/>
                         </h:selectOneMenu>&nbsp;
                         <a class="expoler-window" href="Addnew.xhtml">
                             Add new
                         </a>
-                        <p:dataTable id="dataTable" var="album" value="#{mdvd_Index.listAlbum}"  
+                        <p:dataTable id="dataTable" var="album" value="#{malbum_Index.listAlbum}"  
                                      paginator="true" rows="10"  
                                      paginatorTemplate="{CurrentPageReport}  
                                      {FirstPageLink} {PreviousPageLink} {PageLinks} 
@@ -55,10 +55,10 @@
                                     <h:outputText value="Option" />  
                                 </f:facet>  
                                 <h:commandButton class="optionicon-#{album.albumStatus}" 
-                                                 value="#{mdvd_Index.returnStatus(album.albumStatus)}" 
+                                                 value="#{malbum_Index.returnStatus(album.albumStatus)}" 
                                                  id="btnOnOffAlbum" 
-                                                 action="#{mdvd_Index.btnOnOffAlbum_Click(album.albumID)}"/>&nbsp;| 
-                                <h:commandButton  action="#{mdvd_Index.setIDAlbum(album.albumID)}" value="edit" class="optionicon" />&nbsp;|
+                                                 action="#{malbum_Index.btnOnOffAlbum_Click(album.albumID)}"/>&nbsp;| 
+                                <h:commandButton  action="#{malbum_Index.setIDAlbum(album.albumID)}" value="edit" class="optionicon" />&nbsp;|
                                 <h:commandButton class="optionicon" 
                                                  value="Remove"
                                                  onclick="javascript:return deleteconfirm();"/>
