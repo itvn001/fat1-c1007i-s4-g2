@@ -17,12 +17,14 @@
                     <h3><a href="Index.xhtml">Manager Album</a>&rarr; Edit Album</h3>
                     <div class="t-in">
                         <ui:repeat value="#{mdvd_Edit.listAlbumedit}" var="albumedit">
-                            <table>
+                            <table width="100%">
                                 <tr>
-                                    <td width="120px">
-                                        <img width="100px" align="top" src="../../pic1.jpg"/> 
+                                    <td width="120px" valign="top">
+                                        <div style="width: 121px; border: 1px solid #d1d0d1; padding: 2px; border-radius:3px; -moz-border-radius:3px; radius:3px">
+                                            <img width="120px" align="top" src="../../#{albumedit.albumImage}"/> 
+                                        </div>
                                     </td>
-                                    <td valign="top" width="420px">
+                                    <td valign="top" width="40%" style="padding-left: 5px; padding-right: 5px">
                                         <span style="font-weight: 600" >
                                             #{albumedit.albumName}</span>
                                         <small>Date create/ #{albumedit.albumDateCreate}</small>
@@ -44,9 +46,13 @@
                                             Quantity:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <input value="#{albumedit.quantity}" name="intxtquantity" class="inputIm"/>
                                         </div>
+                                        <div style="margin-top: 10px; text-align: right; padding-right: 30px">
+                                            <h:commandButton value="Save" action="#{mdvd_Edit.btnsaveInfor_Click}" class="expoler-window" id="btnsaveInfor"/>
+                                        </div>
                                     </td>
-                                    <td valign="bottom">
-                                        <h:commandButton value="Save" class="expoler-window" action="#{mdvd_Edit.btnsaveInfor_Click}" id="btnsaveInfor"/>
+                                    <td>
+                                        <p:editor id="editor" style="width: 100%" value="#{albumedit.albumDetails}"/>  
+                                        <input type="hidden" value="#{albumedit.albumDetails}" name="intxtDetailsAlbum"/>
                                     </td>
                                 </tr>
                             </table>
