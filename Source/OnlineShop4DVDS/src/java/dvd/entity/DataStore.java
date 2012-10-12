@@ -96,4 +96,14 @@ public class DataStore {
     public void setDataStatus(Boolean dataStatus) {
         this.dataStatus = dataStatus;
     }
+    @Column(name = "AlbumName")
+    private String albumName;
+
+    public String getAlbumName() {
+        return albumName;
+    }
+
+    public void setAlbumName(String albumName) {
+        this.albumName = albumName;
+    }
 }
