@@ -42,7 +42,7 @@
                                 <f:facet name="header">  
                                     <h:outputText value="Price" />  
                                 </f:facet>  
-                                <h:outputText value="$ #{album.albumPrice}" />  
+                                <h:outputText style="color: #000" value="$ #{album.albumPrice}" />  
                             </p:column>  
                             <p:column>  
                                 <f:facet name="header">  
@@ -62,6 +62,12 @@
                                 <h:commandButton class="optionicon" 
                                                  value="Remove"
                                                  onclick="javascript:return deleteconfirm();"/>
+                            </p:column>  
+                            <p:column style="width: 20px">  
+                                <f:facet name="header">  
+                                    <h:outputText value="Quantity" />  
+                                </f:facet>  
+                                <h:outputText value="#{album.quantity}" />  
                             </p:column>  
                         </p:dataTable>  
                     </div>
