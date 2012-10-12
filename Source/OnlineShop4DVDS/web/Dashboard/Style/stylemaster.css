@@ -200,6 +200,24 @@ small
     padding-top:5px;
     padding-left:10px;
 }
+.t-title h3 a{
+    background:url(../Iconpage/master/titlebg.png) repeat-x scroll left top #688AB5;
+    border:1px solid #6082AD;
+    border-radius:3px 3px 0 0;
+    moz-border-radius:3px 3px 0 0;
+    color:#FFFFFF;
+    font-size:12px;
+    font-weight:normal;
+    text-transform:uppercase;
+    text-shadow:1px 1px #4B6592;
+    padding-bottom:5px;
+    padding-top:5px;
+    padding-left:3px;
+    padding-right: 2px;
+}
+.t-title h3 a:hover{
+    background-image: none;
+}
 .t-clear
 {
     clear:both;

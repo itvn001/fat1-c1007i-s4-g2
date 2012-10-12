@@ -182,8 +182,6 @@ GO
 INSERT INTO Categories VALUES(1,'Music FIFA','true')
 INSERT INTO Categories VALUES(2,'ACTION','true')
 INSERT INTO Categories VALUES(3,'COMEDY','true')
-
---
 GO
 ALTER TABLE Album
 ADD AlbumImage NVARCHAR(100)
@@ -191,3 +189,5 @@ ADD AlbumImage NVARCHAR(100)
 GO
 ALTER TABLE Album
 ADD Quantity INT
+--
+INSERT INTO Album VALUES(1,'ALBUM ORTHER',0,GETDATE(),'true','/path/image',0)
