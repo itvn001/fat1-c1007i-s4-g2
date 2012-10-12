@@ -189,5 +189,25 @@ ADD AlbumImage NVARCHAR(100)
 GO
 ALTER TABLE Album
 ADD Quantity INT
+
+GO
+ALTER TABLE Album
+ADD AlbumDetails NVARCHAR(MAX)
+
+GO
+ALTER TABLE Album
+ALTER COLUMN AlbumName NVARCHAR(200)
 --
+GO
 INSERT INTO Album VALUES(1,'ALBUM ORTHER',0,GETDATE(),'true','/path/image',0)
+--
+GO
+-- BEGIN INSERT DEMO DATA --
+	-- INSERT FOR TYPE Music
+	INSERT INTO Album VALUES (1,'Legend : Bob Marley [CD Audio Disc]',10,GETDATE(),'true','DVDStore/album/112-bob-marley.jpg',6,'')
+		INSERT INTO Album VALUES (1,'Unforgettable Velvet Voice : Nat King Cole [CD Audio Disc]',7,GETDATE(),'true','DVDStore/album/13179909.jpg',6,'')
+			INSERT INTO Album VALUES (1,'Reasons To Be Cheerful - The Best Of Ian Dury',5,GETDATE(),'true','DVDStore/album/ian_dury_bestof_125.jpg',8,'')
+				INSERT INTO Album VALUES (1,'Aled Jones: Aled ''s Christmas Gift',7,GETDATE(),'true','DVDStore/album/aled_jones_xmasgift_125.jpg',10,'')
+					INSERT INTO Album VALUES (1,'100 Hits - 90s',8,GETDATE(),'true','DVDStore/album/100_hits_90s_125.jpg',4,'')
+						INSERT INTO Album VALUES (1,'Charlie Landsborough: Destination',23,GETDATE(),'true','DVDStore/album/charlie_landsborough_destination_125.jpg',7,'')
+-- END INSERT DDEMO DATA -- 

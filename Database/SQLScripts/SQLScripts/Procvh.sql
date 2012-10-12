@@ -17,7 +17,8 @@ BEGIN
 		AlbumPrice,
 		AlbumDateCreate,
 		AlbumImage,
-		AlbumStatus
+		AlbumStatus,
+		Quantity
 		FROM Album ORDER BY AlbumID DESC
 END
 IF @CateID != 0
@@ -28,13 +29,14 @@ SELECT AlbumID,
 		AlbumPrice,
 		AlbumDateCreate,
 		AlbumImage,
-		AlbumStatus
+		AlbumStatus,
+		Quantity
 		FROM Album WHERE CateID = @CateID ORDER BY AlbumID DESC
 END
 exec aShowAlbum '1'
 GO
 -----
-CREATE PROC aShowEditAlbum
+ALTER PROC aShowEditAlbum
 @AlbumID INT
 AS
 SELECT AlbumID,
@@ -45,7 +47,8 @@ SELECT AlbumID,
 		AlbumDateCreate,
 		AlbumStatus,
 		AlbumImage,
-		Quantity
+		Quantity,
+		AlbumDetails
 		FROM Album,Categories
 		WHERE AlbumID = @AlbumID AND Album.CateID = Categories.CateID
 ---
@@ -80,15 +83,16 @@ SELECT	DataID,
 		
 	
 GO
-CREATE PROC aInsertAlbum
+ALTER PROC aInsertAlbum
 	@CateID INT,
 	@NameAlbum NVARCHAR(50),
 	@AlbumPrice DECIMAL,
 	@Quantity INT,
-	@AlbumImage NVARCHAR(100)
+	@AlbumImage NVARCHAR(100),
+	@DetailsAlbum NVARCHAR(MAX)
 	AS
-	INSERT INTO Album(CateID,AlbumName,AlbumPrice,AlbumDateCreate,AlbumStatus,AlbumImage,Quantity)
-	VALUES(@CateID,@NameAlbum,@AlbumPrice,GETDATE(),'TRUE',@AlbumImage,@Quantity)
+	INSERT INTO Album(CateID,AlbumName,AlbumPrice,AlbumDateCreate,AlbumStatus,AlbumImage,Quantity,AlbumDetails)
+	VALUES(@CateID,@NameAlbum,@AlbumPrice,GETDATE(),'TRUE',@AlbumImage,@Quantity,@DetailsAlbum)
 --
 GO
 CREATE PROC SetPublisAlbum
@@ -117,13 +121,23 @@ AS
 UPDATE DataStore SET AlbumID = 1 WHERE DataID = @DataID
 --
 GO
-CREATE PROC aUpdateAlbumInfo
+ALTER PROC aUpdateAlbumInfo
 @AlbumID INT,
 @NameAlbum NVARCHAR(50),
 @AlbumPrice DECIMAL,
-@AlbumQuantity INT
+@AlbumQuantity INT,
+@DetailsAlbum NVARCHAR(MAX)
 AS
 UPDATE Album SET AlbumName = @NameAlbum,
 				AlbumPrice = @AlbumPrice,
-				Quantity = @AlbumQuantity
+				Quantity = @AlbumQuantity,
+				AlbumDetails = @DetailsAlbum
 				WHERE AlbumID = @AlbumID
+--
+GO
+CREATE PROC aShowAlbumCategories
+@ID INT
+AS
+SELECT AlbumID,AlbumName FROM Album ORDER BY AlbumID DESC
+
+EXEC aShowAlbumCategories '1'
