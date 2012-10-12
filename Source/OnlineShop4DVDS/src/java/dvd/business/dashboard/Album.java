@@ -63,7 +63,7 @@ public class Album {
         }
     }
 
-    public boolean Setpublish(String id)throws Exception  {
+    public boolean Setpublish(String id) throws Exception {
         this.paramnumber = new int[]{
             1
         };
@@ -72,5 +72,25 @@ public class Album {
         };
         this.handbus = new HandlingBusiness();
         return this.handbus.UpdateToDB("SetPublisAlbum", "?", this.paramnumber, this.paramvalues);
+    }
+
+    public Boolean UpdateAlbum(dvd.entity.Album album) {
+        try {
+            this.paramnumber = new int[]{
+                1,
+                2,
+                3,
+                4
+            };
+            this.paramvalues = new String[]{
+                Integer.toString(album.getAlbumID()),
+                album.getAlbumName(),
+                album.getAlbumPrice(),
+                Integer.toString(album.getQuantity()),};
+            this.handbus = new HandlingBusiness();
+            return this.handbus.UpdateToDB("aUpdateAlbumInfo", "?,?,?,?", this.paramnumber, this.paramvalues);
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
