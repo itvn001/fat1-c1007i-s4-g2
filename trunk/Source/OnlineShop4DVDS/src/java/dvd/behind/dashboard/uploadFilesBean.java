@@ -27,8 +27,50 @@ public class uploadFilesBean {
     }
     HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 
-    public void handleFileUpload(FileUploadEvent event) {
+    public void uploadToData(FileUploadEvent event) {
+        ExternalContext extContext =
+                FacesContext.getCurrentInstance().getExternalContext();
+        File result = new File(extContext.getRealPath("//DVDStore//data//"
+                + event.getFile().getFileName()));
+        System.out.println(extContext.getRealPath("//DVDStore//data//"
+                + event.getFile().getFileName()));
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(result);
+            byte[] buffer = new byte[BUFFER_SIZE];
 
+            int bulk;
+            InputStream inputStream = event.getFile().getInputstream();
+            while (true) {
+                bulk = inputStream.read(buffer);
+                if (bulk < 0) {
+                    break;
+                }
+                fileOutputStream.write(buffer, 0, bulk);
+                fileOutputStream.flush();
+            }
+            fileOutputStream.close();
+            inputStream.close();
+            this.file = event.getFile().getFileName();
+            // Set file name to session
+            session.setAttribute("se_namefiledata", this.file);
+            FacesMessage msg =
+                    new FacesMessage("File Description", "file name: "
+                    + event.getFile().getFileName() + "file size: " + event.getFile().getSize() / 1024 + " Kbcontent type: "
+                    + event.getFile().getContentType() + "The file was uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+
+        } catch (IOException e) {
+            FacesMessage error = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "The files were not uploaded!", "");
+            FacesContext.getCurrentInstance().addMessage(null, error);
+        }
+    }
+
+    public void handleFileUpload(FileUploadEvent event) {
+        SetSame(event);
+    }
+
+    public void SetSame(FileUploadEvent event) {
         ExternalContext extContext =
                 FacesContext.getCurrentInstance().getExternalContext();
         File result = new File(extContext.getRealPath("//DVDStore//album//"

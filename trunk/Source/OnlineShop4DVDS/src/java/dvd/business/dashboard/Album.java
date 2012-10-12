@@ -47,17 +47,18 @@ public class Album {
 
     public Boolean CreateAlbum(dvd.entity.Album album) {
         try {
-            this.paramnumber = new int[]{1, 2, 3, 4, 5
+            this.paramnumber = new int[]{1, 2, 3, 4, 5, 6
             };
             this.paramvalues = new String[]{
                 album.getCateID(),
                 album.getAlbumName(),
                 album.getAlbumPrice(),
                 album.getQuantity() + "",
-                album.getAlbumImage()
+                album.getAlbumImage(),
+                album.getAlbumDetails()
             };
             this.handbus = new HandlingBusiness();
-            return this.handbus.InsertToDB("aInsertAlbum", "?,?,?,?,?", paramnumber, paramvalues);
+            return this.handbus.InsertToDB("aInsertAlbum", "?,?,?,?,?,?", paramnumber, paramvalues);
         } catch (Exception e) {
             return false;
         }
@@ -80,17 +81,35 @@ public class Album {
                 1,
                 2,
                 3,
-                4
+                4,
+                5
             };
             this.paramvalues = new String[]{
                 Integer.toString(album.getAlbumID()),
                 album.getAlbumName(),
                 album.getAlbumPrice(),
-                Integer.toString(album.getQuantity()),};
+                Integer.toString(album.getQuantity()),
+                album.getAlbumDetails()
+            };
             this.handbus = new HandlingBusiness();
-            return this.handbus.UpdateToDB("aUpdateAlbumInfo", "?,?,?,?", this.paramnumber, this.paramvalues);
+            return this.handbus.UpdateToDB("aUpdateAlbumInfo", "?,?,?,?,?", this.paramnumber, this.paramvalues);
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    public List<dvd.entity.Album> getCateAlbum() {
+        try {
+            this.paramnumber = new int[]{
+                1,};
+            this.paramvalues = new String[]{
+                "1"
+            };
+            this.handbus = new HandlingBusiness();
+            return this.mapperCommo.getDataWithProc("aShowAlbumCategories", "?",
+                    paramnumber, paramvalues, dvd.entity.Album.class);
+        } catch (Exception e) {
+            return null;
         }
     }
 }
