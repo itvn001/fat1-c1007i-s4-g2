@@ -4,6 +4,7 @@
  */
 package dvd.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,7 +14,7 @@ import javax.persistence.Id;
  * @author Administrator
  */
 @Entity
-public class Album {
+public class Album implements Serializable {
 
     @Column(name = "AlbumID")
     @Id
