@@ -43,6 +43,16 @@ public class Album implements Serializable {
     private String albumImage;
     @Column(name = "Quantity")
     private int quantity;
+    @Column(name = "AlbumDetails")
+    private String albumDetails;
+
+    public String getAlbumDetails() {
+        return albumDetails;
+    }
+
+    public void setAlbumDetails(String albumDetails) {
+        this.albumDetails = albumDetails;
+    }
 
     public int getQuantity() {
         return quantity;

@@ -8,7 +8,7 @@
         <link href="../Style/stylemaster.css" type="text/css" rel="stylesheet"/>
     </h:head>
     <h:body onload="setccc()">
-        <h:form>
+        <h:form id="dashboardform">
             <script type="text/javascript" language="javascript" src="../../Script/player.js"></script>
             #{masterPage.setSeesionChildMenu()}
             <script type="text/javascript" language="javascript">
@@ -117,23 +117,24 @@
                                             <a href="#" class="article">Manage Artists</a>
                                         </li>
                                         <li id="casf3">
-                                            <a href="../Mdvd/Index.xhtml" class="file">Manage Albums</a>
+                                            <a href="../Malbum/Index.xhtml" class="file">Manager DVD [old:album]</a>
                                         </li>
                                         <li id="casf4">
-                                            <a href="#" class="file">Manage DVD</a>
+                                            <a href="../Mdata/Index.xhtml" class="file">Manager Data [old:dvd]</a>
                                         </li>
                                         <li id="casf5">
-                                            <a href="#" class="file">Manage Feedback</a>
+                                            <a href="#" class="file">Manager Feedback</a>
                                         </li>
                                         <li id="casf5">
-                                            <a href="#" class="form">Manage Orders</a>
+                                            <a href="#" class="form">Manager Orders</a>
                                         </li>
                                     </ul>
                                 </div>
                             </td>
                             <td id="right-c" valign="top">
                                 <div style="width: 99%; margin: 3px auto">
-                                    <ui:insert name="isa1" id="isbodymain">     
+                                    <ui:insert name="isa1" id="isbodymain"> 
+                                        
                                     </ui:insert>
                                 </div>
                             </td>

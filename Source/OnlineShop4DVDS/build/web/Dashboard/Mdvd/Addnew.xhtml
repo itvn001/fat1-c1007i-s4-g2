@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
@@ -12,29 +11,31 @@
         <ui:composition template="../Master/MasterPage.xhtml">
             <ui:define name="isa1">
                 <div class="t-title">
-                    <h3>Manager Album -> Add New Album</h3>
+                    <h3><a href="Index.xhtml">MANAGER DVD</a> &rarr; ADD NEW</h3>
                     <div class="t-in">
-                        <table>
-                            <tr>
-                                <td>
-                                    Categories
-                                </td>
-                                <td>
-                                    <h:selectOneMenu onchange="submit()" value="#{mdvd_Addnew.idCategories}"
-                                                     valueChangeListener="#{mdvd_Addnew.categoriesValuesChange}">
-                                        <f:selectItems value="#{mdvd_Addnew.listCategories}"/>
-                                    </h:selectOneMenu>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="120px">
-                                    Name Album
-                                </td>
-                                <td>
-                                    <h:inputText  id="namealbum"/>
-                                </td>
-                            </tr>
-                        </table>
+                        <div style="margin: 0 auto; width: 70%">
+                            <table width="100%">
+                                <tr>
+                                    <td width="120px">
+                                        Cate Album
+                                    </td>
+                                    <td>
+                                        <h:selectOneMenu class="commoboxIm" onchange="submit()" value="#{mdvd_Addnew.idAlbum}"
+                                                         valueChangeListener="#{mdvd_Addnew.cateAlbumValueChange}">
+                                            <f:selectItems value="#{mdvd_Index.listCateAlbum}"/>
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Name Data
+                                    </td>
+                                    <td>
+                                        <h:inputText value="" class="inputIm"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </ui:define>
