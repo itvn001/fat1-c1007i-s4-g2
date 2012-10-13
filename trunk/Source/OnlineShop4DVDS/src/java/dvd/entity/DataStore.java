@@ -106,4 +106,14 @@ public class DataStore {
     public void setAlbumName(String albumName) {
         this.albumName = albumName;
     }
+    @Column(name = "DataImage")
+    private String dataImage;
+
+    public String getDataImage() {
+        return dataImage;
+    }
+
+    public void setDataImage(String dataImage) {
+        this.dataImage = dataImage;
+    }
 }
