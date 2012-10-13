@@ -53,6 +53,9 @@ public class uploadFilesBean {
             this.file = event.getFile().getFileName();
             // Set file name to session
             session.setAttribute("se_namefiledata", this.file);
+            
+            session.setAttribute("image_sg", this.fileimage);
+             session.setAttribute("path_da", this.file);
             FacesMessage msg =
                     new FacesMessage("File Description", "file name: "
                     + event.getFile().getFileName() + "file size: " + event.getFile().getSize() / 1024 + " Kbcontent type: "
@@ -94,6 +97,7 @@ public class uploadFilesBean {
             fileOutputStream.close();
             inputStream.close();
             this.file = event.getFile().getFileName();
+            this.fileimage = event.getFile().getFileName();
             // Set file name to session
             session.setAttribute("se_nameonlyBean", this.file);
             FacesMessage msg =
@@ -109,6 +113,15 @@ public class uploadFilesBean {
         }
     }
     private String file;
+    private String fileimage;
+
+    public String getFileimage() {
+        return fileimage;
+    }
+
+    public void setFileimage(String fileimage) {
+        this.fileimage = fileimage;
+    }
 
     public String getFile() {
         return file;
