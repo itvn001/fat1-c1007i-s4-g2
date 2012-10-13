@@ -6,7 +6,7 @@ AS
 SELECT CateID,CateTypeID,CateName,CateStatus FROM Categories
 --
 GO
-ALTER PROC aShowAlbum
+CREATE PROC aShowAlbum
 @CateID INT
 AS
 IF @CateID = 0
@@ -36,7 +36,7 @@ END
 exec aShowAlbum '1'
 GO
 -----
-ALTER PROC aShowEditAlbum
+CREATE PROC aShowEditAlbum
 @AlbumID INT
 AS
 SELECT AlbumID,
@@ -83,7 +83,7 @@ SELECT	DataID,
 		
 	
 GO
-ALTER PROC aInsertAlbum
+CREATE PROC aInsertAlbum
 	@CateID INT,
 	@NameAlbum NVARCHAR(50),
 	@AlbumPrice DECIMAL,
@@ -121,7 +121,7 @@ AS
 UPDATE DataStore SET AlbumID = 1 WHERE DataID = @DataID
 --
 GO
-ALTER PROC aUpdateAlbumInfo
+CREATE PROC aUpdateAlbumInfo
 @AlbumID INT,
 @NameAlbum NVARCHAR(50),
 @AlbumPrice DECIMAL,
