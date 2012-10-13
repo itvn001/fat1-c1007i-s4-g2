@@ -36,40 +36,39 @@ public class MapperData<T> {
         this.cn = new Connection();
     }
 
-    public List<T> getDataWithProc(String nameproc, String symbolParam,
-            int[] paramnumber, String[] paramvalues, Class outputClass) {
-        ResultSet rs1 = SetProcBusiness(nameproc, symbolParam, paramnumber, paramvalues);
+    public List<T> getDataWithProc(String nameproc, String symbolParam, String[] paramvalues, Class outputClass) {
+        ResultSet rs1 = SetProcBusiness(nameproc, symbolParam, paramvalues);
         List<T> t2 = mapRersultSetToObject(rs1, outputClass);
         return t2;
     }
+
     /**
      * get list data with view query from sql
+     *
      * @param nameView name view
      * @param outputClass name class with list output
      * @return List data with generic List<T>
      */
     public List<T> getDataWithView(String nameView, Class outputClass) {
         ResultSet rs2 = null;
-        try 
-        {
+        try {
             String squey = "SELECT * FROM " + nameView;
             this.cl = cn.GetConnect().prepareCall(squey);
             rs2 = this.cl.executeQuery();
             List<T> t1 = mapRersultSetToObject(rs2, outputClass);
             return t1;
-        } 
-        catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(HandlingBusiness.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
 
-    private ResultSet SetProcBusiness(String nameproc, String symbolParam, int[] paramnumber, String[] paramvalues) {
+    private ResultSet SetProcBusiness(String nameproc, String symbolParam, String[] paramvalues) {
         try {
             String squery = "{call " + nameproc + "(" + symbolParam + ")}";
             this.ps = cn.GetConnect().prepareCall(squery);
             int i1 = 1;
-            for (int i = 0; i < paramnumber.length; i++) {
+            for (int i = 0; i < paramvalues.length; i++) {
                 this.ps.setString(i1, paramvalues[i]);
                 i1++;
             }
@@ -80,8 +79,10 @@ public class MapperData<T> {
             return null;
         }
     }
+
     /**
      * Method handling main
+     *
      * @param rs ResultSet from query data
      * @param outputClass name class
      * @return List object<T>
