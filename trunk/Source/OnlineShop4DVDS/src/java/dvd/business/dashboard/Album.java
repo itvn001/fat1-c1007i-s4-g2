@@ -30,7 +30,7 @@ public class Album {
         this.paramvalues = new String[]{
             id
         };
-        return this.mapperCommo.getDataWithProc("aShowAlbum", "?", paramnumber,
+        return this.mapperCommo.getDataWithProc("aShowAlbum", "?",
                 paramvalues, dvd.entity.Album.class);
     }
 
@@ -41,7 +41,7 @@ public class Album {
         this.paramvalues = new String[]{
             id
         };
-        return this.mapperCommo.getDataWithProc("aShowEditAlbum", "?", paramnumber,
+        return this.mapperCommo.getDataWithProc("aShowEditAlbum", "?",
                 paramvalues, dvd.entity.Album.class);
     }
 
@@ -58,7 +58,7 @@ public class Album {
                 album.getAlbumDetails()
             };
             this.handbus = new HandlingBusiness();
-            return this.handbus.InsertToDB("aInsertAlbum", "?,?,?,?,?,?", paramnumber, paramvalues);
+            return this.handbus.InsertToDB("aInsertAlbum", "?,?,?,?,?,?", paramvalues);
         } catch (Exception e) {
             return false;
         }
@@ -72,7 +72,7 @@ public class Album {
             id
         };
         this.handbus = new HandlingBusiness();
-        return this.handbus.UpdateToDB("SetPublisAlbum", "?", this.paramnumber, this.paramvalues);
+        return this.handbus.UpdateToDB("SetPublisAlbum", "?",this.paramvalues);
     }
 
     public Boolean UpdateAlbum(dvd.entity.Album album) {
@@ -92,7 +92,7 @@ public class Album {
                 album.getAlbumDetails()
             };
             this.handbus = new HandlingBusiness();
-            return this.handbus.UpdateToDB("aUpdateAlbumInfo", "?,?,?,?,?", this.paramnumber, this.paramvalues);
+            return this.handbus.UpdateToDB("aUpdateAlbumInfo", "?,?,?,?,?",this.paramvalues);
         } catch (Exception e) {
             return false;
         }
@@ -107,7 +107,7 @@ public class Album {
             };
             this.handbus = new HandlingBusiness();
             return this.mapperCommo.getDataWithProc("aShowAlbumCategories", "?",
-                    paramnumber, paramvalues, dvd.entity.Album.class);
+                    paramvalues, dvd.entity.Album.class);
         } catch (Exception e) {
             return null;
         }
