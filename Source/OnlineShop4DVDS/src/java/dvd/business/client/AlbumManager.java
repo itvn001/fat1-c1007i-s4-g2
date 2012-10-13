@@ -56,9 +56,8 @@ public class AlbumManager {
 
     public List<DataStore> showDataStore(int _AlbumID) {
         MapperData data = new MapperData();
-        int[] paramnumber = new int[]{1};
         String[] paramvalues = new String[]{"" + _AlbumID};
-        return data.getDataWithProc("listDataSotre", "?", paramnumber, paramvalues, DataStore.class);
+        return data.getDataWithProc("listDataSotre", "?", paramvalues, DataStore.class);
     }
 
     public String getNameSupplier(int _AlbumID) {
