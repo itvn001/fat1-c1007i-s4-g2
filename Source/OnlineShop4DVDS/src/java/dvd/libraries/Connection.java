@@ -18,7 +18,7 @@ public class Connection {
     public java.sql.Connection GetConnect() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=SHOPDVDS;user=sa;password=!vh04782$");
+            java.sql.Connection connection = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=SHOPDVDS;user=vanthuc;password=123456");
             return connection;
         } catch (Exception e) {
             return null;

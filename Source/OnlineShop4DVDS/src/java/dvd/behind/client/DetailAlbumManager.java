@@ -7,7 +7,6 @@ package dvd.behind.client;
 import dvd.business.client.AlbumManager;
 import dvd.entity.Album;
 import dvd.entity.DataStore;
-import dvd.libraries.MapperData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -26,15 +25,18 @@ public class DetailAlbumManager {
     /**
      * Creates a new instance of DetailAlbumManager
      */
-    
+    private int AlbumId;
+    AlbumManager albumManager;
     public DetailAlbumManager() {
     }
-    
-    public Album showInforAlbum(int _AlbumID){
+    public void addAlbumID(int _albumID){
+        AlbumId = _albumID;
+    }
+    public Album showInforAlbum(){
         Album album = new Album();
         try {
-            AlbumManager Amanager = new AlbumManager();
-            ResultSet rs = Amanager.showInforAlbum(_AlbumID);
+            albumManager = new AlbumManager();
+            ResultSet rs = albumManager.showInforAlbum(AlbumId);
             if(rs.next()){
                 album.setAlbumID(rs.getInt(1));
                 album.setCateID(""+rs.getInt(2));
@@ -45,18 +47,33 @@ public class DetailAlbumManager {
                 album.setAlbumImage(rs.getString(7));
                 album.setQuantity(rs.getInt(8));
                 album.setCateName(rs.getString(9));
+                album.setAlbumDetails(rs.getString(10));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DetailAlbumManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         return album;
     }
-    public List<DataStore> ListDataStore(int _AlbumID){
-        List<DataStore> listStore;
-        MapperData data = new MapperData();
-        int[] paramnumber = new int[]{1};
-        String[] paramvalues = new String[]{""+_AlbumID};
-        listStore = data.getDataWithProc("listDataSotre", "?", paramnumber, paramvalues, DataStore.class);
-        return listStore;
+    public List<DataStore> showDataStore(){
+        albumManager = new AlbumManager();
+        return albumManager.showDataStore(AlbumId);
+    }
+    public String showNameSuppllier(){
+        albumManager = new AlbumManager();
+        
+        return albumManager.getNameSupplier(AlbumId);
+    }
+    /**
+     * @return the AlbumId
+     */
+    public int getAlbumId() {
+        return AlbumId;
+    }
+
+    /**
+     * @param AlbumId the AlbumId to set
+     */
+    public void setAlbumId(int AlbumId) {
+        this.AlbumId = AlbumId;
     }
 }
