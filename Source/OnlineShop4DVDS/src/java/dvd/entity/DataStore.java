@@ -20,8 +20,6 @@ public class DataStore {
     private int dataID;
     @Column(name = "AlbumID")
     private int albumID;
-    @Column(name = "SupID")
-    private int supID;
     @Column(name = "DataName")
     private String dataName;
     @Column(name = "DataPath")
@@ -29,7 +27,7 @@ public class DataStore {
     @Column(name = "DataDescription")
     private String dataDescription;
     @Column(name = "DataPublic")
-    private Boolean dataPublic;
+    private boolean dataPublic;
     @Column(name = "DataStatus")
     private Boolean dataStatus;
 
@@ -48,15 +46,6 @@ public class DataStore {
     public void setAlbumID(int albumID) {
         this.albumID = albumID;
     }
-
-    public int getSupID() {
-        return supID;
-    }
-
-    public void setSupID(int supID) {
-        this.supID = supID;
-    }
-
     public String getDataName() {
         return dataName;
     }
@@ -81,7 +70,7 @@ public class DataStore {
         this.dataDescription = dataDescription;
     }
 
-    public Boolean getDataPublic() {
+    public boolean getDataPublic() {
         return dataPublic;
     }
 
@@ -89,7 +78,7 @@ public class DataStore {
         this.dataPublic = dataPublic;
     }
 
-    public Boolean getDataStatus() {
+    public boolean getDataStatus() {
         return dataStatus;
     }
 
