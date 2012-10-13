@@ -4,13 +4,11 @@
  */
 package dvd.business.client;
 
-import dvd.entity.AlbumAllExtention;
+import dvd.entity.Album;
 import dvd.libraries.Connection;
 import java.sql.CallableStatement;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,6 +29,17 @@ public class AlbumManager {
             cl = conn.GetConnect().prepareCall(squery);
             cl.setInt(1, _PIndex);
             cl.setInt(2, _PageSize);
+            rs = cl.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(AlbumManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
+    }
+    public ResultSet showInforAlbum(int _AlbumId){
+        try {
+            String squery = "{call showInforAlbum(?)}";
+            cl = conn.GetConnect().prepareCall(squery);
+            cl.setInt(1, _AlbumId);
             rs = cl.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(AlbumManager.class.getName()).log(Level.SEVERE, null, ex);

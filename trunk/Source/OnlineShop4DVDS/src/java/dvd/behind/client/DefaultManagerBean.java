@@ -27,7 +27,7 @@ public class DefaultManagerBean {
     private int pageIndex;
     private int totalRow;
     private int totalPaging;
-    private int pageSize = 1;
+    private int pageSize = 24;
     private boolean disableFirst;
     private boolean disableLast;
     private boolean disableNext;

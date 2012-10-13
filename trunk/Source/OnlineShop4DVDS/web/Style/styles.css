@@ -149,9 +149,9 @@ h2 {
 	float:right;
 	padding:0 0 15px 20px;
 }
-#mainContent p {
+/*#mainContent p {
 	padding:10px 0 30px 0;
-}
+}*/
 .box {
 	float:left;
 	width:160px;
@@ -218,4 +218,74 @@ h2 {
     margin-left: -20px;
     padding-left: 20px;
     width: 665px;
+}
+
+/*Page DetailAlbum*/
+.DetailsAlbumImage{
+    background: none repeat scroll 0 0 #DAD6D1;
+    border: 1px solid #747474;
+    float: left;
+    height: 342px;
+    margin-top: 25px;
+    width: 225px;
+}
+.DetailsAlbumInfor{
+    color: #175A75;
+    float: left;
+    margin-left: 5px;
+    margin-top: 25px;
+    min-height: 300px;
+    width: 430px;
+}
+.DetailsAlbumInfor p{
+    font-size: 15px;
+    padding: 5px 20px 5px 20px;
+}
+.DetailsAlbumH2{
+    background: none repeat scroll 0 0 #FAFAFA;
+    border-bottom: 1px solid #EBEBEB;
+    padding: 5px 0 10px;
+    text-align: center;
+    font-size: 18px;
+}
+.DetailsAlbumDetail{
+    width: 655px;
+    min-height: 200px;
+    float: left;
+}
+.DetailsAlbumAddtoCart a{
+    background: none repeat scroll 0 0 #FAFAFA;
+    border: 1px solid #175A75;
+    border-radius: 5px 5px 5px 5px;
+    color: #175A75;
+    cursor: pointer;
+    float: left;
+    font-weight: 600;
+    padding: 5px 20px;
+    text-decoration: none;
+}
+.DetailsAlbumAddtoCart a:hover{
+    background: none repeat scroll 0 0 #9ADEDF;
+}
+.DetailsAlbumPlay a{
+    background: none repeat scroll 0 0 #FAFAFA;
+    border: 1px solid #175A75;
+    border-radius: 5px 5px 5px 5px;
+    color: #175A75;
+    cursor: pointer;
+    float: left;
+    font-weight: 600;
+    margin: -10px 15px;
+    padding: 5px 20px;
+    text-decoration: none;
+}
+.DetailsAlbumPlay a:hover{
+    background: none repeat scroll 0 0 #9ADEDF;
+}
+.DetailsAlbumItemDataStore{
+    border: 1px solid #F1F1F1;
+    border-radius: 10px 10px 10px 10px;
+    margin-top: 5px;
+    min-height: 100px;
+    width: 100%;
 }
