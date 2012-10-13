@@ -58,7 +58,6 @@ CREATE PROC aShowDataStore
 AS
 SELECT	DataID,
 		AlbumID,
-		SupID,
 		DataName,
 		DataPath,
 		DataDescription,
@@ -141,3 +140,16 @@ AS
 SELECT AlbumID,AlbumName FROM Album ORDER BY AlbumID DESC
 
 EXEC aShowAlbumCategories '1'
+
+GO
+CREATE PROC aInserData
+@CateAlbumID INT,
+@DataName NVARCHAR(100),
+@DataPath NVARCHAR(100),
+@DataPublish BIT,
+@DataImage NVARCHAR(200)
+AS
+INSERT INTO DataStore(AlbumID,DataName,DataPath,DataDescription,DataPublic,DataStatus,DataImage)
+VALUES (@CateAlbumID,@DataName,@DataPath,'',@DataPublish,'true',@DataImage)
+
+exec aInserData '1','adf','adf','true','adf'
