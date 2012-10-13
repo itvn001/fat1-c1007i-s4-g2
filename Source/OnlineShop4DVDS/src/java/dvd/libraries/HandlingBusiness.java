@@ -37,8 +37,8 @@ public class HandlingBusiness {
      * @param paramvalues array parameter second
      * @return if true insert done, else failed
      */
-    public Boolean InsertToDB(String nameproc, String symbolParam, int[] paramnumber, String[] paramvalues) {
-        return SetSameMethod(nameproc, symbolParam, paramnumber, paramvalues);
+    public Boolean InsertToDB(String nameproc, String symbolParam,String[] paramvalues) {
+        return SetSameMethod(nameproc, symbolParam, paramvalues);
     }
 
     /**
@@ -51,8 +51,8 @@ public class HandlingBusiness {
      * @param paramvalues array parameter second
      * @return if true insert done, else failed
      */
-    public Boolean DeleteToDB(String nameproc, String symbolParam, int[] paramnumber, String[] paramvalues) {
-        return SetSameMethod(nameproc, symbolParam, paramnumber, paramvalues);
+    public Boolean DeleteToDB(String nameproc, String symbolParam, String[] paramvalues) {
+        return SetSameMethod(nameproc, symbolParam, paramvalues);
     }
 
     /**
@@ -65,16 +65,16 @@ public class HandlingBusiness {
      * @param paramvalues array parameter second
      * @return if true insert done, else failed
      */
-    public Boolean UpdateToDB(String nameproc, String symbolParam, int[] paramnumber, String[] paramvalues) {
-        return SetSameMethod(nameproc, symbolParam, paramnumber, paramvalues);
+    public Boolean UpdateToDB(String nameproc, String symbolParam, String[] paramvalues) {
+        return SetSameMethod(nameproc, symbolParam, paramvalues);
     }
 
-    private Boolean SetSameMethod(String nameproc, String symbolParam, int[] paramnumber, String[] paramvalues) {
+    private Boolean SetSameMethod(String nameproc, String symbolParam, String[] paramvalues) {
         try {
             String squery = "{call " + nameproc + "(" + symbolParam + ")}";
             this.ps = cn.GetConnect().prepareCall(squery);
             int i1 = 1;
-            for (int i = 0; i < paramnumber.length; i++) {
+            for (int i = 0; i < paramvalues.length; i++) {
                 this.ps.setString(i1, paramvalues[i]);
                 i1++;
             }
@@ -84,7 +84,8 @@ public class HandlingBusiness {
             Logger.getLogger(HandlingBusiness.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-    } 
+    }
+
     private Boolean getResult(int result) {
         if (result == 0) {
             return false;
@@ -95,11 +96,10 @@ public class HandlingBusiness {
 
     public static void main(String[] f) {
         HandlingBusiness g = new HandlingBusiness();
-        int[] pa = new int[2];
         String[] pav = new String[]{
             "Ten dah muc",
             "Thong tin"
         };
-        g.InsertToDB("addcate", "?,?", pa, pav);
+        g.InsertToDB("addcate", "?,?", pav);
     }
 }
