@@ -13,10 +13,10 @@
                     <div class="DefaultAllbox">
                         <ui:repeat value="#{defaultManagerBean.loadAlbum()}" var="listAlbum">
                             <div class="box">
-                                <div><img src="#{listAlbum.albumImage}" alt="" title="#{listAlbum.albumName}" /></div>
+                                <div><a href="DetailsAlbum.xhtml?id=#{listAlbum.albumID}"><img src="#{listAlbum.albumImage}" alt="" title="#{listAlbum.albumName}" width="160px" height="243px"/></a></div>
                                 <div class="boxTitle">#{listAlbum.albumName}</div>
                                 <div class="boxPrice">$#{listAlbum.albumPrice}</div>
-                                <div class="boxLink"><a href="">Add to Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">Details</a></div>
+                                <div class="boxLink"><a href="">Add to Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DetailsAlbum.xhtml?id=#{listAlbum.albumID}">Details</a></div>
                             </div>
                         </ui:repeat>
                     </div>

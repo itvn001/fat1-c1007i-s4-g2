@@ -9,7 +9,33 @@
     <h:body>
         <ui:composition template="MasterPage.xhtml">
             <ui:define name="contents">
-                
+                <h:form>
+                    <ui:repeat value="#{detailAlbumManager.showInforAlbum(param['id'])}" var="album">
+                        <div class="DefaultAllbox">
+                            <div class="DetailsAlbumImage">
+                                <img src="#{album.albumImage}" alt="" title="#{album.albumName}" width="225px" height="342px"></img>
+                            </div>
+                            <div class="DetailsAlbumInfor">
+                                <h3 class="DetailsAlbumH2">#{album.albumName}</h3>
+                                <p style="color: #818181;">Category Name: <h:outputLabel style="color: #175A75;" value="#{album.cateName}"></h:outputLabel></p>
+                                <p style="color: #818181;">Create Date: <h:outputLabel style="color: #175A75;" value="#{album.albumDateCreate}"></h:outputLabel></p>
+                                <p style="color: #818181;">Price: $<h:outputLabel style="color: #175A75;" value="#{album.albumPrice}"></h:outputLabel></p>
+                                <p style="color: #818181;">Quantity: <h:outputLabel style="color: #175A75;" value="#{album.quantity}"></h:outputLabel></p>
+                                <p style="height: 20px;"></p>
+                                <p class="DetailsAlbumAddtoCart"><a href="#">Add to Cart</a></p>
+                                <p class="DetailsAlbumPlay"><a href="">Play all</a></p>
+                            </div>
+                            <div class="DetailsAlbumDetail">
+                                <h2>Product details in the album</h2>
+                                <ui:repeat value="" var="listDataStore">
+                                    <div class="DetailsAlbumItemDataStore">
+                                        
+                                    </div>
+                                </ui:repeat>
+                            </div>
+                        </div>
+                    </ui:repeat>
+                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>

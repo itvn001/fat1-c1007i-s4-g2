@@ -6,8 +6,8 @@ Select * from Categories
 
 GO
 CREATE PROCEDURE pagingShowAllAlbum
-	@PageIndex INT, 
-	@PageSize INT 
+@PageIndex INT, 
+@PageSize INT 
 AS 
 BEGIN
 	WITH AlbumRecords AS ( 
@@ -23,5 +23,14 @@ BEGIN
 	WHERE (RowIndex BETWEEN (@PageIndex - 1) * @PageSize + 1 AND @PageIndex*@PageSize) 
 END
 
-execute pagingShowAllAlbum 1, 1
-select * from album
+GO
+CREATE PROCEDURE showInforAlbum
+@AlbumID	INT
+AS
+SELECT Album.AlbumID, Album.CateID, Album.AlbumName, Album.AlbumPrice, Album.AlbumDateCreate, Album.AlbumStatus, Album.AlbumImage, Album.Quantity, Categories.CateName
+FROM Album left join Categories on Album.CateID = Categories.CateID WHERE AlbumID = @AlbumID
+GO
+CREATE PROCEDURE listDataSotre
+@AlbummID	INT
+AS
+SELECT * FROM DataStore WHERE AlbumID = @AlbummID
