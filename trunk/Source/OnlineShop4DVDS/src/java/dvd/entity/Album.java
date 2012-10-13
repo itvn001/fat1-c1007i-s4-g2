@@ -117,4 +117,14 @@ public class Album implements Serializable {
     public void setAlbumStatus(Boolean albumStatus) {
         this.albumStatus = albumStatus;
     }
+    @Column(name = "SupID")
+    private int supID;
+
+    public int getSupID() {
+        return supID;
+    }
+
+    public void setSupID(int supID) {
+        this.supID = supID;
+    }
 }
