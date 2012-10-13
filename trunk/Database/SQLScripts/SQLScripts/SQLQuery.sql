@@ -200,6 +200,9 @@ ALTER COLUMN AlbumName NVARCHAR(200)
 --
 GO
 INSERT INTO Album VALUES(1,'ALBUM ORTHER',0,GETDATE(),'true','/path/image',0)
+-- Modified
+ALTER TABLE DataStore
+ADD DataImage NVARCHAR(200)
 --
 GO
 -- BEGIN INSERT DEMO DATA --
