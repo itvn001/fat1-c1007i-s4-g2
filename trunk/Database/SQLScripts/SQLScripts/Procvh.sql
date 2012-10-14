@@ -53,7 +53,7 @@ SELECT AlbumID,
 		WHERE AlbumID = @AlbumID AND Album.CateID = Categories.CateID
 ---
 GO
-CREATE PROC aShowDataStore
+ALTER PROC aShowDataStore
 @AlbumID INT
 AS
 SELECT	DataID,
@@ -62,11 +62,12 @@ SELECT	DataID,
 		DataPath,
 		DataDescription,
 		DataPublic,
-		DataStatus
+		DataStatus,
+		DataImage
 		FROM DataStore WHERE AlbumID = @AlbumID	 ORDER BY DataID DESC
 --
 GO
-CREATE PROC aShowAllDataStore
+ALTER PROC aShowAllDataStore
 @ID int
 AS
 SELECT	DataID,
@@ -76,10 +77,44 @@ SELECT	DataID,
 		DataPath,
 		DataDescription,
 		DataPublic,
-		DataStatus
+		DataStatus,
+		DataImage
 		FROM DataStore,Album 
 		WHERE DataStore.AlbumID = Album.AlbumID ORDER BY DataID DESC
-		
+GO
+ALTER PROC aShowAllDataStoreFilter
+@ID int
+AS
+IF @ID = 0
+BEGIN
+	SELECT	DataID,
+		Album.AlbumName,
+		SupID,
+		DataName,
+		DataPath,
+		DataDescription,
+		DataPublic,
+		DataStatus,
+		DataImage
+		FROM DataStore,Album 
+		WHERE DataStore.AlbumID = Album.AlbumID ORDER BY DataID DESC	
+END
+ELSE
+BEGIN
+ SELECT	DataID,
+		Album.AlbumName,
+		SupID,
+		DataName,
+		DataPath,
+		DataDescription,
+		DataPublic,
+		DataStatus,
+		DataImage
+		FROM DataStore,Album 
+		WHERE DataStore.AlbumID = Album.AlbumID 
+		AND Album.AlbumID = @ID ORDER BY DataID DESC	
+END
+	
 	
 GO
 CREATE PROC aInsertAlbum
@@ -152,4 +187,5 @@ AS
 INSERT INTO DataStore(AlbumID,DataName,DataPath,DataDescription,DataPublic,DataStatus,DataImage)
 VALUES (@CateAlbumID,@DataName,@DataPath,'',@DataPublish,'true',@DataImage)
 
-exec aInserData '1','adf','adf','true','adf'
+
+GO
