@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -21,6 +22,45 @@
                         <a class="expoler-window" href="Addnew.xhtml">
                             ADD NEW
                         </a>
+                        <p:dataTable id="dataTable" var="DATA" value="#{mdata_Index.listData}"  
+                                     paginator="true" rows="10"  
+                                     paginatorTemplate="{CurrentPageReport}  
+                                     {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                                     {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                                     rowsPerPageTemplate="5,10,15,50">  
+                            <p:column style="width: 300px">  
+                                <f:facet name="header">  
+                                    <h:outputText value="Name Data" />  
+                                </f:facet>  
+                                <img src="../../#{DATA.dataImage}" width="50px" align="middle"/>
+                                <a href="#" id="ik" class="text-table-title" style="color:#274974;font-weight: 600">
+                                    #{DATA.dataName}
+                                </a>
+                            </p:column>  
+                            <p:column> 
+                                <f:facet name="header">  
+                                    <h:outputText value="Name Album" />  
+                                </f:facet>  
+                                #{DATA.albumName}
+                            </p:column>
+                            <p:column> 
+                                <f:facet name="header">  
+                                    <h:outputText value="Path Directories" />  
+                                </f:facet>  
+                                #{DATA.dataPath}
+                            </p:column>
+                            <p:column style="width: 155px">  
+                                <f:facet name="header">  
+                                    <h:outputText value="Option" />  
+                                </f:facet>  
+                                <h:commandButton class="data-public-#{DATA.dataPublic}" title="Change music public"
+                                                 value="#{mdata_Index.returnPublicData(DATA.dataPublic)}"/>&nbsp;| 
+                                <h:commandButton value="edit" class="optionicon" />&nbsp;|
+                                <h:commandButton class="optionicon" 
+                                                 value="Remove"
+                                                 onclick="javascript:return deleteconfirm();"/>
+                            </p:column>  
+                        </p:dataTable> 
                     </div>
                 </div>
             </ui:define>

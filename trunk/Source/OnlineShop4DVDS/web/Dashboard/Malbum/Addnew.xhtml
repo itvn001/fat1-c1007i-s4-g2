@@ -23,9 +23,9 @@
                                     </td>
                                     <td>
                                         <h:selectOneMenu class="commoboxIm" onchange="submit()" 
-                                                         value="#{malbum_Addnew.idCategories}"
-                                                         valueChangeListener="#{malbum_Addnew.categoriesValuesChange}">
+                                                         value="#{malbum_Addnew.idCategories}">
                                             <f:selectItems value="#{malbum_Addnew.listCategories}"/>
+                                            <p:ajax listener="#{malbum_Addnew.categoriesValuesChange}"/>
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>
@@ -54,9 +54,9 @@
                                     </td>
                                     <td>
                                         <h:selectOneMenu class="commoboxIm" onchange="submit()" 
-                                                         value="#{malbum_Addnew.numberQuantity}"
-                                                         valueChangeListener="#{malbum_Addnew.quantityListChange}">
+                                                         value="#{malbum_Addnew.numberQuantity}">
                                             <f:selectItems value="#{malbum_Addnew.listQuantity}"/>
+                                            <p:ajax listener="#{malbum_Addnew.quantityListChange}"/>
                                         </h:selectOneMenu>
                                     </td>
                                 </tr>

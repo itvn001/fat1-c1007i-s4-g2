@@ -262,6 +262,20 @@ small
 .optionicon:hover{
     text-decoration: underline;
 }
+.data-public-true{
+    margin-top: 5px;
+    border: none;
+    color: #46890b;
+    cursor: pointer;
+    font-weight: bold;
+}
+.data-public-false{
+    margin-top: 5px;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-weight: bold;
+}
 .expoler-window:hover
 {
     background: none repeat scroll 0 0 #2C5479;

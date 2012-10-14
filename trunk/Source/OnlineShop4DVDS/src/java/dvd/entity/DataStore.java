@@ -14,7 +14,6 @@ import javax.persistence.Id;
  */
 @Entity
 public class DataStore {
-
     @Column(name = "DataID")
     @Id
     private int dataID;
@@ -27,7 +26,7 @@ public class DataStore {
     @Column(name = "DataDescription")
     private String dataDescription;
     @Column(name = "DataPublic")
-    private boolean dataPublic;
+    private Boolean dataPublic;
     @Column(name = "DataStatus")
     private Boolean dataStatus;
 
@@ -70,7 +69,7 @@ public class DataStore {
         this.dataDescription = dataDescription;
     }
 
-    public boolean getDataPublic() {
+    public Boolean getDataPublic() {
         return dataPublic;
     }
 
@@ -78,7 +77,7 @@ public class DataStore {
         this.dataPublic = dataPublic;
     }
 
-    public boolean getDataStatus() {
+    public Boolean getDataStatus() {
         return dataStatus;
     }
 
