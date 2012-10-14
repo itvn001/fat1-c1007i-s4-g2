@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>4DVDS Shop Manager</title>
         <link href="../Style/stylemaster.css" type="text/css" rel="stylesheet"/>
@@ -28,7 +29,7 @@
                 function setccc() {
                     var shl = "";
                     var hor = "";
-                    var sessionid = "#{sessionScope['childmenu']}";  
+                    var sessionid = "${sessionScope['childmenu']}";  
                     if(sessionid == 1){
                         shl = document.getElementById("casf1");
                         shl.style.backgroundColor="#fff";
@@ -101,26 +102,29 @@
                 </div>
                 <div id="contentmain">
                     <div id="navibit">
+                        <h:commandButton value="" style="width: 10px ;
+                                         height: 80px; background-color: red; 
+                                         border: none; cursor: pointer" action="#{masterPage.commitShowHideNavigator}"/>
                     </div>
                     <table width="100%">
                         <tr>
-                            <td id="left-c" valign="top">
+                            <td id="left-c" valign="top" class="displayaw-#{masterPage.show_hide}">
                                 <h3 class="open">
                                     NAVIGATION MANAGER
                                 </h3>
                                 <div class="contentmenuleft">
                                     <ul class="leftmenu">
-                                        <li id="casf1" class="current">
-                                            <a href="#" class="home">Manage Categories </a>
+                                        <li id="casf1">
+                                            <h:commandLink class="home" action="#{masterPage.actionclick_Home()}" value="DashBoard"/>
                                         </li>
                                         <li id="casf2">
                                             <a href="#" class="article">Manage Artists</a>
                                         </li>
                                         <li id="casf3">
-                                            <a href="../Malbum/Index.xhtml" class="file">Manager DVD [old:album]</a>
+                                            <h:commandLink class="file" action="#{masterPage.actionclick_mngdvd()}" value="Manager DVD [old:album]"/>
                                         </li>
                                         <li id="casf4">
-                                            <a href="../Mdata/Index.xhtml" class="file">Manager Data [old:dvd]</a>
+                                            <h:commandLink class="file" action="#{masterPage.actionclick_mngdata()}" value="Manager Data [old:dvd]]"/>
                                         </li>
                                         <li id="casf5">
                                             <a href="#" class="file">Manager Feedback</a>
@@ -134,7 +138,7 @@
                             <td id="right-c" valign="top">
                                 <div style="width: 99%; margin: 3px auto">
                                     <ui:insert name="isa1" id="isbodymain"> 
-                                        
+
                                     </ui:insert>
                                 </div>
                             </td>

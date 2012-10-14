@@ -7,7 +7,6 @@ package dvd.business.dashboard;
 import dvd.libraries.HandlingBusiness;
 import dvd.libraries.MapperData;
 import java.util.List;
-import javax.swing.text.StyledEditorKit;
 
 /**
  *
@@ -39,7 +38,13 @@ public class DataStore {
         return this.mapperCommo.getDataWithProc("aShowAllDataStore", "?",
                 paramvalues, dvd.entity.DataStore.class);
     }
-
+    public List<dvd.entity.DataStore> getListAllDataWithAlbumCate(String id){
+         this.paramvalues = new String[]{
+            id
+        };
+        return this.mapperCommo.getDataWithProc("aShowAllDataStoreFilter", "?",
+                paramvalues, dvd.entity.DataStore.class);
+    }
     public void MoveStoreToListAlbum(String id, String idalbum) {
         try {
             this.paramvalues = new String[]{

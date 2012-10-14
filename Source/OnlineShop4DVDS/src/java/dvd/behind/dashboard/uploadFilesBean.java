@@ -51,6 +51,7 @@ public class uploadFilesBean {
             fileOutputStream.close();
             inputStream.close();
             this.file = event.getFile().getFileName();
+            this.fileimage = event.getFile().getFileName();
             // Set file name to session
             session.setAttribute("se_namefiledata", this.file);
             
