@@ -19,7 +19,24 @@ public class uploadFilesBean {
     //Primitives
     private static final int BUFFER_SIZE = 6124;
     private String folderToUpload;
+    private String imageLink;
 
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+
+    public String getPathSong() {
+        return pathSong;
+    }
+
+    public void setPathSong(String pathSong) {
+        this.pathSong = pathSong;
+    }
+    private String pathSong;
     /**
      * Creates a new instance of UploadBean
      */
@@ -52,11 +69,13 @@ public class uploadFilesBean {
             inputStream.close();
             this.file = event.getFile().getFileName();
             this.fileimage = event.getFile().getFileName();
+            this.imageLink = event.getFile().getFileName();
+            session.setAttribute("imageLink", this.imageLink);
             // Set file name to session
             session.setAttribute("se_namefiledata", this.file);
             
             session.setAttribute("image_sg", this.fileimage);
-             session.setAttribute("path_da", this.file);
+            session.setAttribute("path_da", this.file);
             FacesMessage msg =
                     new FacesMessage("File Description", "file name: "
                     + event.getFile().getFileName() + "file size: " + event.getFile().getSize() / 1024 + " Kbcontent type: "
@@ -99,6 +118,8 @@ public class uploadFilesBean {
             inputStream.close();
             this.file = event.getFile().getFileName();
             this.fileimage = event.getFile().getFileName();
+            this.pathSong = event.getFile().getFileName();
+            session.setAttribute("pathSong", this.pathSong);
             // Set file name to session
             session.setAttribute("se_nameonlyBean", this.file);
             FacesMessage msg =

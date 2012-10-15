@@ -38,13 +38,15 @@ public class DataStore {
         return this.mapperCommo.getDataWithProc("aShowAllDataStore", "?",
                 paramvalues, dvd.entity.DataStore.class);
     }
-    public List<dvd.entity.DataStore> getListAllDataWithAlbumCate(String id){
-         this.paramvalues = new String[]{
+
+    public List<dvd.entity.DataStore> getListAllDataWithAlbumCate(String id) {
+        this.paramvalues = new String[]{
             id
         };
         return this.mapperCommo.getDataWithProc("aShowAllDataStoreFilter", "?",
                 paramvalues, dvd.entity.DataStore.class);
     }
+
     public void MoveStoreToListAlbum(String id, String idalbum) {
         try {
             this.paramvalues = new String[]{
@@ -84,6 +86,44 @@ public class DataStore {
                     paramvalues);
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public Boolean UpdateUseGuest(String id) {
+        try {
+            this.maphand = new HandlingBusiness();
+            this.paramvalues = new String[]{
+                id
+            };
+            return this.maphand.UpdateToDB("aUpdateUseGuest", "?", paramvalues);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public List<dvd.entity.DataStore> getListEditData(String id) {
+        try {
+            this.paramvalues = new String[]{
+                id
+            };
+            return this.mapperCommo.getDataWithProc("aGetdataEditData", "?", paramvalues, dvd.entity.DataStore.class);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Boolean UpdateDataStore(dvd.entity.DataStore dt) {
+        try {
+            this.paramvalues = new String[]{
+                Integer.toString(dt.getDataID()),
+                dt.getDataName(),
+                dt.getDataImage(),
+                dt.getDataPath()
+            };
+            this.maphand = new HandlingBusiness();
+            return this.maphand.UpdateToDB("aUpdateDataStore", "?,?,?,?", paramvalues);
+        } catch (Exception e) {
+            return false;
         }
     }
 }

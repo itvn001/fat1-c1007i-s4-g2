@@ -95,8 +95,7 @@ public class Malbum_Edit {
                             "Move To Store Album Success !", "", "");
                 }
             } else {
-                FacesMessage msg =
-                        new FacesMessage(FacesMessage.SEVERITY_FATAL, "Please choice checkbox on LIST ALBUM Table", "");
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_FATAL, "Please choice checkbox on LIST ALBUM Table", "");
                 FacesContext.getCurrentInstance().addMessage(null, msg);
             }
         } catch (Exception e) {
@@ -109,7 +108,9 @@ public class Malbum_Edit {
     public String getMessage() {
         return message;
     }
-
+    public String redirectIndex(){
+        return "Index.xhtml";
+    }
     public void setMessage(String message) {
         this.message = message;
     }

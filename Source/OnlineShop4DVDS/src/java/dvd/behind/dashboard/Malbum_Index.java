@@ -107,7 +107,9 @@ public class Malbum_Index {
             return null;
         }
     }
-
+    public String redirectadd(){
+        return "Addnew.xhtml";
+    }
     public void setListAlbum(List<dvd.entity.Album> ListAlbum) {
         this.ListAlbum = ListAlbum;
     }
