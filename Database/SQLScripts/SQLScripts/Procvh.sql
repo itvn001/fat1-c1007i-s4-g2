@@ -187,5 +187,43 @@ AS
 INSERT INTO DataStore(AlbumID,DataName,DataPath,DataDescription,DataPublic,DataStatus,DataImage)
 VALUES (@CateAlbumID,@DataName,@DataPath,'',@DataPublish,'true',@DataImage)
 
+GO
+CREATE PROC aUpdateUseGuest
+@DataID INT
+AS
+IF(SELECT DataPublic FROM DataStore WHERE DataID = @DataID) = 'true'
+BEGIN
+	UPDATE DataStore SET DataPublic = 'false' WHERE DataID = @DataID
+END
+ELSE
+BEGIN
+	UPDATE DataStore SET DataPublic = 'true' WHERE DataID = @DataID
+END
 
 GO
+ALTER PROC aGetdataEditData
+@DataID INT
+AS
+SELECT DataID,
+		Album.AlbumName,
+		SupID,
+		DataName,
+		DataPath,
+		DataDescription,
+		DataPublic,
+		DataStatus,
+		DataImage
+		FROM Album,DataStore
+		WHERE DataID = @DataID AND DataStore.AlbumID = Album.AlbumID
+		
+GO
+CREATE PROC aUpdateDataStore
+@DataID INT,
+@DataName NVARCHAR(100),
+@DataImage NVARCHAR(200),
+@DataPath NVARCHAR(100)
+AS
+UPDATE DataStore SET DataName = @DataName,
+					DataImage = @DataImage,
+					DataPath = @DataPath
+					WHERE DataID = @DataID
