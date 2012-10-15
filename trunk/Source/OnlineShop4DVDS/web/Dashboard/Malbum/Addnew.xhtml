@@ -13,7 +13,7 @@
             <ui:define name="isa1">
                 <h:outputText value="#{malbum_Addnew.message}" escape="false"/>
                 <div class="t-title">
-                    <h3><a href="Index.xhtml">MANAGER ALBUM</a> -> ADD NEW ALBUM</h3>
+                    <h3><h:commandLink value="MANAGER ALBUM" action="#{malbum_Edit.redirectIndex}"/> -> ADD NEW ALBUM</h3>
                     <div class="t-in">
                         <div style="margin: 0 auto; width: 70%">
                             <table>
@@ -73,7 +73,8 @@
                                     </td>
                                     <td>
                                         <h:form enctype="multipart/form-data">
-                                            <h:inputText id="msga" class="inputIm" disabled="true" style="background-color: #ECEBEC" value="#{fileUploadController.file}"/>
+                                            <h:inputText id="msga" class="inputIm" disabled="true" style="background-color: #ECEBEC" 
+                                                         value="#{fileUploadController.file}"/>
                                             <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}"
                                                           mode="advance" value="#{fileUploadController.file}"
                                                           update="msga,messages"

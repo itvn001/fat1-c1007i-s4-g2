@@ -20,9 +20,7 @@
                                          valueChangeListener="#{malbum_Index.categoriesValuesChange}">
                             <f:selectItems value="#{malbum_Index.listCategories}"/>
                         </h:selectOneMenu>&nbsp;
-                        <a class="expoler-window" href="Addnew.xhtml">
-                            ADD NEW
-                        </a>
+                        <h:commandLink class="expoler-window" value="ADD NEW" action="#{malbum_Index.redirectadd}" />
                         <p:dataTable id="dataTable" var="album" value="#{malbum_Index.listAlbum}"  
                                      paginator="true" rows="10"  
                                      paginatorTemplate="{CurrentPageReport}  

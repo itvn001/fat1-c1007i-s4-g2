@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Master/MasterPage.xhtml">
+            <ui:define name="isa1">
+                <h:outputText value="#{mdata_Edit.message}" escape="false"/>
+                <div class="t-title">
+                    <h3><h:commandLink value="MANAGER DATA" action="#{malbum_Edit.redirectIndex}"/>&rarr; EDIT DATA</h3>
+                    <div class="t-in">
+                        <div style="margin: 0 auto; width: 80%">
+                            <ui:repeat value="#{mdata_Index.listEditData}" var="dedit">
+                                <table width="100%">
+                                    <tr>
+                                        <td>
+                                            Image
+                                        </td>
+                                        <td>
+                                            <img width="50px" src="../../#{dedit.dataImage}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+
+                                        </td>
+                                        <td>
+                                            <h:form enctype="multipart/form-data" id="th13">
+                                                <h:inputText id="msga2" class="inputIm" disabled="true" style="background-color: #ECEBEC" 
+                                                             value="#{fileUploadController.imageLink}" />
+                                                <p:fileUpload fileUploadListener="#{fileUploadController.uploadToData}"
+                                                              mode="advance" value="#{fileUploadController.imageLink}"
+                                                              update="msga2,messages2"
+                                                              label="Choose a file"
+                                                              sizeLimit="90485760"
+                                                              allowTypes="/(\.|\/)(jpg|png|gif)$/"
+                                                              invalidSizeMessage="The maximum file size allowed is 1 Megabyte !"
+                                                              invalidFileMessage="You are allowed to upload only images !"/>
+                                                <p:growl id="messages2" showDetail="true" sticky="true"/>
+                                            </h:form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Album
+                                        </td>
+                                        <td>
+                                            #{dedit.albumName}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="120px">
+                                            Name Data
+                                        </td>
+                                        <td>
+                                            <input name="txtnamedata" value="#{dedit.dataName}" class="inputIm"/>
+                                        </td>   
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Path Data
+                                        </td>
+                                        <td>
+                                            <input value="#{dedit.dataPath}" class="inputIm"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+
+                                        </td>
+                                        <td>
+                                            <h:form enctype="multipart/form-data" id="nhsdf_as">
+                                                <h:inputText id="msga3" class="inputIm" disabled="true" style="background-color: #ECEBEC" 
+                                                             value="#{fileUploadController.pathSong}" />
+                                                <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}"
+                                                              mode="advance" value="#{fileUploadController.pathSong}"
+                                                              update="msga3,messages3"
+                                                              label="Choose a file"
+                                                              sizeLimit="90485760"
+                                                              allowTypes="/(\.|\/)(mp3|mp4|wav)$/"
+                                                              invalidSizeMessage="The maximum file size allowed is 1 Megabyte !"
+                                                              invalidFileMessage="You are allowed to upload only images !"/>
+                                                <p:growl id="messages3" showDetail="true" sticky="true"/>
+                                            </h:form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <h:commandButton value="Save" class="expoler-window" 
+                                                             action="#{mdata_Edit.btnsavedataEdit(dedit.dataID,dedit.dataImage,dedit.dataPath)}"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ui:repeat>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
