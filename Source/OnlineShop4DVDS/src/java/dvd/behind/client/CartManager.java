@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @SessionScoped
-public class cartManager {
+public class CartManager {
 
     /**
      * Creates a new instance of cartManager
@@ -33,7 +33,7 @@ public class cartManager {
     private boolean displayMessage;
     private boolean typeMessage;
 
-    public cartManager() {
+    public CartManager() {
         if (this.listDataStore == null) {
             this.listDataStore = new ArrayList<Album>();
         }
@@ -68,7 +68,7 @@ public class cartManager {
             this.displayMessage = true;
             this.typeMessage = false;
             setMessage("Add product to cart false!");
-            Logger.getLogger(cartManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CartManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -93,7 +93,7 @@ public class cartManager {
             setMessage("Delete product from cart success!");
             FacesContext.getCurrentInstance().getExternalContext().redirect("DefaultCart.xhtml");
         } catch (IOException ex) {
-            Logger.getLogger(cartManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CartManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
