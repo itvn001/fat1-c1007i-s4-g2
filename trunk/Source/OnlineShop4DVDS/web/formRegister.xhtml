@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>TODO supply a title</title>
+    </head>
+    <body>
+        <ui:composition template="MasterPage.xhtml">
+            <ui:define name="contents">
+                <div style="width:430px">
+                    <h2>Regist new account</h2><br/>
+                    <fieldset style="border: 1px solid #d1d0d1">
+                        <legend>Register</legend>
+                        <div>
+                            <div >
+                                <div style="margin: 0 auto; width: 80%">
+                                    <table width="100%">
+                                       
+                                            <tr>
+                                                <td>
+                                                    User Name : 
+                                                </td>
+                                                <td>
+                                                    <h:inputText style="width: 200px; height: 22px"/>
+                                                </td>
+                                            </tr>    
+                                        
+                                        <tr>
+                                            <td>
+                                                Password : 
+                                            </td>
+                                            <td>
+                                                <h:inputText style="width: 200px; height: 22px"/>
+                                            </td>
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                Re-password : 
+                                            </td>
+                                            <td>
+                                                <h:inputText style="width: 200px; height: 22px"/>
+                                            </td>
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                Full Name : 
+                                            </td>
+                                            <td>
+                                                <h:inputText style="width: 200px; height: 22px"/>
+                                            </td>
+
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                Age : 
+                                            </td>
+                                            <td>
+                                                <h:inputText style="width: 200px; height: 22px"/>
+                                            </td>
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                Phone Number : 
+                                            </td>
+                                            <td>
+                                                <h:inputText style="width: 200px; height: 22px"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Sex : 
+                                            </td>
+                                            <td>
+                                                <h:selectOneMenu style="width: 100px; height: 22px">
+                                                    <f:selectItem id="item1" itemLabel="Male" itemValue="1" />
+                                                    <f:selectItem id="item1" itemLabel="Female" itemValue="1" />
+                                                </h:selectOneMenu>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                <h:commandButton value="Submit" />
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                    <style>
+                                        table tr{
+                                            line-height: 32px;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
