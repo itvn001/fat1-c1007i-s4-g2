@@ -43,7 +43,8 @@
                                     </td>
                                     <td>
                                         <h:form enctype="multipart/form-data" id="th13">
-                                            <h:inputText id="msga2"  class="inputIm" disabled="true" style="background-color: #ECEBEC" 
+                                            <h:inputText id="msga2"  class="inputIm" disabled="true" 
+                                                         style="background-color: #ECEBEC" 
                                                          value="#{fileUploadController.fileimage}" />
                                             <p:fileUpload fileUploadListener="#{fileUploadController.uploadToData}"
                                                           mode="advance" value="#{fileUploadController.fileimage}"
@@ -93,7 +94,7 @@
                                     <td>
 
                                     </td>
-                                    <td>
+                                    <td align="right">
                                         <h:commandButton value="Save" class="expoler-window" id="btnsavedata" action="#{mdata_Addnew.btnsavedata_Click}"/>
                                     </td>
                                 </tr>

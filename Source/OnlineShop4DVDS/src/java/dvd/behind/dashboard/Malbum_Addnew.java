@@ -133,8 +133,8 @@ public class Malbum_Addnew {
         } catch (Exception e) {
         }
     }
-    private String albumName;
-    private String albumPrice;
+    private String albumName = "Name album";
+    private String albumPrice = "30";
     private String filestr;
 
     public String getAlbumName() {

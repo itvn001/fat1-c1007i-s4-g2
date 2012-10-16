@@ -51,7 +51,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <p:editor id="editor" style="width: 100%" value="#{albumedit.albumDetails}"/>  
+                                        <p:editor id="editor_edit" style="width: 100%" value="#{albumedit.albumDetails}"/>  
                                         <input type="hidden" value="#{albumedit.albumDetails}" name="intxtDetailsAlbum"/>
                                     </td>
                                 </tr>
@@ -109,7 +109,7 @@
                                             <p:column>  
                                                 <input name="albumidstore" type="checkbox" value="#{listdtstrore.dataID}"/>
                                             </p:column> 
-                                            <p:column>  
+                                            <p:column filterBy="#{listdtstrore.dataName}" filterMatchMode="contains">  
                                                 <f:facet name="header">  
                                                     <h:outputText value="Song Name" />  
                                                 </f:facet>  

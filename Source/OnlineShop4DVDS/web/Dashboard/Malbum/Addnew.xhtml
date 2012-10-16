@@ -15,8 +15,8 @@
                 <div class="t-title">
                     <h3><h:commandLink value="MANAGER ALBUM" action="#{malbum_Edit.redirectIndex}"/> -> ADD NEW ALBUM</h3>
                     <div class="t-in">
-                        <div style="margin: 0 auto; width: 70%">
-                            <table>
+                        <div style="margin: 0 auto; width: 80%">
+                            <table width="100%">
                                 <tr>
                                     <td>
                                         Categories
@@ -27,6 +27,7 @@
                                             <f:selectItems value="#{malbum_Addnew.listCategories}"/>
                                             <p:ajax listener="#{malbum_Addnew.categoriesValuesChange}"/>
                                         </h:selectOneMenu>
+                                       
                                     </td>
                                 </tr>
                                 <tr>
@@ -99,6 +100,9 @@
                         </div>
                     </div>
                 </div>
+                <ui:include src="data_addnew.xhtml">
+                    
+                </ui:include>
             </ui:define>
         </ui:composition>
     </h:body>

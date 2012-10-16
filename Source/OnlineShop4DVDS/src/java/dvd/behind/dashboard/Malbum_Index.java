@@ -46,7 +46,7 @@ public class Malbum_Index {
         session.setAttribute("re_albumid", id);
         return "Edit.xhtml";
     }
-
+    
     public void setIdCategories(String idCategories) {
         this.idCategories = idCategories;
     }
@@ -86,7 +86,15 @@ public class Malbum_Index {
             return null;
         }
     }
+    private List<dvd.entity.Album> filterAlbum;
 
+    public List<dvd.entity.Album> getFilterAlbum() {
+        return filterAlbum;
+    }
+
+    public void setFilterAlbum(List<dvd.entity.Album> filterAlbum) {
+        this.filterAlbum = filterAlbum;
+    }
     /**
      * Event Click of Commobox categories
      *
