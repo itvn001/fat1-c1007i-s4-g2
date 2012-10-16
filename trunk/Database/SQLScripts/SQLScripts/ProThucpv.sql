@@ -51,4 +51,10 @@ CREATE PROCEDURE showNameSupplier
 AS
 SELECT SupName FROM Supplier WHERE SupID = @SupplierId
 
-EXECUTE showNameSupplier 1
+GO
+CREATE PROCEDURE getAlbumById
+@AlbumId	INT
+AS
+SELECT * FROM Album WHERE AlbumID = @AlbumId
+
+EXECUTE getAlbumById 2

@@ -25,18 +25,18 @@ public class DetailAlbumManager {
     /**
      * Creates a new instance of DetailAlbumManager
      */
-    private int AlbumId;
+    private int albumId;
     AlbumManager albumManager;
     public DetailAlbumManager() {
     }
     public void addAlbumID(int _albumID){
-        AlbumId = _albumID;
+        albumId = _albumID;
     }
     public Album showInforAlbum(){
         Album album = new Album();
         try {
             albumManager = new AlbumManager();
-            ResultSet rs = albumManager.showInforAlbum(AlbumId);
+            ResultSet rs = albumManager.showInforAlbum(albumId);
             if(rs.next()){
                 album.setAlbumID(rs.getInt(1));
                 album.setCateID(""+rs.getInt(2));
@@ -56,24 +56,24 @@ public class DetailAlbumManager {
     }
     public List<DataStore> showDataStore(){
         albumManager = new AlbumManager();
-        return albumManager.showDataStore(AlbumId);
+        return albumManager.showDataStore(albumId);
     }
     public String showNameSuppllier(){
         albumManager = new AlbumManager();
         
-        return albumManager.getNameSupplier(AlbumId);
+        return albumManager.getNameSupplier(albumId);
     }
     /**
      * @return the AlbumId
      */
     public int getAlbumId() {
-        return AlbumId;
+        return albumId;
     }
 
     /**
      * @param AlbumId the AlbumId to set
      */
     public void setAlbumId(int AlbumId) {
-        this.AlbumId = AlbumId;
+        this.albumId = AlbumId;
     }
 }
