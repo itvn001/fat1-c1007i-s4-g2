@@ -41,6 +41,19 @@ h2 {
     float:left;
     padding:20px 20px 20px 0;
 }
+.cart{
+    float: right;
+}
+.cart a{
+    text-decoration: none;
+}
+.quantityCart{
+    color: Aqua;
+    float: right;
+    margin: 8px -68px;
+    text-align: center;
+    width: 26px;
+}
 .slogan {
     color:#747474;
 
@@ -350,4 +363,57 @@ h2 {
 .DetailsAlbumItemDataStoreIconAddtoList{
     width: 25px;
     height: 25px;
+}
+.DetailsAlbumMessage{
+    background: none repeat scroll 0 0 #62A2D0;
+    cursor: alias;
+    height: 50px;
+    left: 0;
+    opacity: 0.95;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.DetailsAlbumMessageOutputLabel{
+    font-size: 15px;
+    margin: 15px auto;
+    text-align: center;
+    cursor: alias;
+}
+
+/*Page Default Cart*/
+.DefaultCartH3{
+    background: none repeat scroll 0 0 #62A2D0;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+.DefaultCartName{
+    width: 200px;
+    text-align: left;
+}
+.DefaultCartName a{
+    color: -moz-nativehyperlinktext;
+    text-decoration: none;
+}
+.DefaultCartName a:hover{
+    text-decoration: underline;
+}
+.DefaultCartTotalMoney{
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #D1D0D1;
+    border-style: solid none solid solid;
+    border-width: 1px 0 1px 1px;
+    padding: 10px;
+    text-align: right;
+    color: Tomato;
+}
+.DefaultCartTotalMoneys{
+    border: 1px solid #D1D0D1;
+    border-left: 0px;
+    color: Tomato;
 }
