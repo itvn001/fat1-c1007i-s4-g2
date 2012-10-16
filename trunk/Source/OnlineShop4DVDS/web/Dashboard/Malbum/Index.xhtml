@@ -21,20 +21,20 @@
                             <f:selectItems value="#{malbum_Index.listCategories}"/>
                         </h:selectOneMenu>&nbsp;
                         <h:commandLink class="expoler-window" value="ADD NEW" action="#{malbum_Index.redirectadd}" />
-                        <p:dataTable id="dataTable" var="album" value="#{malbum_Index.listAlbum}"  
+                        <p:dataTable id="dataTable" filteredValue="#{malbum_Index.filterAlbum}" var="album" value="#{malbum_Index.listAlbum}"  
                                      paginator="true" rows="10"  
                                      paginatorTemplate="{CurrentPageReport}  
                                      {FirstPageLink} {PreviousPageLink} {PageLinks} 
                                      {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
                                      rowsPerPageTemplate="5,10,15,50">  
-                            <p:column>  
+                            <p:column filterBy="#{album.albumName}" filterStyle="width:300px" filterMatchMode="contains">  
                                 <f:facet name="header">  
                                     <h:outputText value="Name Album" />  
                                 </f:facet>  
-                                <img src="../../#{album.albumImage}" width="50px" align="middle"/>
-                                <a href="#" id="ik" class="text-table-title" style="color:#274974;font-weight: 600">
-                                    #{album.albumName}
-                                </a>
+                                <img src="../../#{album.albumImage}" width="50px" align="middle"/>&nbsp;
+                                <h:commandLink id="ik" value="#{album.albumName}" 
+                                               action="#{malbum_Index.setIDAlbum(album.albumID)}" 
+                                               class="text-table-title" style="color:#274974;font-weight: 600"/>
                             </p:column>  
                             <p:column>  
                                 <f:facet name="header">  

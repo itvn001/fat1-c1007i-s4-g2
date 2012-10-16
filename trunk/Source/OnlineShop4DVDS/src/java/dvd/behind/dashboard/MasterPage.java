@@ -56,7 +56,10 @@ public class MasterPage {
         session.setAttribute("childmenu", "4");
         return "../Mdata/Index.xhtml";
     }
-
+    public String actionClick_mngOrder(){
+        session.setAttribute("childmenu", "5");
+        return "../Orders/Index.xhtml";
+    }
     public void commitShowHideNavigator() {
         if (this.show_hide.trim().equals("show")) {
             this.show_hide = "hide";
