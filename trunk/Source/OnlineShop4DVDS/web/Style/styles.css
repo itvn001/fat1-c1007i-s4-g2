@@ -417,3 +417,16 @@ h2 {
     border-left: 0px;
     color: Tomato;
 }
+.DefaultCartSave a{
+    background: none repeat scroll 0 0 #62A2D0;
+    color: white;
+    float: right;
+    font-weight: 600;
+    margin: 0 4px 0 0;
+    padding: 5px 25px;
+    text-align: center;
+    text-decoration: none;
+}
+.DefaultCartSave a:hover{
+    background: none repeat scroll 0 0 #45749E;
+}

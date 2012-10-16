@@ -10,54 +10,65 @@
     <h:body>
         <ui:composition template="MasterPage.xhtml">
             <ui:define name="contents">
-                <c:if test="#{cartManager.displayMessage}">
-                    <div class="DetailsAlbumMessage">
-                        <c:if test="#{cartManager.typeMessage}">
-                            <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{cartManager.message}</h5>
-                        </c:if>
-                        <c:if test="#{!cartManager.typeMessage}">
-                            <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{cartManager.message}</h5>
-                        </c:if>
+                <h:form>
+                    <c:if test="#{cartManager.displayMessage}">
+                        <div class="DetailsAlbumMessage">
+                            <c:if test="#{cartManager.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{cartManager.message}</h5>
+                            </c:if>
+                            <c:if test="#{!cartManager.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{cartManager.message}</h5>
+                            </c:if>
                         #{cartManager.messageEmpty()}
-                    </div>
-                </c:if>
-                <table style="width: 100%; border: 1px solid #2e74b2;">
-                    <tr>
-                        <td colspan="8"><h3 class="DefaultCartH3">Buy product list</h3></td>
-                    </tr>
-                    <tr style="background: Lavender; color: SaddleBrown;">
-                        <td style="width: 10px; text-align: center;">ID</td>
-                        <td style="width: 60px; text-align: center;">Image</td>
-                        <td style="width: 200px; text-align: center;">Name</td>
-                        <td style="width: 50px; text-align: center;">Price</td>
-                        <td style="width: 20px; text-align: center;">Quantity</td>
-                        <td style="width: 42px; text-align: center;">Money</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <ui:repeat value="#{cartManager.listDataStore}" var="listItem">
+                        </div>
+                    </c:if>
+                    <table style="width: 100%; border: 1px solid #2e74b2;">
                         <tr>
-                            <td colspan="8"><hr/></td>
+                            <td colspan="7"><h3 class="DefaultCartH3">Buy product list</h3></td>
+                        </tr>
+                        <tr style="background: Lavender; color: SaddleBrown;">
+                            <td style="width: 10px; text-align: center;">ID</td>
+                            <td style="width: 60px; text-align: center;">Image</td>
+                            <td style="width: 200px; text-align: center;">Name</td>
+                            <td style="width: 50px; text-align: center;">Price</td>
+                            <td style="width: 20px; text-align: center;">Quantity</td>
+                            <td style="width: 42px; text-align: center;">Money</td>
+                            <td></td>
+                        </tr>
+                        <ui:repeat value="#{cartManager.listDataStore}" var="listItem">
+
+                            <tr>
+                                <td colspan="7"><hr/></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 10px; text-align: center;">#{listItem.albumID}</td>
+                                <td style="width: 60px; text-align: center;"><a href="DetailsAlbum.xhtml?id=#{listItem.albumID}"><img src="${listItem.albumImage}" alt="" width="50px" height="70px" /></a></td>
+                                <td class="DefaultCartName"><a href="DetailsAlbum.xhtml?id=#{listItem.albumID}">#{listItem.albumName}</a></td>
+                                <td style="width: 50px; text-align: center;">$#{listItem.albumPrice}</td>
+                                <td style="width: 20px; text-align: center;"><h:inputText style="text-align: center;width: 40px;" value="#{listItem.quantity}"></h:inputText></td>
+                                <td style="width: 42px; text-align: center;">$#{listItem.quantity*listItem.albumPrice}</td>
+                                <td style="width: 24px;"><a onclick="return confirm('You sure want to delete: #{listItem.albumName}?');" href="removeCartPage.xhtml?AlbumId=#{listItem.albumID}"><img src="Images/removeCart.png" alt="" title="Remove" /></a></td>
+                            </tr>
+                                
+                        </ui:repeat>
+                        <tr>
+                            <td colspan="7"><hr/></td>
                         </tr>
                         <tr>
-                            <td style="width: 10px; text-align: center;">#{listItem.albumID}</td>
-                            <td style="width: 60px; text-align: center;"><a href="DetailsAlbum.xhtml?id=#{listItem.albumID}"><img src="${listItem.albumImage}" alt="" width="50px" height="70px" /></a></td>
-                            <td class="DefaultCartName"><a href="DetailsAlbum.xhtml?id=#{listItem.albumID}">#{listItem.albumName}</a></td>
-                            <td style="width: 50px; text-align: center;">$#{listItem.albumPrice}</td>
-                            <td style="width: 20px; text-align: center;"><h:inputText style="text-align: center;width: 40px;" value="#{listItem.quantity}"></h:inputText></td>
-                            <td style="width: 42px; text-align: center;">$#{listItem.quantity*listItem.albumPrice}</td>
-                            <td style="width: 24px;"><img src="Images/EditCart.png" alt="" title="Edit" /></td>
-                            <td style="width: 24px;"><a onclick="return confirm('You sure want to delete: #{listItem.albumName}?');" href="removeCartPage.xhtml?AlbumId=#{listItem.albumID}"><img src="Images/removeCart.png" alt="" title="Remove" /></a></td>
+                            <td colspan="7" class="DefaultCartSave">
+                                <a class="DefaultCartSave" href="#" >Continue</a>
+                                <h:commandLink action="#{cartManager.editCart()}" value="Save" ></h:commandLink>
+                            </td>
                         </tr>
-                    </ui:repeat>
-                    <tr>
-                        <td colspan="8"><hr/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="5" class="DefaultCartTotalMoney">Total Money:</td>
-                        <td colspan="3" class="DefaultCartTotalMoneys">$#{cartManager.totalMoney()}</td>
-                    </tr>
-                </table>
+                        <tr>
+                            <td colspan="7"><hr/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="DefaultCartTotalMoney">Total Money:</td>
+                            <td colspan="2" class="DefaultCartTotalMoneys">$#{cartManager.totalMoney()}</td>
+                        </tr>
+                    </table>
+                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>
