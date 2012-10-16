@@ -72,6 +72,13 @@ public class CartManager {
         }
     }
 
+    public String editCart() {
+        message = "Update success!";
+        displayMessage = true;
+        typeMessage = true;
+        return "DefaultCart.xhtml?face-redirect=true";
+    }
+
     public double totalMoney() {
         double totalMoney = 0;
         for (Album album : listDataStore) {
@@ -96,8 +103,8 @@ public class CartManager {
             Logger.getLogger(CartManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public int cartSize(){
+
+    public int cartSize() {
         return listDataStore.size();
     }
 
