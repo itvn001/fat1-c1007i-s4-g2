@@ -194,10 +194,13 @@
     background-position:0 0;
     display:inline-block;
 }
-.t-notice-s1 > li > a:hover
+.t-notice-s1 > li > a:hover .icon{
+    background-position:0 -14px;
+    background-color: #222;
+}
+.t-notice-s1 > li > a:hover .icon-notice
 {
-    background-position:none;
-    text-decoration:none;
+    background-position:0 -14px;
 }
 .t-notice-s1 > li > a > span > span.count
 {
@@ -220,4 +223,38 @@
     background-color:Red;
     cursor:pointer;
     background-repeat:no-repeat;
+}
+#notice-Pen{
+    min-height: 200px;
+    background-color: #688AB5;
+    margin-top: 26px;
+    position: absolute;
+    display: block;
+    margin-left: 39px;
+    min-width: 300px;
+    z-index: 2;
+    border-radius:3px 3px 3px 3px;
+    moz-border-radius:3px 3px 3px 3px;
+}
+#notice-Pen .inside{
+    width: 98%;
+    margin: 0 auto;
+    color: #fff;
+}
+#notice-Pen .inside h3{
+    padding: 3px;
+    font-weight: normal;
+    line-height: 1.5em;
+    font-family: verdena;
+}
+.stepPenContent{
+    background-color: #fff;
+    color: #333;
+    padding-left: 3px;
+    border-bottom: 1px solid #d1d0d1;
+}
+.stepPenContent:hover{
+    background-color: #e47911;
+    color: #fff;
+    cursor: pointer;
 }

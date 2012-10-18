@@ -4,6 +4,9 @@
  */
 package dvd.behind.dashboard;
 
+import dvd.business.dashboard.Orders;
+import dvd.entity.Order;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -66,5 +69,24 @@ public class MasterPage {
         } else if (this.show_hide.trim().equals("hide")) {
             this.show_hide = "show";
         }
+    }
+    private int noticeItemOrderPending = 0;
+    private dvd.business.dashboard.Orders orHand = new Orders();
+    public int getNoticeItemOrderPending() {
+        this.noticeItemOrderPending = this.orHand.showNumberOrderPending();
+        return noticeItemOrderPending;
+    }
+    public void setNoticeItemOrderPending(int noticeItemOrderPending) {
+        this.noticeItemOrderPending = noticeItemOrderPending;
+    }
+    private List<dvd.entity.Order> listOrderPending;
+
+    public List<Order> getListOrderPending() {
+        this.listOrderPending = this.orHand.RetriveListOrderPending();
+        return listOrderPending;
+    }
+
+    public void setListOrderPending(List<Order> listOrderPending) {
+        this.listOrderPending = listOrderPending;
     }
 }
