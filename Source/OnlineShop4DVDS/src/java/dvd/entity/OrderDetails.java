@@ -26,7 +26,16 @@ public class OrderDetails {
     private int quantity;
     @Column(name = "Discount")
     private String discount;
+    @Column(name = "AlbumName")
+    private String albumName;
 
+    public String getAlbumName() {
+        return albumName;
+    }
+
+    public void setAlbumName(String albumName) {
+        this.albumName = albumName;
+    }
     public int getOrderID() {
         return orderID;
     }

@@ -6,6 +6,7 @@ package dvd.behind.dashboard;
 
 import dvd.business.dashboard.Orders;
 import dvd.entity.Order;
+import dvd.entity.OrderDetails;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -54,15 +55,16 @@ public class Orders_Index {
                 return "Unknow";
         }
     }
-    private static String idOrders = "";
+    private String idOrders = "";
 
-    public static String getIdOrders() {
+    public String getIdOrders() {
         return idOrders;
     }
 
-    public static void setIdOrders(String idOrders) {
-        Orders_Index.idOrders = idOrders;
+    public void setIdOrders(String idOrders) {
+        this.idOrders = idOrders;
     }
+
     public void handlingStatus(String id, String status) {
         try {
             if (this.orderhand.UpdateOrdersStatus(id, status) == true) {
@@ -73,24 +75,59 @@ public class Orders_Index {
         } catch (Exception e) {
         }
     }
-    public List<dvd.entity.OrderDetails> viewOrderDetails(String id){
-        try{
+
+    public List<dvd.entity.OrderDetails> viewOrderDetails(String id) {
+        try {
             return this.orderhand.showListOrderDetails(id);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
-    public  String displayor = "none";
+    private List<dvd.entity.OrderDetails> listOrderDetails;
 
-    public  String getDisplayor() {
+    public List<OrderDetails> getListOrderDetails() {
+        this.listOrderDetails = this.orderhand.showListOrderDetails(this.idOrders);
+        return listOrderDetails;
+    }
+
+    public void setListOrderDetails(List<OrderDetails> listOrderDetails) {
+        this.listOrderDetails = listOrderDetails;
+    }
+    public String displayor = "none";
+
+    public String getDisplayor() {
         return displayor;
     }
 
-    public  void setDisplayor(String displayor) {
-        displayor = displayor;
+    public void setDisplayor(String a) {
+        displayor = a;
     }
-    public void viewDetailsUI(){
+
+    public void viewDetailsUI(String sId,String code) {
+        this.idOrders = sId;
+        this.scode = code;
         displayor = "block";
+    }
+    private String scode;
+
+    public String getScode() {
+        return scode;
+    }
+
+    public void setScode(String scode) {
+        this.scode = scode;
+    }
+    private int totalMoney = 0;
+
+    public int getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(int totalMoney) {
+        this.totalMoney = totalMoney;
+    }
+    public int caculateMomey(int price,int quantity){
+        totalMoney += price * quantity;
+        return price * quantity;
     }
 }
