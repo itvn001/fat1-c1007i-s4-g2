@@ -10,7 +10,6 @@
     </h:head>
     <h:body onload="setccc()">
         <h:form id="dashboardform">
-            <script type="text/javascript" language="javascript" src="../../Script/player.js"></script>
             #{masterPage.setSeesionChildMenu()}
             <script type="text/javascript" language="javascript">
                 //Jquery close window message 
@@ -22,6 +21,10 @@
                 });
                 function deleteconfirm() {
                     var result = confirm("Bạn muốn xóa bản ghi này?");
+                    return result;
+                }
+                function updateConfirm(){
+                     var result = confirm("Are You Sure Update This Orders?");
                     return result;
                 }
             </script>

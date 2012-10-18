@@ -1,0 +1,11 @@
+      //Jquery close window message 
+        $(document).ready(function () {
+            $("#close-ly").click(function () {
+                $(".closeMSonly").hide('slow');
+                return false;
+            });
+        });
+        function deleteconfirm() {
+            var result = confirm("B?n mu?n xóa b?n ghi này?");
+            return result;
+        }
