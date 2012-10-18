@@ -24,9 +24,19 @@
                     return result;
                 }
                 function updateConfirm(){
-                     var result = confirm("Are You Sure Update This Orders?");
+                    var result = confirm("Are You Sure Update This Orders?");
                     return result;
                 }
+                $(document).ready(function(){
+ 
+                    $("#notice-Pen").hide();
+                    $(".show_hide").show();
+ 
+                    $('.liNoticePending').click(function(){
+                        $("#notice-Pen").slideToggle();
+                    });
+ 
+                });
             </script>
             <script language="javascript" type="text/javascript">
                 function setccc() {
@@ -54,6 +64,8 @@
                 }
             </script>
             <div id="main">
+                <p:panel style="display: none">
+                </p:panel>
                 <div id="message_on_master">
                 </div>
                 <div id="headspace">
@@ -71,11 +83,28 @@
                                     <h:inputText class="searchmain" id="txtsearch"/>
                                     <h:commandButton id="btnsearchmain" class="buttonsearch"/>
                                     <ul class="t-notice-s1">
-                                        <li><a href="#"><span><span class="icon"></span><span class="count">1</span> </span>
+                                        <li><a href="#"><span><span class="icon"></span><span class="count">0</span> </span>
                                             </a></li>
-                                        <li><a href="#"><span><span class="icon-notice"></span><span class="count">6</span>
+                                        <li title="Orders Pending" class="liNoticePending">
+                                            <a href="#"><span><span class="icon-notice">
+                                                    </span><span class="count">#{masterPage.noticeItemOrderPending}</span>
                                                 </span></a></li>
+                                        <div id="notice-Pen">
+                                            <div class="inside">
+                                                <h3>Order Pending &rArr; View All&rArr;</h3>
+                                                <ui:repeat value="#{masterPage.listOrderPending}" var="pendOrders">
+                                                    <div class="stepPenContent">
+                                                        <span style="font-weight: 600; color: #2c2c2c; line-height: 1.4em;">#{pendOrders.shipName}</span>
+                                                        #{pendOrders.userAccount}
+                                                        <br/>
+                                                         : #{pendOrders.orderDate}
+                                                    </div>
+                                                </ui:repeat>
+                                                <h3>View All&rArr;</h3>
+                                            </div>
+                                        </div>
                                     </ul>
+
                                 </div>
                                 <div id="menu-c">
                                     <ul>
