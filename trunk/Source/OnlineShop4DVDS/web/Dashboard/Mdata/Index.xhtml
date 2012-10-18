@@ -27,28 +27,28 @@
                                      {FirstPageLink} {PreviousPageLink} {PageLinks} 
                                      {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
                                      rowsPerPageTemplate="5,10,15,50">  
+                            <p:column style="width: 180px"> 
+                                <f:facet name="header">  
+                                    <h:outputText value="Name Album" />  
+                                </f:facet>  
+                                <span style="color: #000">#{DATA.albumName}</span>
+                            </p:column>
                             <p:column style="width: 300px" filterBy="#{DATA.dataName}" 
                                       filterStyle="width:300px" filterMatchMode="contains">  
                                 <f:facet name="header">  
                                     <h:outputText value="Name Data" />  
                                 </f:facet>  
                                 <img src="../../#{DATA.dataImage}" width="50px" align="middle"/>
-                                <a href="#" id="ik" class="text-table-title" style="color:#274974;font-weight: 600">
+                                <a href="#" id="ik" class="text-table-title" style="color:#333;">
                                     #{DATA.dataName}
                                 </a>
                             </p:column>  
-                            <p:column> 
-                                <f:facet name="header">  
-                                    <h:outputText value="Name Album" />  
-                                </f:facet>  
-                                <span style="color: #000">#{DATA.albumName}</span>
-                            </p:column>
-                            <p:column> 
+<!--                            <p:column> 
                                 <f:facet name="header">  
                                     <h:outputText value="Path Directories" />  
                                 </f:facet>  
                                 #{DATA.dataPath}
-                            </p:column>
+                            </p:column>-->
                             <p:column style="width: 155px">  
                                 <f:facet name="header">  
                                     <h:outputText value="Option" />  

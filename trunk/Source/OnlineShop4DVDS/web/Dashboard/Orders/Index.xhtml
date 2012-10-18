@@ -2,16 +2,92 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <ui:composition template="../Master/MasterPage.xhtml">
             <ui:define name="isa1">
+                <style type="text/css">
+                    .vieer-position{
+                        width: 200px;
+                        color: red;
+                        position: absolute;
+                        width: 300px;
+                        background-color: #fff;
+                        right: 0px;
+                        radius:3px;
+                        border-radius:3px;
+                        -moz-border-radius: 5px;
+                        bottom: 0px;
+                        z-index: 9090;
+                    }
+                </style>
+                <h:outputText value="#{orders_Index.message}" escape="false"/>
                 <div class="t-title">
                     <h3>MANAGER ORDERS</h3>
-                    <div class="t-in">     
+                    <div class="t-in">  
+                        <p:dataTable id="dataTable" var="listOrder" value="#{orders_Index.listOrder}"  
+                                     paginator="true" rows="10"  
+                                     paginatorTemplate="{CurrentPageReport}  
+                                     {FirstPageLink} {PreviousPageLink}
+                                     {PageLinks} {NextPageLink}
+                                     {LastPageLink}
+                                     {RowsPerPageDropdown}"  
+                                     rowsPerPageTemplate="5,10,15">  
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Account User" />  
+                                </f:facet>  
+                                <h:commandLink value="#{listOrder.userAccount}" style="color: #333;" />
+                            </p:column> 
+                            <p:column filterBy="#{listOrder.shipPostalCode}" filterMatchMode="contains">  
+                                <f:facet name="header">  
+                                    <h:outputText value="Ship Portal Code" />  
+                                </f:facet>  
+                                <h:outputText value="#{listOrder.shipPostalCode}" />  
+                            </p:column> 
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Ship Name" />  
+                                </f:facet>  
+                                <h:outputText value="#{listOrder.shipName}" />  
+                            </p:column>
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Ship Address" />  
+                                </f:facet>  
+                                <h:outputText value="#{listOrder.shipAddress}" />  
+                            </p:column> 
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Order Date" />  
+                                </f:facet>  
+                                <h:outputText value="#{listOrder.orderDate}" />  
+                            </p:column> 
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Ship Status" />  
+                                </f:facet>  
+                                <h:commandButton class="statusorder-#{listOrder.shipStatus} samestto" 
+                                                 value="#{orders_Index.orderStyle(listOrder.shipStatus)}"
+                                                 action="#{orders_Index.handlingStatus(listOrder.orderID, listOrder.shipStatus)}"/>&nbsp;
+                                <h:commandLink value="View" class="a_showDetailst"
+                                               action="#{orders_Index.viewDetailsUI}"/>
+                            </p:column> 
+                        </p:dataTable>  
+                        <div class="vieer-position" style="display: #{orders_Index.displayor}"> 
+                            <div class="t-title">
+                                <h3>Orders Details</h3>
+                                <div class="t-in" style="min-height: 320px">
+                                    <ui:repeat value="#{orders_Index.viewOrderDetails(1)}" var="oDetails">
+                                    </ui:repeat>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </ui:define>

@@ -30,7 +30,16 @@ public class Order {
     private String shipPostalCode;
     @Column(name = "ShipStatus")
     private int shipStatus;
+    @Column(name = "UserAccount")
+    private String userAccount;
 
+    public String getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount;
+    }
     public int getOrderID() {
         return orderID;
     }

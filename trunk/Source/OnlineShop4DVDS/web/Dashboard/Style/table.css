@@ -80,3 +80,20 @@
 .displayaw-hide{
     display: none;
 }
+/* Is Status Pending*/
+.statusorder-0{
+  background-color: darkorange;
+}
+.statusorder-1{
+    background-color: #175A75;
+}
+.statusorder-2{
+    background-color: teal;
+}
+.samestto{
+    border: none;
+    color: #EBEBEB;
+    padding-left: 5px;
+    padding-right: 25px;
+    cursor: pointer;
+}
