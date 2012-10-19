@@ -296,3 +296,62 @@ SELECT UserAccount,
 		UserSex,
 		DateCreate
 		FROM Users WHERE UserID = @ID
+GO
+CREATE PROC aShowCategories_main
+@IDType INT
+AS
+IF @IDType = 0
+BEGIN
+	SELECT CateID,CateType.CateTypeName,CateName,CateStatus
+	FROM Categories,CateType WHERE Categories.CateTypeID = 
+	CateType.CateTypeID
+END
+ELSE 
+BEGIN
+	SELECT CateID,CateType.CateTypeName,CateName,CateStatus
+	FROM Categories,CateType WHERE Categories.CateTypeID =
+	 CateType.CateTypeID AND Categories.CateTypeID = @IDType
+END
+
+exec aShowCategories_main 1
+
+GO
+CREATE PROC aShowCateType
+@IS INT
+AS
+SELECT CateTypeID,CateTypeName FROM CateType
+
+GO
+alter PROC aChangePublishCategories
+@ID INT
+AS
+IF(SELECT CateStatus FROM Categories WHERE CateID = @ID) = 'true'
+BEGIN
+	UPDATE Categories SET CateStatus = 'false' WHERE CateID = @ID
+END
+ELSE IF(SELECT CateStatus FROM Categories WHERE CateID = @ID) = 'false'
+BEGIN
+	UPDATE Categories SET CateStatus = 'true' WHERE CateID = @ID
+END
+
+exec aChangePublishCategories '1'
+
+GO
+CREATE PROC aInsertCategories
+@CateType INT,
+@CateName NVARCHAR(35),
+@CateStatus BIT
+AS
+INSERT INTO Categories(CateTypeID,CateName,CateStatus) VALUES(@CateType,@CateName,@CateStatus)
+
+GO
+CREATE PROC aUpdateCategories
+@ID INT,
+@CateType INT,
+@CateName NVARCHAR(35),
+@CateStatus BIT
+AS
+UPDATE Categories SET CateTypeID = @CateType,
+						CateName = @CateName,
+						CateStatus = @CateStatus
+						WHERE CateID = @ID
