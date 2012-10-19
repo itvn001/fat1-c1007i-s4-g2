@@ -19,8 +19,17 @@ public class Categories {
     @Column(name = "CateName")
     private String cateName;
     @Column(name = "CateStatus")
-    private String cateStatus;
+    private Boolean cateStatus;
+    @Column(name = "CateTypeName")
+    private String cateTypeName;
 
+    public String getCateTypeName() {
+        return cateTypeName;
+    }
+
+    public void setCateTypeName(String cateTypeName) {
+        this.cateTypeName = cateTypeName;
+    }
     public int getCateID() {
         return cateID;
     }
@@ -45,11 +54,11 @@ public class Categories {
         this.cateName = cateName;
     }
 
-    public String getCateStatus() {
+    public Boolean getCateStatus() {
         return cateStatus;
     }
 
-    public void setCateStatus(String cateStatus) {
+    public void setCateStatus(Boolean cateStatus) {
         this.cateStatus = cateStatus;
     }
 }
