@@ -120,6 +120,9 @@ CREATE TABLE Users
 	UserSex NVARCHAR(10),
 	UserStatus BIT DEFAULT 'TRUE'	
 )
+GO
+ALTER TABLE Users
+ADD DateCreate NVARCHAR(25)
 --
 	-- User Collection Cate
 --

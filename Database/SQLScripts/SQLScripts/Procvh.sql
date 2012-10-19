@@ -227,3 +227,72 @@ UPDATE DataStore SET DataName = @DataName,
 					DataImage = @DataImage,
 					DataPath = @DataPath
 					WHERE DataID = @DataID
+GO
+
+ALTER PROC aShowOrders
+@ID INT
+AS
+SELECT OrderID,UserAccount,ShipPostalCode,ShipName,ShipAddress, OrderDate, ShipStatus FROM Orders,Users
+WHERE Users.UserID = Orders.UserID ORDER BY Orders.UserID DESC
+
+EXEC aShowOrders '1'
+
+GO
+alter PROC aupdateStatusOrders
+@ID INT,
+@Status INT
+AS
+IF @Status = 0
+BEGIN
+	UPDATE Orders SET ShipStatus = 1 WHERE OrderID = @ID
+END
+ELSE IF @Status = 1
+BEGIN
+	UPDATE Orders SET ShipStatus = 2 WHERE OrderID = @ID
+END
+
+GO
+ALTER PROC aShowOrdersDetails
+@ID INT
+AS
+SELECT Album,UnitPrice,OrderDetails.Quantity,Discount,AlbumName FROM OrderDetails,Album
+WHERE OrderID = @ID AND OrderDetails.Album = Album.AlbumID
+
+GO
+alter VIEW aShowOrderPending
+AS
+SELECT  COUNT(ShipStatus) AS 'ShipStatus' FROM Orders WHERE ShipStatus = 0
+
+SELECT * FROM aShowOrderPending
+
+GO
+CREATE PROC aShowOrderPendingPr
+@ID INT
+AS
+SELECT OrderID,UserAccount,ShipPostalCode,ShipName,ShipAddress, OrderDate, ShipStatus FROM Orders,Users
+WHERE Users.UserID = Orders.UserID AND Orders.ShipStatus = 0 ORDER BY Orders.UserID DESC
+
+exec aShowOrderPendingPr '1'
+GO
+ALTER PROC aShowUser
+@ID INT
+AS
+SELECT	UserID,
+		UserAccount,
+		UserName,
+		UserSex,
+		DateCreate
+		FROM Users ORDER BY UserID DESC
+		
+		EXEC aShowUser '1'
+GO
+CREATE PROC aShowUserDetails
+@ID INT
+AS
+SELECT UserAccount,
+		UserName,
+		UserAge,
+		UserFone,
+		UserSex,
+		DateCreate
+		FROM Users WHERE UserID = @ID

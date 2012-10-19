@@ -35,6 +35,7 @@
                     }
                     .vieer-position table tr td{
                         text-align: center;
+                        border-bottom: 1px solid #d1d0d1;
                     }
                     .vieer-position table{
                         border: 1px solid red;
@@ -99,7 +100,7 @@
                                 <h3>Orders Details<a id="closeDetailsOr" style="margin-left: 350px; padding-left: 10px; padding-right: 10px" href="#">X</a></h3>
                                 <div class="t-in" style="min-height: 320px">
                                     Code:&nbsp;<span style="font-weight: 600">#{orders_Index.scode}</span> 
-                                    <table border="1" cellpadding="0" cellspacing="2"
+                                    <table cellpadding="0" cellspacing="2"
                                            style="border-color: #d1d0d1;" 
                                            align="center" width="100%">
                                         <tr>
@@ -119,18 +120,20 @@
                                         <ui:repeat value="#{orders_Index.listOrderDetails}" 
                                                    var="oDetails">
                                             <tr>
-                                                <td>
-                                                    #{oDetails.albumName}
-                                                </td>
-                                                <td>
-                                                    $ #{oDetails.unitPrice}
-                                                </td>
-                                                <td>
-                                                    #{oDetails.quantity}
-                                                </td>
-                                                <td>
-                                                    $ #{orders_Index.caculateMomey(oDetails.unitPrice, oDetails.quantity)}
-                                                </td>
+                                                <div style="border-bottom: 1px solid #d1d0d1">
+                                                    <td>
+                                                        #{oDetails.albumName}
+                                                    </td>
+                                                    <td>
+                                                        $ #{oDetails.unitPrice}
+                                                    </td>
+                                                    <td>
+                                                        #{oDetails.quantity}
+                                                    </td>
+                                                    <td>
+                                                        $ #{orders_Index.caculateMomey(oDetails.unitPrice, oDetails.quantity)}
+                                                    </td>
+                                                </div>
                                             </tr>
                                         </ui:repeat>
                                         <tr>
