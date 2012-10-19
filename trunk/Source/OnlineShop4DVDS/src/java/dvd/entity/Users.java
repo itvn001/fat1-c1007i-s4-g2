@@ -32,7 +32,16 @@ public class Users {
     private String userSex;
     @Column(name = "UserStatus")
     private Boolean userStatus;
+    @Column(name = "DateCreate")
+    private String dateCreate;
 
+    public String getDateCreate() {
+        return dateCreate;
+    }
+
+    public void setDateCreate(String dateCreate) {
+        this.dateCreate = dateCreate;
+    }
     public int getUserID() {
         return userID;
     }

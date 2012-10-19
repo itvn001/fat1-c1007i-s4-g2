@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Master/MasterPage.xhtml">
+            <ui:define name="isa1">
+                <div class="t-title">
+                    <h3><h:commandLink value="MANAGER USERS" action="#{user_Index.toHome}"/>&rarr;VIEW DETAILS</h3>
+                    <div class="t-in">
+                        <div style="width: 80%; margin:  0 auto">
+                            <ui:repeat value="#{user_Index.listDetailsUser}" var="luserDetails">
+                                <table>
+                                    <tr>
+                                        <td width="120px">
+                                            Account
+                                        </td>
+                                        <td class="inputIm">
+                                            #{luserDetails.userAccount}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Password
+                                        </td>
+                                        <td class="inputIm">
+                                            &bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            User Name
+                                        </td>
+                                        <td class="inputIm">
+                                            #{luserDetails.userName}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Age
+                                        </td>
+                                        <td class="inputIm">
+                                            #{luserDetails.userAge}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Gender
+                                        </td>
+                                        <td class="inputIm">
+                                            #{luserDetails.userSex}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Fone Number
+                                        </td>
+                                        <td class="inputIm">
+                                            #{luserDetails.userFone}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Date Create
+                                        </td>
+                                        <td class="inputIm">
+                                            #{luserDetails.dateCreate}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </ui:repeat>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

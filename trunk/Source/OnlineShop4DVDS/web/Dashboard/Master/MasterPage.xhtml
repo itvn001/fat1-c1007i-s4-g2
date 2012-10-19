@@ -13,6 +13,9 @@
             #{masterPage.setSeesionChildMenu()}
             <script type="text/javascript" language="javascript">
                 //Jquery close window message 
+                $(document).ready(function(){
+                    $("#notice-Pen").hide();
+                });
                 $(document).ready(function () {
                     $("#close-ly").click(function () {
                         $(".closeMSonly").hide('slow');
@@ -28,14 +31,9 @@
                     return result;
                 }
                 $(document).ready(function(){
- 
-                    $("#notice-Pen").hide();
-                    $(".show_hide").show();
- 
                     $('.liNoticePending').click(function(){
                         $("#notice-Pen").slideToggle();
                     });
- 
                 });
             </script>
             <script language="javascript" type="text/javascript">
@@ -97,7 +95,9 @@
                                                         <span style="font-weight: 600; color: #2c2c2c; line-height: 1.4em;">#{pendOrders.shipName}</span>
                                                         #{pendOrders.userAccount}
                                                         <br/>
-                                                         : #{pendOrders.orderDate}
+                                                        : #{pendOrders.orderDate}
+                                                        <span style="padding-left: 3px; padding-right: 5px;
+                                                              background-color: #e47911; color: #fff; margin-left: 150px">pending</span>
                                                     </div>
                                                 </ui:repeat>
                                                 <h3>View All&rArr;</h3>
@@ -150,7 +150,7 @@
                                             <h:commandLink class="home" action="#{masterPage.actionclick_Home()}" value="DashBoard"/>
                                         </li>
                                         <li id="casf2">
-                                            <a href="#" class="article">Manage Artists</a>
+                                            <h:commandLink class="article" action="#{masterPage.actionClick_mngUser()}" value="Manager User"/>
                                         </li>
                                         <li id="casf3">
                                             <h:commandLink class="file" action="#{masterPage.actionclick_mngdvd()}" value="Manager DVD [old:album]"/>

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Master/MasterPage.xhtml">
+            <ui:define name="isa1">
+                <div class="t-title">
+                    <h3>MANAGER USER</h3>
+                    <div class="t-in">
+                        <p:dataTable id="dataTable" var="user" value="#{user_Index.listUser}"  
+                                     paginator="true" rows="10"  
+                                     paginatorTemplate="{CurrentPageReport}  
+                                     {FirstPageLink} {PreviousPageLink}
+                                     {PageLinks} {NextPageLink}
+                                     {LastPageLink}
+                                     {RowsPerPageDropdown}"  
+                                     rowsPerPageTemplate="5,10,30,50">  
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Account User" />  
+                                </f:facet>  
+                                <h:outputText value="#{user.userAccount}" style="color: #333;" />
+                            </p:column> 
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Account User" />  
+                                </f:facet>  
+                                <h:outputText value="#{user.userName}" style="color: #333;" />
+                            </p:column> 
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Gender" />  
+                                </f:facet>  
+                                <h:outputText value="#{user.userSex}" style="color: #333;" />
+                            </p:column> 
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Date Create" />  
+                                </f:facet>  
+                                <h:outputText value="#{user.dateCreate}" style="color: #333;" />
+                            </p:column> 
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Option" />  
+                                </f:facet>  
+                                <h:commandLink value="View" action="#{user_Index.toDetailsUsers(user.userID)}"/>
+                            </p:column> 
+                        </p:dataTable>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
