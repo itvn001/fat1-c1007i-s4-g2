@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Master/MasterPage.xhtml">
+            <ui:define name="isa1">
+                <h:outputText value="#{cate_Index.message}" escape="false"/>
+                <p:growl id="messages_cate" showDetail="true" sticky="true"/>
+                <div class="t-title">
+                    <h3>MANAGER CATEGORIES</h3>
+                    <div class="t-in">
+                        Filter
+                        <h:selectOneMenu class="commoboxIm" value="#{cate_Index.idTpeCate}" onchange="submit()">
+                            <f:selectItems value="#{cate_Index.listCateType}"/>
+                        </h:selectOneMenu>
+                        <table width="100%">
+                            <tr>
+                                <td width="75%">
+                                    <p:dataTable id="dataTable" var="lcate" value="#{cate_Index.listCategories}"  
+                                                 paginator="true" rows="10"  
+                                                 paginatorTemplate="{CurrentPageReport}  
+                                                 {FirstPageLink} {PreviousPageLink}
+                                                 {PageLinks} {NextPageLink}
+                                                 {LastPageLink}
+                                                 {RowsPerPageDropdown}"  
+                                                 rowsPerPageTemplate="5,10,30,50">  
+                                        <p:column style="width: 100px">  
+                                            <f:facet name="header">  
+                                                <h:outputText value="Tye Cate" />  
+                                            </f:facet>  
+                                            <h:commandLink value="#{lcate.cateTypeName}" style="color: #333;" />
+                                        </p:column> 
+                                        <p:column style="text-align: center" filterBy="#{lcate.cateName}" filterMatchMode="contains">  
+                                            <f:facet name="header">  
+                                                <h:outputText value="Cate Name" />  
+                                            </f:facet>  
+                                            <h:commandLink value="#{lcate.cateName}" style="color: #333;" />
+                                        </p:column> 
+                                        <p:column style="text-align: center; width: 100px">  
+                                            <f:facet name="header">  
+                                                <h:outputText value="Option" />  
+                                            </f:facet> 
+                                            <h:commandButton class="optionicon-#{lcate.cateStatus}"
+                                                             title="Change Categories publish/or unpublish"
+                                                             value="#{cate_Index.changePublish(lcate.cateStatus)}"
+                                                             id="btncateonoff" action="#{cate_Index.btncateonoff_Click(lcate.cateID)}"/>&nbsp;| 
+                                            <h:commandButton value="edit" class="optionicon"
+                                                             action="#{cate_Index.editcate_Click(lcate.cateID, lcate.cateTypeID,lcate.cateName)}"/>&nbsp;|
+                                        </p:column> 
+                                    </p:dataTable>
+                                </td>
+                                <td width="25%" valign="top" style="min-width: 280px">
+                                    <div class="t-title">
+                                        <h3>ADD NEW CATEGORIES</h3>
+                                        <div class="t-in">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        Cate Root
+                                                    </td>
+                                                    <td>
+                                                        <h:selectOneMenu class="commoboxIm-small" 
+                                                                         value="#{cate_Index.idCateType2}" onchange="submit()">
+                                                            <f:selectItems value="#{cate_Index.listTypeFormExtends}"/>
+                                                            <p:ajax listener="#{cate_Index.changeTypeAdd}"/>
+                                                        </h:selectOneMenu>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="100px">
+                                                        Cate Name
+                                                    </td>
+                                                    <td align="right">
+                                                        <h:inputText class="inputIm-small" value="#{cate_Index.cateName}"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Cate Status
+                                                    </td>
+                                                    <td>
+                                                        <h:selectOneMenu class="commoboxIm-small"
+                                                                         onchange="submit()" value="#{cate_Index.idStatus}">
+                                                            <f:selectItems value="#{cate_Index.forStaticCmbox()}"/>
+                                                            <p:ajax listener="#{cate_Index.catettChange}"/>
+                                                        </h:selectOneMenu>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" align="right">
+                                                        <h:commandButton id="btnaddnewcate" action="#{cate_Index.btnaddnewcate_Click}" 
+                                                                         value="add" class="expoler-window"/>&nbsp;
+                                                        <h:commandButton id="btnupdatecate" action="#{cate_Index.btnupdatecate_Click}" value="update" class="expoler-window" 
+                                                                        />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -66,6 +66,24 @@
     width: 300px;
     padding: 5px 5px;
 }
+.inputIm-small{
+    background: none repeat scroll 0 0 #FCFCFC;
+    border: 1px solid #CCCCCC;
+    border-radius:2px 2px 2px 2px;
+    box-shadow: 1px 1px 2px #DDDDDD inset;
+    color: #333333;
+    width: 180px;
+    padding: 5px 5px;
+}
+.commoboxIm-small{
+    background: none repeat scroll 0 0 #FCFCFC;
+    border: 1px solid #CCCCCC;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 1px 1px 2px #DDDDDD inset;
+    color: #333333;
+    min-width: 190px;
+    padding: 5px 5px;
+}
 .commoboxIm{
     background: none repeat scroll 0 0 #FCFCFC;
     border: 1px solid #CCCCCC;

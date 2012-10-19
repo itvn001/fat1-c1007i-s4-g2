@@ -59,6 +59,10 @@
                         shl = document.getElementById("casf5");
                         shl.style.backgroundColor="#fff";
                     }
+                     else if(sessionid == 7){
+                        shl = document.getElementById("casf7");
+                        shl.style.backgroundColor="#fff";
+                    }
                 }
             </script>
             <div id="main">
@@ -148,6 +152,9 @@
                                     <ul class="leftmenu">
                                         <li id="casf1">
                                             <h:commandLink class="home" action="#{masterPage.actionclick_Home()}" value="DashBoard"/>
+                                        </li>
+                                        <li id="casf7">
+                                            <h:commandLink class="home" action="#{masterPage.actionClick_MngCate()}" value="Manager Categories"/>
                                         </li>
                                         <li id="casf2">
                                             <h:commandLink class="article" action="#{masterPage.actionClick_mngUser()}" value="Manager User"/>
