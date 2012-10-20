@@ -28,7 +28,16 @@ public class UserAdmin {
     private String name;
     @Column(name = "Email")
     private String email;
+    @Column(name = "PerName")
+    private String perName;
 
+    public String getPerName() {
+        return perName;
+    }
+
+    public void setPerName(String perName) {
+        this.perName = perName;
+    }
     public int getUserAdminID() {
         return userAdminID;
     }

@@ -10,4 +10,12 @@
         <validator-id>astrologer.EmailValidator</validator-id>
         <validator-class>dvd.libraries.EmailValidator</validator-class>
     </validator>
+    <navigation-rule>
+        <from-view-id>/Dashboard/Login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/Dashboard/View/Index.xhtml</to-view-id>
+            <redirect>></redirect>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="Style/login.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="logologin">
+            </div>
+            <div class="boxlogin">
+                <div class="loginboxinner">
+                    <div class="loginboxconntent">  
+                        <h:inputText class="username" value="#{login.username}" onfocus="changeuseronfocus(this)" onblur="changeuseronblur(this)"/>
+                        <h:inputSecret class="passwordlo"
+                                     value="#{login.password}" 
+                                     onfocus="changepasswordonfocus(this,1)" 
+                                     onblur="changepasswordonfocus(this,2)"/>
+                        <h:commandButton id="btnlogin" action="#{login.btnlogin_Click}" class="btnlogins" onclick="btnlogin_Click" value="Login" />
+                    </div>
+                </div>
+            </div>
+            <div class="option">
+                <a href="#" class="cant">Không thể truy cập tài khoản của bạn?</a>
+                <input type="checkbox"/>Ghi nhớ đăng nhập
+            </div>
+        </h:form>
+    </h:body>
+</html>
+
