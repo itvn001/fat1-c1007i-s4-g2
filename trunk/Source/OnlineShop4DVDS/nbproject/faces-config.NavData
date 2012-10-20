@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
-    <Scope Scope="Project"/>
+    <Scope Scope="Project">
+        <Node id="Dashboard/Malbum/Edit.xhtml" x="253" y="105" zoom="true"/>
+        <Node id="Dashboard/FileUploadController.xhtml" x="554" y="173" zoom="true"/>
+        <Node id="Dashboard/Mdata/Index.xhtml" x="246" y="208" zoom="true"/>
+        <Node id="Dashboard/Malbum/data_addnew.xhtml" x="545" y="104" zoom="true"/>
+        <Node id="Dashboard/Categories/Index.xhtml" x="566" y="274" zoom="true"/>
+        <Node id="MasterPage.xhtml" x="286" y="253" zoom="true"/>
+        <Node id="Dashboard/Users/Index.xhtml" x="566" y="320" zoom="true"/>
+        <Node id="DetailsAlbum.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="Dashboard/Master/MasterPage.xhtml" x="509" y="53" zoom="true"/>
+        <Node id="Dashboard/Article/Index.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="Dashboard/DemoDataAction/Insert.xhtml" x="190" y="375" zoom="true"/>
+        <Node id="Dashboard/Mdata/Edit.xhtml" x="241" y="153" zoom="true"/>
+        <Node id="Dashboard/Users/View.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="Default.xhtml" x="275" y="65" zoom="true"/>
+        <Node id="Dashboard/View/Index.xhtml" x="565" y="477" zoom="true"/>
+        <Node id="DefaultCart.xhtml" x="574" y="145" zoom="true"/>
+        <Node id="Dashboard/Orders/Index.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="Dashboard/Mdata/Addnew.xhtml" x="233" y="304" zoom="true"/>
+        <Node id="Dashboard/Malbum/Addnew.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="Dashboard/Malbum/Index.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="Dashboard/Login.xhtml" x="577" y="364" zoom="true"/>
+        <Node id="addToCartPage.xhtml" x="279" y="414" zoom="true"/>
+        <Node id="removeCartPage.xhtml" x="256" y="334" zoom="true"/>
+        <Node id="PlayerMusicTest.xhtml" x="556" y="231" zoom="true"/>
+    </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

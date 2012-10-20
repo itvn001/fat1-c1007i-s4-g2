@@ -13,7 +13,7 @@ body
 }
 .logologin
 {
-    background:url(../Iconpage/login/gradcircle.png) no-repeat scroll left top transparent;
+   
     height:50px;
     margin:80px auto 20px;
     padding:75px 50px;
@@ -46,7 +46,7 @@ body
     display:inline-block;
     font-size:14px;
     padding:7px 5px 6px 40px;
-    background:url(../Iconpage/login/usernamefield.png) no-repeat scroll left top #EEEEEE;
+    background:url(../Iconpage/login/usernamefield.png) no-repeat scroll 0 -32px #EEEEEE;
     border:0 none;
     margin-right:10px;
     width:190px;
@@ -57,7 +57,7 @@ body
     display:inline-block;
     font-size:14px;
     padding:7px 5px 6px 40px;
-    background:url(../Iconpage/login/passwordfield.png) no-repeat scroll left top #EEEEEE;
+    background:url(../Iconpage/login/passwordfield.png) no-repeat scroll 0 -32px #EEEEEE;
     border:0 none;
     margin-right:10px;
     width:190px;

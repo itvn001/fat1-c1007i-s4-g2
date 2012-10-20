@@ -6,6 +6,7 @@ package dvd.behind.dashboard;
 
 import dvd.business.dashboard.Categories;
 import dvd.entity.CateType;
+import dvd.libraries.Permission;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -23,7 +24,11 @@ import javax.faces.model.SelectItem;
 @RequestScoped
 public class Cate_Index {
 
+    private dvd.libraries.Permission pe = new Permission();
+
     public Cate_Index() {
+        // dvd.libraries.Permission p = new Permission();
+        //p.checkPermissionDisc();
         this.message = "";
     }
     private String idTpeCate = "0";
@@ -196,11 +201,10 @@ public class Cate_Index {
                     this.message = dvd.libraries.UImessage.generalMessage("red", "Error System", "", "Please try again!");
                 }
             }
-        }
-        else{
-             FacesMessage msg =
-                        new FacesMessage(FacesMessage.SEVERITY_FATAL, "Please Choice Item For Edit", "");
-                FacesContext.getCurrentInstance().addMessage(null, msg);
+        } else {
+            FacesMessage msg =
+                    new FacesMessage(FacesMessage.SEVERITY_FATAL, "Please Choice Item For Edit", "");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 }
