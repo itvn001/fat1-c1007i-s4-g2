@@ -22,28 +22,34 @@ public class DetailsHistoryOrderManager {
      * Creates a new instance of DetailsHistoryOrderManager
      */
     private int _OrderId;
-    public void orderIdSetValue(int _Id){
+
+    public void orderIdSetValue(int _Id) {
         this._OrderId = _Id;
     }
+
     public DetailsHistoryOrderManager() {
     }
     private double totalMoney = 0;
     List<OrderDetails> listOD;
-    public List<OrderDetails> showOrderDetailById(){
+
+    public List<OrderDetails> showOrderDetailById() {
         totalMoney = 0;
-        OrderManager manager = new OrderManager();
-        listOD = manager.showOrderDetailById(_OrderId);
-        for (OrderDetails orderDetails : listOD) {
-            orderDetails.setMoney(orderDetails.getQuantity() * Double.parseDouble(orderDetails.getUnitPrice()));
-            setTotalMoney(getTotalMoney() + orderDetails.getMoney());
+        try {
+            OrderManager manager = new OrderManager();
+            listOD = manager.showOrderDetailById(_OrderId);
+            for (OrderDetails orderDetails : listOD) {
+                orderDetails.setMoney(orderDetails.getQuantity() * Double.parseDouble(orderDetails.getUnitPrice()));
+                setTotalMoney(getTotalMoney() + orderDetails.getMoney());
+            }
+        } catch (Exception e) {
         }
         return listOD;
     }
 
-    public int sizeList(){
+    public int sizeList() {
         return listOD.size();
     }
-    
+
     /**
      * @return the totalMoney
      */

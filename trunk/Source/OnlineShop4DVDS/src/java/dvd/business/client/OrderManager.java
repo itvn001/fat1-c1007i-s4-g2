@@ -83,7 +83,7 @@ public class OrderManager {
             String sQuery = "{call listOrderDetailByOrderId(" + _OrderId + ")}";
             cl = conn.GetConnect().prepareCall(sQuery);
             ResultSet rs = cl.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 totalMoney += (rs.getInt(1) * rs.getInt(1));
             }
         } catch (SQLException ex) {
@@ -91,11 +91,24 @@ public class OrderManager {
         }
         return totalMoney;
     }
-    
-    public List<OrderDetails> showOrderDetailById(int _OrderId){
+
+    public List<OrderDetails> showOrderDetailById(int _OrderId) {
         MapperData data = new MapperData();
         String[] paramvalues = new String[]{"" + _OrderId};
         List<OrderDetails> listOD = data.getDataWithProc("showOrderDetailsById", "?", paramvalues, OrderDetails.class);
         return listOD;
+    }
+
+    public boolean changeStatus(int _Id) {
+        try {
+            String squery = "{call changeStatusOrder(" + _Id + ")}";
+            ps = conn.GetConnect().prepareStatement(squery);
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }

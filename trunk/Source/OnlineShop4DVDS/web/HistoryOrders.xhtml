@@ -35,7 +35,7 @@
                                     <td class="HistoryOrdersTableTdId">#{listOrder.orderID}</td>
                                     <td class="HistoryOrdersTableTdDate"><a href="DetailsHistoryOrder.xhtml?id=#{listOrder.orderID}">#{listOrder.orderDate}</a></td>
                                     <td class="HistoryOrdersTableTdMoney">$#{listOrder.totalMoney}</td>
-                                    <h:outputLabel escape="false" value="#{historyOrdersManager.checkStatus(listOrder.shipStatus)}"></h:outputLabel>
+                                    <h:outputLabel escape="false" value="#{historyOrdersManager.checkStatus(listOrder.orderID, listOrder.shipStatus)}"></h:outputLabel>
                                 </tr>
                             </ui:repeat>
                         </table>

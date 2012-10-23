@@ -22,6 +22,7 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class DetailAlbumManager {
+
     /**
      * Creates a new instance of DetailAlbumManager
      */
@@ -30,21 +31,24 @@ public class DetailAlbumManager {
     private String firstImage;
     private String firstTitle;
     AlbumManager albumManager;
+
     public DetailAlbumManager() {
     }
-    public void addAlbumID(int _albumID){
+
+    public void addAlbumID(int _albumID) {
         albumId = _albumID;
     }
-    public Album showInforAlbum(){
+
+    public Album showInforAlbum() {
         Album album = new Album();
         try {
             albumManager = new AlbumManager();
             ResultSet rs = albumManager.showInforAlbum(albumId);
-            if(rs.next()){
+            if (rs.next()) {
                 album.setAlbumID(rs.getInt(1));
-                album.setCateID(""+rs.getInt(2));
+                album.setCateID("" + rs.getInt(2));
                 album.setAlbumName(rs.getString(3));
-                album.setAlbumPrice(""+rs.getDouble(4));
+                album.setAlbumPrice("" + rs.getDouble(4));
                 album.setAlbumDateCreate(rs.getString(5));
                 album.setAlbumStatus(rs.getBoolean(6));
                 album.setAlbumImage(rs.getString(7));
@@ -57,19 +61,26 @@ public class DetailAlbumManager {
         }
         return album;
     }
-    public List<DataStore> showDataStore(){
-        albumManager = new AlbumManager();
-        List<DataStore> listDS = albumManager.showDataStore(albumId);
-        firstImage = listDS.get(0).getDataImage();
-        firstPath = listDS.get(0).getDataPath();
-        firstTitle = listDS.get(0).getDataName();
+
+    public List<DataStore> showDataStore() {
+        List<DataStore> listDS = null;
+        try {
+            albumManager = new AlbumManager();
+            listDS = albumManager.showDataStore(albumId);
+            firstImage = listDS.get(0).getDataImage();
+            firstPath = listDS.get(0).getDataPath();
+            firstTitle = listDS.get(0).getDataName();
+        } catch (Exception e) {
+        }
         return listDS;
     }
-    public String showNameSuppllier(){
+
+    public String showNameSuppllier() {
         albumManager = new AlbumManager();
-        
+
         return albumManager.getNameSupplier(albumId);
     }
+
     /**
      * @return the AlbumId
      */
