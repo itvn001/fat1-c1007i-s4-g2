@@ -68,7 +68,7 @@
                         <tr>
                             <td colspan="7" class="DefaultCartSave">
                                 <a onclick="return checkItemCart(#{cartManager.cartSize()})" class="DefaultCartSave" href="PersonalAuthenticationInformation.xhtml" >Continue</a>
-                                <h:commandLink action="#{cartManager.editCart()}" value="Save" ></h:commandLink>
+                                <h:commandLink onclick="return checkItemCart(#{cartManager.cartSize()})" action="#{cartManager.editCart()}" value="Save" ></h:commandLink>
                             </td>
                         </tr>
                         <tr>
