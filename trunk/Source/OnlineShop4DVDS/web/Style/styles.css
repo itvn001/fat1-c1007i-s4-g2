@@ -1,7 +1,7 @@
 body  {
-    /*    font-family:Arial, Helvetica, sans-serif;*/
-    font-size:14px;
-    background:#FFFFFF;
+    font-family:arial;
+    font-size:13px;
+    background-color:#fff;
     color:#010101;
 }
 img {
@@ -81,20 +81,21 @@ h1 {
 }
 .menu a {
     color:#ffffff;
-    font-size:12px;
+    font-size:16px;
     text-decoration:none;
     padding:10px 20px;
+    font-family: hagin,arial;
+    display: inline;
+
 } 
 .menu a:hover {
     color:#ffffff;
-    font-size:12px;
-    background:#666;
+    background:#6bcbca;
     text-decoration:none;
 }
 .menu #active a {
     color:#ffffff;
-    font-size:12px;
-    background:#45749e;
+    background:#6bcbca;
     text-decoration:none;
 } 
 .icons {
@@ -457,20 +458,30 @@ h1 {
 }
 #sidebar1 li a {
     font-size:14px;
-    color:#0f0c13;
+    color:#29241e;
+    line-height: 1.5em;
     text-decoration:none;
+    font-family: hagin;
 }
 #sidebar1 li a:hover {
     font-size:14px;
-    color:#0f0c13;
+    color:#ff6766;
     text-decoration:underline;
     padding-top: 3px;
 }
 #sidebar1 h2{
     margin: 0;
-    padding: 0;
+    padding-left: 10px;
     font-weight: normal;
-    font-family: serif;
+    color: #ff6766;
+    border-bottom: 2px solid #ff6766;
+    font-family: hagin;
+    line-height: 1.4em;
+    font-size: 22px;
+}
+@font-face{
+    font-family: hagin;
+    src: url('Hagin Caps Medium.otf'); /* IE9 */
 }
 #header{
     border-bottom: 1px solid #d1d0d1;
@@ -492,17 +503,25 @@ h1 {
     padding-left: 22px;
     padding-top: 10px;
     border-bottom:1px solid #d1d0d1;
+    min-height: 280px;
+}
+.box img:hover{
+    border-color: #008000;
 }
 .boxTitle {
-    color: #515151;
-    height: 50px;
+    color: #29241e;
+    font-family: serif;
+    min-height: 20px;
     padding: 5px 0;
     width: 100%;
+    font-weight: 600;
 } 
 .boxPrice {
-    color:#46890b;
-    padding:0 0 5px 0;
+    color:#ff6766;
+    padding:0 0px 5px 0;
     font-weight:bold;
+    text-align: left; 
+    text-decoration: underline;
 }
 .boxLink{
     width: 190px;
@@ -533,12 +552,12 @@ h1 {
 }
 .abtn:hover{
     color: #fff;
-    background-color: #45749e;
+    background-color: #6bcbca;
 }
 .boxLink a:hover {
     font-size:12px;
     font-weight:bold;
-    background-color: #45749e;
+    background-color: #6bcbca;
 }
 #container { 
     width: 980px;  
@@ -623,23 +642,32 @@ h1 {
     width: 97%;
     float: left;
     border-bottom: 1px solid #d1d0d1;
-    
+
+}
+.DetailsAlbumItemDataStore:hover{
+    background-color: #EFEEEF;
+    color: #fff;
+    cursor: pointer;
 }
 .DetailsAlbumItmeDataStoreH2{
     border-bottom: 1px solid #d1d0d1;
-    color: #e47911;
+    color: #ff6766;
     font-size: 20px;
     line-height: 1.3em;
     font-weight: normal;
     padding-top: 7px;
+    font-family: hagin;
+    margin-bottom: 2px;
 }
 .DetailsAlbumItemDataStoreImg{
+    padding-bottom: 5px;
     float: left;
 }
 .DetailsAlbumItemDataStoreName{
     color: #000;
     float: left;
     padding-left: 20px;
+    font-weight: 600;
     padding-top: 10px;
     width: 415px;
 }
@@ -685,9 +713,10 @@ h1 {
 }
 .DetailsAlbumH2{
     color: #333;
-    font-size: 18px;
+    font-size: 22px;
     margin: 0;
     padding-left: 20px;
+    font-family: hagin;
 }
 #bannerdemo2{
     width: 213px;
@@ -696,8 +725,13 @@ h1 {
     border-bottom: 2px solid sandybrown;
 }
 #bannerdemo2 ul li img{
- width: 200px;
+    width: 200px;
 }
 .headerTop {
     background:#e47911;
+}
+.numbercountS{
+    width: 15px;
+    background-color: #ff6766;
+    color: #fff;
 }

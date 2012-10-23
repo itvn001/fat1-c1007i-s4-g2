@@ -34,7 +34,15 @@ public class DetailAlbumManager {
 
     public DetailAlbumManager() {
     }
+    private  int countnumbers = 0;
 
+    public  int getCountnumbers() {
+        countnumbers ++;
+        return countnumbers;
+    }
+    public void setCountnumbers(int _countnumbers) {
+        countnumbers = _countnumbers++;
+    }
     public void addAlbumID(int _albumID) {
         albumId = _albumID;
     }

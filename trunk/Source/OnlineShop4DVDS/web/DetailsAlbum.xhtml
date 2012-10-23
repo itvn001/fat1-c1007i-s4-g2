@@ -116,16 +116,16 @@
                             </div>
                             <div class="DetailsAlbumInfor">
                                 <h3 class="DetailsAlbumH2">#{album.albumName}</h3>
-                                <p style="color: #818181;">Category Name: <h:outputLabel style="color: #175A75;" value="#{album.cateName}"></h:outputLabel></p>
-                                <p style="color: #818181;">Create Date: <h:outputLabel style="color: #175A75;" value="#{album.albumDateCreate}"></h:outputLabel></p>
-                                <p style="color: #818181;">Supplier: <h:outputLabel style="color: #175A75;" ></h:outputLabel></p>
-                                <p style="color: #818181;">Price: $<h:outputLabel style="color: #175A75;" value="#{album.albumPrice}"></h:outputLabel></p>
-                                <p style="color: #818181;">Quantity: <h:outputLabel style="color: #175A75;" value="#{album.quantity}"></h:outputLabel></p>
+                                <p style="color: #818181;">Category Name: <h:outputLabel style="color: #000;" value="#{album.cateName}"></h:outputLabel></p>
+                                <p style="color: #818181;">Create Date: <h:outputLabel style="color: #000;" value="#{album.albumDateCreate}"></h:outputLabel></p>
+                                <p style="color: #818181;">Supplier: <h:outputLabel style="color: #000;" ></h:outputLabel></p>
+                                <p style="color: #818181;">Price:<h:outputLabel style="color: #ff6766; font-weight: 600" value="$ #{album.albumPrice}"></h:outputLabel></p>
+                                <p style="color: #818181;">Quantity: <h:outputLabel style="color: #000;" value="#{album.quantity}"></h:outputLabel></p>
                                 #{cartManager.valuePageOld("DetailsAlbum.xhtml?id=", param['id'])}
                                 <div style="float: left">
                                     <p class=""><a class="abtn" href="addToCartPage.xhtml?DataStoreId=#{album.albumID}">Add to Cart</a>
                                         <a class="abtn" onclick="playAudioAndVideo('#{detailAlbumManager.firstTitle}', 
-                                        '#{detailAlbumManager.firstPath}', '#{detailAlbumManager.firstImage}', true)" href="">Play all</a>
+                                            '#{detailAlbumManager.firstPath}', '#{detailAlbumManager.firstImage}', true)" href="">Play all</a>
                                         <a class="abtn" href="#">Add to my list</a>
                                     </p>
                                 </div>
@@ -136,7 +136,10 @@
                                 <h2 class="DetailsAlbumItmeDataStoreH2">Item in the album</h2>
                                 <ui:repeat value="#{detailAlbumManager.showDataStore()}" var="listDataStore">
                                     <div class="DetailsAlbumItemDataStore">
-                                        <div class="DetailsAlbumItemDataStoreImg"><img alt="" src="#{listDataStore.dataImage}" width="50px" height="50px"></img></div>
+                                        <div class="DetailsAlbumItemDataStoreImg">
+                                            <span class="numbercountS">#{detailAlbumManager.countnumbers}</span>
+                                            <img alt="" src="#{listDataStore.dataImage}" width="50px" height="50px"></img>
+                                        </div>
                                         <div class="DetailsAlbumItemDataStoreName">#{listDataStore.dataName}</div>
                                         <div class="DetailsAlbumItemDataStoreIcon">
                                             <a onclick="playAudioAndVideo('#{listDataStore.dataName}', '#{listDataStore.dataPath}','#{listDataStore.dataImage}', false)" href="">
