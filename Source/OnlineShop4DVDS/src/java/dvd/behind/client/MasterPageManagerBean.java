@@ -29,7 +29,12 @@ public class MasterPageManagerBean {
     public List<Categories> showMenuCategory()
     {
         CategoryManager c = new CategoryManager();
-        return c.showListCate();
+        List<Categories> listCate = null;
+        try {
+            listCate = c.showListCate();
+        } catch (Exception e) {
+        }
+        return listCate;
     }
     /**
      * @return the cate
