@@ -25,13 +25,6 @@ h1 {
     color:#4393de;
     padding:10px 0 20px 0;
 }
-h2 {
-    border-bottom: 1px solid;
-    color: #F2C205;
-    font-size: 25px;
-    font-weight: 600;
-    padding: 10px 10px 10px 30px;
-}
 .logo {
     float:left;
     padding:20px 20px 20px 0;
@@ -63,10 +56,6 @@ h2 {
     color:#ffffff;
     background:#413503;
     padding:2px 7px;
-}
-#container { 
-    width: 980px;  
-    margin: 0 auto;
 }
 .headerTop {
     background:#2c2c2c;
@@ -120,39 +109,8 @@ h2 {
     list-style:none;
     display:inline;
 }
-#sidebar1 {
-    background:#FFFFFF;
-} 
-#sidebar1 ul {
-
-}
-#sidebar1 li {
-    background: url("../Images/p.png") no-repeat scroll left 5px transparent;
-    border-bottom: 1px solid;
-    color: #DAD6D1;
-    font-size: 12px;
-    list-style: none outside none;
-    padding: 3px 0 10px 20px;
-}
-#sidebar1 {
-    float: left;
-    width: 274px;
-}
-#sidebar1 ul {
-    padding: 0 10px 10px 10px;
-}
-#sidebar1 li a {
-    font-size:14px;
-    color:#0f0c13;
-    text-decoration:none;
-}
-#sidebar1 li a:hover {
-    font-size:14px;
-    color:#0f0c13;
-    text-decoration:underline;
-}
 #mainContent { 
-    margin: 0 0 0 314px; 
+    margin: 0 0 0 250px; 
 }
 .picRight {
     float:right;
@@ -161,37 +119,6 @@ h2 {
 /*#mainContent p {
         padding:10px 0 30px 0;
 }*/
-.box {
-    float:left;
-    width:160px;
-    padding:0px 0px 5px 0px;
-    margin:0 3px 15px 3px;
-    border-bottom:1px solid #acacac;
-}
-.boxTitle {
-    color: #515151;
-    height: 50px;
-    padding: 5px 0;
-    width: 100%;
-} 
-.boxPrice {
-    color:#46890b;
-    padding:0 0 5px 0;
-    font-weight:bold;
-}
-.boxLink a {
-    color: #3D81C7;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: bold;
-    text-decoration: none;
-}
-.boxLink a:hover {
-    font-size:12px;
-    font-weight:bold;
-    color:#3d81c7;
-    text-decoration:underline;
-}
 #footer {
     background:#FFF;
     color:#9e9e9e;
@@ -213,19 +140,6 @@ h2 {
     font-size: 1px;
     line-height: 0px;
 }
-
-/*Page Default*/
-.DefaultPaging{
-    text-align: center;
-}
-.DefaultAllbox{
-    border-left: 1px solid #F0F0F0;
-    float: left;
-    margin-left: -20px;
-    padding-left: 20px;
-    width: 665px;
-}
-
 /*Page DetailAlbum*/
 .DetailsAlbumBackgroundAudio{
     display: none;
@@ -278,150 +192,6 @@ h2 {
     color: white;
     margin: 0;
     padding: 2px 10px;
-}
-.DetailsAlbumImage{
-    background: none repeat scroll 0 0 #DAD6D1;
-    border: 1px solid #747474;
-    float: left;
-    height: 342px;
-    margin-top: 25px;
-    width: 225px;
-}
-.DetailsAlbumInfor{
-    color: #175A75;
-    float: left;
-    margin-left: 5px;
-    margin-top: 25px;
-    min-height: 300px;
-    text-align: justify;
-    width: 430px;
-}
-.DetailsAlbumInfor p{
-    padding: 0 20px;
-}
-.DetailsAlbumH2{
-    background: none repeat scroll 0 0 #62A2D0;
-    border-bottom: 1px solid #EBEBEB;
-    color: white;
-    font-size: 18px;
-    margin: 0;
-    padding: 5px 0 10px;
-    text-align: center;
-}
-.DetailsAlbumDetail{
-    width: 655px;
-    min-height: 200px;
-    float: left;
-}
-.DetailsAlbumAddtoCart a{
-    background: none repeat scroll 0 0 #62A2D0;
-    border-radius: 5px 5px 5px 5px;
-    color: white;
-    cursor: pointer;
-    float: left;
-    font-weight: 600;
-    padding: 5px 20px;
-    text-decoration: none;
-}
-.DetailsAlbumAddtoCart a:hover{
-    background: none repeat scroll 0 0 #45749E;
-}
-.DetailsAlbumPlay a{
-    background: none repeat scroll 0 0 #62A2D0;
-    border-radius: 5px 5px 5px 5px;
-    color: white;
-    cursor: pointer;
-    float: left;
-    font-weight: 600;
-    margin: 0 15px;
-    padding: 5px 20px;
-    text-decoration: none;
-}
-.DetailsAlbumPlay a:hover{
-    background: none repeat scroll 0 0 #45749E;
-}
-.DetailsAlbumAddtoList a{
-    background: none repeat scroll 0 0 #62A2D0;
-    border-radius: 5px 5px 5px 5px;
-    color: white;
-    cursor: pointer;
-    float: left;
-    font-weight: 600;
-    padding: 5px 20px;
-    text-decoration: none;
-}
-.DetailsAlbumAddtoList a:hover{
-    background: none repeat scroll 0 0 #45749E;
-}
-.DetailsAlbumItemDataStore{
-    border: 1px solid #F1F1F1;
-    border-radius: 10px 10px 10px 10px;
-    margin-top: 5px;
-    min-height: 75px;
-    padding: 7px;
-    width: 645px;
-}
-.DetailsAlbumItmeDataStoreH2{
-    border-bottom: 1px solid;
-    color: #F2C205;
-    font-size: 25px;
-    font-weight: normal;
-    padding: 30px 10px 10px;
-}
-.DetailsAlbumItemDataStoreImg{
-    float: left;
-}
-.DetailsAlbumItemDataStoreName{
-    color: #45749E;
-    float: left;
-    font-weight: 600;
-    padding-left: 20px;
-    padding-top: 10px;
-    width: 415px;
-}
-.DetailsAlbumItemDataStoreDesciptio{
-    color: #818181;
-    float: left;
-    font-size: 12px;
-    padding-left: 40px;
-    padding-top: 10px;
-    width: 395px;
-}
-.DetailsAlbumItemDataStoreIcon{
-    float: right;
-    height: 30px;
-    margin-top: -10px;
-    width: 135px;
-}
-.DetailsAlbumItemDataStoreIconDownload{
-    height: 25px;
-    margin-top: 3px;
-    width: 50px;
-}
-.DetailsAlbumItemDataStoreIconPlay{
-    height: 25px;
-    margin: 0 10px;
-    width: 25px;
-}
-.DetailsAlbumItemDataStoreIconAddtoList{
-    width: 25px;
-    height: 25px;
-}
-.DetailsAlbumMessage{
-    background: none repeat scroll 0 0 #62A2D0;
-    cursor: alias;
-    height: 50px;
-    left: 0;
-    opacity: 0.95;
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-.DetailsAlbumMessageOutputLabel{
-    font-size: 15px;
-    margin: 15px auto;
-    text-align: center;
-    cursor: alias;
 }
 
 /*Page Default Cart*/
@@ -667,4 +437,245 @@ h2 {
 .DetailsHistoryOrderBack:hover{
     color: white;
     background: #45749E;
+}
+/*-------------------------------------------------------------------------------------*/
+/*chienvh*/
+#sidebar1 {
+    background:#FFFFFF;
+} 
+#sidebar1 li {
+    border-bottom: 1px dotted #d1d0d1;
+    color: #DAD6D1;
+    font-size: 12px;
+    list-style: none outside none;
+    padding: 3px 0 5px 5px;
+}
+#sidebar1 {
+    float: left;
+    width: 200px;
+
+}
+#sidebar1 ul {
+    padding-left: 0px;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 5px;
+}
+#sidebar1 li a {
+    font-size:14px;
+    color:#0f0c13;
+    text-decoration:none;
+}
+#sidebar1 li a:hover {
+    font-size:14px;
+    color:#0f0c13;
+    text-decoration:underline;
+    padding-top: 3px;
+}
+#sidebar1 h2{
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-family: serif;
+}
+#header{
+    border-bottom: 1px solid #d1d0d1;
+    margin-bottom: 10px;
+}
+.DefaultAllbox{
+    border-left: 1px solid #d1d0d1;
+    float: left;
+    margin-left: -40px;
+    padding-left: 5px;
+}
+.DefaultPaging{
+    text-align: center;
+    float: left;
+}
+.box {
+    float:left;
+    width:160px;
+    padding-left: 22px;
+    padding-top: 10px;
+    border-bottom:1px solid #d1d0d1;
+}
+.boxTitle {
+    color: #515151;
+    height: 50px;
+    padding: 5px 0;
+    width: 100%;
+} 
+.boxPrice {
+    color:#46890b;
+    padding:0 0 5px 0;
+    font-weight:bold;
+}
+.boxLink{
+    width: 190px;
+    height: 25px;
+}
+.boxLink a {
+    color: #fff;
+    background-color: #e47911;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline;
+}
+.boxLink a:hover {
+    font-size:12px;
+    font-weight:bold;
+    color: antiquewhite;
+}
+#container { 
+    width: 980px;  
+    margin: 0 auto;
+    border-left: 1px solid #DFDEDF;
+    border-right: 1px solid #DFDEDF;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.DetailsAlbumImage{
+    float: left;
+    margin-top: 25px;
+    width: 180px;
+    border: 1px solid #D1D0D1;
+    border-radius: 3px 3px 3px 3px;
+    padding: 3px;
+    text-align: center;
+}
+.DetailsAlbumInfor{
+    color: #175A75;
+    float: left;
+    margin-left: 5px;
+    padding-top: 25px;
+    min-height: 200px;
+    text-align: justify;
+    width: 430px;
+}
+.DetailsAlbumInfor p{
+    padding: 0 20px;
+    float: left;
+}
+.DetailsAlbumDetail{
+    width: 750px;
+    min-height: 200px;
+    float: left;
+}
+.DetailsAlbumAddtoCart a{
+    border-radius: 5px 5px 5px 5px;
+    color: #e47911;
+    font-family: Verdana;
+    cursor: pointer;
+    float: left;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1.4em;
+    text-decoration: underline;
+}
+.DetailsAlbumAddtoCart a:hover{
+    text-decoration: none;
+}
+.DetailsAlbumPlay a{
+    background: none repeat scroll 0 0 #62A2D0;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    cursor: pointer;
+    float: left;
+    font-weight: 600;
+    margin: 0 15px;
+    padding: 5px 20px;
+    text-decoration: none;
+}
+.DetailsAlbumPlay a:hover{
+    background: none repeat scroll 0 0 #45749E;
+}
+.DetailsAlbumAddtoList a{
+    background: none repeat scroll 0 0 #62A2D0;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    cursor: pointer;
+    float: left;
+    font-weight: 600;
+    padding: 5px 20px;
+    text-decoration: none;
+}
+.DetailsAlbumAddtoList a:hover{
+    background: none repeat scroll 0 0 #45749E;
+}
+.DetailsAlbumItemDataStore{
+    margin-top: 5px;
+    min-height: 20px;
+    padding: 3px;
+    width: 645px;
+}
+.DetailsAlbumItmeDataStoreH2{
+    border-bottom: 1px solid #d1d0d1;
+    color: #e47911;
+    font-size: 20px;
+    line-height: 1.3em;
+    font-weight: normal;
+    padding-top: 7px;
+}
+.DetailsAlbumItemDataStoreImg{
+    float: left;
+}
+.DetailsAlbumItemDataStoreName{
+    color: #000;
+    float: left;
+    padding-left: 20px;
+    padding-top: 10px;
+    width: 415px;
+}
+.DetailsAlbumItemDataStoreDesciptio{
+    color: #818181;
+    float: left;
+    font-size: 12px;
+    padding-left: 40px;
+    padding-top: 10px;
+    width: 395px;
+}
+.DetailsAlbumItemDataStoreIcon{
+    float: right;
+    height: 30px;
+    width: 135px;
+}
+.DetailsAlbumItemDataStoreIconDownload{
+    height: 25px;
+    margin-top: 3px;
+    width: 50px;
+}
+.DetailsAlbumItemDataStoreIconPlay{
+    margin: 0 10px;
+}
+.DetailsAlbumItemDataStoreIconAddtoList{
+
+}
+.DetailsAlbumMessage{
+    background: none repeat scroll 0 0 #62A2D0;
+    cursor: alias;
+    height: 50px;
+    left: 0;
+    opacity: 0.95;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.DetailsAlbumMessageOutputLabel{
+    font-size: 15px;
+    margin: 15px auto;
+    text-align: center;
+    cursor: alias;
+}
+.DetailsAlbumH2{
+    color: #333;
+    font-size: 18px;
+    margin: 0;
+    padding-left: 20px;
 }
