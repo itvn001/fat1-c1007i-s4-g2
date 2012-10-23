@@ -355,3 +355,15 @@ UPDATE Categories SET CateTypeID = @CateType,
 						CateName = @CateName,
 						CateStatus = @CateStatus
 						WHERE CateID = @ID
+						
+GO
+CREATE PROC aLogin
+@Account NVARCHAR(25),
+@Password NVARCHAR(100)
+AS
+SELECT Account,Passwords,Permision.PerName
+ FROM UserAdmin,Permision
+ WHERE Permision.PerID = UserAdmin.PerID 
+ AND Account = @Account AND Passwords = @Password 
+ 
+ EXEC aLogin 'admin','admin'
