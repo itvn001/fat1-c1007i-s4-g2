@@ -35,14 +35,7 @@
                                     <td class="HistoryOrdersTableTdId">#{listOrder.orderID}</td>
                                     <td class="HistoryOrdersTableTdDate"><a href="DetailsHistoryOrder.xhtml?id=#{listOrder.orderID}">#{listOrder.orderDate}</a></td>
                                     <td class="HistoryOrdersTableTdMoney">$#{listOrder.totalMoney}</td>
-                                    <c:choose>
-                                        <c:when test="#{listOrder.shipStatus == 1}">
-                                            <td class="HistoryOrdersTableTdStatus"><a onclick="return confirm('asd');" style="text-align: center;" href="">Waiting</a></td>
-                                        </c:when>
-                                        <c:when test="#{listOrder.shipStatus == 0}">
-                                            <td class="HistoryOrdersTableTdStatus"><a onclick="return confirm('asd');" style="text-align: center;" href="">Delivery</a></td>
-                                        </c:when>
-                                    </c:choose>
+                                    <h:outputLabel escape="false" value="#{historyOrdersManager.checkStatus(listOrder.shipStatus)}"></h:outputLabel>
                                 </tr>
                             </ui:repeat>
                         </table>
