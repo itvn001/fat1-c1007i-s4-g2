@@ -26,6 +26,9 @@ public class DetailAlbumManager {
      * Creates a new instance of DetailAlbumManager
      */
     private int albumId;
+    private String firstPath;
+    private String firstImage;
+    private String firstTitle;
     AlbumManager albumManager;
     public DetailAlbumManager() {
     }
@@ -56,7 +59,11 @@ public class DetailAlbumManager {
     }
     public List<DataStore> showDataStore(){
         albumManager = new AlbumManager();
-        return albumManager.showDataStore(albumId);
+        List<DataStore> listDS = albumManager.showDataStore(albumId);
+        firstImage = listDS.get(0).getDataImage();
+        firstPath = listDS.get(0).getDataPath();
+        firstTitle = listDS.get(0).getDataName();
+        return listDS;
     }
     public String showNameSuppllier(){
         albumManager = new AlbumManager();
@@ -75,5 +82,47 @@ public class DetailAlbumManager {
      */
     public void setAlbumId(int AlbumId) {
         this.albumId = AlbumId;
+    }
+
+    /**
+     * @return the firstPath
+     */
+    public String getFirstPath() {
+        return firstPath;
+    }
+
+    /**
+     * @param firstPath the firstPath to set
+     */
+    public void setFirstPath(String firstPath) {
+        this.firstPath = firstPath;
+    }
+
+    /**
+     * @return the firstImage
+     */
+    public String getFirstImage() {
+        return firstImage;
+    }
+
+    /**
+     * @param firstImage the firstImage to set
+     */
+    public void setFirstImage(String firstImage) {
+        this.firstImage = firstImage;
+    }
+
+    /**
+     * @return the firstTitle
+     */
+    public String getFirstTitle() {
+        return firstTitle;
+    }
+
+    /**
+     * @param firstTitle the firstTitle to set
+     */
+    public void setFirstTitle(String firstTitle) {
+        this.firstTitle = firstTitle;
     }
 }

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="MasterPage.xhtml">
+            <ui:define name="contents">
+                <table class="HistoryOrdersTable" cellspacing="0" cellpadding="2">
+                    <tr>
+                        <th>DS ID</th>
+                        <th>DATA STORE NAME</th>
+                        <th>PRICE</th>
+                        <th>QUANTITY</th>
+                        <th>DISCOUNT</th>
+                        <th>MONEY</th>
+                    </tr>
+                    <h:inputHidden value="#{detailsHistoryOrderManager.orderIdSetValue(param['id'])}"></h:inputHidden>
+                    <ui:repeat value="#{detailsHistoryOrderManager.showOrderDetailById()}" var="listOD">
+                        <tr>
+                            <td>#{listOD.album}</td>
+                            <td>#{listOD.albumName}</td>
+                            <td>#{listOD.unitPrice}</td>
+                            <td>#{listOD.quantity}</td>
+                            <td>#{listOD.discount}</td>
+                            <td>#{listOD.money}</td>
+                        </tr>
+                    </ui:repeat>
+                    <tr>
+                        <td colspan="6"><span style="color: SteelBlue;float: right;font-weight: bold;margin-right: 20px;">Total money: $#{detailsHistoryOrderManager.totalMoney}</span></td>
+                    </tr>
+                </table>
+                <a class="DetailsHistoryOrderBack" href="HistoryOrders.xhtml">Back</a>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

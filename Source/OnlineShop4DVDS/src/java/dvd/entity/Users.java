@@ -32,6 +32,8 @@ public class Users {
     private String userSex;
     @Column(name = "UserStatus")
     private Boolean userStatus;
+    @Column(name = "Address")
+    private String address;
     @Column(name = "DateCreate")
     private String dateCreate;
 
@@ -104,5 +106,19 @@ public class Users {
 
     public void setUserStatus(Boolean userStatus) {
         this.userStatus = userStatus;
+    }
+
+    /**
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

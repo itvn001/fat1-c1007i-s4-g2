@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="MasterPage.xhtml">
+            <ui:define name="contents">
+                <h:form>
+                    <script type="text/javascript">
+                        function checkItemCart(sizeCart){
+                            if(sizeCart > 0){
+                                return true;
+                            }else{
+                                alert('Cart empty!');
+                                return false;
+                            }
+                        }
+                    </script>
+                    #{pAIManagerBean.loadInforFromData()}
+                    <c:if test="#{messageManager.displayMessage}">
+                        <div class="DetailsAlbumMessage">
+                            <c:if test="#{messageManager.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{messageManager.message}</h5>
+                            </c:if>
+                            <c:if test="#{!messageManager.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{messageManager.message}</h5>
+                            </c:if>
+                        #{messageManager.resetMessage()}
+                        </div>
+                    </c:if>
+                    <div class="DefaultAllbox">
+                        <h2 class="ClientPreviewBillsH2">PAYMENT</h2>
+                        <a class="ClientPrevieBillsHistory" href="HistoryOrders.xhtml">Order history</a>
+                        <div class="ClientPreviewBillsAddress">
+                            <div class="ClientPreviewBillslblUserInfor">Customer information</div>
+                            <div class="ClientPreviewBillsBoth">
+                                <span class="ClientPreviewBillsLable">First and last name:</span>
+                                <span class="ClientPreviewBillOutput">#{pAIManagerBean.name}</span>
+                            </div>
+                            <div class="ClientPreviewBillsBoth">
+                                <span class="ClientPreviewBillsLable">Phone:</span>
+                                <span class="ClientPreviewBillOutput">#{pAIManagerBean.phone}</span>
+                            </div>
+                            <div class="ClientPreviewBillsBoth">
+                                <span class="ClientPreviewBillsLable">Address:</span>
+                                <span class="ClientPreviewBillOutput">#{pAIManagerBean.address}</span>
+                            </div>
+                        </div>
+                        <div class="ClientPreviewBillsAddress">
+                            <div class="ClientPreviewBillslblUserInfor">Billing information</div>
+                            <table style="width: 100%; border-top: 1px #2C5479 solid;" cellpadding="3" cellspacing="0">
+                                <tr style="background: #0093D0; color: white; font-weight: bold; height: 26px; opacity: 0.8">
+                                    <td>ID</td>
+                                    <td>Products</td>
+                                    <td>Price</td>
+                                    <td>Quantity</td>
+                                    <td>Money</td>
+                                </tr>
+                                <ui:repeat value="#{cartManager.listDataStore}" var="listCart">
+                                    <tr>
+                                        <td>#{listCart.albumID}</td>
+                                        <td>#{listCart.albumName}</td>
+                                        <td style="text-align: center;">$#{listCart.albumPrice}</td>
+                                        <td style="text-align: center;">#{listCart.quantity}</td>
+                                        <td>$#{listCart.quantity*listCart.albumPrice}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" style="border-top: 1px solid #0093D0"></td>
+                                    </tr>
+                                </ui:repeat>
+                                <tr>
+                                    <td colspan="5" style="color: #0093D0;font-weight: bold;padding-bottom: 10px;padding-left: 465px;">Total money  : $#{cartManager.totalMoney()}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div>
+                            <h:commandLink onclick="return checkItemCart(#{cartManager.cartSize()})" class="ClientPreviewBillsOrdering" value="Ordering" action="#{cartManager.ordering(pAIManagerBean.userId, pAIManagerBean.name, pAIManagerBean.address)}"></h:commandLink>
+                            <a href="PersonalAuthenticationInformation.xhtml" class="ClientPreviewBillsBack">Back</a>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -4,7 +4,10 @@
  */
 package dvd.behind.client;
 
+import dvd.business.client.OrderManager;
+import dvd.business.client.UsersManager;
 import dvd.entity.Album;
+import dvd.entity.Users;
 import dvd.libraries.MapperData;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -106,6 +109,49 @@ public class CartManager {
 
     public int cartSize() {
         return listDataStore.size();
+    }
+
+    public String ordering(String _UserName, String _FullName, String _Address) {
+        try {
+            OrderManager om = new OrderManager();
+            UsersManager um = new UsersManager();
+            int UserId = 0;
+            for (Users us : um.loadInforFromData(_UserName)) {
+                UserId = us.getUserID();
+                break;
+            }
+            if (om.ordering(UserId, _FullName, _Address)) {
+                for (Album album : listDataStore) {
+                    om.orderingDetail(om.returnLastOrderId(), album.getAlbumID(), Double.parseDouble(album.getAlbumPrice()), album.getQuantity());
+                }
+            } else {
+                MessageManager mm = new MessageManager();
+                mm.setDisplayMessage(false);
+                mm.setMessage("Ordering process error!");
+                mm.setTypeMessage(false);
+                return "ClientPrevieBills.xhtml?face-redirect=true";
+            }
+            MessageManager mm = new MessageManager();
+            mm.setDisplayMessage(false);
+            mm.setMessage("Ordering process success!");
+            mm.setTypeMessage(true);
+            this.listDataStore = new ArrayList<Album>();
+            return "HistoryOrders.xhtml?face-redirect=true";
+        } catch (Exception e) {
+            MessageManager mm = new MessageManager();
+            mm.setDisplayMessage(false);
+            mm.setMessage("Ordering process error!");
+            mm.setTypeMessage(false);
+            return "ClientPrevieBills.xhtml?face-redirect=true";
+        }
+    }
+
+    public void redirectLogin() {
+//        try {
+//            FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+//        } catch (IOException ex) {
+//            Logger.getLogger(CartManager.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     /**

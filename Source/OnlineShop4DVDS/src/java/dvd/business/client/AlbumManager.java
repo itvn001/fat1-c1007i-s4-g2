@@ -4,7 +4,6 @@
  */
 package dvd.business.client;
 
-import dvd.entity.Album;
 import dvd.entity.DataStore;
 import dvd.libraries.Connection;
 import dvd.libraries.MapperData;
