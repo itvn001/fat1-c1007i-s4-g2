@@ -26,6 +26,7 @@ public class OrderDetails {
     private int quantity;
     @Column(name = "Discount")
     private String discount;
+    private double money;
     @Column(name = "AlbumName")
     private String albumName;
 
@@ -74,5 +75,19 @@ public class OrderDetails {
 
     public void setDiscount(String discount) {
         this.discount = discount;
+    }
+
+    /**
+     * @return the money
+     */
+    public double getMoney() {
+        return money;
+    }
+
+    /**
+     * @param money the money to set
+     */
+    public void setMoney(double money) {
+        this.money = money;
     }
 }

@@ -30,6 +30,8 @@ public class Order {
     private String shipPostalCode;
     @Column(name = "ShipStatus")
     private int shipStatus;
+    @Column(name = "TotalMoney")
+    private double totalMoney;
     @Column(name = "UserAccount")
     private String userAccount;
 
@@ -94,5 +96,19 @@ public class Order {
 
     public void setShipStatus(int shipStatus) {
         this.shipStatus = shipStatus;
+    }
+
+    /**
+     * @return the totalMoney
+     */
+    public double getTotalMoney() {
+        return totalMoney;
+    }
+
+    /**
+     * @param totalMoney the totalMoney to set
+     */
+    public void setTotalMoney(double totalMoney) {
+        this.totalMoney = totalMoney;
     }
 }

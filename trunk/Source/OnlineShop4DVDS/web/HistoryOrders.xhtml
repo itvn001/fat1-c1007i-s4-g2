@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="MasterPage.xhtml">
+            <ui:define name="contents">
+                <h:form>
+                    <c:if test="#{messageManager.displayMessage}">
+                        <div class="DetailsAlbumMessage">
+                            <c:if test="#{messageManager.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{messageManager.message}</h5>
+                            </c:if>
+                            <c:if test="#{!messageManager.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{messageManager.message}</h5>
+                            </c:if>
+                            #{messageManager.resetMessage()}
+                        </div>
+                    </c:if>
+                    <div class="DefaultAllbox">
+                        <table class="HistoryOrdersTable" cellspacing="0" cellpadding="2">
+                            <tr>
+                                <th class="HistoryOrdersTableTdId">ID</th>
+                                <th class="HistoryOrdersTableTdDate">Date Time</th>
+                                <th class="HistoryOrdersTableTdMoney">Total money</th>
+                                <th class="HistoryOrdersTableTdStatus">Status</th>
+                            </tr>
+                            <ui:repeat value="#{historyOrdersManager.listOrder()}" var="listOrder">
+                                <tr>
+                                    <td class="HistoryOrdersTableTdId">#{listOrder.orderID}</td>
+                                    <td class="HistoryOrdersTableTdDate"><a href="DetailsHistoryOrder.xhtml?id=#{listOrder.orderID}">#{listOrder.orderDate}</a></td>
+                                    <td class="HistoryOrdersTableTdMoney">$#{listOrder.totalMoney}</td>
+                                    <c:choose>
+                                        <c:when test="#{listOrder.shipStatus == 1}">
+                                            <td class="HistoryOrdersTableTdStatus"><a onclick="return confirm('asd');" style="text-align: center;" href="">Waiting</a></td>
+                                        </c:when>
+                                        <c:when test="#{listOrder.shipStatus == 0}">
+                                            <td class="HistoryOrdersTableTdStatus"><a onclick="return confirm('asd');" style="text-align: center;" href="">Delivery</a></td>
+                                        </c:when>
+                                    </c:choose>
+                                </tr>
+                            </ui:repeat>
+                        </table>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

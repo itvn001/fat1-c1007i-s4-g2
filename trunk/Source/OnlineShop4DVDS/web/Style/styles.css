@@ -1,10 +1,5 @@
-* {
-    margin:0;
-    padding:0;
-}
 body  {
-    font-family: verdana;
-/*    font-family:Arial, Helvetica, sans-serif;*/
+    /*    font-family:Arial, Helvetica, sans-serif;*/
     font-size:14px;
     background:#FFFFFF;
     color:#010101;
@@ -232,6 +227,58 @@ h2 {
 }
 
 /*Page DetailAlbum*/
+.DetailsAlbumBackgroundAudio{
+    display: none;
+    background: black;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity:0.5;
+    z-index: 1001;
+}
+.DetailsAlbumAudio{
+    display: none;
+    border: 3px solid #747474;
+    position: fixed;
+    z-index: 1002;
+}
+.listItemPlayer{
+    background: none repeat scroll 0 0 #DBDBDB;
+    border-radius: 3px 3px 3px 3px;
+    float: left;
+    padding: 5px 0;
+    width: 500px;
+    display: none;
+    max-height: 200px;
+}
+.titleAudioVideo{
+    background: none repeat scroll 0 0 CornflowerBlue;
+    border: 1px solid #F1F1F1;
+    color: white;
+    margin: 0;
+    padding: 4px 5px 1px;
+}
+.aItemInList{
+    background: none repeat scroll 0 0 white;
+    border-top: 1px solid #7F7F7F;
+    float: left;
+    padding: 4px 25px 3px;
+    text-decoration: none;
+    width: 433px;
+}
+.aItemInList:hover{
+    background: #62A2D0;
+    color: white;
+    cursor: pointer;
+}
+.DetailsAlbumPlayerH4{
+    background: none repeat scroll 0 0 #45749E;
+    color: white;
+    margin: 0;
+    padding: 2px 10px;
+}
 .DetailsAlbumImage{
     background: none repeat scroll 0 0 #DAD6D1;
     border: 1px solid #747474;
@@ -246,18 +293,20 @@ h2 {
     margin-left: 5px;
     margin-top: 25px;
     min-height: 300px;
+    text-align: justify;
     width: 430px;
 }
 .DetailsAlbumInfor p{
-    padding: 5px 20px 5px 20px;
+    padding: 0 20px;
 }
 .DetailsAlbumH2{
     background: none repeat scroll 0 0 #62A2D0;
     border-bottom: 1px solid #EBEBEB;
+    color: white;
+    font-size: 18px;
+    margin: 0;
     padding: 5px 0 10px;
     text-align: center;
-    font-size: 18px;
-    color: white;
 }
 .DetailsAlbumDetail{
     width: 655px;
@@ -267,12 +316,12 @@ h2 {
 .DetailsAlbumAddtoCart a{
     background: none repeat scroll 0 0 #62A2D0;
     border-radius: 5px 5px 5px 5px;
+    color: white;
     cursor: pointer;
     float: left;
     font-weight: 600;
     padding: 5px 20px;
     text-decoration: none;
-    color: white;
 }
 .DetailsAlbumAddtoCart a:hover{
     background: none repeat scroll 0 0 #45749E;
@@ -280,13 +329,13 @@ h2 {
 .DetailsAlbumPlay a{
     background: none repeat scroll 0 0 #62A2D0;
     border-radius: 5px 5px 5px 5px;
+    color: white;
     cursor: pointer;
     float: left;
     font-weight: 600;
-    margin: -10px 15px;
+    margin: 0 15px;
     padding: 5px 20px;
     text-decoration: none;
-    color: white;
 }
 .DetailsAlbumPlay a:hover{
     background: none repeat scroll 0 0 #45749E;
@@ -298,7 +347,6 @@ h2 {
     cursor: pointer;
     float: left;
     font-weight: 600;
-    margin: -20px 0 0 115px;
     padding: 5px 20px;
     text-decoration: none;
 }
@@ -424,4 +472,193 @@ h2 {
 }
 .DefaultCartSave a:hover{
     background: none repeat scroll 0 0 #45749E;
+}
+.PAIlblInformationH2{
+    background: none repeat scroll 0 0 #62A2D0;
+    border: medium none;
+    color: white;
+    font-size: 23px;
+    font-weight: normal;
+}
+.PAIMlblTitle{
+    float: left;
+    font-family: verdana;
+    margin: 5px;
+    padding-left: 52px;
+    width: 200px;
+}
+.PAIMLoadContact{
+    float: right;
+    margin-left: 12px;
+    margin-top: -15px;
+    text-decoration: none;
+}
+.PAIMContinue{
+    background: none repeat scroll 0 0 #62A2D0;
+    color: white;
+    float: right;
+    margin: 5px 193px;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 75px;
+}
+.PAIMContinue:hover{
+    background: #45749E;
+    color: white;
+}
+.PAIBack{
+    background: none repeat scroll 0 0 #62A2D0;
+    color: white;
+    float: right;
+    margin: 5px -190px;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 75px;
+}
+.PAIBack:hover{
+    background: #45749E;
+    color: white;
+}
+.PAIlblError{
+    color: red;
+    float: left;
+    margin: 5px;
+    width: 100px;
+}
+
+/*ClientPreviewBills Page*/
+.ClientPreviewBillsH2{
+    background: none repeat scroll 0 0 #0093D0;
+    color: white;
+    font-weight: normal;
+    margin: 30px 0 10px;
+    padding: 5px 30px;
+}
+.ClientPrevieBillsHistory{
+    font-size: 15px;
+    margin-left: 570px;
+    text-decoration: none;
+}
+.ClientPrevieBillsHistory:hover{
+    text-decoration: underline;
+    font-size: 15px;
+    color: #e47911;
+}
+.ClientPreviewBillsAddress{
+    border: 1px solid #62A2D0;
+    border-radius: 3px 3px 3px 3px;
+    margin: 0 auto 20px;
+    min-height: 50px;
+    width: 640px;
+}
+.ClientPreviewBillslblUserInfor{
+    color: #301B00;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 15px;
+    text-transform: uppercase;
+}
+.ClientPreviewBillsLable{
+    font-size: 16px;
+}
+.ClientPreviewBillOutput{
+    color: #008000;
+    font-weight: bold;
+}
+.ClientPreviewBillsBoth{
+    padding: 2px 30px;
+}
+.ClientPreviewBillsOrdering{
+    background: none repeat scroll 0 0 #62A2D0;
+    color: white;
+    float: right;
+    font-size: 18px;
+    margin: -19px 15px 0;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    -moz-border-radius: 3px;
+}
+.ClientPreviewBillsOrdering:hover{
+    background: none repeat scroll 0 0 #45749E;
+    color: white;
+    float: right;
+    font-size: 18px;
+    margin: -19px 15px 0;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    -moz-border-radius: 3px;
+}
+.ClientPreviewBillsBack{
+    background: none repeat scroll 0 0 #62A2D0;
+    color: white;
+    float: right;
+    font-size: 18px;
+    margin: -19px 0 0;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 75px;
+    -moz-border-radius: 3px;
+}
+.ClientPreviewBillsBack:hover{
+    background: none repeat scroll 0 0 #45749E;
+    color: white;
+    float: right;
+    font-size: 18px;
+    margin: -19px 0 0;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 75px;
+    -moz-border-radius: 3px;
+}
+
+/*ClientPrivewBills*/
+.HistoryOrdersTable{
+    width: 100%;
+    border: 1px #62A2D0 solid;
+}
+.HistoryOrdersTable tr{
+    border-top: 1px #62A2D0 solid;
+}
+.HistoryOrdersTable th{
+    background: none repeat scroll 0 0 #62A2D0;
+    color: white;
+    text-align: left;
+}
+.HistoryOrdersTable td{
+    border-left: 1px solid #62A2D0;
+    border-top: 1px solid #62A2D0;
+}
+.HistoryOrdersTableTdId{
+    width: 50px;
+}
+.HistoryOrdersTableTdDate{
+    width: 300px;
+}
+.HistoryOrdersTableTdMoney{
+    width: 100px;
+}
+.HistoryOrdersTableTdStatus{
+    width: 100px;
+}
+
+/*DetailsHistoryOrder Page*/
+.DetailsHistoryOrderBack{
+    background: none repeat scroll 0 0 #62A2D0;
+    color: white;
+    float: right;
+    margin: 1px 0;
+    padding: 5px 20px;
+    text-decoration: none;
+}
+.DetailsHistoryOrderBack:hover{
+    color: white;
+    background: #45749E;
 }

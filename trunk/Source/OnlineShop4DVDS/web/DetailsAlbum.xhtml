@@ -11,6 +11,92 @@
         <ui:composition template="MasterPage.xhtml">
             <ui:define name="contents">
                 <h:form>
+                    <h:inputHidden value="#{detailAlbumManager.addAlbumID(param['id'])}"></h:inputHidden>
+                    <script type="text/javascript" src="Script/jwplayer.js"></script>
+                    <div class="DetailsAlbumBackgroundAudio"></div>
+                    <div class="DetailsAlbumAudio">
+                        <h4 class="titleAudioVideo"></h4>
+                        <img id="closePlayer" style="float: right; margin-left: 490px; margin-top: -35px; position: fixed;" src="Images/close.png" alt=""></img>
+                        <div id='defaultmediaplayer'></div>
+                        <div id="listItem" class="listItemPlayer">
+                            <h4 class="DetailsAlbumPlayerH4">List products</h4>
+                            <div style="max-height: 150px; overflow-x: hidden; overflow-y: scroll;">
+                                <ui:repeat value="#{detailAlbumManager.showDataStore()}" var="dataStore">
+                                    <a onclick="playAudioAndVideo('#{dataStore.dataName}','#{dataStore.dataPath}','#{dataStore.dataImage}', true)" class="aItemInList" href="">${dataStore.dataName}</a>
+                                </ui:repeat>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(window).ready(function(){
+                            resizeAudioPlayer();
+                        });
+                        $(window).resize(function(){
+                            resizeAudioPlayer();
+                        });
+                        function resizeAudioPlayer(){
+                            $(".DetailsAlbumAudio").css('top', ($(".DetailsAlbumBackgroundAudio").height()-$(".DetailsAlbumAudio").height())/2)
+                            $(".DetailsAlbumAudio").css('left', ($(".DetailsAlbumBackgroundAudio").width()-$(".DetailsAlbumAudio").width())/2)
+                        }
+                        
+                        function playAudioAndVideo(sName, sFile, sImage, bdisable){
+                            $(".titleAudioVideo").text("Title: " + sName);
+                            if(bdisable){
+                                $("#listItem").css('display', 'block');
+                            }else{
+                                $("#listItem").css('display', 'none');
+                            }
+                            var smp3 = sFile.lastIndexOf('.mp3');
+                            var swma = sFile.lastIndexOf('.wma');
+                            if (smp3 >= 0)
+                            {
+                                jwplayer('defaultmediaplayer').setup({
+                                    'style': 'DetailsAlbumAudio',
+                                    'flashplayer': 'Script/player.swf',
+                                    'id': 'playerID',
+                                    'autoplay': 'true',
+                                    'width': '500',
+                                    'height': '60',
+                                    'file': sFile,
+                                    'repeat': 'always'
+                                });
+                            }else{
+                                if(swma >= 0){
+                                    jwplayer('defaultmediaplayer').setup({
+                                        'style': 'DetailsAlbumAudio',
+                                        'flashplayer': 'Script/player.swf',
+                                        'id': 'playerID',
+                                        'autoplay': 'true',
+                                        'width': '500',
+                                        'height': '60',
+                                        'file': sFile,
+                                        'repeat': 'always'
+                                    });
+                                }else{
+                                    jwplayer('defaultmediaplayer').setup({
+                                        'style': 'DetailsAlbumAudio',
+                                        'flashplayer': 'Script/player.swf',
+                                        'id': 'playerID',
+                                        'autoplay': 'true',
+                                        'image': sImage,
+                                        'width': '500',
+                                        'height': '400',
+                                        'file': sFile,
+                                        'repeat': 'always'
+                                    });
+                                }
+                            }
+                            $('.DetailsAlbumBackgroundAudio').css('opacity', '0.5').fadeIn(500);
+                            $('.DetailsAlbumAudio').fadeIn(500);
+                            resizeAudioPlayer();
+                        }
+                        $('#closePlayer').click(function(){
+                            playAudioAndVideo('', '', 'sImage', false);
+                            $("#listItem").css('display', 'none');
+                            $('.DetailsAlbumBackgroundAudio').css('opacity', '0.5').fadeOut(500);
+                            $('.DetailsAlbumAudio').fadeOut(200);
+                        });
+                    </script>
                     <c:if test="#{cartManager.displayMessage}">
                         <div class="DetailsAlbumMessage">
                             <c:if test="#{cartManager.typeMessage}">
@@ -22,7 +108,6 @@
                             #{cartManager.messageEmpty()}
                         </div>
                     </c:if>
-                    <h:inputHidden value="#{detailAlbumManager.addAlbumID(param['id'])}"></h:inputHidden>
                     <ui:repeat value="#{detailAlbumManager.showInforAlbum()}" var="album">
                         <div class="DefaultAllbox">
                             <div class="DetailsAlbumImage">
@@ -38,19 +123,19 @@
                                 <p style="height: 20px;"></p>
                                 #{cartManager.valuePageOld("DetailsAlbum.xhtml?id=", param['id'])}
                                 <p class="DetailsAlbumAddtoCart"><a href="addToCartPage.xhtml?DataStoreId=#{album.albumID}">Add to Cart</a></p>
-                                <p class="DetailsAlbumPlay"><a href="">Play all</a></p>
+                                <p class="DetailsAlbumPlay"><a onclick="playAudioAndVideo('#{detailAlbumManager.firstTitle}', '#{detailAlbumManager.firstPath}', '#{detailAlbumManager.firstImage}', true)" href="">Play all</a></p>
                                 <p class="DetailsAlbumAddtoList"><a href="#">Add to my list</a></p>
                             </div>
                             <div class="DetailsAlbumDetail">
                                 <h2 class="DetailsAlbumItmeDataStoreH2">Product details in the album</h2>
                                 <ui:repeat value="#{detailAlbumManager.showDataStore()}" var="listDataStore">
                                     <div class="DetailsAlbumItemDataStore">
-                                        <div class="DetailsAlbumItemDataStoreImg"><img alt="" src="Images/pic1.jpg" width="75px" height="75px"></img></div>
+                                        <div class="DetailsAlbumItemDataStoreImg"><img alt="" src="#{listDataStore.dataImage}" width="50px" height="75px"></img></div>
                                         <div class="DetailsAlbumItemDataStoreName">#{listDataStore.dataName}</div>
                                         <div class="DetailsAlbumItemDataStoreDesciptio">Supplier: #{detailAlbumManager.showNameSuppllier()}</div>
                                         <div class="DetailsAlbumItemDataStoreIcon">
                                             <a href="#"><img class="DetailsAlbumItemDataStoreIconDownload" title="Click to download" alt="" src="Images/download.gif"></img></a>
-                                            <a href="#"><img class="DetailsAlbumItemDataStoreIconPlay" title="Click to Play" alt="" src="Images/playAlone.gif"></img></a>
+                                            <a onclick="playAudioAndVideo('#{listDataStore.dataName}', '#{listDataStore.dataPath}','#{listDataStore.dataImage}', false)" href=""><img class="DetailsAlbumItemDataStoreIconPlay" title="Click to Play" alt="" src="Images/playAlone.gif"></img></a>
                                             <a href="#"><img class="DetailsAlbumItemDataStoreIconAddtoList" title="Click to add to my playlist " alt="" src="Images/AddtoList.jpg"></img></a>
                                         </div>
                                     </div>

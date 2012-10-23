@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        <ui:composition template="MasterPage.xhtml">
+            <ui:define name="contents">
+                <script type="text/javascript" language="text/javascript">
+                    function checkPAIEmpty(){
+                        var uname = $("#formPAI\\:txtPAIName").val();
+                        if(uname == "" || uname == null){
+                            $("#formPAI\\:lblPAIName").text("Not Null");
+                            $("#formPAI\\:txtPAIName").focus();
+                            return false;
+                        }
+                        else{
+                            $("#formPAI\\:lblPAIName").text("");
+                        }
+                        var uPhone = $("#formPAI\\:txtPAIPhone").val();
+                        if(uPhone == "" || uPhone == null){
+                            $("#formPAI\\:lblPAIPhone").text("Not Null");
+                            $("#formPAI\\:txtPAIPhone").focus();
+                            return false;
+                        }
+                        else{
+                            if(isNaN(uPhone)){
+                                $("#formPAI\\:lblPAIPhone").text("Is number");
+                                $("#formPAI\\:txtPAIPhone").focus();
+                                return false;
+                            }
+                            else{
+                                $("#formPAI\\:lblPAIPhone").text("");
+                            }
+                        }
+                        var uname = $("#formPAI\\:txtPAIAddress").val();
+                        if(uname == "" || uname == null){
+                            $("#formPAI\\:lblPAIAddress").text("Not Null");
+                            $("#formPAI\\:txtPAIAddress").focus();
+                            return false;
+                        }
+                        else{
+                            $("#formPAI\\:lblPAIAddress").text("");
+                        }
+                        return true;
+                    }
+                </script>
+                <h:form id="formPAI">
+                    <c:if test="#{(session.getAttribute('sUser') == null) || (session.getAttribute('sUser') == '')}">
+                        #{cartManager.redirectLogin()}
+                    </c:if>
+                    <div class="DefaultAllbox">
+                        <h2 class="PAIlblInformationH2">Import user information</h2>
+                        <h:commandLink class="PAIMLoadContact" value="Load Contact" action="#{pAIManagerBean.loadInforFromData()}"></h:commandLink>
+                        <div style="float: left;">
+                            <div class="PAIMlblTitle">First and last name:</div>
+                            <h:inputText id="txtPAIName" style="width: 200px; float: left; margin: 5px;" value="#{pAIManagerBean.name}"></h:inputText>
+                            <h:outputLabel id="lblPAIName" class="PAIlblError" value=""></h:outputLabel>
+                        </div>
+                        <div  style="float: left;">
+                            <div class="PAIMlblTitle">Phone:</div>
+                            <h:inputText id="txtPAIPhone" style="width: 200px; float: left; margin: 5px;" value="#{pAIManagerBean.phone}"></h:inputText>
+                            <h:outputLabel id="lblPAIPhone" class="PAIlblError" value=""></h:outputLabel>
+                        </div>
+                        <div  style="float: left;">
+                            <div class="PAIMlblTitle">Address:</div>
+                            <h:inputText id="txtPAIAddress" style="width: 200px; float: left; margin: 5px;" value="#{pAIManagerBean.address}"></h:inputText>
+                            <h:outputLabel id="lblPAIAddress" class="PAIlblError" value=""></h:outputLabel>
+                        </div>
+                        <div style="float: left; width: 100%">
+                            <h:commandLink onclick="return checkPAIEmpty()" class="PAIMContinue" value="Continue" action="#{pAIManagerBean.saveInforForData()}"></h:commandLink>
+                            <a href="DefaultCart.xhtml" class="PAIBack">Back</a>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
