@@ -57,9 +57,6 @@ h1 {
     background:#413503;
     padding:2px 7px;
 }
-.headerTop {
-    background:#2c2c2c;
-}
 .headerPic {
     float:left;
     padding:0 30px 0 0;
@@ -91,13 +88,13 @@ h1 {
 .menu a:hover {
     color:#ffffff;
     font-size:12px;
-    background:#4393de;
+    background:#666;
     text-decoration:none;
 }
 .menu #active a {
     color:#ffffff;
     font-size:12px;
-    background:#4393de;
+    background:#45749e;
     text-decoration:none;
 } 
 .icons {
@@ -440,9 +437,6 @@ h1 {
 }
 /*-------------------------------------------------------------------------------------*/
 /*chienvh*/
-#sidebar1 {
-    background:#FFFFFF;
-} 
 #sidebar1 li {
     border-bottom: 1px dotted #d1d0d1;
     color: #DAD6D1;
@@ -452,8 +446,8 @@ h1 {
 }
 #sidebar1 {
     float: left;
-    width: 200px;
-
+    width: 210px;
+    border-right: 1px solid #D1D0D1;
 }
 #sidebar1 ul {
     padding-left: 0px;
@@ -517,10 +511,7 @@ h1 {
 .boxLink a {
     color: #fff;
     background-color: #e47911;
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding: 3px 8px;
     border-radius: 3px;
     cursor: pointer;
     font-size: 12px;
@@ -531,7 +522,7 @@ h1 {
 .boxLink a:hover {
     font-size:12px;
     font-weight:bold;
-    color: antiquewhite;
+    background-color: #45749e;
 }
 #container { 
     width: 980px;  
@@ -678,4 +669,16 @@ h1 {
     font-size: 18px;
     margin: 0;
     padding-left: 20px;
+}
+#bannerdemo2{
+    width: 213px;
+}
+#bannerdemo2 ul li{
+    border-bottom: 2px solid sandybrown;
+}
+#bannerdemo2 ul li img{
+ width: 200px;
+}
+.headerTop {
+    background:#e47911;
 }
