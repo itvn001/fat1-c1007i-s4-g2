@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -142,7 +143,15 @@ public class Malbum_Edit {
                     "Error System.", "Please try again!", "");
         }
     }
+    private UIInput intxtDetails;
 
+    public UIInput getIntxtDetails() {
+        return intxtDetails;
+    }
+
+    public void setIntxtDetails(UIInput intxtDetails) {
+        this.intxtDetails = intxtDetails;
+    }
     /**
      * Method Save data Album
      */
@@ -155,7 +164,6 @@ public class Malbum_Edit {
         String[] get2 = requestParameterValuesMap.get("intxtidAlbum");
         String[] get3 = requestParameterValuesMap.get("intxtpricealbum");
         String[] get4 = requestParameterValuesMap.get("intxtquantity");
-        String[] get5 = requestParameterValuesMap.get("intxtDetailsAlbum");
         // Initial class
         dvd.entity.Album albs = new dvd.entity.Album();
         // Set data to class
@@ -163,7 +171,7 @@ public class Malbum_Edit {
         albs.setAlbumID(Integer.parseInt(get2[0]));
         albs.setAlbumPrice(get3[0]);
         albs.setQuantity(Integer.parseInt(get4[0]));
-        albs.setAlbumDetails(get5[0]);
+        albs.setAlbumDetails(this.intxtDetails.getValue().toString());
         // Action Update to database
         if (this.albumhand.UpdateAlbum(albs) == true) {
             this.message = dvd.libraries.UImessage.generalMessage("blue",

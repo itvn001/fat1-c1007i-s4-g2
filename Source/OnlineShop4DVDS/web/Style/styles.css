@@ -619,8 +619,11 @@ h1 {
 .DetailsAlbumItemDataStore{
     margin-top: 5px;
     min-height: 20px;
-    padding: 3px;
-    width: 645px;
+    padding-left: 20px;
+    width: 97%;
+    float: left;
+    border-bottom: 1px solid #d1d0d1;
+    
 }
 .DetailsAlbumItmeDataStoreH2{
     border-bottom: 1px solid #d1d0d1;
@@ -665,11 +668,11 @@ h1 {
 
 }
 .DetailsAlbumMessage{
-    background: none repeat scroll 0 0 #62A2D0;
+    background: none repeat scroll 0 0 #e47911;
     cursor: alias;
     height: 50px;
     left: 0;
-    opacity: 0.95;
+    opacity: 0.8;
     position: fixed;
     top: 0;
     width: 100%;

@@ -136,7 +136,7 @@
                                 <h2 class="DetailsAlbumItmeDataStoreH2">Item in the album</h2>
                                 <ui:repeat value="#{detailAlbumManager.showDataStore()}" var="listDataStore">
                                     <div class="DetailsAlbumItemDataStore">
-                                        <div class="DetailsAlbumItemDataStoreImg"><img alt="" src="#{listDataStore.dataImage}" width="50px" height="30px"></img></div>
+                                        <div class="DetailsAlbumItemDataStoreImg"><img alt="" src="#{listDataStore.dataImage}" width="50px" height="50px"></img></div>
                                         <div class="DetailsAlbumItemDataStoreName">#{listDataStore.dataName}</div>
                                         <div class="DetailsAlbumItemDataStoreIcon">
                                             <a onclick="playAudioAndVideo('#{listDataStore.dataName}', '#{listDataStore.dataPath}','#{listDataStore.dataImage}', false)" href="">
