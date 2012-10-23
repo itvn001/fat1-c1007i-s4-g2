@@ -41,11 +41,15 @@ public class HistoryOrdersManager {
         }
         return listO;
     }
-    public boolean checkStatus(int _Status){
-        if(_Status ==1){
-            return true;
+    public String checkStatus(int _Status){
+        if(_Status == 0){
+            return "<td class=\"HistoryOrdersTableTdStatus\"><a onclick=\"return confirm('Cancel order?');\" style=\"background: none repeat scroll 0 0 green;color: yellow;padding: 1px 10px;text-align: center;\" href=\"\">Waiting</a></td>";
+        }else if(_Status == 1){
+            return "<td class=\"HistoryOrdersTableTdStatus\"><span style=\"background: none repeat scroll 0 0 inactivecaption;color: green;padding: 1px 9px;text-align: center;\">Transportding</span></td>";
+        }else if(_Status == 2){
+            return "<td class=\"HistoryOrdersTableTdStatus\"><span style=\"background: none repeat scroll 0 0 inactivecaption;color: green;padding: 1px 9px;text-align: center;\">Done</span></td>";
         }else{
-            return false;
+            return "<td class=\"HistoryOrdersTableTdStatus\"><span style=\"background: none repeat scroll 0 0 inactivecaption;color: green;padding: 1px 9px;text-align: center;\">Done</span></td>";
         }
     }
 }
