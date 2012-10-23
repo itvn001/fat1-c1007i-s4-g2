@@ -38,7 +38,7 @@ h1 {
 .quantityCart{
     color: Aqua;
     float: right;
-    margin: 8px -68px;
+    margin: 9px -57px;
     text-align: center;
     width: 26px;
 }
@@ -518,6 +518,22 @@ h1 {
     font-weight: bold;
     text-decoration: none;
     display: inline;
+}
+.abtn{
+    color: #fff;
+    background-color: #e47911;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline;
+    margin-right: 3px;
+}
+.abtn:hover{
+    color: #fff;
+    background-color: #45749e;
 }
 .boxLink a:hover {
     font-size:12px;

@@ -123,10 +123,11 @@
                                 <p style="color: #818181;">Quantity: <h:outputLabel style="color: #175A75;" value="#{album.quantity}"></h:outputLabel></p>
                                 #{cartManager.valuePageOld("DetailsAlbum.xhtml?id=", param['id'])}
                                 <div style="float: left">
-                                    <p class="DetailsAlbumAddtoCart"><a href="addToCartPage.xhtml?DataStoreId=#{album.albumID}"> > Add to Cart</a></p>
-                                    <p class="DetailsAlbumAddtoCart"><a onclick="playAudioAndVideo('#{detailAlbumManager.firstTitle}', 
-                                        '#{detailAlbumManager.firstPath}', '#{detailAlbumManager.firstImage}', true)" href=""> > Play all</a><br/></p>
-                                    <p class="DetailsAlbumAddtoCart"><a href="#"> > Add to my list</a></p>
+                                    <p class=""><a class="abtn" href="addToCartPage.xhtml?DataStoreId=#{album.albumID}">Add to Cart</a>
+                                        <a class="abtn" onclick="playAudioAndVideo('#{detailAlbumManager.firstTitle}', 
+                                        '#{detailAlbumManager.firstPath}', '#{detailAlbumManager.firstImage}', true)" href="">Play all</a>
+                                        <a class="abtn" href="#">Add to my list</a>
+                                    </p>
                                 </div>
                             </div>
                             <div class="DetailsAlbumDetail">
