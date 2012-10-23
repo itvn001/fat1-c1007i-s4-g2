@@ -84,8 +84,11 @@ public class CartManager {
 
     public double totalMoney() {
         double totalMoney = 0;
-        for (Album album : listDataStore) {
-            totalMoney += (album.getQuantity() * Double.parseDouble(album.getAlbumPrice()));
+        try {
+            for (Album album : listDataStore) {
+                totalMoney += (album.getQuantity() * Double.parseDouble(album.getAlbumPrice()));
+            }
+        } catch (Exception e) {
         }
         return totalMoney;
     }
@@ -126,20 +129,20 @@ public class CartManager {
                 }
             } else {
                 MessageManager mm = new MessageManager();
-                mm.setDisplayMessage(false);
+                mm.setDisplayMessage(true);
                 mm.setMessage("Ordering process error!");
                 mm.setTypeMessage(false);
                 return "ClientPrevieBills.xhtml?face-redirect=true";
             }
             MessageManager mm = new MessageManager();
-            mm.setDisplayMessage(false);
+            mm.setDisplayMessage(true);
             mm.setMessage("Ordering process success!");
             mm.setTypeMessage(true);
             this.listDataStore = new ArrayList<Album>();
             return "HistoryOrders.xhtml?face-redirect=true";
         } catch (Exception e) {
             MessageManager mm = new MessageManager();
-            mm.setDisplayMessage(false);
+            mm.setDisplayMessage(true);
             mm.setMessage("Ordering process error!");
             mm.setTypeMessage(false);
             return "ClientPrevieBills.xhtml?face-redirect=true";

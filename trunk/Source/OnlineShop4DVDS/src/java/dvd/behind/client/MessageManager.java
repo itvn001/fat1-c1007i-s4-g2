@@ -26,7 +26,7 @@ public class MessageManager {
 
     public void resetMessage(){
         this.message = "";
-        displayMessage = true;
+        displayMessage = false;
     }
     
     /**

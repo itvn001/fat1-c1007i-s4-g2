@@ -32,14 +32,19 @@ public class UsersManager {
         List<Users> listUser = data.getDataWithProc("loadUserInforFromData", "?", paramvalues, Users.class);
         return listUser;
     }
-    public void saveInforForData(String _UserId, String _Name, String _Phone, String _Address){
+    public boolean saveInforForData(String _UserId, String _Name, String _Phone, String _Address){
         try {
             String squery = "{call saveUserInforIntoData('"+_UserId+"', N'"+_Name+"','"+_Phone+"', N'"+_Address+"')}";
             cl = conn.GetConnect().prepareCall(squery);
-            cl.executeUpdate();
+            int n = cl.executeUpdate();
+            if(n > 0){
+                return true;
+            }else{
+                return false;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(UsersManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        return false;
     }
 }

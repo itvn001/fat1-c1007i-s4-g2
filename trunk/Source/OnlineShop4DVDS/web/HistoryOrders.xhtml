@@ -11,15 +11,15 @@
         <ui:composition template="MasterPage.xhtml">
             <ui:define name="contents">
                 <h:form>
-                    <c:if test="#{messageManager.displayMessage}">
+                    <c:if test="#{historyOrdersManager.displayMessage}">
                         <div class="DetailsAlbumMessage">
-                            <c:if test="#{messageManager.typeMessage}">
-                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{messageManager.message}</h5>
+                            <c:if test="#{historyOrdersManager.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{historyOrdersManager.message}</h5>
                             </c:if>
-                            <c:if test="#{!messageManager.typeMessage}">
-                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{messageManager.message}</h5>
+                            <c:if test="#{!historyOrdersManager.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{historyOrdersManager.message}</h5>
                             </c:if>
-                            #{messageManager.resetMessage()}
+                            #{historyOrdersManager.resetMessage()}
                         </div>
                     </c:if>
                     <div class="DefaultAllbox">

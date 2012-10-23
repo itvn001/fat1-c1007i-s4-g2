@@ -50,6 +50,17 @@
                     }
                 </script>
                 <h:form id="formPAI">
+                    <c:if test="#{pAIManagerBean.displayMessage}">
+                        <div class="DetailsAlbumMessage">
+                            <c:if test="#{pAIManagerBean.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{pAIManagerBean.message}</h5>
+                            </c:if>
+                            <c:if test="#{!pAIManagerBean.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{pAIManagerBean.message}</h5>
+                            </c:if>
+                            #{pAIManagerBean.resetMessage()}
+                        </div>
+                    </c:if>
                     <c:if test="#{(session.getAttribute('sUser') == null) || (session.getAttribute('sUser') == '')}">
                         #{cartManager.redirectLogin()}
                     </c:if>
