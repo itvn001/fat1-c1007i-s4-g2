@@ -111,32 +111,34 @@
                     <ui:repeat value="#{detailAlbumManager.showInforAlbum()}" var="album">
                         <div class="DefaultAllbox">
                             <div class="DetailsAlbumImage">
-                                <img src="#{album.albumImage}" alt="" title="#{album.albumName}" width="225px" height="342px"></img>
+                                <img src="#{album.albumImage}" alt="" title="#{album.albumName}" 
+                                     width="170px"></img>
                             </div>
                             <div class="DetailsAlbumInfor">
                                 <h3 class="DetailsAlbumH2">#{album.albumName}</h3>
                                 <p style="color: #818181;">Category Name: <h:outputLabel style="color: #175A75;" value="#{album.cateName}"></h:outputLabel></p>
                                 <p style="color: #818181;">Create Date: <h:outputLabel style="color: #175A75;" value="#{album.albumDateCreate}"></h:outputLabel></p>
-                                <p style="color: #818181;">Description: <h:outputLabel style="color: #175A75;" value="#{album.albumDetails}"></h:outputLabel></p>
+                                <p style="color: #818181;">Supplier: <h:outputLabel style="color: #175A75;" ></h:outputLabel></p>
                                 <p style="color: #818181;">Price: $<h:outputLabel style="color: #175A75;" value="#{album.albumPrice}"></h:outputLabel></p>
                                 <p style="color: #818181;">Quantity: <h:outputLabel style="color: #175A75;" value="#{album.quantity}"></h:outputLabel></p>
-                                <p style="height: 20px;"></p>
                                 #{cartManager.valuePageOld("DetailsAlbum.xhtml?id=", param['id'])}
-                                <p class="DetailsAlbumAddtoCart"><a href="addToCartPage.xhtml?DataStoreId=#{album.albumID}">Add to Cart</a></p>
-                                <p class="DetailsAlbumPlay"><a onclick="playAudioAndVideo('#{detailAlbumManager.firstTitle}', '#{detailAlbumManager.firstPath}', '#{detailAlbumManager.firstImage}', true)" href="">Play all</a></p>
-                                <p class="DetailsAlbumAddtoList"><a href="#">Add to my list</a></p>
+                                <p class="DetailsAlbumAddtoCart"><a href="addToCartPage.xhtml?DataStoreId=#{album.albumID}"> > Add to Cart</a></p><br/>
+                                <p class="DetailsAlbumAddtoCart"><a onclick="playAudioAndVideo('#{detailAlbumManager.firstTitle}', 
+                                    '#{detailAlbumManager.firstPath}', '#{detailAlbumManager.firstImage}', true)" href=""> > Play all</a></p><br/>
+                                <p class="DetailsAlbumAddtoCart"><a href="#"> > Add to my list</a></p>
                             </div>
                             <div class="DetailsAlbumDetail">
-                                <h2 class="DetailsAlbumItmeDataStoreH2">Product details in the album</h2>
+                                <span style="color: #666; font-style: italic">Description:</span><br/>
+                                <h:outputText value="#{album.albumDetails}" escape="false" />
+                                <h2 class="DetailsAlbumItmeDataStoreH2">Item in the album</h2>
                                 <ui:repeat value="#{detailAlbumManager.showDataStore()}" var="listDataStore">
                                     <div class="DetailsAlbumItemDataStore">
-                                        <div class="DetailsAlbumItemDataStoreImg"><img alt="" src="#{listDataStore.dataImage}" width="50px" height="75px"></img></div>
+                                        <div class="DetailsAlbumItemDataStoreImg"><img alt="" src="#{listDataStore.dataImage}" width="50px" height="30px"></img></div>
                                         <div class="DetailsAlbumItemDataStoreName">#{listDataStore.dataName}</div>
-                                        <div class="DetailsAlbumItemDataStoreDesciptio">Supplier: #{detailAlbumManager.showNameSuppllier()}</div>
                                         <div class="DetailsAlbumItemDataStoreIcon">
-                                            <a href="#"><img class="DetailsAlbumItemDataStoreIconDownload" title="Click to download" alt="" src="Images/download.gif"></img></a>
-                                            <a onclick="playAudioAndVideo('#{listDataStore.dataName}', '#{listDataStore.dataPath}','#{listDataStore.dataImage}', false)" href=""><img class="DetailsAlbumItemDataStoreIconPlay" title="Click to Play" alt="" src="Images/playAlone.gif"></img></a>
-                                            <a href="#"><img class="DetailsAlbumItemDataStoreIconAddtoList" title="Click to add to my playlist " alt="" src="Images/AddtoList.jpg"></img></a>
+                                            <a onclick="playAudioAndVideo('#{listDataStore.dataName}', '#{listDataStore.dataPath}','#{listDataStore.dataImage}', false)" href="">
+                                                <img class="DetailsAlbumItemDataStoreIconPlay" title="Click to Play" alt="" src="Images/PlayIcon.png"></img></a>
+                                            <a href="#"><img class="DetailsAlbumItemDataStoreIconAddtoList" title="Click to add to my playlist " alt="" src="Images/add_icon.gif"></img></a>
                                         </div>
                                     </div>
                                 </ui:repeat>
