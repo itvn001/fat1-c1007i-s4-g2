@@ -5,6 +5,7 @@
 package dvd.behind.dashboard;
 
 import dvd.business.dashboard.UserAdmin;
+import dvd.libraries.Encryption;
 import java.io.IOException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -57,7 +58,9 @@ public class Login {
     HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
     public String btnlogin_Click() {
         this.userHand = new UserAdmin();
-        List<dvd.entity.UserAdmin> listLogin = this.userHand.login(this.username, this.password);
+        dvd.libraries.Encryption en = new Encryption();
+        String passEncrypt = en.Encript_Pass(this.password);
+        List<dvd.entity.UserAdmin> listLogin = this.userHand.login(this.username, passEncrypt);
         if (listLogin == null) {
             return "#";
         } else {
