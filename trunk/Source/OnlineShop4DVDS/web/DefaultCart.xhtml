@@ -9,6 +9,9 @@
     </h:head>
     <h:body>
         <ui:composition template="MasterPage.xhtml">
+              <ui:define name="deSlide">
+                
+            </ui:define>
             <ui:define name="contents">
                 <h:form>
                     <script type="text/javascript">
@@ -29,42 +32,52 @@
                             <c:if test="#{!cartManager.typeMessage}">
                                 <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{cartManager.message}</h5>
                             </c:if>
-                        #{cartManager.messageEmpty()}
+                            #{cartManager.messageEmpty()}
                         </div>
                     </c:if>
-                    <a href="HistoryOrders.xhtml" style="float: right;padding: 3px 6px;text-decoration: underline;">Order History</a>
-                    <table style="width: 100%; border: 1px solid #2e74b2;">
+                    <table width="775px" style=" padding: 0; margin: 0; margin-left: -40px; margin-top: -11px">
                         <tr>
-                            <td colspan="7"><h3 class="DefaultCartH3">Buy product list</h3></td>
+                            <td colspan="7"><h3 class="DefaultCartH3">Buy product list</h3>
+
+                            </td>
                         </tr>
-                        <tr style="background: Lavender; color: SaddleBrown;">
-                            <td style="width: 10px; text-align: center;">ID</td>
-                            <td style="width: 60px; text-align: center;">Image</td>
-                            <td style="width: 200px; text-align: center;">Name</td>
-                            <td style="width: 50px; text-align: center;">Price</td>
-                            <td style="width: 20px; text-align: center;">Quantity</td>
-                            <td style="width: 42px; text-align: center;">Money</td>
-                            <td></td>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Quantity
+                            </th>
+                            <th>
+                                Money
+                            </th>
+                            <th>
+
+                            </th>
                         </tr>
                         <ui:repeat value="#{cartManager.listDataStore}" var="listItem">
-
+                           
                             <tr>
-                                <td colspan="7"><hr/></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 10px; text-align: center;">#{listItem.albumID}</td>
-                                <td style="width: 60px; text-align: center;"><a href="DetailsAlbum.xhtml?id=#{listItem.albumID}"><img src="${listItem.albumImage}" alt="" width="50px" height="70px" /></a></td>
+                                <td style="width: 10px; text-align: center;"><span class="numbercountS">#{listItem.albumID}</span></td>
+                                <td style="width: 60px; text-align: center;"><a href="DetailsAlbum.xhtml?id=#{listItem.albumID}"><img src="${listItem.albumImage}" alt="" width="40px" height="50px" /></a></td>
                                 <td class="DefaultCartName"><a href="DetailsAlbum.xhtml?id=#{listItem.albumID}">#{listItem.albumName}</a></td>
                                 <td style="width: 50px; text-align: center;">$#{listItem.albumPrice}</td>
                                 <td style="width: 20px; text-align: center;"><h:inputText style="text-align: center;width: 40px;" value="#{listItem.quantity}"></h:inputText></td>
                                 <td style="width: 42px; text-align: center;">$#{listItem.quantity*listItem.albumPrice}</td>
-                                <td style="width: 24px;"><a onclick="return confirm('You sure want to delete: #{listItem.albumName}?');" href="removeCartPage.xhtml?AlbumId=#{listItem.albumID}"><img src="Images/removeCart.png" alt="" title="Remove" /></a></td>
+                                <td style="width: 24px;"><a onclick="return confirm('You sure want to delete: #{listItem.albumName}?');"
+                                                            href="removeCartPage.xhtml?AlbumId=#{listItem.albumID}" style="color: #767676">Delete</a></td>
                             </tr>
-                                
                         </ui:repeat>
-                        <tr>
-                            <td colspan="7"><hr/></td>
-                        </tr>
+                      
                         <tr>
                             <td colspan="7" class="DefaultCartSave">
                                 <a onclick="return checkItemCart(#{cartManager.cartSize()})" class="DefaultCartSave" href="PersonalAuthenticationInformation.xhtml" >Continue</a>
@@ -72,13 +85,12 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="7"><hr/></td>
-                        </tr>
-                        <tr>
                             <td colspan="5" class="DefaultCartTotalMoney">Total Money:</td>
-                            <td colspan="2" class="DefaultCartTotalMoneys">$#{cartManager.totalMoney()}</td>
+                            <td colspan="2" class="DefaultCartTotalMoneys">$ #{cartManager.totalMoney()}</td>
                         </tr>
                     </table>
+                                       <a href="HistoryOrders.xhtml" style="float: right; padding-right: 3px;text-decoration: underline;
+                                          font-weight: 600; font-family: arial; color: #e47911">Order History</a>
                 </h:form>
             </ui:define>
         </ui:composition>

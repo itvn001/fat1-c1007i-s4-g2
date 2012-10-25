@@ -70,7 +70,7 @@ h1 {
     float:left;
 }
 .menu ul {
-    padding:10px 0;
+    padding:6px 0;
     margin:0;
 }
 .menu li {
@@ -100,7 +100,7 @@ h1 {
 } 
 .icons {
     float:right;
-    background:#FFFFFF;
+    background:#e47911;
     margin:4px 3px 0px 3px;
 }
 .icons li {
@@ -194,18 +194,23 @@ h1 {
 
 /*Page Default Cart*/
 .DefaultCartH3{
-    background: none repeat scroll 0 0 #62A2D0;
-    color: white;
-    padding: 10px;
+    background: none repeat scroll 0 0 #97be68;
+    color: #fff;
+    padding: 5px;
     text-align: center;
+    font-family: tahoma;
+    font-weight: normal;
+    font-size: 17px;
 }
 .DefaultCartName{
     width: 200px;
     text-align: left;
 }
 .DefaultCartName a{
-    color: -moz-nativehyperlinktext;
+    color: #333;
     text-decoration: none;
+    font-family: arial;
+    font-weight: 600;
 }
 .DefaultCartName a:hover{
     text-decoration: underline;
@@ -218,48 +223,63 @@ h1 {
     -moz-border-top-colors: none;
     border-color: #D1D0D1;
     border-style: solid none solid solid;
-    border-width: 1px 0 1px 1px;
+    border-width: 1px 0 1px 0;
     padding: 10px;
     text-align: right;
-    color: Tomato;
+    color: #333;
+    font-weight: 400;
+    line-height: 1.47em;
 }
 .DefaultCartTotalMoneys{
     border: 1px solid #D1D0D1;
     border-left: 0px;
-    color: Tomato;
+    color: red;
+    font-weight: 600;
+    font-family: tahoma;
 }
 .DefaultCartSave a{
-    background: none repeat scroll 0 0 #62A2D0;
+    background: none repeat scroll 0 0 #97ce68;
     color: white;
     float: right;
     font-weight: 600;
     margin: 0 4px 0 0;
-    padding: 5px 25px;
+    padding: 4px 15px;
+    border-radius:2px;
     text-align: center;
     text-decoration: none;
 }
 .DefaultCartSave a:hover{
-    background: none repeat scroll 0 0 #45749E;
+    background: none repeat scroll 0 0 #6bcbca;
 }
 .PAIlblInformationH2{
-    background: none repeat scroll 0 0 #62A2D0;
-    border: medium none;
-    color: white;
-    font-size: 23px;
+   background: none repeat scroll 0 0 #6bcbca;
+    color: #FDFDFD;
+    padding: 5px;
+    text-align: center;
+    font-family: tahoma;
     font-weight: normal;
+    font-size: 17px;
 }
 .PAIMlblTitle{
     float: left;
-    font-family: verdana;
+    font-family: arial;
     margin: 5px;
-    padding-left: 52px;
+    line-height: 1.37em;
+    padding-left: 100px;
+    font-weight: 600;
+    color: #333;
+    font-size: 12px;
     width: 200px;
 }
 .PAIMLoadContact{
     float: right;
     margin-left: 12px;
-    margin-top: -15px;
+    margin-top: -10px;
     text-decoration: none;
+    font-family: arial;
+    color: #666;
+    font-weight: 600;
+    font-size: 10px;
 }
 .PAIMContinue{
     background: none repeat scroll 0 0 #62A2D0;
@@ -276,17 +296,18 @@ h1 {
     color: white;
 }
 .PAIBack{
-    background: none repeat scroll 0 0 #62A2D0;
+    background: none repeat scroll 0 0 #6bcbca;
     color: white;
     float: right;
-    margin: 5px -190px;
-    padding: 7px 10px;
+    font-weight: 600;
+    margin: 0 4px 0 0;
+    padding: 4px 15px;
+    border-radius:2px;
     text-align: center;
     text-decoration: none;
-    width: 75px;
 }
 .PAIBack:hover{
-    background: #45749E;
+    background: #6bcbca;
     color: white;
 }
 .PAIlblError{
@@ -389,8 +410,6 @@ h1 {
 
 /*ClientPrivewBills*/
 .HistoryOrdersTable{
-    border: 1px solid #62A2D0;
-    text-align: center;
     width: 100%;
 }
 .HistoryOrdersTable tr{
@@ -495,6 +514,8 @@ h1 {
 }
 .DefaultPaging{
     text-align: center;
+    margin-top: 5px;
+    padding-left: 500px;
     float: left;
 }
 .box {
@@ -555,7 +576,7 @@ h1 {
     background-color: #6bcbca;
 }
 .boxLink a:hover {
-    font-size:12px;
+   
     font-weight:bold;
     background-color: #6bcbca;
 }

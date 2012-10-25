@@ -9,6 +9,9 @@
     </h:head>
     <h:body>
         <ui:composition template="MasterPage.xhtml">
+            <ui:define name="deSlide">
+
+            </ui:define>
             <ui:define name="contents">
                 <h:form>
                     <c:if test="#{historyOrdersManager.displayMessage}">
@@ -22,24 +25,33 @@
                             #{historyOrdersManager.resetMessage()}
                         </div>
                     </c:if>
-                    <div class="DefaultAllbox">
-                        <table class="HistoryOrdersTable" cellspacing="0" cellpadding="2">
+                    <table id="tbhistoty" width="775px" style=" padding: 0; margin: 0; margin-left: -40px; margin-top: -11px">
+                        <tr>
+                            <td colspan="7"><h3 class="DefaultCartH3" style="background-color:#666">Order History</h3>
+
+                            </td>
+                        </tr>
+                        <tr style="padding-bottom: 10px">
+                            <th>CODE</th>
+                            <th>Date Order</th>
+                            <th>Total money</th>
+                            <th>Status</th>
+                        </tr>
+                        <ui:repeat value="#{historyOrdersManager.listOrder()}" var="listOrder">
                             <tr>
-                                <th class="HistoryOrdersTableTdId">ID</th>
-                                <th class="HistoryOrdersTableTdDate">Date Time</th>
-                                <th class="HistoryOrdersTableTdMoney">Total money</th>
-                                <th class="HistoryOrdersTableTdStatus">Status</th>
+                                <td align="center">#{listOrder.orderID}</td>
+                                <td align="center"><a href="DetailsHistoryOrder.xhtml?id=#{listOrder.orderID}">#{listOrder.orderDate}</a></td>
+                                <td align="center">$#{listOrder.totalMoney}</td>
+
+                                <h:outputLabel escape="false" value="#{historyOrdersManager.checkStatus(listOrder.orderID, listOrder.shipStatus)}"></h:outputLabel>
                             </tr>
-                            <ui:repeat value="#{historyOrdersManager.listOrder()}" var="listOrder">
-                                <tr>
-                                    <td class="HistoryOrdersTableTdId">#{listOrder.orderID}</td>
-                                    <td class="HistoryOrdersTableTdDate"><a href="DetailsHistoryOrder.xhtml?id=#{listOrder.orderID}">#{listOrder.orderDate}</a></td>
-                                    <td class="HistoryOrdersTableTdMoney">$#{listOrder.totalMoney}</td>
-                                    <h:outputLabel escape="false" value="#{historyOrdersManager.checkStatus(listOrder.orderID, listOrder.shipStatus)}"></h:outputLabel>
-                                </tr>
-                            </ui:repeat>
-                        </table>
-                    </div>
+                        </ui:repeat>
+                    </table>
+                    <style>
+                        #tbhistoty tr td{
+                            line-height: 2em;
+                        }
+                    </style>
                 </h:form>
             </ui:define>
         </ui:composition>

@@ -8,8 +8,24 @@
     </h:head>
     <h:body>
         <ui:composition template="MasterPage.xhtml">
+            <ui:define name="deSlide">
+
+            </ui:define>
             <ui:define name="contents">
                 <h:form>
+                    <div>
+                        <div class="headerPic"><img src="Images/headerPic.jpg" alt="" /></div>
+                        <div class="headerSlogan">THE LATEST<br />FILM NEWS &#38; REVIEWS</div>
+                    </div>
+                    <div class="DefaultPaging" style="">
+                        <h:commandButton value="First" action="#{defaultManagerBean.btnFirst()}" disabled="#{defaultManagerBean.disableFirst}"></h:commandButton>
+                        <h:commandButton value="Prev" action="#{defaultManagerBean.btnPrevious()}" disabled="#{defaultManagerBean.disablePrev}"></h:commandButton>
+                        <h:inputHidden value="#{defaultManagerBean.pageIndex}"></h:inputHidden>
+                        <h:outputLabel value="#{defaultManagerBean.pageIndex}"></h:outputLabel>/
+                        <h:outputLabel value="#{defaultManagerBean.totalPaging}"></h:outputLabel>
+                        <h:commandButton value="Next" action="#{defaultManagerBean.btnNext()}" disabled="#{defaultManagerBean.disableNext}"></h:commandButton>
+                        <h:commandButton value="Last" action="#{defaultManagerBean.btnLast()}" disabled="#{defaultManagerBean.disableLast}"></h:commandButton>
+                    </div>
                     <div class="DefaultAllbox">
                         <ui:repeat value="#{defaultManagerBean.loadAlbum()}" var="listAlbum">
                             <div class="box">
