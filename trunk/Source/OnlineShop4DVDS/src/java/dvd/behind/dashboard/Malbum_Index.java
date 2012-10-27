@@ -6,6 +6,7 @@ package dvd.behind.dashboard;
 
 import dvd.business.dashboard.Album;
 import dvd.business.dashboard.Categories;
+import dvd.business.dashboard.Feedback;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -138,7 +139,10 @@ public class Malbum_Index {
     public void setMessage(String message) {
         this.message = message;
     }
-
+    public int showcountComment(String id){
+        dvd.business.dashboard.Feedback fe = new Feedback();
+        return fe.showCountComment(id);
+    }
     public void btnOnOffAlbum_Click(String idalbum) throws Exception {
         String id = idalbum;
         if (this.albumhand.Setpublish(id) == true) {

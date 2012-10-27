@@ -97,7 +97,7 @@ BEGIN
 		DataStatus,
 		DataImage
 		FROM DataStore,Album 
-		WHERE DataStore.AlbumID = Album.AlbumID ORDER BY DataID DESC	
+		WHERE DataStore.AlbumID = Album.AlbumID ORDER BY DataID DESC
 END
 ELSE
 BEGIN
@@ -115,7 +115,7 @@ BEGIN
 		AND Album.AlbumID = @ID ORDER BY DataID DESC	
 END
 	
-	
+	exec aShowAllDataStoreFilter '0'
 GO
 CREATE PROC aInsertAlbum
 	@CateID INT,
@@ -232,8 +232,8 @@ GO
 ALTER PROC aShowOrders
 @ID INT
 AS
-SELECT OrderID,UserAccount,ShipPostalCode,ShipName,ShipAddress, OrderDate, ShipStatus FROM Orders,Users
-WHERE Users.UserID = Orders.UserID ORDER BY Orders.UserID DESC
+SELECT OrderID,UserAccount,ShipName,ShipAddress, OrderDate, ShipStatus,FoneNumber FROM Orders,Users
+WHERE Users.UserID = Orders.UserID ORDER BY Orders.OrderID DESC
 
 EXEC aShowOrders '1'
 
@@ -266,10 +266,10 @@ SELECT  COUNT(ShipStatus) AS 'ShipStatus' FROM Orders WHERE ShipStatus = 0
 SELECT * FROM aShowOrderPending
 
 GO
-CREATE PROC aShowOrderPendingPr
+ALTER PROC aShowOrderPendingPr
 @ID INT
 AS
-SELECT OrderID,UserAccount,ShipPostalCode,ShipName,ShipAddress, OrderDate, ShipStatus FROM Orders,Users
+SELECT OrderID,UserAccount,ShipName,ShipAddress, OrderDate, ShipStatus FROM Orders,Users
 WHERE Users.UserID = Orders.UserID AND Orders.ShipStatus = 0 ORDER BY Orders.UserID DESC
 
 exec aShowOrderPendingPr '1'
@@ -366,4 +366,12 @@ SELECT Account,Passwords,Permision.PerName
  WHERE Permision.PerID = UserAdmin.PerID 
  AND Account = @Account AND Passwords = @Password 
  
- EXEC aLogin 'admin','admin'
+GO
+ALTER PROC aShowCommentWdata
+@ID INT
+AS
+SELECT COUNT(FeedBackID) AS 'countcm' FROM FeedBack
+WHERE AlbumID = @ID
+
+EXEC aShowCommentWdata '1'
+ 

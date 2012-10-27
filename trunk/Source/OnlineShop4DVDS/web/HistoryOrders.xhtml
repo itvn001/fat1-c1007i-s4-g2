@@ -27,7 +27,7 @@
                     </c:if>
                     <table id="tbhistoty" width="775px" style=" padding: 0; margin: 0; margin-left: -40px; margin-top: -11px">
                         <tr>
-                            <td colspan="7"><h3 class="DefaultCartH3" style="background-color:#666">Order History</h3>
+                            <td colspan="7"><h3 class="DefaultCartH3">Order History</h3>
 
                             </td>
                         </tr>
@@ -42,7 +42,6 @@
                                 <td align="center">#{listOrder.orderID}</td>
                                 <td align="center"><a href="DetailsHistoryOrder.xhtml?id=#{listOrder.orderID}">#{listOrder.orderDate}</a></td>
                                 <td align="center">$#{listOrder.totalMoney}</td>
-
                                 <h:outputLabel escape="false" value="#{historyOrdersManager.checkStatus(listOrder.orderID, listOrder.shipStatus)}"></h:outputLabel>
                             </tr>
                         </ui:repeat>

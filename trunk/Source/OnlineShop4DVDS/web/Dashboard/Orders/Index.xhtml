@@ -35,10 +35,12 @@
                     }
                     .vieer-position table tr td{
                         text-align: center;
-                        border-bottom: 1px solid #d1d0d1;
+
+                    }
+                    .sppadding{
+                        line-height: 1.5em;
                     }
                     .vieer-position table{
-                        border: 1px solid red;
                     }
                 </style>
                 <h:outputText value="#{orders_Index.message}" escape="false"/>
@@ -61,7 +63,7 @@
                             </p:column> 
                             <p:column filterBy="#{listOrder.orderID}" filterMatchMode="contains">  
                                 <f:facet name="header">  
-                                    <h:outputText value="Ship Portal Code" />  
+                                    <h:outputText value="Orders Code" />  
                                 </f:facet>  
                                 <h:outputText value="#{listOrder.orderID}" />  
                             </p:column> 
@@ -71,12 +73,6 @@
                                 </f:facet>  
                                 <h:outputText value="#{listOrder.shipName}" />  
                             </p:column>
-                            <p:column>  
-                                <f:facet name="header">  
-                                    <h:outputText value="Ship Address" />  
-                                </f:facet>  
-                                <h:outputText value="#{listOrder.shipAddress}" />  
-                            </p:column> 
                             <p:column>  
                                 <f:facet name="header">  
                                     <h:outputText value="Order Date" />  
@@ -92,17 +88,18 @@
                                                  action="#{orders_Index.handlingStatus(listOrder.orderID, listOrder.shipStatus)}"
                                                  onclick="return updateConfirm();"/>&nbsp;
                                 <h:commandLink value="View" class="a_showDetailst" 
-                                               action="#{orders_Index.viewDetailsUI(listOrder.orderID,listOrder.shipPostalCode)}"/>
+                                               action="#{orders_Index.viewDetailsUI(listOrder.orderID,listOrder.shipAddress,listOrder.foneNumber)}"/>
                             </p:column> 
                         </p:dataTable>  
                         <div class="vieer-position" style="display: #{orders_Index.displayor}"> 
                             <div class="t-title">
-                                <h3>Orders Details<a id="closeDetailsOr" style="margin-left: 350px; padding-left: 10px; padding-right: 10px" href="#">X</a></h3>
+                                <h3>Orders Details<a id="closeDetailsOr" style="margin-left: 350px;
+                                                     padding-left: 10px; padding-right: 10px" href="#">X</a></h3>
                                 <div class="t-in" style="min-height: 320px">
-                                    Code:&nbsp;<span style="font-weight: 600">#{orders_Index.scode}</span> 
-                                    <table cellpadding="0" cellspacing="2"
-                                           style="border-color: #d1d0d1;" 
-                                           align="center" width="100%">
+                                    <span class="sppadding">Code:</span>&nbsp;<span style="font-weight: 600">#{orders_Index.scode}</span> <br/>
+                                    <span class="sppadding">Address:</span>&nbsp; #{orders_Index.shipaddress}<br/>
+                                    <span class="sppadding">Fone:</span>&nbsp; #{orders_Index.fone}<br/>
+                                    <table cellpadding="0" cellspacing="2" align="center" width="100%">
                                         <tr>
                                             <th width="300px">
                                                 Disc
@@ -120,7 +117,7 @@
                                         <ui:repeat value="#{orders_Index.listOrderDetails}" 
                                                    var="oDetails">
                                             <tr>
-                                                <div style="border-bottom: 1px solid #d1d0d1">
+                                                <div style="border-bottom: 2px solid #dc5b21">
                                                     <td>
                                                         #{oDetails.albumName}
                                                     </td>
@@ -139,8 +136,10 @@
                                         <tr>
                                             <td colspan="4" align="right" style="font-weight: 600; 
                                                 padding-left: 330px; color: red">
+                                                <div style="border-bottom: 2px solid #dc5b21"></div>
                                                 Total Money:&nbsp; $#{orders_Index.totalMoney}
                                             </td>
+
                                         </tr>
                                     </table>
                                 </div>
