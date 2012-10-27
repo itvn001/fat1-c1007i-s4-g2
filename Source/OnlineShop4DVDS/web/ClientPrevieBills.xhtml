@@ -85,7 +85,8 @@
                         <div>
                             <h:commandLink onclick="return checkItemCart(#{cartManager.cartSize()})" 
                                            class="s-btnsa" 
-                                           value="Ordering" action="#{cartManager.ordering(pAIManagerBean.userId, pAIManagerBean.name, pAIManagerBean.address)}"></h:commandLink>
+                                           value="Ordering" 
+                                           action="#{cartManager.ordering(pAIManagerBean.userId, pAIManagerBean.name, pAIManagerBean.address)}"></h:commandLink>
                             <a href="PersonalAuthenticationInformation.xhtml"
                                class="s-btnsa">Back</a>
                         </div>

@@ -32,7 +32,16 @@ public class Order {
     private double totalMoney;
     @Column(name = "UserAccount")
     private String userAccount;
+    @Column(name = "FoneNumber")
+    private String foneNumber;
 
+    public String getFoneNumber() {
+        return foneNumber;
+    }
+
+    public void setFoneNumber(String foneNumber) {
+        this.foneNumber = foneNumber;
+    }
     public String getUserAccount() {
         return userAccount;
     }

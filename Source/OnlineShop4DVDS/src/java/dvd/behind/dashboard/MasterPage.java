@@ -75,6 +75,13 @@ public class MasterPage {
         session.setAttribute("childmenu", "8");
         return "../Comment/Index.xhtml";
     }
+    public String viewAllPendingOrder(){
+        return "../Orders/Index.xhtml";
+    }
+    public String btnlogout_Click(){
+        session.removeAttribute("AccountInfo");
+        return "../Login.xhtml";
+    }
     public void commitShowHideNavigator() {
         if (this.show_hide.trim().equals("show")) {
             this.show_hide = "hide";

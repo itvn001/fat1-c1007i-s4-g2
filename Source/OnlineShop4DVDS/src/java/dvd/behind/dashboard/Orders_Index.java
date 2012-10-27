@@ -51,6 +51,8 @@ public class Orders_Index {
                 return "Transporting";
             case 2:
                 return "Done";
+            case 3:
+                return "Cancle By Users";
             default:
                 return "Unknow";
         }
@@ -102,10 +104,21 @@ public class Orders_Index {
     public void setDisplayor(String a) {
         displayor = a;
     }
+    private String shipaddress;
 
-    public void viewDetailsUI(String sId,String code) {
+    public String getShipaddress() {
+        return shipaddress;
+    }
+
+    public String getFone() {
+        return fone;
+    }
+    private String fone;
+    public void viewDetailsUI(String sId,String _shipaddress,String _fone) {
+        this.shipaddress = _shipaddress;
+        this.fone = _fone;
         this.idOrders = sId;
-        this.scode = code;
+        this.scode = sId;
         displayor = "block";
     }
     private String scode;

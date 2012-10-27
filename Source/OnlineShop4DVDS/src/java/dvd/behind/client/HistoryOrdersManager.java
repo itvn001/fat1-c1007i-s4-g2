@@ -58,13 +58,13 @@ public class HistoryOrdersManager {
 
     public String checkStatus(int _ID, int _Status) {
         if (_Status == 0) {
-            return "<td class=\"HistoryOrdersTableTdStatus\"><a href=\"changeStatusOrder.xhtml?OrderId=" + _ID + "\" onclick=\"return confirm('Cancel order ID: " + _ID + " ?');\" style=\"background: none repeat scroll 0 0 yellow;color: green;cursor: pointer;padding: 1px 10px;text-align: center;\">Waiting</a></td>";
+            return "<td class=\"HistoryOrdersTableTdStatus\"><a href=\"changeStatusOrder.xhtml?OrderId=" + _ID + "\" onclick=\"return confirm('Cancel order ID: " + _ID + " ?');\" style=\"background: none repeat scroll 0 0 #E47911;color: #FFF;cursor: pointer;text-align: center;padding-left:5px;padding-right:25px;text-decoration: none\">Peding</a></td>";
         } else if (_Status == 1) {
-            return "<td class=\"HistoryOrdersTableTdStatus\"><span style=\"background: none repeat scroll 0 0 inactivecaption;color: green;padding: 1px 9px;text-align: center;\">Transportding</span></td>";
+            return "<td class=\"HistoryOrdersTableTdStatus\"><span style=\"background: none repeat scroll 0 0 #175A75;text-align: center;padding-left:5px;padding-right:25px;text-decoration: none;color:#fff\">Transportding</span></td>";
         } else if (_Status == 2) {
-            return "<td class=\"HistoryOrdersTableTdStatus\"><span style=\"background: none repeat scroll 0 0 green;color: yellow;padding: 1px 9px;text-align: center;\">Done</span></td>";
+            return "<td class=\"HistoryOrdersTableTdStatus\"><span style=\"background: none repeat scroll 0 0 teal;padding-left:5px;padding-right:25px;text-decoration: none;text-align: center; color:#fff\">Done</span></td>";
         } else {
-            return "<td class=\"HistoryOrdersTableTdStatus\"><span style=\"background: none repeat scroll 0 0 buttonface;color: red;padding: 1px 9px;text-align: center;\">Cancel</span></td>";
+            return "<td class=\"HistoryOrdersTableTdStatus\"><span style=\"background: none repeat scroll 0 0 #FF6766;color: #fff;padding-left:5px;padding-right:25px;text-decoration: none;text-align: center;\">Cancle By User</span></td>";
         }
     }
 

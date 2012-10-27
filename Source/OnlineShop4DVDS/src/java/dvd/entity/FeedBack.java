@@ -28,7 +28,17 @@ public class FeedBack {
     private String feedBackDateCreate;
     @Column(name = "FeedBackStatus")
     private Boolean feedBackStatus;
+    
+    @Column(name = "countcm")
+    private int countcm;
 
+    public int getCountcm() {
+        return countcm;
+    }
+
+    public void setCountcm(int countcm) {
+        this.countcm = countcm;
+    }
     public int getFeedBackID() {
         return feedBackID;
     }
