@@ -1,7 +1,7 @@
 body  {
     font-family:arial;
     font-size:13px;
-    background-color:#fff;
+    background-color:#F2F2F2;
     color:#010101;
 }
 img {
@@ -90,7 +90,7 @@ a#checkouths:hover{
     padding: 0;
 }
 .menu a {
-    color:#ffffff;
+    color:#333;
     font-size:16px;
     text-decoration:none;
     padding:10px 20px;
@@ -99,18 +99,15 @@ a#checkouths:hover{
 
 } 
 .menu a:hover {
-    color:#ffffff;
-    background:#6bcbca;
+    color:#e47911;
     text-decoration:none;
 }
 .menu #active a {
-    color:#ffffff;
-    background:#6bcbca;
+    color:#e47911;
     text-decoration:none;
 } 
 .icons {
     float:right;
-    background:#e47911;
     margin:4px 3px 0px 3px;
 }
 .icons li {
@@ -204,13 +201,13 @@ a#checkouths:hover{
 
 /*Page Default Cart*/
 .DefaultCartH3{
-    background: none repeat scroll 0 0 #97be68;
-    color: #fff;
     padding: 5px;
-    text-align: center;
-    font-family: tahoma;
+    text-align: left;
+    font-family: hagin;
     font-weight: normal;
-    font-size: 17px;
+    font-size: 22px;
+    color: #333;
+    border-bottom: 2px solid #e47911;
 }
 .DefaultCartName{
     width: 200px;
@@ -248,27 +245,40 @@ a#checkouths:hover{
     font-family: tahoma;
 }
 .DefaultCartSave a{
-    background: none repeat scroll 0 0 #97ce68;
+    background: none repeat scroll 0 0 #ffac44;
     color: white;
     float: right;
     font-weight: 600;
     margin: 0 4px 0 0;
     padding: 4px 15px;
-    border-radius:2px;
     text-align: center;
     text-decoration: none;
+}
+.s-btnsa{
+    background: none repeat scroll 0 0 #ffac44;
+    color: white;
+    float: right;
+    font-weight: 600;
+    margin: 0 4px 0 0;
+    padding: 4px 15px;
+    text-align: center;
+    text-decoration: none;
+}
+.s-btnsa:hover{
+     background: none repeat scroll 0 0 #6bcbca;
+     color: #fff;
 }
 .DefaultCartSave a:hover{
     background: none repeat scroll 0 0 #6bcbca;
 }
 .PAIlblInformationH2{
-   background: none repeat scroll 0 0 #6bcbca;
-    color: #FDFDFD;
+    color: #333;
     padding: 5px;
-    text-align: center;
-    font-family: tahoma;
+    text-align: left;
+    font-family: hagin;
     font-weight: normal;
-    font-size: 17px;
+    font-size: 22px;
+    border-bottom: 2px solid #e47911;
 }
 .PAIMlblTitle{
     float: left;
@@ -306,7 +316,7 @@ a#checkouths:hover{
     color: white;
 }
 .PAIBack{
-    background: none repeat scroll 0 0 #6bcbca;
+    background: none repeat scroll 0 0 #7d7d7d;
     color: white;
     float: right;
     font-weight: 600;
@@ -329,11 +339,13 @@ a#checkouths:hover{
 
 /*ClientPreviewBills Page*/
 .ClientPreviewBillsH2{
-    background: none repeat scroll 0 0 #0093D0;
-    color: white;
+    color: #333;
     font-weight: normal;
-    margin: 30px 0 10px;
-    padding: 5px 30px;
+    text-align: left;
+    border-bottom: 2px solid #e47911;
+    font-family: hagin;
+    font-size: 22px;
+    padding: 5px;
 }
 .ClientPrevieBillsHistory{
     font-size: 15px;
@@ -370,52 +382,32 @@ a#checkouths:hover{
     padding: 2px 30px;
 }
 .ClientPreviewBillsOrdering{
-    background: none repeat scroll 0 0 #62A2D0;
+      background: none repeat scroll 0 0 #7d7d7d;
     color: white;
     float: right;
-    font-size: 18px;
-    margin: -19px 15px 0;
-    padding: 7px 10px;
+    font-weight: 600;
+    margin: 0 4px 0 0;
+    padding: 4px 15px;
+    border-radius:2px;
     text-align: center;
     text-decoration: none;
-    width: 100px;
-    -moz-border-radius: 3px;
 }
 .ClientPreviewBillsOrdering:hover{
-    background: none repeat scroll 0 0 #45749E;
-    color: white;
-    float: right;
-    font-size: 18px;
-    margin: -19px 15px 0;
-    padding: 7px 10px;
-    text-align: center;
-    text-decoration: none;
-    width: 100px;
-    -moz-border-radius: 3px;
+   background: none repeat scroll 0 0 #6bcbca;
 }
 .ClientPreviewBillsBack{
-    background: none repeat scroll 0 0 #62A2D0;
+    background: none repeat scroll 0 0 #7d7d7d;
     color: white;
     float: right;
-    font-size: 18px;
-    margin: -19px 0 0;
-    padding: 7px 10px;
+    font-weight: 600;
+    margin: 0 4px 0 0;
+    padding: 4px 15px;
+    border-radius:2px;
     text-align: center;
     text-decoration: none;
-    width: 75px;
-    -moz-border-radius: 3px;
 }
 .ClientPreviewBillsBack:hover{
-    background: none repeat scroll 0 0 #45749E;
-    color: white;
-    float: right;
-    font-size: 18px;
-    margin: -19px 0 0;
-    padding: 7px 10px;
-    text-align: center;
-    text-decoration: none;
-    width: 75px;
-    -moz-border-radius: 3px;
+    background: none repeat scroll 0 0 #6bcbca;
 }
 
 /*ClientPrivewBills*/
@@ -530,20 +522,25 @@ a#checkouths:hover{
 }
 .box {
     float:left;
-    width:160px;
+    width:150px;
     padding-left: 22px;
     padding-top: 10px;
     border-bottom:1px solid #d1d0d1;
-    min-height: 280px;
+    min-height: 245px;
 }
-.box img:hover{
-    border-color: #008000;
+.boxTitle a:hover{
+    color: #e47911;
 }
 .boxTitle {
+    padding-top: 5px;
+}
+.boxTitle a {
+    padding-top: 3px;
     color: #29241e;
-    font-family: serif;
+    font-family: tahoma;
     min-height: 20px;
     padding: 5px 0;
+    text-decoration: none;
     width: 100%;
     font-weight: 600;
 } 
@@ -560,9 +557,8 @@ a#checkouths:hover{
 }
 .boxLink a {
     color: #fff;
-    background-color: #e47911;
+    background-color: #FFAC44;
     padding: 3px 8px;
-    border-radius: 3px;
     cursor: pointer;
     font-size: 12px;
     font-weight: bold;
@@ -571,7 +567,7 @@ a#checkouths:hover{
 }
 .abtn{
     color: #fff;
-    background-color: #e47911;
+    background-color: #ffac44;
     padding: 3px 8px;
     border-radius: 3px;
     cursor: pointer;
@@ -727,7 +723,7 @@ a#checkouths:hover{
 
 }
 .DetailsAlbumMessage{
-    background: none repeat scroll 0 0 #e47911;
+    background: none repeat scroll 0 0 #d1d0d1;
     cursor: alias;
     height: 50px;
     left: 0;
@@ -759,7 +755,7 @@ a#checkouths:hover{
     width: 200px;
 }
 .headerTop {
-    background:#e47911;
+ 
 }
 .numbercountS{
     width: 15px;

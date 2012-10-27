@@ -63,6 +63,10 @@
                         shl = document.getElementById("casf7");
                         shl.style.backgroundColor="#fff";
                     }
+                    else if(sessionid == 8){
+                        shl = document.getElementById("casf8");
+                        shl.style.backgroundColor="#fff";
+                    }
                 }
             </script>
             <div id="main">
@@ -154,19 +158,22 @@
                                             <h:commandLink class="home" action="#{masterPage.actionclick_Home()}" value="DashBoard"/>
                                         </li>
                                         <li id="casf7">
-                                            <h:commandLink class="home" action="#{masterPage.actionClick_MngCate()}" value="Manager Categories"/>
+                                            <h:commandLink class="home" action="#{masterPage.actionClick_MngCate()}" value="Categories"/>
                                         </li>
                                         <li id="casf2">
-                                            <h:commandLink class="article" action="#{masterPage.actionClick_mngUser()}" value="Manager User"/>
+                                            <h:commandLink class="article" action="#{masterPage.actionClick_mngUser()}" value="User"/>
+                                        </li>
+                                          <li id="casf8">
+                                              <h:commandLink class="article" action="#{masterPage.actionClick_MngComment()}" value="Comment"/>
                                         </li>
                                         <li id="casf3">
-                                            <h:commandLink class="file" action="#{masterPage.actionclick_mngdvd()}" value="Manager DVD [old:album]"/>
+                                            <h:commandLink class="file" action="#{masterPage.actionclick_mngdvd()}" value="DVD [old:album]"/>
                                         </li>
                                         <li id="casf4">
-                                            <h:commandLink class="file" action="#{masterPage.actionclick_mngdata()}" value="Manager Data [old:dvd]]"/>
+                                            <h:commandLink class="file" action="#{masterPage.actionclick_mngdata()}" value="Data [old:dvd]]"/>
                                         </li>
                                         <li id="casf5">
-                                            <h:commandLink class="file" action="#{masterPage.actionClick_mngOrder()}" value="Manager Orders"/>
+                                            <h:commandLink class="file" action="#{masterPage.actionClick_mngOrder()}" value="Orders"/>
                                         </li>
                                         <li id="casf5">
                                             <a href="#" class="form">Manager Orders</a>

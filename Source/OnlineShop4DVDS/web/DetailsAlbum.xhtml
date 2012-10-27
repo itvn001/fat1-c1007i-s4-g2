@@ -103,10 +103,10 @@
                     <c:if test="#{cartManager.displayMessage}">
                         <div class="DetailsAlbumMessage">
                             <c:if test="#{cartManager.typeMessage}">
-                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{cartManager.message}</h5>
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: #ff6766;">#{cartManager.message}</h5>
                             </c:if>
                             <c:if test="#{!cartManager.typeMessage}">
-                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{cartManager.message}</h5>
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: #ff6766;">#{cartManager.message}</h5>
                             </c:if>
                             #{cartManager.messageEmpty()}
                         </div>

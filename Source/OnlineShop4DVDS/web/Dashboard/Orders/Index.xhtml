@@ -59,11 +59,11 @@
                                 </f:facet>  
                                 <h:commandLink value="#{listOrder.userAccount}" style="color: #333;" />
                             </p:column> 
-                            <p:column filterBy="#{listOrder.shipPostalCode}" filterMatchMode="contains">  
+                            <p:column filterBy="#{listOrder.orderID}" filterMatchMode="contains">  
                                 <f:facet name="header">  
                                     <h:outputText value="Ship Portal Code" />  
                                 </f:facet>  
-                                <h:outputText value="#{listOrder.shipPostalCode}" />  
+                                <h:outputText value="#{listOrder.orderID}" />  
                             </p:column> 
                             <p:column>  
                                 <f:facet name="header">  
