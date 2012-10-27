@@ -26,8 +26,6 @@ public class Order {
     private String shipName;
     @Column(name = "ShipAddress")
     private String shipAddress;
-    @Column(name = "ShipPostalCode")
-    private String shipPostalCode;
     @Column(name = "ShipStatus")
     private int shipStatus;
     @Column(name = "TotalMoney")
@@ -81,15 +79,6 @@ public class Order {
     public void setShipAddress(String shipAddress) {
         this.shipAddress = shipAddress;
     }
-
-    public String getShipPostalCode() {
-        return shipPostalCode;
-    }
-
-    public void setShipPostalCode(String shipPostalCode) {
-        this.shipPostalCode = shipPostalCode;
-    }
-
     public int getShipStatus() {
         return shipStatus;
     }

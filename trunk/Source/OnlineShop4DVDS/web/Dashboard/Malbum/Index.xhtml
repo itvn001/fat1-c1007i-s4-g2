@@ -42,7 +42,7 @@
                                 </f:facet>  
                                 <h:outputText style="color: #000" value="$ #{album.albumPrice}" />  
                             </p:column>  
-                            <p:column>  
+                            <p:column style="width: 100px">  
                                 <f:facet name="header">  
                                     <h:outputText value="Date Create" />  
                                 </f:facet>  
@@ -52,6 +52,7 @@
                                 <f:facet name="header">  
                                     <h:outputText value="Option" />  
                                 </f:facet>  
+                                <a><img src="../Iconpage/icon-comments.png"/><span style="padding-right: 10px; color: #191919">3</span></a>
                                 <h:commandButton class="optionicon-#{album.albumStatus}" 
                                                  value="#{malbum_Index.returnStatus(album.albumStatus)}" 
                                                  id="btnOnOffAlbum" 

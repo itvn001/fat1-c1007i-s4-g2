@@ -56,10 +56,12 @@
                     <c:if test="#{pAIManagerBean.displayMessage}">
                         <div class="DetailsAlbumMessage">
                             <c:if test="#{pAIManagerBean.typeMessage}">
-                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{pAIManagerBean.message}</h5>
+                                <h5 class="DetailsAlbumMessageOutputLabel" 
+                                    style="color: white;">#{pAIManagerBean.message}</h5>
                             </c:if>
                             <c:if test="#{!pAIManagerBean.typeMessage}">
-                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{pAIManagerBean.message}</h5>
+                                <h5 class="DetailsAlbumMessageOutputLabel"
+                                    style="color: red;">#{pAIManagerBean.message}</h5>
                             </c:if>
                             #{pAIManagerBean.resetMessage()}
                         </div>
@@ -83,12 +85,13 @@
                         </div>
                         <div  style="float: left;">
                             <div class="PAIMlblTitle">Address:</div>
-                            <h:inputTextarea  style="width: 400px; float: left; margin: 5px; height: 200px" value="#{pAIManagerBean.address}"></h:inputTextarea>
+                            <h:inputTextarea
+                               id="txtPAIAddress" style="width: 400px; float: left; margin: 5px; height: 200px" value="#{pAIManagerBean.address}"></h:inputTextarea>
                             <h:outputLabel id="lblPAIAddress" class="PAIlblError" value=""></h:outputLabel>
                         </div>
                         <div style="float: left; width: 100%; border-top:1px solid #d1d0d1; padding-top: 5px">
-                            <h:commandLink onclick="return checkPAIEmpty()" class="PAIBack" value="Continue" action="#{pAIManagerBean.saveInforForData()}"></h:commandLink>
-                            <a href="DefaultCart.xhtml" class="PAIBack">Back</a>
+                            <h:commandLink onclick="return checkPAIEmpty()" class="s-btnsa" value="Continue" action="#{pAIManagerBean.saveInforForData()}"></h:commandLink>
+                            <a href="DefaultCart.xhtml" class="s-btnsa">Back</a>
                         </div>
                     </div>
                 </h:form>

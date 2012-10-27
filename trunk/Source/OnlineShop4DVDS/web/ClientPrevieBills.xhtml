@@ -9,6 +9,9 @@
     </h:head>
     <h:body>
         <ui:composition template="MasterPage.xhtml">
+              <ui:define name="deSlide">
+                
+            </ui:define>
             <ui:define name="contents">
                 <h:form>
                     <script type="text/javascript">
@@ -25,17 +28,18 @@
                     <c:if test="#{messageManager.displayMessage}">
                         <div class="DetailsAlbumMessage">
                             <c:if test="#{messageManager.typeMessage}">
-                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{messageManager.message}</h5>
+                                <h5 class="DetailsAlbumMessageOutputLabel" 
+                                    style="color: white;">#{messageManager.message}</h5>
                             </c:if>
                             <c:if test="#{!messageManager.typeMessage}">
-                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{messageManager.message}</h5>
+                                <h5 class="DetailsAlbumMessageOutputLabel" 
+                                    style="color: red;">#{messageManager.message}</h5>
                             </c:if>
-                        #{messageManager.resetMessage()}
+                            #{messageManager.resetMessage()}
                         </div>
                     </c:if>
-                    <div class="DefaultAllbox">
+                    <div style=" padding: 0; margin: 0; margin-left: -40px; margin-top: -11px; width: 775px">
                         <h2 class="ClientPreviewBillsH2">PAYMENT</h2>
-                        <a class="ClientPrevieBillsHistory" href="HistoryOrders.xhtml">Order history</a>
                         <div class="ClientPreviewBillsAddress">
                             <div class="ClientPreviewBillslblUserInfor">Customer information</div>
                             <div class="ClientPreviewBillsBoth">
@@ -79,8 +83,11 @@
                             </table>
                         </div>
                         <div>
-                            <h:commandLink onclick="return checkItemCart(#{cartManager.cartSize()})" class="ClientPreviewBillsOrdering" value="Ordering" action="#{cartManager.ordering(pAIManagerBean.userId, pAIManagerBean.name, pAIManagerBean.address)}"></h:commandLink>
-                            <a href="PersonalAuthenticationInformation.xhtml" class="ClientPreviewBillsBack">Back</a>
+                            <h:commandLink onclick="return checkItemCart(#{cartManager.cartSize()})" 
+                                           class="s-btnsa" 
+                                           value="Ordering" action="#{cartManager.ordering(pAIManagerBean.userId, pAIManagerBean.name, pAIManagerBean.address)}"></h:commandLink>
+                            <a href="PersonalAuthenticationInformation.xhtml"
+                               class="s-btnsa">Back</a>
                         </div>
                     </div>
                 </h:form>
