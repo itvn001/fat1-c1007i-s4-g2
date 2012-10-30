@@ -9,8 +9,8 @@
     </h:head>
     <h:body>
         <ui:composition template="MasterPage.xhtml">
-              <ui:define name="deSlide">
-                
+            <ui:define name="deSlide">
+
             </ui:define>
             <ui:define name="contents">
                 <h:form>
@@ -52,7 +52,7 @@
                                 Name
                             </th>
                             <th>
-                                Name
+                                Price
                             </th>
                             <th>
                                 Quantity
@@ -65,9 +65,8 @@
                             </th>
                         </tr>
                         <ui:repeat value="#{cartManager.listDataStore}" var="listItem">
-                           
                             <tr>
-                                <td style="width: 10px; text-align: center;"><span class="numbercountS">#{listItem.albumID}</span></td>
+                                <td style="width: 5px; text-align: center; margin-bottom: 2px" class="numbercountS">#{masterPageManagerBean.count}</td>
                                 <td style="width: 60px; text-align: center;"><a href="DetailsAlbum.xhtml?id=#{listItem.albumID}"><img src="${listItem.albumImage}" alt="" width="40px" height="50px" /></a></td>
                                 <td class="DefaultCartName"><a href="DetailsAlbum.xhtml?id=#{listItem.albumID}">#{listItem.albumName}</a></td>
                                 <td style="width: 50px; text-align: center;">$#{listItem.albumPrice}</td>
@@ -77,7 +76,7 @@
                                                             href="removeCartPage.xhtml?AlbumId=#{listItem.albumID}" style="color: #767676">Delete</a></td>
                             </tr>
                         </ui:repeat>
-                      
+
                         <tr>
                             <td colspan="7" class="DefaultCartSave">
                                 <a onclick="return checkItemCart(#{cartManager.cartSize()})" class="DefaultCartSave" href="PersonalAuthenticationInformation.xhtml" >Continue</a>
@@ -89,8 +88,8 @@
                             <td colspan="2" class="DefaultCartTotalMoneys">$ #{cartManager.totalMoney()}</td>
                         </tr>
                     </table>
-                                       <a href="HistoryOrders.xhtml" style="float: right; padding-right: 3px;text-decoration: underline;
-                                          font-weight: 600; font-family: arial; color: #e47911">Order History</a>
+                    <a href="HistoryOrders.xhtml" style="float: right; padding-right: 3px;text-decoration: underline;
+                       font-weight: 600; font-family: arial; color: #e47911">Order History</a>
                 </h:form>
             </ui:define>
         </ui:composition>

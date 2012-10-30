@@ -9,34 +9,41 @@
     </h:head>
     <h:body>
         <ui:composition template="MasterPage.xhtml">
-              <ui:define name="deSlide">
+            <ui:define name="deSlide">
             </ui:define>
             <ui:define name="contents">
-                <table class="HistoryOrdersTable" cellspacing="0" cellpadding="2">
+                <table id="tbhistoty" width="770px" style=" padding: 0; margin: 0; margin-left: -40px; margin-top: -11px">
                     <tr>
-                        <th>DS ID</th>
-                        <th>DATA STORE NAME</th>
-                        <th>PRICE</th>
-                        <th>QUANTITY</th>
-                        <th>DISCOUNT</th>
-                        <th>MONEY</th>
+                        <td colspan="7"><h3 class="DefaultCartH3">Details Order History</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Money</th>
                     </tr>
                     <h:inputHidden value="#{detailsHistoryOrderManager.orderIdSetValue(param['id'])}"></h:inputHidden>
                     <ui:repeat value="#{detailsHistoryOrderManager.showOrderDetailById()}" var="listOD">
                         <tr>
-                            <td>#{listOD.album}</td>
-                            <td>#{listOD.albumName}</td>
-                            <td>#{listOD.unitPrice}</td>
-                            <td>#{listOD.quantity}</td>
-                            <td>#{listOD.discount}</td>
-                            <td>#{listOD.money}</td>
+                            <td style="width: 5px; text-align: center; margin-bottom: 2px" class="numbercountS">#{masterPageManagerBean.count}</td>
+                            <td style="width: 60px; text-align: center;"><a href="DetailsAlbum.xhtml?id=#{listItem.albumID}">
+                                    <img src="${listItem.albumImage}" alt="" width="40px" height="50px" /></a></td>
+
+                            <td align="center">#{listOD.albumName}</td>
+                            <td align="center">#{listOD.quantity}</td>
+                            <td align="center">$ #{listOD.unitPrice}</td>
+                            <td align="center">#{listOD.money}</td>
                         </tr>
                     </ui:repeat>
                     <tr>
-                        <td colspan="6"><span style="color: SteelBlue;float: right;font-weight: bold;margin-right: 20px;">Total money: $#{detailsHistoryOrderManager.totalMoney}</span></td>
+                        <td colspan="5" class="DefaultCartTotalMoney">Total Money:</td>
+                        <td colspan="1" class="DefaultCartTotalMoneys">$ #{detailsHistoryOrderManager.totalMoney}</td>
                     </tr>
                 </table>
-                <a class="DetailsHistoryOrderBack" href="HistoryOrders.xhtml">Back</a>
+                <a class="s-btnsa" href="HistoryOrders.xhtml">Back</a>
             </ui:define>
         </ui:composition>
     </h:body>

@@ -25,7 +25,17 @@ public class MasterPageManagerBean {
     public MasterPageManagerBean() {
     }
     private Categories cate;
+    private int count = 0;
 
+    public int getCount() {
+        count ++;
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+    
     public List<Categories> showMenuCategory()
     {
         CategoryManager c = new CategoryManager();
