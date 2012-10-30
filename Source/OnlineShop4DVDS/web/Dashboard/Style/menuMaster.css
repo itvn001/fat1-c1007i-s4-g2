@@ -35,6 +35,27 @@
     background-position:15px center;
     background-repeat:no-repeat;
 }
+.leftmenu li a.users
+{
+    background:url(../Iconpage/master/user.png);
+    background-position:15px center;
+    background-repeat:no-repeat;
+}
+.leftmenu li a.comment{
+    background:url(../Iconpage/master/chat.png);
+    background-position:15px center;
+    background-repeat:no-repeat;
+}
+.leftmenu li a.orders{
+    background:url(../Iconpage/master/tag.png);
+    background-position:15px center;
+    background-repeat:no-repeat;
+}
+.leftmenu li a.music{
+     background:url(../Iconpage/master/music.png);
+    background-position:15px center;
+    background-repeat:no-repeat;
+}
 .leftmenu li a.file
 {
     background:url(../Iconpage/master/file.png);

@@ -45,7 +45,7 @@
                 </style>
                 <h:outputText value="#{orders_Index.message}" escape="false"/>
                 <div class="t-title">
-                    <h3>MANAGER ORDERS</h3>
+                    <h3><img src="../Iconpage/master/tag.png "/>&nbsp;MANAGER ORDERS</h3>
                     <div class="t-in">  
                         <p:dataTable id="dataTable" var="listOrder" value="#{orders_Index.listOrder}"  
                                      paginator="true" rows="10"  
@@ -54,7 +54,7 @@
                                      {PageLinks} {NextPageLink}
                                      {LastPageLink}
                                      {RowsPerPageDropdown}"  
-                                     rowsPerPageTemplate="5,10,30,50">  
+                                     rowsPerPageTemplate="10,30,50">  
                             <p:column>  
                                 <f:facet name="header">  
                                     <h:outputText value="Account User" />  

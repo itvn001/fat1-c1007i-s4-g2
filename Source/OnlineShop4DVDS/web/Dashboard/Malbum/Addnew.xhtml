@@ -79,6 +79,7 @@
                                             <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}"
                                                           mode="advance" value="#{fileUploadController.file}"
                                                           update="msga,messages"
+                                                          oncomplete="true"
                                                           label="Choose a file"
                                                           sizeLimit="10485760"
                                                           allowTypes="/(\.|\/)(img|jpg|gif|png)$/"

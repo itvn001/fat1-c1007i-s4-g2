@@ -15,9 +15,9 @@
         <Node id="Dashboard/Master/MasterPage.xhtml" x="509" y="53" zoom="true"/>
         <Node id="Dashboard/Article/Index.xhtml" x="400" y="750" zoom="true"/>
         <Node id="Dashboard/DemoDataAction/Insert.xhtml" x="154" y="405" zoom="true"/>
+        <Node id="formRegister.xhtml" x="232" y="10" zoom="true"/>
         <Node id="Dashboard/Mdata/Edit.xhtml" x="241" y="153" zoom="true"/>
         <Node id="Dashboard/Users/View.xhtml" x="150" y="900" zoom="true"/>
-        <Node id="formRegister.xhtml" x="232" y="10" zoom="true"/>
         <Node id="changeStatusOrder.xhtml" x="524" y="427" zoom="true"/>
         <Node id="DetailsHistoryOrder.xhtml" x="207" y="480" zoom="true"/>
         <Node id="Default.xhtml" x="275" y="65" zoom="true"/>
