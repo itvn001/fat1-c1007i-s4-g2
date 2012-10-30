@@ -3,204 +3,210 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <title>4DVDS Shop Manager</title>
         <link href="../Style/stylemaster.css" type="text/css" rel="stylesheet"/>
     </h:head>
     <h:body onload="setccc()">
-        <h:form id="dashboardform">
-            #{masterPage.setSeesionChildMenu()}
-            <script type="text/javascript" language="javascript">
-                //Jquery close window message 
-                $(document).ready(function(){
-                    $("#notice-Pen").hide();
-                });
-                $(document).ready(function () {
-                    $("#close-ly").click(function () {
-                        $(".closeMSonly").hide('slow');
-                        return false;
+        <c:if test="${login.loginStatus == false}">
+            <ui:include src="../Login.xhtml"/>
+        </c:if>
+        <c:if test="${login.loginStatus == true}">
+            <h:form id="dashboardform">
+                #{masterPage.setSeesionChildMenu()}
+                <script type="text/javascript" language="javascript">
+                    //Jquery close window message 
+                    $(document).ready(function(){
+                        $("#notice-Pen").hide();
                     });
-                });
-                function deleteconfirm() {
-                    var result = confirm("Bạn muốn xóa bản ghi này?");
-                    return result;
-                }
-                function updateConfirm(){
-                    var result = confirm("Are You Sure Update This Orders?");
-                    return result;
-                }
-                $(document).ready(function(){
-                    $('.liNoticePending').click(function(){
-                        $("#notice-Pen").slideToggle();
+                    $(document).ready(function () {
+                        $("#close-ly").click(function () {
+                            $(".closeMSonly").hide('slow');
+                            return false;
+                        });
                     });
-                });
-            </script>
-            <script language="javascript" type="text/javascript">
-                function setccc() {
-                    var shl = "";
-                    var hor = "";
-                    var sessionid = "${sessionScope['childmenu']}";  
-                    if(sessionid == 1){
-                        shl = document.getElementById("casf1");
-                        shl.style.backgroundColor="#fff";
-                    }else if(sessionid == 2){
-                        shl = document.getElementById("casf2");
-                        shl.style.backgroundColor="#fff";
-                    }else if(sessionid == 3){
-                        shl = document.getElementById("casf3");
-                        shl.style.backgroundColor="#fff";
+                    function deleteconfirm() {
+                        var result = confirm("Bạn muốn xóa bản ghi này?");
+                        return result;
                     }
-                    else if(sessionid == 4){
-                        shl = document.getElementById("casf4");
-                        shl.style.backgroundColor="#fff";
+                    function updateConfirm(){
+                        var result = confirm("Are You Sure Update This Orders?");
+                        return result;
                     }
-                    else if(sessionid == 5){
-                        shl = document.getElementById("casf5");
-                        shl.style.backgroundColor="#fff";
+                    $(document).ready(function(){
+                        $('.liNoticePending').click(function(){
+                            $("#notice-Pen").slideToggle();
+                        });
+                    });
+                </script>
+                <script language="javascript" type="text/javascript">
+                    function setccc() {
+                        var shl = "";
+                        var hor = "";
+                        var sessionid = "${sessionScope['childmenu']}";  
+                        if(sessionid == 1){
+                            shl = document.getElementById("casf1");
+                            shl.style.backgroundColor="#fff";
+                        }else if(sessionid == 2){
+                            shl = document.getElementById("casf2");
+                            shl.style.backgroundColor="#fff";
+                        }else if(sessionid == 3){
+                            shl = document.getElementById("casf3");
+                            shl.style.backgroundColor="#fff";
+                        }
+                        else if(sessionid == 4){
+                            shl = document.getElementById("casf4");
+                            shl.style.backgroundColor="#fff";
+                        }
+                        else if(sessionid == 5){
+                            shl = document.getElementById("casf5");
+                            shl.style.backgroundColor="#fff";
+                        }
+                        else if(sessionid == 7){
+                            shl = document.getElementById("casf7");
+                            shl.style.backgroundColor="#fff";
+                        }
+                        else if(sessionid == 8){
+                            shl = document.getElementById("casf8");
+                            shl.style.backgroundColor="#fff";
+                        }
                     }
-                     else if(sessionid == 7){
-                        shl = document.getElementById("casf7");
-                        shl.style.backgroundColor="#fff";
-                    }
-                    else if(sessionid == 8){
-                        shl = document.getElementById("casf8");
-                        shl.style.backgroundColor="#fff";
-                    }
-                }
-            </script>
-            <div id="main">
-                <p:panel style="display: none">
-                </p:panel>
-                <div id="message_on_master">
-                </div>
-                <div id="headspace">
-                </div>
-                <div id="headcontent">
-                    <table width="100%" height="80px">
-                        <tr>
-                            <td width="200px" valign="top">
-                                <div style="width: 220px" id="logoac">
-                                    <img class="logopn-s" src="../Iconpage/120px-CD_logo.png"/>
-                                </div>
-                            </td>
-                            <td valign="top">
-                                <div id="search-c">
-                                    <h:inputText class="searchmain" id="txtsearch"/>
-                                    <h:commandButton id="btnsearchmain" class="buttonsearch"/>
-                                    <ul class="t-notice-s1">
-                                        <li><a href="#"><span><span class="icon"></span><span class="count">0</span> </span>
-                                            </a></li>
-                                        <li title="Orders Pending" class="liNoticePending">
-                                            <a href="#"><span><span class="icon-notice">
-                                                    </span><span class="count">#{masterPage.noticeItemOrderPending}</span>
-                                                </span></a></li>
-                                        <div id="notice-Pen">
-                                            <div class="inside">
-                                                <h3>Order Pending &rArr; <h:commandLink style="color: #fff" value="View All" action="#{masterPage.viewAllPendingOrder}"/> &rArr;</h3>
-                                                <ui:repeat value="#{masterPage.listOrderPending}" var="pendOrders">
-                                                    <div class="stepPenContent">
-                                                        <span style="font-weight: 600; color: #2c2c2c; line-height: 1.4em;">#{pendOrders.shipName}</span>
-                                                        #{pendOrders.userAccount}
-                                                        <br/>
-                                                        : #{pendOrders.orderDate}
-                                                        <span style="padding-left: 3px; padding-right: 10px; margin-right: 5px;
-                                                              background-color: #e47911; color: #fff; float: right">pending</span>
-                                                    </div>
-                                                </ui:repeat>
-                                                <h3><h:commandLink style="color: #fff" value="View All" action="#{masterPage.viewAllPendingOrder}"/>&rArr;</h3>
-                                            </div>
-                                        </div>
-                                    </ul>
-
-                                </div>
-                                <div id="menu-c">
-                                    <ul>
-                                        <li id="hor-1"><a href="#" id="mnu1"><span>Dashboard</span></a></li>
-                                        <li><a href="#" id="mnu2"><span>Resport</span></a></li>
-                                        <li><a href="#" id="mnu3"><span>User</span></a></li>
-                                        <li><a href="#" id="mnu4"><span>Advance</span></a></li>
-                                    </ul>
-                                </div>
-                            </td>
-                            <td width="200px" valign="top">
-                                <div style="width: 200px" id="inforaccount">
-                                    <img src="../Iconpage/master/avatar.png"/>
-                                    <div id="infortext">
-                                        <h3>
-                                            Administrator</h3>
-                                        <small>DISCshop@gmail.com</small>
-                                        <p>
-                                            <a href="#">Account</a>
-                                            <h:commandLink value="Logout" id="btnlogout" action="#{masterPage.btnlogout_Click}"/>
-                                        </p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div id="contentmain">
-                    <div id="navibit">
-                        <h:commandButton value="" style="width: 10px ;
-                                         height: 80px; background-color: red; 
-                                         border: none; cursor: pointer" action="#{masterPage.commitShowHideNavigator}"/>
+                </script>
+                <div id="main">
+                    <p:panel style="display: none">
+                    </p:panel>
+                    <div id="message_on_master">
                     </div>
-                    <table width="100%">
-                        <tr>
-                            <td id="left-c" valign="top" class="displayaw-#{masterPage.show_hide}">
-                                <h3 class="open">
-                                    NAVIGATION MANAGER
-                                </h3>
-                                <div class="contentmenuleft">
-                                    <ul class="leftmenu">
-                                        <li id="casf1">
-                                            <h:commandLink class="home" action="#{masterPage.actionclick_Home()}" value="DashBoard"/>
-                                        </li>
-                                        <li id="casf7">
-                                            <h:commandLink class="home" action="#{masterPage.actionClick_MngCate()}" value="Categories"/>
-                                        </li>
-                                        <li id="casf2">
-                                            <h:commandLink class="article" action="#{masterPage.actionClick_mngUser()}" value="User"/>
-                                        </li>
-                                          <li id="casf8">
-                                              <h:commandLink class="article" action="#{masterPage.actionClick_MngComment()}" value="Comment"/>
-                                        </li>
-                                        <li id="casf3">
-                                            <h:commandLink class="file" action="#{masterPage.actionclick_mngdvd()}" value="DVD [old:album]"/>
-                                        </li>
-                                        <li id="casf4">
-                                            <h:commandLink class="file" action="#{masterPage.actionclick_mngdata()}" value="Data [old:dvd]]"/>
-                                        </li>
-                                        <li id="casf5">
-                                            <h:commandLink class="file" action="#{masterPage.actionClick_mngOrder()}" value="Orders"/>
-                                        </li>
-                                        <li id="casf5">
-                                            <a href="#" class="form">Manager Orders</a>
-                                        </li>
-                                        <li style="text-align: right;">
-                                            <a style="background-color: #EB593C; color: #fff; padding-right: 10px;
-                                               padding-top: 2px; padding-bottom: 2px" href="../../Default.xhtml">Go to Shop Online &rArr;</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                            <td id="right-c" valign="top">
-                                <div style="width: 99%; margin: 3px auto">
-                                    <ui:insert name="isa1" id="isbodymain"> 
+                    <div id="headspace">
+                    </div>
+                    <div id="headcontent">
+                        <table width="100%" height="80px">
+                            <tr>
+                                <td width="200px" valign="top">
+                                    <div style="width: 220px" id="logoac">
+                                        <img class="logopn-s" src="../Iconpage/120px-CD_logo.png"/>
+                                    </div>
+                                </td>
+                                <td valign="top">
+                                    <div id="search-c">
+                                        <h:inputText class="searchmain" id="txtsearch"/>
+                                        <h:commandButton id="btnsearchmain" class="buttonsearch"/>
+                                        <ul class="t-notice-s1">
+                                            <li><a href="#"><span><span class="icon"></span><span class="count">0</span> </span>
+                                                </a></li>
+                                            <li title="Orders Pending" class="liNoticePending">
+                                                <a href="#"><span><span class="icon-notice">
+                                                        </span><span class="count">#{masterPage.noticeItemOrderPending}</span>
+                                                    </span></a></li>
+                                            <div id="notice-Pen">
+                                                <div class="inside">
+                                                    <h3>Order Pending &rArr; <h:commandLink style="color: #fff" value="View All" action="#{masterPage.viewAllPendingOrder}"/> &rArr;</h3>
+                                                    <ui:repeat value="#{masterPage.listOrderPending}" var="pendOrders">
+                                                        <div class="stepPenContent">
+                                                            <span style="font-weight: 600; color: #2c2c2c; line-height: 1.4em;">#{pendOrders.shipName}</span>
+                                                            #{pendOrders.userAccount}
+                                                            <br/>
+                                                            : #{pendOrders.orderDate}
+                                                            <span style="padding-left: 3px; padding-right: 10px; margin-right: 5px;
+                                                                  background-color: #e47911; color: #fff; float: right">pending</span>
+                                                        </div>
+                                                    </ui:repeat>
+                                                    <h3><h:commandLink style="color: #fff" value="View All" action="#{masterPage.viewAllPendingOrder}"/>&rArr;</h3>
+                                                </div>
+                                            </div>
+                                        </ul>
 
-                                    </ui:insert>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                                    </div>
+                                    <div id="menu-c">
+                                        <ul>
+                                            <li id="hor-1"><a href="#" id="mnu1"><span>Dashboard</span></a></li>
+                                            <li><a href="#" id="mnu2"><span>Resport</span></a></li>
+                                            <li><a href="#" id="mnu3"><span>User</span></a></li>
+                                            <li><a href="#" id="mnu4"><span>Advance</span></a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td width="200px" valign="top">
+                                    <div style="width: 200px" id="inforaccount">
+                                        <img src="../Iconpage/master/avatar.png"/>
+                                        <div id="infortext">
+                                            <h3>
+                                                Administrator</h3>
+                                            <small>DISCshop@gmail.com</small>
+                                            <p>
+                                                <a href="#">Account</a>
+                                                <h:commandLink value="Logout" id="btnlogout" action="#{login.btnlogout_Click}"/>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="contentmain">
+                        <div id="navibit">
+                            <h:commandButton value="" style="width: 10px ;
+                                             height: 80px; background-color: red; 
+                                             border: none; cursor: pointer" action="#{masterPage.commitShowHideNavigator}"/>
+                        </div>
+                        <table width="100%">
+                            <tr>
+                                <td id="left-c" valign="top" class="displayaw-#{masterPage.show_hide}">
+                                    <h3 class="open">
+                                        NAVIGATION MANAGER
+                                    </h3>
+                                    <div class="contentmenuleft">
+                                        <ul class="leftmenu">
+                                            <li id="casf1">
+                                                <h:commandLink class="home" action="#{masterPage.actionclick_Home()}" value="DashBoard"/>
+                                            </li>
+                                            <li id="casf7">
+                                                <h:commandLink class="file" action="#{masterPage.actionClick_MngCate()}" value="Categories"/>
+                                            </li>
+                                            <li id="casf2">
+                                                <h:commandLink class="users" action="#{masterPage.actionClick_mngUser()}" value="User"/>
+                                            </li>
+                                            <li id="casf8">
+                                                <h:commandLink class="comment" action="#{masterPage.actionClick_MngComment()}" value="Comment"/>
+                                            </li>
+                                            <li id="casf3">
+                                                <h:commandLink class="form" action="#{masterPage.actionclick_mngdvd()}" value="DVD Disc"/>
+                                            </li>
+                                            <li id="casf4">
+                                                <h:commandLink class="music" action="#{masterPage.actionclick_mngdata()}" value="Data/Song/Game/Music"/>
+                                            </li>
+                                            <li id="casf5">
+                                                <h:commandLink class="orders" action="#{masterPage.actionClick_mngOrder()}" value="Orders"/>
+                                            </li>
+                                            <li id="casf5">
+                                                <a href="#" class="error">Manager Error</a>
+                                            </li>
+                                            <li style="text-align: right;">
+                                                <a target="blank" style="background-color: #EB593C; color: #fff; padding-right: 10px;
+                                                   padding-top: 2px; padding-bottom: 2px" href="../../Default.xhtml">Go to Shop Online &rArr;</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td id="right-c" valign="top">
+                                    <div style="width: 99%; margin: 3px auto">
+                                        <ui:insert name="isa1" id="isbodymain"> 
+
+                                        </ui:insert>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="footerpage">
+                        <div class="footerinner">
+                            ©2012. Group Sut.</div>
+                    </div>
                 </div>
-                <div id="footerpage">
-                    <div class="footerinner">
-                        ©2012. Group Sut.</div>
-                </div>
-            </div>
-        </h:form>
+            </h:form>
+        </c:if>
     </h:body>
 </html>
 

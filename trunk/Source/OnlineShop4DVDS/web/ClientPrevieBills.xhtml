@@ -57,13 +57,14 @@
                         </div>
                         <div class="ClientPreviewBillsAddress">
                             <div class="ClientPreviewBillslblUserInfor">Billing information</div>
-                            <table style="width: 100%; border-top: 1px #2C5479 solid;" cellpadding="3" cellspacing="0">
-                                <tr style="background: #0093D0; color: white; font-weight: bold; height: 26px; opacity: 0.8">
-                                    <td>ID</td>
-                                    <td>Products</td>
-                                    <td>Price</td>
-                                    <td>Quantity</td>
-                                    <td>Money</td>
+                            <table style="width: 100%; border-top: 1px solid #d1d0d1;" cellpadding="3" cellspacing="0">
+                                <tr style="color: #000; 
+                                    font-weight: bold; height: 26px; opacity: 0.8">
+                                    <th>ID</th>
+                                    <th>Products</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Money</th>
                                 </tr>
                                 <ui:repeat value="#{cartManager.listDataStore}" var="listCart">
                                     <tr>
@@ -74,7 +75,7 @@
                                         <td>$#{listCart.quantity*listCart.albumPrice}</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="5" style="border-top: 1px solid #0093D0"></td>
+                                        
                                     </tr>
                                 </ui:repeat>
                                 <tr>
