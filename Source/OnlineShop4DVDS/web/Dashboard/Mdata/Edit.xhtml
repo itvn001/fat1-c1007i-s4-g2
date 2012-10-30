@@ -19,34 +19,6 @@
                                 <table width="100%">
                                     <tr>
                                         <td>
-                                            Image
-                                        </td>
-                                        <td>
-                                            <img width="50px" src="../../#{dedit.dataImage}"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-
-                                        </td>
-                                        <td>
-                                            <h:form enctype="multipart/form-data" id="th13">
-                                                <h:inputText id="msga2" class="inputIm" disabled="true" style="background-color: #ECEBEC" 
-                                                             value="#{fileUploadController.imageLink}" />
-                                                <p:fileUpload fileUploadListener="#{fileUploadController.uploadToData}"
-                                                              mode="advance" value="#{fileUploadController.imageLink}"
-                                                              update="msga2,messages2"
-                                                              label="Choose a file"
-                                                              sizeLimit="90485760"
-                                                              allowTypes="/(\.|\/)(jpg|png|gif)$/"
-                                                              invalidSizeMessage="The maximum file size allowed is 1 Megabyte !"
-                                                              invalidFileMessage="You are allowed to upload only images !"/>
-                                                <p:growl id="messages2" showDetail="true" sticky="true"/>
-                                            </h:form>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
                                             Album
                                         </td>
                                         <td>

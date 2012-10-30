@@ -9,6 +9,7 @@
         <link href="Style/styles.css" rel="stylesheet" type="text/css" />
         <link href="Dashboard/Style/table.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="Script/jquery.js"></script>
+        <script type="text/javascript" src="Script/slides.min.jquery.js"></script>
         <script type="text/javascript">
             $(window).ready(function(){
                 $(".DetailsAlbumMessageOutputLabel").click(function(){
@@ -20,6 +21,149 @@
                     $(".DetailsAlbumMessage").fadeOut(500, "");
                 });
             })
+        </script>
+        <style type="text/css" media="screen">
+            /*
+                    Load CSS before JavaScript
+            */
+
+            /*
+                    Slides container
+                    Important:
+                    Set the width of your slides container
+                    Set to display none, prevents content flash
+            */
+            #slides{
+                width:760px;
+                margin-left: -30px;
+            }
+            #slides .slides_container {
+                width:750px;
+                height:240px;
+                display:none;
+            }
+
+            /*
+                    Each slide
+                    Important:
+                    Set the width of your slides
+                    If height not specified height will be set by the slide content
+                    Set to display block
+            */
+
+            #slides .slides_container div {
+                width:570px;
+                height:170px;
+                display:block;
+            }
+
+            /*
+                    Slides container
+                    Important:
+                    Set the width of your slides container
+                    Set to display none, prevents content flash
+            */
+            #slides_two .slides_container {
+                width:250px;
+                display:none;
+            }
+
+            /*
+                    Each slide
+                    Important:
+                    Set the width of your slides
+                    If height not specified height will be set by the slide content
+                    Set to display block
+            */
+
+            #slides_two .slides_container div {
+                width:250px;
+                height:250px;
+                display:block;
+            }
+
+            /*
+                    Slides container
+                    Important:
+                    Set the width of your slides container
+                    Set to display none, prevents content flash
+            */
+            #slides_three .slides_container {
+                width:200px;
+                display:none;
+            }
+
+            /*
+                    Each slide
+                    Important:
+                    Set the width of your slides
+                    If height not specified height will be set by the slide content
+                    Set to display block
+            */
+
+            #slides_three .slides_container div {
+                width:200px;
+                height:100px;
+                display:block;
+            }
+
+            /* 
+                    Example only
+            */
+            .pagination{
+                padding-left: 700px;
+                border-bottom: 1px solid #D1D0D1;
+                float: left;
+            }
+            .pagination li{
+                float: left;
+                list-style-type: none;
+                padding-right: 5px;
+                font-weight: 600;
+                padding-bottom: 5px;
+            }
+            .pagination .current a {
+                font-weight: 600;
+                color:red;
+            }
+            .prev{
+                display: none;
+            }
+            .next{
+                display: none;
+            }
+            hr {
+                background:#efefef;
+            }
+        </style>
+        <script>
+            $(function(){
+                $('#slides').slides({
+                    generateNextPrev: true,
+                    play: 4500
+                });
+			
+                /*
+                        You could also combin them all
+                        But you can't customize each this way
+				
+                        $('#slides,#slides_two,#slides_three').slides({
+                                preload: true,
+                                generateNextPrev: true
+                        });
+                 */
+
+                /*	
+                        Or use a class for all three
+                        If all three had class="slides"
+                        Same here can't customize each this way
+				
+                        $('.slides').slides({
+                                preload: true,
+                                generateNextPrev: true
+                        });
+                 */
+            });
         </script>
     </h:head>
     <h:body>
@@ -61,8 +205,22 @@
                 </div>
                 <ui:insert name="deSlide">
                     <div>
-                        <div class="headerPic"><img src="Images/headerPic.jpg" alt="" /></div>
-                        <div class="headerSlogan">THE LATEST<br />FILM NEWS &#38; REVIEWS</div>
+                        <div id="slides">
+                            <div class="slides_container">
+                                <div>
+                                    <img src="Images/banner/graphic-design-banner-disc-art1.jpg"/>
+                                </div>
+                                <div>
+                                    <img src="Images/banner/2009-03-26-that70sshow_banner.jpg"/>
+                                </div>
+                                <div>
+
+                                </div>
+                                <div>
+                                 
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </ui:insert>
                 <div class="clearfloat"></div>
@@ -96,7 +254,7 @@
             <!-- end #mainContent -->
             <!-- This clearing element should immediately follow the #mainContent div in order to force the #container div to contain all child floats --><br class="clearfloat" />
             <!-- begin #footer -->
-            <div id="footer" style="border-top: 1px solid #d1d0d1; height: 100px; background-color: #F2F2F2">
+            <div id="footer" style="border-top: 1px solid #d1d0d1; height: 100px; background-color: #fff">
                 <p>
                     <a style="color: #333">
                         Contact:04 85829507 

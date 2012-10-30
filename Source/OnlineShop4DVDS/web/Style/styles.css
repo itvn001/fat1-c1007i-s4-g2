@@ -94,10 +94,10 @@ a#checkouths:hover{
 }
 .menu a {
     color:#333;
-    font-size:16px;
+    font-size:18px;
     text-decoration:none;
     padding:10px 7px;
-    font-family: hagin,arial;
+    font-family:hagin,arial;
     display: inline;
 
 } 
@@ -667,17 +667,16 @@ a#checkouths:hover{
     background: none repeat scroll 0 0 #45749E;
 }
 .DetailsAlbumItemDataStore{
-    margin-top: 5px;
+    padding-top: 5px;
     min-height: 20px;
     padding-left: 20px;
     width: 97%;
     float: left;
-    border-bottom: 1px solid #d1d0d1;
+    border-bottom: 1px dotted #d1d0d1;
 
 }
 .DetailsAlbumItemDataStore:hover{
     background-color: #EFEEEF;
-    color: #fff;
     cursor: pointer;
 }
 .DetailsAlbumItmeDataStoreH2{
@@ -714,6 +713,8 @@ a#checkouths:hover{
 }
 .aplay{
     text-decoration:none; 
+    padding-top: 5px;
+    padding-bottom: 5px;
 }.aplay:hover{
     text-decoration: underline;
 }
@@ -764,13 +765,44 @@ a#checkouths:hover{
  
 }
 .numbercountS{
-    width: 15px;
-    background-color: #ff6766;
+    background-color: #B6AE90;
+    padding-top: 1px;
+    font-size: 15px;
+    display: inline;
+    font-weight: normal;
+    margin-left: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-family:Arial, sans-serif;
     color: #fff;
 }
+.contentalbumeach .textinside{
+    margin-left: 100px;
+    font-weight: 600;
+    color: #000;
+    font-family: sans-serif;
+}
 .ShowProductDefault a img{
-    border: 5px solid #E4E1DB;
+    border: 5px solid #E1E1B4;
 }
 .ShowProductDefault a img:hover{
      border: 5px solid #e47911;
+}
+.naviAlbumListen{
+    padding-top: 5px;
+    text-align: right;
+    width: 320px;
+}
+.naviAlbumListen a.listen{
+    background-color: #47afaf;
+    color: #000;
+    font-weight: 600;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.naviAlbumListen a.listen:hover{
+    color: #fff;
+}
+.naviAlbumListen span.add{
+    padding-left: 10px;
 }

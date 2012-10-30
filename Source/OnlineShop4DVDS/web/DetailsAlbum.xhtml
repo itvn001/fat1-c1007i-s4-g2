@@ -9,8 +9,8 @@
     </h:head>
     <h:body>
         <ui:composition template="MasterPage.xhtml">
-              <ui:define name="deSlide">
-                
+            <ui:define name="deSlide">
+
             </ui:define>
             <ui:define name="contents">
                 <h:form>
@@ -140,15 +140,18 @@
                                 <ui:repeat value="#{detailAlbumManager.showDataStore()}" var="listDataStore">
                                     <div class="DetailsAlbumItemDataStore">
                                         <div class="DetailsAlbumItemDataStoreImg">
-                                            <span class="numbercountS">#{detailAlbumManager.countnumbers}</span>
-                                            <img alt="" src="#{listDataStore.dataImage}" width="50px" height="50px"></img>
-                                            <a class="aplay" onclick="playAudioAndVideo('#{listDataStore.dataName}', '#{listDataStore.dataPath}','#{listDataStore.dataImage}', false)" href="">Listen </a>
-                                        </div>
-                                        <div class="DetailsAlbumItemDataStoreName">#{listDataStore.dataName}</div>
-                                        <div class="DetailsAlbumItemDataStoreIcon">
-                                            <a href="#"><img class="DetailsAlbumItemDataStoreIconAddtoList"
-                                                             title="Click to add to my playlist " alt="" width="20px"
-                                                             src="Images/add-to-playlist.gif"></img></a>
+                                            <div style="width: 400px; float: left" class="contentalbumeach"> 
+                                                <span class="numbercountS">#{detailAlbumManager.countnumbers}</span>
+                                                <span class="textinside">#{listDataStore.dataName}</span>
+                                            </div>
+                                            <div style="float: left" class="naviAlbumListen">
+                                                3:39
+                                                <a class="listen" onclick="playAudioAndVideo('#{listDataStore.dataName}', 
+                                                    '#{listDataStore.dataPath}','DVDStore/album/albumDefault.png', false)" 
+                                                    href="">Listen </a>
+                                                <span class="add"><a class="listen" href="#">Add To Playlist</a></span>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </ui:repeat>
