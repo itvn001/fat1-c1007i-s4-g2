@@ -142,12 +142,13 @@
                                         <div class="DetailsAlbumItemDataStoreImg">
                                             <span class="numbercountS">#{detailAlbumManager.countnumbers}</span>
                                             <img alt="" src="#{listDataStore.dataImage}" width="50px" height="50px"></img>
+                                            <a class="aplay" onclick="playAudioAndVideo('#{listDataStore.dataName}', '#{listDataStore.dataPath}','#{listDataStore.dataImage}', false)" href="">Listen </a>
                                         </div>
                                         <div class="DetailsAlbumItemDataStoreName">#{listDataStore.dataName}</div>
                                         <div class="DetailsAlbumItemDataStoreIcon">
-                                            <a onclick="playAudioAndVideo('#{listDataStore.dataName}', '#{listDataStore.dataPath}','#{listDataStore.dataImage}', false)" href="">
-                                                <img class="DetailsAlbumItemDataStoreIconPlay" title="Click to Play" alt="" src="Images/PlayIcon.png"></img></a>
-                                            <a href="#"><img class="DetailsAlbumItemDataStoreIconAddtoList" title="Click to add to my playlist " alt="" src="Images/add_icon.gif"></img></a>
+                                            <a href="#"><img class="DetailsAlbumItemDataStoreIconAddtoList"
+                                                             title="Click to add to my playlist " alt="" width="20px"
+                                                             src="Images/add-to-playlist.gif"></img></a>
                                         </div>
                                     </div>
                                 </ui:repeat>

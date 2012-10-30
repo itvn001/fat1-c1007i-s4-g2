@@ -35,7 +35,7 @@ public class CartManager {
     private String message;
     private boolean displayMessage;
     private boolean typeMessage;
-
+  
     public CartManager() {
         if (this.listDataStore == null) {
             this.listDataStore = new ArrayList<Album>();

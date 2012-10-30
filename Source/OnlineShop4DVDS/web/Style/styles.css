@@ -1,7 +1,7 @@
 body  {
     font-family:arial;
     font-size:13px;
-    background-color:#F2F2F2;
+    background-color: #fff;
     color:#010101;
 }
 img {
@@ -9,9 +9,9 @@ img {
     cursor: pointer;
 }
 a {
-    color:#4393de;
+    color:#333;
     font-size:12px;
-    text-decoration:underline;
+    text-decoration:none;
 }
 a:hover {
     color:#4393de;
@@ -93,7 +93,7 @@ a#checkouths:hover{
     color:#333;
     font-size:16px;
     text-decoration:none;
-    padding:10px 20px;
+    padding:10px 7px;
     font-family: hagin,arial;
     display: inline;
 
@@ -214,10 +214,11 @@ a#checkouths:hover{
     text-align: left;
 }
 .DefaultCartName a{
-    color: #333;
+    color: #000;
     text-decoration: none;
     font-family: arial;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 400;
 }
 .DefaultCartName a:hover{
     text-decoration: underline;
@@ -362,7 +363,7 @@ a#checkouths:hover{
     border-radius: 3px 3px 3px 3px;
     margin: 0 auto 20px;
     min-height: 50px;
-    width: 640px;
+    width: 750px;
 }
 .ClientPreviewBillslblUserInfor{
     color: #301B00;
@@ -372,7 +373,7 @@ a#checkouths:hover{
     text-transform: uppercase;
 }
 .ClientPreviewBillsLable{
-    font-size: 16px;
+    font-size: 13px;
 }
 .ClientPreviewBillOutput{
     color: #008000;
@@ -691,11 +692,13 @@ a#checkouths:hover{
     float: left;
 }
 .DetailsAlbumItemDataStoreName{
-    color: #000;
+    color: #333;
     float: left;
-    padding-left: 20px;
+    margin-left: -20px;
     font-weight: 600;
     padding-top: 10px;
+    font-size: 13px;
+    text-decoration: none;
     width: 415px;
 }
 .DetailsAlbumItemDataStoreDesciptio{
@@ -706,10 +709,10 @@ a#checkouths:hover{
     padding-top: 10px;
     width: 395px;
 }
-.DetailsAlbumItemDataStoreIcon{
-    float: right;
-    height: 30px;
-    width: 135px;
+.aplay{
+    text-decoration:none; 
+}.aplay:hover{
+    text-decoration: underline;
 }
 .DetailsAlbumItemDataStoreIconDownload{
     height: 25px;
@@ -720,7 +723,7 @@ a#checkouths:hover{
     margin: 0 10px;
 }
 .DetailsAlbumItemDataStoreIconAddtoList{
-
+    padding-top: 20px;
 }
 .DetailsAlbumMessage{
     background: none repeat scroll 0 0 #d1d0d1;
