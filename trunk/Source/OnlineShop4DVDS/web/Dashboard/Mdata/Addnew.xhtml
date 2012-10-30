@@ -60,26 +60,6 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Image
-                                    </td>
-                                    <td>
-                                        <h:form enctype="multipart/form-data" id="th12">
-                                            <h:inputText id="msga3" class="inputIm" disabled="true" style="background-color: #ECEBEC"
-                                                         value="#{fileUploadController.file}"/>
-                                            <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}"
-                                                          mode="advance" value="#{fileUploadController.file}"
-                                                          update="msga3,messages3"
-                                                          label="Choose a file"
-                                                          sizeLimit="90485760"
-                                                          allowTypes="/(\.|\/)(jpg|png|gif)$/"
-                                                          invalidSizeMessage="The maximum file size allowed is 1 Megabyte !"
-                                                          invalidFileMessage="You are allowed to upload only images !"/>
-                                            <p:growl id="messages3" showDetail="true" sticky="true"/>
-                                        </h:form>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
                                         Guest/User
                                     </td>
                                     <td>

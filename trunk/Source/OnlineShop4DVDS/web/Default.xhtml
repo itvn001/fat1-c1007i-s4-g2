@@ -9,13 +9,26 @@
     <h:body>
         <ui:composition template="MasterPage.xhtml">
             <ui:define name="deSlide">
-
             </ui:define>
             <ui:define name="contents">
                 <h:form>
                     <div>
-                        <div class="headerPic"><img src="Images/headerPic.jpg" alt="" /></div>
-                        <div class="headerSlogan">THE LATEST<br />FILM NEWS &#38; REVIEWS</div>
+                        <div id="slides">
+                            <div class="slides_container">
+                                <div>
+                                    <img width="750px" src="Images/banner/graphic-design-banner-disc-art1.jpg"/>
+                                </div>
+                                <div>
+                                     <img src="Images/banner/2009-03-26-that70sshow_banner.jpg"/>
+                                </div>
+                                <div>
+
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="DefaultAllbox">
                         <ui:repeat value="#{defaultManagerBean.loadAlbum()}" var="listAlbum">
@@ -23,7 +36,7 @@
                                 <div class="ShowProductDefault">
                                     <a href="DetailsAlbum.xhtml?id=#{listAlbum.albumID}" class="atest">
                                         <img style="height: 150px; padding: 3px" src="#{listAlbum.albumImage}" 
-                                            alt="" title="#{listAlbum.albumName}" width="150px"/>
+                                             alt="" title="#{listAlbum.albumName}" width="150px"/>
                                     </a>
                                 </div>
                                 <div class="boxTitle"><a href="DetailsAlbum.xhtml?id=#{listAlbum.albumID}">#{listAlbum.albumName}</a> </div>
