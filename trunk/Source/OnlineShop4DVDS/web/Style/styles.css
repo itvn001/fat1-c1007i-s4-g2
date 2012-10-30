@@ -1,6 +1,6 @@
 body  {
     font-family:arial;
-    font-size:13px;
+    font-size:12px;
     background-color: #fff;
     color:#010101;
 }
@@ -88,6 +88,9 @@ a#checkouths:hover{
     display: inline;
     list-style: none outside none;
     padding: 0;
+    border-right: 1px solid #d1d0d1;
+    padding-bottom: 8px;
+    padding-top: 3px;
 }
 .menu a {
     color:#333;
@@ -764,4 +767,10 @@ a#checkouths:hover{
     width: 15px;
     background-color: #ff6766;
     color: #fff;
+}
+.ShowProductDefault a img{
+    border: 5px solid #E4E1DB;
+}
+.ShowProductDefault a img:hover{
+     border: 5px solid #e47911;
 }

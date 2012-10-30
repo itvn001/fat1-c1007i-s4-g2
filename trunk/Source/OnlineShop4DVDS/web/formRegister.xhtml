@@ -18,10 +18,11 @@ and open the template in the editor.
                 
             </ui:define>
             <ui:define name="contents">
+                <div style="width: 100%; background-image:url(''); background-repeat: no-repeat">
                 <div style="width:430px">
-                    <h2>Regist new account</h2><br/>
+                    <h2 class="DefaultCartH3">Regist new account</h2><br/>
                     <fieldset style="border: 1px solid #d1d0d1">
-                        <legend>Register</legend>
+                        <legend>Info</legend>
                         <div>
                             <div >
                                 <div style="margin: 0 auto; width: 80%">
@@ -55,8 +56,6 @@ and open the template in the editor.
                                                 </td>
                                                 <td>
                                                     <h:inputSecret id="repassword" required="true" redisplay="true" style="width: 200px; height: 22px">
-                                                        <f:validator validatorId="duplicateFieldValidator" />
-                                                        <f:attribute name="field1Id" value="#{component.parent.parent.clientId}:password" />
                                                     </h:inputSecret>
                                                 </td>
                                             </tr> 
@@ -101,7 +100,8 @@ and open the template in the editor.
 
                                                 </td>
                                                 <td>
-                                                    <h:commandButton onclick="checkPassExist();" action="#{userManager.createUserAccount}" value="Submit" />
+                                                    <h:commandButton onclick="checkPassExist();" style="border: none; cursor: pointer"
+                                                                     class="s-btnsa" action="#{userManager.createUserAccount}" value="Register" />
                                                 </td>
 
                                             </tr>
@@ -117,6 +117,7 @@ and open the template in the editor.
                         </div>
                     </fieldset>
                 </div>
+                    </div>
             </ui:define>
         </ui:composition>
     </body>
