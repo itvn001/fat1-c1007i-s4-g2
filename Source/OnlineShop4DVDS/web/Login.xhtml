@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="MasterPage.xhtml">
+           
+            <ui:define name="contents">
+                <div style="margin-left: -30px">
+                    <h2 class="" style="font-family: hagin; color: #333; font-weight: normal; font-size: 20px">Account Login</h2>
+                      <style>
+                        table tr{
+                            line-height: 32px;
+                        }
+                        
+                    </style>
+                    <h:form>
+                        <table>
+                            <tr>
+                                <td width="80px">Username:</td>
+                                <td><h:inputText style="width: 200px; height: 22px"/></td>
+                            </tr>
+                               <tr>
+                                <td>Password:</td>
+                                <td><h:inputText style="width: 200px; height: 22px"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="right">
+                                    you not have Account? <a href="formRegister.xhtml">Register</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <h:commandButton value="Login" class="s-btnsa" style="border: none; cursor: pointer"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
