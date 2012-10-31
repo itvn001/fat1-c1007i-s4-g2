@@ -80,7 +80,7 @@ SELECT	DataID,
 		DataStatus,
 		DataImage
 		FROM DataStore,Album 
-		WHERE DataStore.AlbumID = Album.AlbumID ORDER BY DataID DESC
+		WHERE DataStore.AlbumID = 1 ORDER BY DataID DESC
 GO
 ALTER PROC aShowAllDataStoreFilter
 @ID int
