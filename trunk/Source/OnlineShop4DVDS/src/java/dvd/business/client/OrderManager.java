@@ -84,7 +84,7 @@ public class OrderManager {
             cl = conn.GetConnect().prepareCall(sQuery);
             ResultSet rs = cl.executeQuery();
             while (rs.next()) {
-                totalMoney += (rs.getInt(1) * rs.getInt(1));
+                totalMoney += (rs.getInt(1) * rs.getInt(2));
             }
         } catch (SQLException ex) {
             Logger.getLogger(OrderManager.class.getName()).log(Level.SEVERE, null, ex);

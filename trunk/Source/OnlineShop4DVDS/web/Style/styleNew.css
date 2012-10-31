@@ -58,3 +58,90 @@
     background: #2e74b2;
     color: white;
 }
+
+/*Master page */
+.MasterPageUser{
+    color: #4393E9;
+    font-weight: bold;
+    padding-right: 10px;
+    text-align: center;
+}
+.MasterPageUser:hover{
+    color: #224E82;
+    text-decoration: underline;
+}
+.menuUserPersonal{
+    margin-left: -23px;
+    overflow: hidden;
+    padding-left: 2px;
+    width: 750px;
+}
+.menuUserPersonalActive{
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 white;
+    border-color: #D0D0D0;;
+    border-image: none;
+    border-radius: 5px 5px 0 0;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    float: left;
+    font-family: hagin;
+    font-size: 18px;
+    margin-right: 4px;
+    padding: 5px 31px 6px;
+}
+.menuUserPersonal a{
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #E7E7E7;
+    border-color: #D0D0D0;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    float: left;
+    font-family: hagin;
+    font-size: 18px;
+    margin-right: 4px;
+    padding: 5px 31px;
+    text-transform: uppercase;
+}
+.menuUserPersonal a:hover{
+    background: #FF6766;
+    color: white;
+}
+.UserPersonalPageContent{
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #D0D0D0;
+    margin: -1px 5px 0 -30px;
+    min-height: 50px;
+    padding: 5px 10px;
+}
+.UserPersonalPageContentH4{
+    background: none repeat scroll 0 0 #CDE5F0;
+    border-bottom: 1px solid #D0D0D0;
+    border-radius: 5px 5px 0 0;
+    color: graytext;
+    padding: 8px 10px;
+}
+.UserPersonalPageContentInforTable{
+    width: 733px;
+}
+.UserPersonalPageContentInforTable .lable{
+    color: graytext;
+    font-size: 13px;
+    padding: 5px 10px;
+    text-align: right;
+    width: 250px;
+}
+.UserPersonalPageContentInforTable .input{
+    color: #333333;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px;
+    text-align: left;
+}

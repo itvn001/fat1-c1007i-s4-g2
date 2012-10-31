@@ -49,7 +49,7 @@ public class HistoryOrdersManager {
             OrderManager om = new OrderManager();
             listO = om.listOrder(UserId);
             for (Order order : listO) {
-                order.setTotalMoney(order.getOrderID());
+                order.setTotalMoney(om.totalMoneyByOrderId(order.getOrderID()));
             }
         } catch (Exception e) {
         }
