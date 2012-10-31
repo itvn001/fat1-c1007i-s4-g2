@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>My playlist</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="MasterPage.xhtml">
+            <ui:define name="contents">
+                <div class="menuUserPersonal">
+                    <a href="UserPersonalPage.xhtml">View Information</a>
+                    <a href="#">Update Information</a>
+                    <span class="menuUserPersonalActive">My Playlist</span>
+                    <a href="#">History Order</a>
+                </div>
+                <div class="UserPersonalPageContent">
+                    <h4 class="UserPersonalPageContentH4">Personal Information</h4>
+                    <div class="UserPersonalPageContentInfor">
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
