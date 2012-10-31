@@ -219,15 +219,9 @@
                                                    <a class="listen" onclick="playAudioAndVideo('#{listDataStore.dataName}', 
                                                         '#{listDataStore.dataPath}','DVDStore/album/albumDefault.png', false)" 
                                                    href="">Listen </a>
-                                                <span class="add"><a class="listen" href="#">Add To Playlist</a></span>
+                                                <span class="add"><a class="listen" href="" onclick="clickDataStoreAddtoMyList(#{listDataStore.dataID})">Add To Playlist</a></span>
                                             </div>
 
-                                        </div>
-                                        <div class="DetailsAlbumItemDataStoreName">#{listDataStore.dataName}</div>
-                                        <div class="DetailsAlbumItemDataStoreIcon">
-                                            <a onclick="playAudioAndVideo('#{listDataStore.dataName}', '#{listDataStore.dataPath}','#{listDataStore.dataImage}', false)" href="">
-                                                <img class="DetailsAlbumItemDataStoreIconPlay" title="Click to Play" alt="" src="Images/PlayIcon.png"></img></a>
-                                            <a onclick="clickDataStoreAddtoMyList(#{listDataStore.dataID})" href=""><img class="DetailsAlbumItemDataStoreIconAddtoList" title="Click to add to my playlist " alt="" src="Images/add_icon.gif"></img></a>
                                         </div>
                                     </div>
                                 </ui:repeat>
