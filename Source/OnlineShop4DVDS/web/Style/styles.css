@@ -150,14 +150,14 @@ a#checkouths:hover{
 }
 /*Page DetailAlbum*/
 .DetailsAlbumBackgroundAudio{
+    background: none repeat scroll 0 0 #E47911;
     display: none;
-    background: black;
     height: 100%;
     left: 0;
+    opacity: 0.2;
     position: fixed;
     top: 0;
     width: 100%;
-    opacity:0.5;
     z-index: 1001;
 }
 .DetailsAlbumAudio{
@@ -513,16 +513,16 @@ a#checkouths:hover{
     margin-bottom: 10px;
 }
 .DefaultAllbox{
-    border-left: 1px solid #d1d0d1;
+    border-left: 1px solid #D1D0D1;
     float: left;
     margin-left: -40px;
+    min-width: 765px;
     padding-left: 5px;
 }
 .DefaultPaging{
-    text-align: center;
+    float: right;
     margin-top: 5px;
-    padding-left: 500px;
-    float: left;
+    text-align: center;
 }
 .box {
     float:left;

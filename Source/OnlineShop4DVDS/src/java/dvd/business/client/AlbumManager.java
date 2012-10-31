@@ -28,12 +28,20 @@ public class AlbumManager {
         conn = new Connection();
     }
 
-    public ResultSet listAllAlbum(int _PIndex, int _PageSize) {
+    public ResultSet listAllAlbum(int _PIndex, int _PageSize, int _pId) {
         try {
-            String squery = "{call pagingShowAllAlbum(?,?)}";
-            cl = conn.GetConnect().prepareCall(squery);
-            cl.setInt(1, _PIndex);
-            cl.setInt(2, _PageSize);
+            if (_pId > 0) {
+                String squery = "{call pagingShowAllAlbumById(?,?,?)}";
+                cl = conn.GetConnect().prepareCall(squery);
+                cl.setInt(1, _PIndex);
+                cl.setInt(2, _PageSize);
+                cl.setInt(3, _pId);
+            } else {
+                String squery = "{call pagingShowAllAlbum(?,?)}";
+                cl = conn.GetConnect().prepareCall(squery);
+                cl.setInt(1, _PIndex);
+                cl.setInt(2, _PageSize);
+            }
             rs = cl.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(AlbumManager.class.getName()).log(Level.SEVERE, null, ex);
