@@ -7,6 +7,7 @@
     <h:head>
         <title>Online Shop DVDS</title>
         <link href="Style/styles.css" rel="stylesheet" type="text/css" />
+        <link href="Style/styleNew.css" rel="stylesheet" type="text/css" />
         <link href="Dashboard/Style/table.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="Script/jquery.js"></script>
         <script type="text/javascript" src="Script/slides.min.jquery.js"></script>
@@ -231,7 +232,7 @@
                 <h2>CATEGORIES</h2>
                 <ul>
                     <ui:repeat value="#{masterPageManagerBean.showMenuCategory()}" var="cate">
-                        <li><a href="#">#{cate.cateName}</a></li>
+                        <li><a href="Default.xhtml?pId=#{cate.cateID}">#{cate.cateName}</a></li>
                     </ui:repeat>
                 </ul>
                 <div id="bannerdemo2">

@@ -3,18 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <ui:composition template="MasterPage.xhtml">
             <ui:define name="deSlide">
-
             </ui:define>
             <ui:define name="contents">
-                <h:form>
-                    <h:inputHidden value="#{detailAlbumManager.addAlbumID(param['id'])}"></h:inputHidden>
+                <h:inputHidden value="#{detailAlbumManager.addAlbumID(param['id'])}"></h:inputHidden>
+                <h:form id="formDA">
                     <script type="text/javascript" src="Script/jwplayer.js"></script>
                     <div class="DetailsAlbumBackgroundAudio"></div>
                     <div class="DetailsAlbumAudio">
@@ -30,12 +30,34 @@
                             </div>
                         </div>
                     </div>
+                    <div class="DetailsAlbumAddList">
+                        <h4 class="DetailsAlbumAddListH4">Add to my list</h4>
+                        <img id="closeAddToList" style="float: right;margin-left: 378px;margin-top: -35px;position: fixed;" src="Images/close.png" alt=""></img>
+                        <div class="DetailsAlbumAddListContent">
+                            <h:outputLabel style="float: left;padding: 10px 0 0 10px;width: 90px;" value="Add to playlist:"></h:outputLabel>
+                            <div class="DetailsAlbumAddListContentList">
+                                <h:selectManyCheckbox value="#{detailAlbumManager.collectionPlaylist}">
+                                    <f:selectItems value="#{detailAlbumManager.listItem}"></f:selectItems>
+                                </h:selectManyCheckbox>
+                            </div>
+                            <h:commandLink class="DetailsAlbumAddListContentSave" value="Add to my list" action="#{detailAlbumManager.listAlbumContentSave()}"></h:commandLink>
+                            <h:inputHidden id="btnAddList" value="#{detailAlbumManager.titleAddtoList}"></h:inputHidden>
+                            <hr style="width: 400px; float: left;" />
+                            <div style="padding: 10px; float: left;">
+                                <h:outputLabel value="New playlist:" style="float: left;padding-right: 26px;padding-top: 2px;"></h:outputLabel>
+                                <h:inputText style="float: left;" value="#{detailAlbumManager.playListNew}"></h:inputText>
+                                <h:commandLink class="DetailsAlbumAddListContentAdd" value="Add playlist new" action="#{detailAlbumManager.addNewDataStore()}"></h:commandLink>
+                            </div>
+                        </div>
+                    </div>
                     <script type="text/javascript">
                         $(window).ready(function(){
                             resizeAudioPlayer();
+                            resizeAddToList();
                         });
                         $(window).resize(function(){
                             resizeAudioPlayer();
+                            resizeAddToList();
                         });
                         function resizeAudioPlayer(){
                             $(".DetailsAlbumAudio").css('top', ($(".DetailsAlbumBackgroundAudio").height()-$(".DetailsAlbumAudio").height())/2)
@@ -89,16 +111,53 @@
                                     });
                                 }
                             }
-                            $('.DetailsAlbumBackgroundAudio').css('opacity', '0.5').fadeIn(500);
+                            $('.DetailsAlbumBackgroundAudio').fadeIn(500);
                             $('.DetailsAlbumAudio').fadeIn(500);
                             resizeAudioPlayer();
                         }
+                        
                         $('#closePlayer').click(function(){
                             playAudioAndVideo('', '', 'sImage', false);
                             $("#listItem").css('display', 'none');
-                            $('.DetailsAlbumBackgroundAudio').css('opacity', '0.5').fadeOut(500);
+                            $('.DetailsAlbumBackgroundAudio').fadeOut(500);
                             $('.DetailsAlbumAudio').fadeOut(200);
                         });
+                        
+                        $('#closeAddToList').click(function(){
+                            $('.DetailsAlbumAddList').fadeOut(500);
+                            $('.DetailsAlbumBackgroundAudio').fadeOut(200);
+                        });
+                        
+                        function checkLogin(){
+                            if("#{session.getAttribute("userName")}" == null || "#{session.getAttribute("userName")}" == ""){
+                                window.location = "Login.xhtml";    
+                            }
+                        }
+                        
+                        function addAlbumToMyList(albumId){
+                            
+                        }
+                        
+                        function addDataStoreToList(dataStoreId){
+                            
+                        }
+                        
+                        function clickAlbumAddtoMyList(){
+                            $("#formDA\\:btnAddList").val("Album");
+                            $(".DetailsAlbumAddList").fadeIn(500);
+                            $(".DetailsAlbumBackgroundAudio").fadeIn(500);
+                        }
+                        function clickDataStoreAddtoMyList(value){
+                            $("#formDA\\:btnAddList").val(value);
+                            $(".DetailsAlbumAddList").fadeIn(500);
+                            $(".DetailsAlbumBackgroundAudio").fadeIn(500);
+                        }
+                        
+                        function resizeAddToList(){
+                            $(".DetailsAlbumAddList").css('top', ($(".DetailsAlbumBackgroundAudio").height()-$(".DetailsAlbumAddList").height())/2)
+                            $(".DetailsAlbumAddList").css('left', ($(".DetailsAlbumBackgroundAudio").width()-$(".DetailsAlbumAddList").width())/2)
+                        }
+                        
                     </script>
                     <c:if test="#{cartManager.displayMessage}">
                         <div class="DetailsAlbumMessage">
@@ -109,6 +168,17 @@
                                 <h5 class="DetailsAlbumMessageOutputLabel" style="color: #ff6766;">#{cartManager.message}</h5>
                             </c:if>
                             #{cartManager.messageEmpty()}
+                        </div>
+                    </c:if>
+                    <c:if test="#{detailAlbumManager.displayMessage}">
+                        <div class="DetailsAlbumMessage">
+                            <c:if test="#{detailAlbumManager.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{detailAlbumManager.message}</h5>
+                            </c:if>
+                            <c:if test="#{!detailAlbumManager.typeMessage}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{detailAlbumManager.message}</h5>
+                            </c:if>
+                            #{detailAlbumManager.resetMessage()}
                         </div>
                     </c:if>
                     <ui:repeat value="#{detailAlbumManager.showInforAlbum()}" var="album">
@@ -127,9 +197,9 @@
                                 #{cartManager.valuePageOld("DetailsAlbum.xhtml?id=", param['id'])}
                                 <div style="float: left">
                                     <p class=""><a class="abtn" href="addToCartPage.xhtml?DataStoreId=#{album.albumID}">Add to Cart</a>
-                                        <a class="abtn" onclick="playAudioAndVideo('#{detailAlbumManager.firstTitle}', 
-                                            '#{detailAlbumManager.firstPath}', '#{detailAlbumManager.firstImage}', true)" href="">Play all</a>
-                                        <a class="abtn" href="#">Add to my list</a>
+                                       <a class="abtn" onclick="playAudioAndVideo('#{detailAlbumManager.firstTitle}', 
+                                                '#{detailAlbumManager.firstPath}', '#{detailAlbumManager.firstImage}', true)" href="">Play all</a>
+                                        <a onclick="clickAlbumAddtoMyList()" class="abtn" href="">Add to my list</a>
                                     </p>
                                 </div>
                             </div>
@@ -146,12 +216,18 @@
                                             </div>
                                             <div style="float: left" class="naviAlbumListen">
                                                 3:39
-                                                <a class="listen" onclick="playAudioAndVideo('#{listDataStore.dataName}', 
-                                                    '#{listDataStore.dataPath}','DVDStore/album/albumDefault.png', false)" 
-                                                    href="">Listen </a>
+                                                   <a class="listen" onclick="playAudioAndVideo('#{listDataStore.dataName}', 
+                                                        '#{listDataStore.dataPath}','DVDStore/album/albumDefault.png', false)" 
+                                                   href="">Listen </a>
                                                 <span class="add"><a class="listen" href="#">Add To Playlist</a></span>
                                             </div>
 
+                                        </div>
+                                        <div class="DetailsAlbumItemDataStoreName">#{listDataStore.dataName}</div>
+                                        <div class="DetailsAlbumItemDataStoreIcon">
+                                            <a onclick="playAudioAndVideo('#{listDataStore.dataName}', '#{listDataStore.dataPath}','#{listDataStore.dataImage}', false)" href="">
+                                                <img class="DetailsAlbumItemDataStoreIconPlay" title="Click to Play" alt="" src="Images/PlayIcon.png"></img></a>
+                                            <a onclick="clickDataStoreAddtoMyList(#{listDataStore.dataID})" href=""><img class="DetailsAlbumItemDataStoreIconAddtoList" title="Click to add to my playlist " alt="" src="Images/add_icon.gif"></img></a>
                                         </div>
                                     </div>
                                 </ui:repeat>

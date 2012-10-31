@@ -11,7 +11,18 @@
             <ui:define name="deSlide">
             </ui:define>
             <ui:define name="contents">
+                <h:inputHidden value="#{defaultManagerBean.addPId(param['pId'])}"></h:inputHidden>
                 <h:form>
+                    <script type="text/javascript">
+                        $(window).ready(function(){
+                            var surl = window.location.search.substring(1);
+                            var sParam = surl.split('pId=');
+                            if(sParam != ""){
+                                $('.headerPic').hide();
+                                $('.headerSlogan').hide();
+                            }
+                        });
+                    </script>
                     <div>
                         <div id="slides">
                             <div class="slides_container">
@@ -45,13 +56,13 @@
                         </ui:repeat>
                     </div>
                     <div class="DefaultPaging">
-                        <h:commandButton value="First" action="#{defaultManagerBean.btnFirst()}" disabled="#{defaultManagerBean.disableFirst}"></h:commandButton>
-                        <h:commandButton value="Prev" action="#{defaultManagerBean.btnPrevious()}" disabled="#{defaultManagerBean.disablePrev}"></h:commandButton>
+                        <h:commandButton class="DetailsAlbumBtnPaging" value="First" action="#{defaultManagerBean.btnFirst()}" disabled="#{defaultManagerBean.disableFirst}"></h:commandButton>
+                        <h:commandButton class="DetailsAlbumBtnPaging" value="Prev" action="#{defaultManagerBean.btnPrevious()}" disabled="#{defaultManagerBean.disablePrev}"></h:commandButton>
                         <h:inputHidden value="#{defaultManagerBean.pageIndex}"></h:inputHidden>
                         <h:outputLabel value="#{defaultManagerBean.pageIndex}"></h:outputLabel>/
                         <h:outputLabel value="#{defaultManagerBean.totalPaging}"></h:outputLabel>
-                        <h:commandButton value="Next" action="#{defaultManagerBean.btnNext()}" disabled="#{defaultManagerBean.disableNext}"></h:commandButton>
-                        <h:commandButton value="Last" action="#{defaultManagerBean.btnLast()}" disabled="#{defaultManagerBean.disableLast}"></h:commandButton>
+                        <h:commandButton class="DetailsAlbumBtnPaging" value="Next" action="#{defaultManagerBean.btnNext()}" disabled="#{defaultManagerBean.disableNext}"></h:commandButton>
+                        <h:commandButton class="DetailsAlbumBtnPaging" value="Last" action="#{defaultManagerBean.btnLast()}" disabled="#{defaultManagerBean.disableLast}"></h:commandButton>
                     </div>
                 </h:form>
             </ui:define>

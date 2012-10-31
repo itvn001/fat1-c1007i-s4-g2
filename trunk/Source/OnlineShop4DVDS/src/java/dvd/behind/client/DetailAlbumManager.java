@@ -5,15 +5,22 @@
 package dvd.behind.client;
 
 import dvd.business.client.AlbumManager;
+import dvd.business.client.CollectionManager;
 import dvd.entity.Album;
+import dvd.entity.CollectionCate;
 import dvd.entity.DataStore;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,24 +34,51 @@ public class DetailAlbumManager {
      * Creates a new instance of DetailAlbumManager
      */
     private int albumId;
+    private int UserId = 1;
     private String firstPath;
     private String firstImage;
     private String firstTitle;
+    private List<SelectItem> listItem;
+    private String[] collectionPlaylist;
+    private String playListNew;
+    static private String message;
+    static private boolean displayMessage;
+    static private boolean typeMessage;
+    private String titleAddtoList;
     AlbumManager albumManager;
+    HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 
     public DetailAlbumManager() {
+        titleAddtoList = "DataStore";
+//        if(session.getAttribute("UserId") == null || session.getAttribute("UserId") == ""){
+//            try {
+//                FacesContext.getCurrentInstance().getExternalContext().redirect("Login.xhtml");
+//            } catch (IOException ex) {
+//                Logger.getLogger(DetailAlbumManager.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
     }
-    private  int countnumbers = 0;
 
-    public  int getCountnumbers() {
-        countnumbers ++;
+    public void resetMessage() {
+        message = "";
+        displayMessage = false;
+    }
+    private int countnumbers = 0;
+
+    public int getCountnumbers() {
+        countnumbers++;
         return countnumbers;
     }
+
     public void setCountnumbers(int _countnumbers) {
         countnumbers = _countnumbers++;
     }
+
     public void addAlbumID(int _albumID) {
         albumId = _albumID;
+        if (_albumID != 0) {
+            session.setAttribute("idPageOld", _albumID);
+        }
     }
 
     public Album showInforAlbum() {
@@ -83,10 +117,101 @@ public class DetailAlbumManager {
         return listDS;
     }
 
-    public String showNameSuppllier() {
-        albumManager = new AlbumManager();
+    public List<CollectionCate> listCollectionCate() {
+        List<CollectionCate> listCCate = null;
+        try {
+            CollectionManager collectionManager = new CollectionManager();
+            listCCate = collectionManager.listCollectionCate(UserId);
+        } catch (Exception e) {
+        }
+        return listCCate;
+    }
 
-        return albumManager.getNameSupplier(albumId);
+    public String showNameSuppllier() {
+        try {
+            albumManager = new AlbumManager();
+            return albumManager.getNameSupplier(albumId);
+        } catch (Exception e) {
+        }
+        return "No Suppllier";
+    }
+
+    public void listAlbumContentSave() {
+        try {
+            if (this.collectionPlaylist.length == 0) {
+                displayMessage = true;
+                message = "Not successfully added to the list! Because it is not already selected personal list";
+                typeMessage = false;
+                FacesContext.getCurrentInstance().getExternalContext().redirect("DetailsAlbum.xhtml?id=" + session.getAttribute("idPageOld"));
+            } else {
+                CollectionManager cm = new CollectionManager();
+                if (titleAddtoList.equals("Album")) {
+                    AlbumManager am = new AlbumManager();
+                    List<DataStore> listDS = am.showDataStore(Integer.parseInt("" + session.getAttribute("idPageOld")));
+                    for (DataStore dataStore : listDS) {
+                        for (String cp : collectionPlaylist) {
+                            if (!cm.checkExistDataStore(Integer.parseInt(cp), dataStore.getDataID())) {
+                                cm.listContentSave(Integer.parseInt(cp), dataStore.getDataID());
+                            }
+                        }
+                    }
+                } else {
+                    for (String cp : collectionPlaylist) {
+                        if (!cm.checkExistDataStore(Integer.parseInt(cp), Integer.parseInt(titleAddtoList))) {
+                            cm.listContentSave(Integer.parseInt(cp), Integer.parseInt(titleAddtoList));
+                        }
+                    }
+                }
+            }
+            displayMessage = true;
+            message = "Add to my list success";
+            typeMessage = true;
+            FacesContext.getCurrentInstance().getExternalContext().redirect("DetailsAlbum.xhtml?id=" + session.getAttribute("idPageOld"));
+        } catch (IOException ex) {
+            Logger.getLogger(DetailAlbumManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void addNewDataStore() {
+        try {
+            CollectionManager cm = new CollectionManager();
+            if (cm.addNewDataStore(playListNew, UserId)) {
+                int newCCId = cm.listCollectionCateNew(UserId);
+                if (newCCId > 0) {
+                    if (titleAddtoList.equals("Album")) {
+                        AlbumManager am = new AlbumManager();
+                        List<DataStore> listDS = am.showDataStore(Integer.parseInt("" + session.getAttribute("idPageOld")));
+                        for (DataStore dataStore : listDS) {
+                            if (!cm.checkExistDataStore(newCCId, dataStore.getDataID())) {
+                                cm.listContentSave(newCCId, dataStore.getDataID());
+                            }
+                        }
+                    } else {
+                        if (!cm.checkExistDataStore(newCCId, Integer.parseInt(titleAddtoList))) {
+                            cm.listContentSave(newCCId, Integer.parseInt(titleAddtoList));
+                        }
+                    }
+                    displayMessage = true;
+                    message = "Create new list success";
+                    typeMessage = true;
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("DetailsAlbum.xhtml?id=" + session.getAttribute("idPageOld"));
+                } else {
+                    displayMessage = true;
+                    message = "Create new list false!";
+                    typeMessage = false;
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("DetailsAlbum.xhtml?id=" + session.getAttribute("idPageOld"));
+                }
+            }
+        } catch (Exception e) {
+            try {
+                displayMessage = true;
+                message = "Create new list false!";
+                typeMessage = false;
+                FacesContext.getCurrentInstance().getExternalContext().redirect("DetailsAlbum.xhtml?id=" + session.getAttribute("idPageOld"));
+            } catch (IOException ex) {
+                Logger.getLogger(DetailAlbumManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     /**
@@ -143,5 +268,112 @@ public class DetailAlbumManager {
      */
     public void setFirstTitle(String firstTitle) {
         this.firstTitle = firstTitle;
+    }
+
+    /**
+     * @return the collectionPlaylist
+     */
+    public String[] getCollectionPlaylist() {
+        return collectionPlaylist;
+    }
+
+    /**
+     * @param collectionPlaylist the collectionPlaylist to set
+     */
+    public void setCollectionPlaylist(String[] collectionPlaylist) {
+        this.collectionPlaylist = collectionPlaylist;
+    }
+
+    /**
+     * @return the listItem
+     */
+    public List<SelectItem> getListItem() {
+        try {
+            listItem = new ArrayList<SelectItem>();
+            List<CollectionCate> listCC = listCollectionCate();
+            for (CollectionCate cc : listCC) {
+                SelectItem item = new SelectItem(cc.getCollecCateID(), cc.getCollectCateName());
+                listItem.add(item);
+            }
+        } catch (Exception e) {
+        }
+        return listItem;
+    }
+
+    /**
+     * @param listItem the listItem to set
+     */
+    public void setListItem(List<SelectItem> listItem) {
+        this.listItem = listItem;
+    }
+
+    /**
+     * @return the playListNew
+     */
+    public String getPlayListNew() {
+        return playListNew;
+    }
+
+    /**
+     * @param playListNew the playListNew to set
+     */
+    public void setPlayListNew(String playListNew) {
+        this.playListNew = playListNew;
+    }
+
+    /**
+     * @return the message
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * @param message the message to set
+     */
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    /**
+     * @return the displayMessage
+     */
+    public boolean isDisplayMessage() {
+        return displayMessage;
+    }
+
+    /**
+     * @param displayMessage the displayMessage to set
+     */
+    public void setDisplayMessage(boolean displayMessage) {
+        this.displayMessage = displayMessage;
+    }
+
+    /**
+     * @return the typeMessage
+     */
+    public boolean isTypeMessage() {
+        return typeMessage;
+    }
+
+    /**
+     * @param typeMessage the typeMessage to set
+     */
+    public void setTypeMessage(boolean typeMessage) {
+        this.typeMessage = typeMessage;
+    }
+
+    /**
+     * @return the titleAddtoList
+     */
+    public String getTitleAddtoList() {
+        return titleAddtoList;
+    }
+
+    /**
+     * @param titleAddtoList the titleAddtoList to set
+     */
+    public void setTitleAddtoList(String titleAddtoList) {
+        this.titleAddtoList = titleAddtoList;
     }
 }

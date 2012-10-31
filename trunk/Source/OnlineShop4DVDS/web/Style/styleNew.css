@@ -1,0 +1,60 @@
+.DetailsAlbumAddList{
+    border: 3px solid #E47911;
+    position: fixed;
+    z-index: 1002;
+    background: white;
+    display: none;
+}
+.DetailsAlbumAddListH4{
+    background: none repeat scroll 0 0 inactivecaptiontext;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.DetailsAlbumAddListContent{
+    width: 400px;
+}
+.DetailsAlbumAddListContentList{
+    float: left;
+    padding: 5px;
+    width: 290px;
+}
+.DetailsAlbumAddListContentList table{
+    width: 290px;
+}
+.DetailsAlbumAddListContentList table td{
+    width: 290px;
+    float: left;
+}
+.DetailsAlbumAddListContentSave{
+    background: none repeat scroll 0 0 #E47911;
+    color: white;
+    float: left;
+    font-family: hagin;
+    font-size: 15px;
+    margin: 5px 0 0 111px;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+.DetailsAlbumAddListContentSave:hover{
+    font-size: 15px;
+    background: #2e74b2;
+    color: white;
+}
+.DetailsAlbumAddListContentAdd{
+    background: none repeat scroll 0 0 #E47911;
+    color: white;
+    float: left;
+    font-family: hagin;
+    font-size: 15px;
+    margin: 0 0 0 10px;
+    padding: 1px 5px;
+    text-decoration: none;
+}
+.DetailsAlbumAddListContentAdd:hover{
+    font-size: 15px;
+    background: #2e74b2;
+    color: white;
+}

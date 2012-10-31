@@ -6,6 +6,7 @@ package dvd.behind.client;
 
 import dvd.business.client.AlbumManager;
 import dvd.entity.AlbumAllExtention;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -24,14 +26,23 @@ import javax.faces.bean.RequestScoped;
 public class DefaultManagerBean {
 
     private List<AlbumAllExtention> listAlbum;
-    private int pageIndex;
-    private int totalRow;
-    private int totalPaging;
-    private int pageSize = 24;
+    private static int pageIndex;
+    private static int totalRow;
+    private static int totalPaging;
+    private static int pageSize = 24;
     private boolean disableFirst;
     private boolean disableLast;
     private boolean disableNext;
     private boolean disablePrev;
+    private static int pId;
+    //static HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+
+    public static void addPId(int _pId) {
+        if(pId != _pId){
+            pageIndex = 1;
+        }
+        pId = _pId;
+    }
 
     public DefaultManagerBean() {
     }
@@ -43,7 +54,7 @@ public class DefaultManagerBean {
             if (pageIndex <= 0) {
                 pageIndex = 1;
             }
-            ResultSet rs = am.listAllAlbum(pageIndex, pageSize);
+            ResultSet rs = am.listAllAlbum(pageIndex, pageSize, pId);
             while (rs.next()) {
                 AlbumAllExtention aae = new AlbumAllExtention();
                 aae.setAlbumID(rs.getInt(1));
@@ -63,7 +74,7 @@ public class DefaultManagerBean {
             } else {
                 disableLast = false;
             }
-            if(totalPaging <= 1){
+            if (totalPaging <= 1) {
                 disableNext = true;
                 disablePrev = true;
                 disableFirst = true;
@@ -85,6 +96,13 @@ public class DefaultManagerBean {
         } else {
             disableFirst = false;
         }
+        if (pId > 0) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("Default.xhtml?pId=" + pId);
+            } catch (IOException ex) {
+                Logger.getLogger(DefaultManagerBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         return "Default.xhtml";
     }
 
@@ -99,6 +117,13 @@ public class DefaultManagerBean {
         } else {
             disableFirst = false;
         }
+        if (pId > 0) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("Default.xhtml?pId=" + pId);
+            } catch (IOException ex) {
+                Logger.getLogger(DefaultManagerBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         return "Default.xhtml";
     }
 
@@ -106,6 +131,13 @@ public class DefaultManagerBean {
         pageIndex = 1;
         disableLast = false;
         disableFirst = true;
+        if (pId > 0) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("Default.xhtml?pId=" + pId);
+            } catch (IOException ex) {
+                Logger.getLogger(DefaultManagerBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         return "Default.xhtml";
     }
 
@@ -113,6 +145,13 @@ public class DefaultManagerBean {
         pageIndex = totalPaging;
         disableFirst = false;
         disableLast = true;
+        if (pId > 0) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("Default.xhtml?pId=" + pId);
+            } catch (IOException ex) {
+                Logger.getLogger(DefaultManagerBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         return "Default.xhtml";
     }
 
@@ -212,5 +251,19 @@ public class DefaultManagerBean {
      */
     public void setDisablePrev(boolean disablePrev) {
         this.disablePrev = disablePrev;
+    }
+
+    /**
+     * @return the pId
+     */
+    public int getpId() {
+        return pId;
+    }
+
+    /**
+     * @param pId the pId to set
+     */
+    public void setpId(int pId) {
+        this.pId = pId;
     }
 }
