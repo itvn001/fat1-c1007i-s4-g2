@@ -63,11 +63,7 @@ public class Encryption {
 
                 key = keyfactory.generateSecret(keyspec);//Create key
                 coding = new Encryption(key);
-
                 return coding.encrypt(pass);
-
-
-
             } catch (Exception ex) {
                 Logger.getLogger(Encryption.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -93,6 +89,6 @@ public class Encryption {
     }
     public static void main(String[]a){
         Encryption en = new Encryption();
-        System.out.println(en.Encript_Pass("disc"));
+        System.out.println(en.Encript_Pass("admin"));
     }
 }

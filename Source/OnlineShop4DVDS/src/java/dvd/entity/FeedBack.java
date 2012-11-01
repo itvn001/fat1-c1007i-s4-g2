@@ -28,7 +28,25 @@ public class FeedBack {
     private String feedBackDateCreate;
     @Column(name = "FeedBackStatus")
     private Boolean feedBackStatus;
-    
+    @Column(name = "AlbumName")
+    private String albumName;
+    @Column(name = "UserAccount")
+    private String userAccount;
+
+    public String getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount;
+    }
+    public String getAlbumName() {
+        return albumName;
+    }
+
+    public void setAlbumName(String albumName) {
+        this.albumName = albumName;
+    }
     @Column(name = "countcm")
     private int countcm;
 

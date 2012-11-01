@@ -35,7 +35,6 @@ public class Mdata_Edit {
     public void setMessage(String message) {
         this.message = message;
     }
-
     public void btnsavedataEdit(int id, String _linkimage, String _pathSong) {
         try {
             FacesContext ctx = FacesContext.getCurrentInstance();

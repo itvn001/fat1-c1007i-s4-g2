@@ -47,6 +47,21 @@ public class Mdata_Index {
     public List<SelectItem> getListCateAlbum() {
         return listCateAlbum;
     }
+    String[] lengthface = new String[]{
+        "3:09",
+        "3:39",
+        "4:00",
+        "2:30",
+        "4:02"
+    };
+    static int i2 = 0;
+    public String randomSongLength() {
+        i2++;
+        if(i2 == 5){
+            i2 = 0;
+        }
+        return lengthface[i2];
+    }
 
     public void setListCateAlbum(List<SelectItem> listCateAlbum) {
         this.listCateAlbum = listCateAlbum;
@@ -72,7 +87,8 @@ public class Mdata_Index {
                     album.getAlbumName()));
         }
     }
-    public String redirectToEdit(String id){
+
+    public String redirectToEdit(String id) {
         this.idEditData = id;
         return "Edit.xhtml";
     }
@@ -87,6 +103,7 @@ public class Mdata_Index {
     public void setListEditData(List<DataStore> listEditData) {
         this.listEditData = listEditData;
     }
+
     /**
      * Event commobox cate album choice
      *
@@ -103,14 +120,16 @@ public class Mdata_Index {
             return "Guest";
         }
     }
+
     /**
      * Method update User or Guest permission for data of dvd disc
-     * @param id 
+     *
+     * @param id
      */
     public void updateUserGuest(String id) {
         if (this.datahand.UpdateUseGuest(id) == true) {
             this.message = dvd.libraries.UImessage.generalMessage("blue", "You Action Success", "", "");
-        }else{
+        } else {
             this.message = dvd.libraries.UImessage.generalMessage("red", "Error System", "",
                     "Please try again !");
         }

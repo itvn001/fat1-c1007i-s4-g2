@@ -2,14 +2,57 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <ui:composition template="../Master/MasterPage.xhtml">
             <ui:define name="isa1">
-                
+                <h:outputText value="#{mcomment.message}" escape="false"/>
+                <div class="t-title">
+                    <h3><img src="../Iconpage/master/chat.png "/>&nbsp;COMMENT MANAGER</h3>
+                    <div class="t-in">
+                          Filter
+                          <h:selectOneMenu class="commoboxIm" onchange="submit()" value="#{mcomment.idAlbum}"
+                                           valueChangeListener="#{mcomment.cbcateChoice}">
+                            <f:selectItems value="#{mdata_Index.listCateAlbum}"/>
+                        </h:selectOneMenu>&nbsp;
+                        <p:dataTable id="dataTable" var="comm" value="#{mcomment.listComment}"  
+                                     paginator="true" rows="10"  
+                                     paginatorTemplate="{CurrentPageReport}  
+                                     {FirstPageLink} {PreviousPageLink}
+                                     {PageLinks} {NextPageLink} {LastPageLink} 
+                                     {RowsPerPageDropdown}"  
+                                     rowsPerPageTemplate="10,15,20">  
+                            <p:column>  
+                                <f:facet name="header">  
+                                    <h:outputText value="Comment" />  
+                                </f:facet>  
+                                <span style="color:#e25d33">#{comm.userAccount} - </span>
+                                <h:commandLink style="font-weight: 600" value="#{comm.feedBackComment}"/>
+                                <div>album - <span>#{comm.albumName}</span></div>
+                            </p:column>  
+                            <p:column>
+                                <f:facet name="header">  
+                                    <h:outputText value="Date/Status" />  
+                                </f:facet>  
+                                <h:outputText style="font-weight: 600" value="#{comm.feedBackDateCreate}" />  
+                                <div>status - <h:commandLink style="color:#fff" onclick="return updateComment();" class="statusorder-#{mcomment.usetStatusComment(comm.feedBackStatus)} samestto" 
+                                                             value="#{mcomment.usetTextCommentStt(comm.feedBackStatus)}" action="#{mcomment.updateComment(comm.feedBackID, comm.feedBackStatus)}" />
+                                </div>
+                            </p:column>
+                            <p:column style="width: 50px">
+                                 <f:facet name="header">  
+                                    <h:outputText value="Option" />  
+                                </f:facet>  
+                                <h:commandLink value="Remove" style="text-decoration: underline" onclick="return deleteconfirm();" action="#{mcomment.deleteComment(comm.feedBackID)}"/>
+                            </p:column>
+                        </p:dataTable>  
+                    </div>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>
