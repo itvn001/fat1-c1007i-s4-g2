@@ -40,7 +40,7 @@
                                 <f:facet name="header">  
                                     <h:outputText value="Price" />  
                                 </f:facet>  
-                                <h:outputText style="color: #000" value="$ #{album.albumPrice}" />  
+                                <h:outputText style="color: #e25d33;font-size: 13px; font-weight: 600; font-family: arial; line-height: 1.3em" value="$. #{album.albumPrice}" />  
                             </p:column>  
                             <p:column style="width: 100px">  
                                 <f:facet name="header">  
@@ -52,7 +52,7 @@
                                 <f:facet name="header">  
                                     <h:outputText value="Option" />  
                                 </f:facet>  
-                                <a href="../../Default.xhtml" target="blank"><img src="../Iconpage/icon-comments.png"/><span style="padding-right: 10px; color: #191919">#{malbum_Index.showcountComment(album.albumID)}</span></a>
+                                <a title="Comment" href="../../Default.xhtml" target="blank"><img src="../Iconpage/icon-comments.png"/><span style="padding-right: 10px; color: #191919" title="Comment">#{malbum_Index.showcountComment(album.albumID)}</span></a>
                                 <h:commandButton class="optionicon-#{album.albumStatus}" 
                                                  value="#{malbum_Index.returnStatus(album.albumStatus)}" 
                                                  id="btnOnOffAlbum" 
@@ -64,7 +64,7 @@
                             </p:column>  
                             <p:column style="width: 20px">  
                                 <f:facet name="header">  
-                                    <h:outputText value="Quantity" />  
+                                    <h:outputText value="Qtty" />  
                                 </f:facet>  
                                 <h:outputText value="#{album.quantity}" />  
                             </p:column>  

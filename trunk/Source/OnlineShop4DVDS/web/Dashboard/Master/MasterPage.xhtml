@@ -16,64 +16,6 @@
         <c:if test="${login.loginStatus == true}">
             <h:form id="dashboardform">
                 #{masterPage.setSeesionChildMenu()}
-                <script type="text/javascript" language="javascript">
-                    //Jquery close window message 
-                    $(document).ready(function(){
-                        $("#notice-Pen").hide();
-                    });
-                    $(document).ready(function () {
-                        $("#close-ly").click(function () {
-                            $(".closeMSonly").hide('slow');
-                            return false;
-                        });
-                    });
-                    function deleteconfirm() {
-                        var result = confirm("Bạn muốn xóa bản ghi này?");
-                        return result;
-                    }
-                    function updateConfirm(){
-                        var result = confirm("Are You Sure Update This Orders?");
-                        return result;
-                    }
-                    $(document).ready(function(){
-                        $('.liNoticePending').click(function(){
-                            $("#notice-Pen").slideToggle();
-                        });
-                    });
-                </script>
-                <script language="javascript" type="text/javascript">
-                    function setccc() {
-                        var shl = "";
-                        var hor = "";
-                        var sessionid = "${sessionScope['childmenu']}";  
-                        if(sessionid == 1){
-                            shl = document.getElementById("casf1");
-                            shl.style.backgroundColor="#fff";
-                        }else if(sessionid == 2){
-                            shl = document.getElementById("casf2");
-                            shl.style.backgroundColor="#fff";
-                        }else if(sessionid == 3){
-                            shl = document.getElementById("casf3");
-                            shl.style.backgroundColor="#fff";
-                        }
-                        else if(sessionid == 4){
-                            shl = document.getElementById("casf4");
-                            shl.style.backgroundColor="#fff";
-                        }
-                        else if(sessionid == 5){
-                            shl = document.getElementById("casf5");
-                            shl.style.backgroundColor="#fff";
-                        }
-                        else if(sessionid == 7){
-                            shl = document.getElementById("casf7");
-                            shl.style.backgroundColor="#fff";
-                        }
-                        else if(sessionid == 8){
-                            shl = document.getElementById("casf8");
-                            shl.style.backgroundColor="#fff";
-                        }
-                    }
-                </script>
                 <div id="main">
                     <p:panel style="display: none">
                     </p:panel>
@@ -148,7 +90,7 @@
                     <div id="contentmain">
                         <div id="navibit">
                             <h:commandButton value="" style="width: 10px ;
-                                             height: 80px; background-color: red; 
+                                             height: 80px; background-color: #EB593C; 
                                              border: none; cursor: pointer" action="#{masterPage.commitShowHideNavigator}"/>
                         </div>
                         <table width="100%">
@@ -205,6 +147,68 @@
                             ©2012. Group Sut.</div>
                     </div>
                 </div>
+                  <script type="text/javascript" language="javascript">
+                    //Jquery close window message 
+                    $(document).ready(function(){
+                        $("#notice-Pen").hide();
+                    });
+                    $(document).ready(function () {
+                        $("#close-ly").click(function () {
+                            $(".closeMSonly").hide('slow');
+                            return false;
+                        });
+                    });
+                    function deleteconfirm() {
+                        var result = confirm("Are you sure Delete This Record?");
+                        return result;
+                    }
+                    function updateConfirm(){
+                        var result = confirm("Are You Sure Update This Orders?");
+                        return result;
+                    }
+                    function updateComment(){
+                        var result = confirm("Are You Sure Update This Comment?");
+                        return result;
+                    }
+                    $(document).ready(function(){
+                        $('.liNoticePending').click(function(){
+                            $("#notice-Pen").slideToggle();
+                        });
+                    });
+                </script>
+                <script language="javascript" type="text/javascript">
+                    function setccc() {
+                        var shl = "";
+                        var hor = "";
+                        var sessionid = "${sessionScope['childmenu']}";  
+                        if(sessionid == 1){
+                            shl = document.getElementById("casf1");
+                            shl.style.backgroundColor="#fff";
+                        }else if(sessionid == 2){
+                            shl = document.getElementById("casf2");
+                            shl.style.backgroundColor="#fff";
+                        }else if(sessionid == 3){
+                            shl = document.getElementById("casf3");
+                            shl.style.backgroundColor="#fff";
+                        }
+                        else if(sessionid == 4){
+                            shl = document.getElementById("casf4");
+                            shl.style.backgroundColor="#fff";
+                        }
+                        else if(sessionid == 5){
+                            shl = document.getElementById("casf5");
+                            shl.style.backgroundColor="#fff";
+                        }
+                        else if(sessionid == 7){
+                            shl = document.getElementById("casf7");
+                            shl.style.backgroundColor="#fff";
+                        }
+                        else if(sessionid == 8){
+                            shl = document.getElementById("casf8");
+                            shl.style.backgroundColor="#fff";
+                        }
+                    }
+                </script>
             </h:form>
         </c:if>
     </h:body>

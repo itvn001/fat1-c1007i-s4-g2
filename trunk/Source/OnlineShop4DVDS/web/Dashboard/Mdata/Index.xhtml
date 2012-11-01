@@ -27,21 +27,17 @@
                                      {FirstPageLink} {PreviousPageLink} {PageLinks} 
                                      {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
                                      rowsPerPageTemplate="5,10,15,50">  
-                            <p:column style="width: 180px"> 
-                                <f:facet name="header">  
-                                    <h:outputText value="Name Album" />  
-                                </f:facet>  
-                                <span style="color: #000">#{DATA.albumName}</span>
-                            </p:column>
                             <p:column style="width: 300px" filterBy="#{DATA.dataName}" 
                                       filterStyle="width:300px" filterMatchMode="contains">  
                                 <f:facet name="header">  
-                                    <h:outputText value="Name Data" />  
+                                    <h:outputText value="Name Song" />  
                                 </f:facet>  
                                 <img src="../../#{DATA.dataImage}" width="50px" align="middle"/>
-                                <a href="#" id="ik" class="text-table-title" style="color:#333;">
-                                    #{DATA.dataName}
+                                <a href="#" id="ik" class="text-table-title" style="font-weight: 400; font-size: 14px; color: #E25D33 !important">
+                                    #{DATA.dataName} - 
                                 </a>
+                                <span style="right:0; color: #333">&nbsp;&nbsp;#{mdata_Index.randomSongLength()}</span>
+                                  <div style="color: #7B7B7B">album - #{DATA.albumName}</div>
                             </p:column>  
 <!--                            <p:column> 
                                 <f:facet name="header">  
@@ -49,7 +45,7 @@
                                 </f:facet>  
                                 #{DATA.dataPath}
                             </p:column>-->
-                            <p:column style="width: 155px">  
+                            <p:column style="width: 20px">  
                                 <f:facet name="header">  
                                     <h:outputText value="Option" />  
                                 </f:facet>  

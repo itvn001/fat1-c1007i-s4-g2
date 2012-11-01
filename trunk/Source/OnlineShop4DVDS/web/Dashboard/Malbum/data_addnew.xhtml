@@ -8,7 +8,6 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form>
             <h:outputText value="#{mdata_Addnew.message}" escape="false"/>
             <div class="t-title">
                 <h3>ADD NEW DATA Example: Song. Movie. Video Game</h3>
@@ -48,30 +47,10 @@
                                                       update="msga2,messages2"
                                                       label="Choose a file"
                                                       sizeLimit="90485760"
-                                                      allowTypes="/(\.|\/)(mp3|mp4|wav)$/"
+                                                      allowTypes="/(\.|\/)(mp3|mp4|wav|MP3|MP4|WAV)$/"
                                                       invalidSizeMessage="The maximum file size allowed is 1 Megabyte !"
-                                                      invalidFileMessage="You are allowed to upload only images !"/>
+                                                      invalidFileMessage="You are allowed mp3, mp3, wav !"/>
                                         <p:growl id="messages2" showDetail="true" sticky="true"/>
-                                    </h:form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Image
-                                </td>
-                                <td>
-                                    <h:form enctype="multipart/form-data" id="th12">
-                                        <h:inputText id="msga3" class="inputIm" disabled="true" style="background-color: #ECEBEC"
-                                                     value="#{fileUploadController.file}"/>
-                                        <p:fileUpload fileUploadListener="#{fileUploadController.handleFileUpload}"
-                                                      mode="advance" value="#{fileUploadController.file}"
-                                                      update="msga3,messages3"
-                                                      label="Choose a file"
-                                                      sizeLimit="90485760"
-                                                      allowTypes="/(\.|\/)(jpg|png|gif)$/"
-                                                      invalidSizeMessage="The maximum file size allowed is 1 Megabyte !"
-                                                      invalidFileMessage="You are allowed to upload only images !"/>
-                                        <p:growl id="messages3" showDetail="true" sticky="true"/>
                                     </h:form>
                                 </td>
                             </tr>
@@ -99,7 +78,6 @@
                     </div>
                 </div>
             </div>
-        </h:form>
     </h:body>
 </html>
 

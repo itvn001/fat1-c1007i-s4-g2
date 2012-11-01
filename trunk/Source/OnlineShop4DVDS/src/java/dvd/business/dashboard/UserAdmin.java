@@ -12,7 +12,7 @@ import java.util.List;
  * @author Administrator
  */
 public class UserAdmin {
-    private dvd.libraries.MapperData<dvd.entity.UserAdmin> Uhand = new MapperData<dvd.entity.UserAdmin>();
+    private dvd.libraries.MapperData<dvd.entity.UserAdmin> Uhand;
     private dvd.libraries.HandlingBusiness hand;
     private String[] paramvalues;
     public UserAdmin(){
@@ -25,6 +25,7 @@ public class UserAdmin {
                 username,
                 password
             };
+            this.Uhand = new MapperData<dvd.entity.UserAdmin>();
             return this.Uhand.getDataWithProc("aLogin", "?,?", this.paramvalues, dvd.entity.UserAdmin.class);
         }
         catch(Exception e){
