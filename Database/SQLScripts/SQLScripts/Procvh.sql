@@ -53,7 +53,7 @@ SELECT AlbumID,
 		WHERE AlbumID = @AlbumID AND Album.CateID = Categories.CateID
 ---
 GO
-ALTER PROC aShowDataStore
+CREATE PROC aShowDataStore
 @AlbumID INT
 AS
 SELECT	DataID,
@@ -67,7 +67,7 @@ SELECT	DataID,
 		FROM DataStore WHERE AlbumID = @AlbumID	 ORDER BY DataID DESC
 --
 GO
-ALTER PROC aShowAllDataStore
+CREATE PROC aShowAllDataStore
 @ID int
 AS
 SELECT	DataID,
@@ -82,7 +82,7 @@ SELECT	DataID,
 		FROM DataStore,Album 
 		WHERE DataStore.AlbumID = 1 ORDER BY DataID DESC
 GO
-ALTER PROC aShowAllDataStoreFilter
+CREATE PROC aShowAllDataStoreFilter
 @ID int
 AS
 IF @ID = 0
@@ -201,7 +201,7 @@ BEGIN
 END
 
 GO
-ALTER PROC aGetdataEditData
+CREATE PROC aGetdataEditData
 @DataID INT
 AS
 SELECT DataID,
@@ -229,7 +229,7 @@ UPDATE DataStore SET DataName = @DataName,
 					WHERE DataID = @DataID
 GO
 
-ALTER PROC aShowOrders
+CREATE PROC aShowOrders
 @ID INT
 AS
 SELECT OrderID,UserAccount,ShipName,ShipAddress, OrderDate, ShipStatus,FoneNumber FROM Orders,Users
@@ -238,7 +238,7 @@ WHERE Users.UserID = Orders.UserID ORDER BY Orders.OrderID DESC
 EXEC aShowOrders '1'
 
 GO
-alter PROC aupdateStatusOrders
+CREATE PROC aupdateStatusOrders
 @ID INT,
 @Status INT
 AS
@@ -252,21 +252,19 @@ BEGIN
 END
 
 GO
-ALTER PROC aShowOrdersDetails
+CREATE PROC aShowOrdersDetails
 @ID INT
 AS
 SELECT Album,UnitPrice,OrderDetails.Quantity,Discount,AlbumName FROM OrderDetails,Album
 WHERE OrderID = @ID AND OrderDetails.Album = Album.AlbumID
 
 GO
-alter VIEW aShowOrderPending
+CREATE VIEW aShowOrderPending
 AS
 SELECT  COUNT(ShipStatus) AS 'ShipStatus' FROM Orders WHERE ShipStatus = 0
 
-SELECT * FROM aShowOrderPending
-
 GO
-ALTER PROC aShowOrderPendingPr
+CREATE PROC aShowOrderPendingPr
 @ID INT
 AS
 SELECT OrderID,UserAccount,ShipName,ShipAddress, OrderDate, ShipStatus FROM Orders,Users
@@ -274,7 +272,7 @@ WHERE Users.UserID = Orders.UserID AND Orders.ShipStatus = 0 ORDER BY Orders.Use
 
 exec aShowOrderPendingPr '1'
 GO
-ALTER PROC aShowUser
+CREATE PROC aShowUser
 @ID INT
 AS
 SELECT	UserID,
@@ -322,7 +320,7 @@ AS
 SELECT CateTypeID,CateTypeName FROM CateType
 
 GO
-alter PROC aChangePublishCategories
+CREATE PROC aChangePublishCategories
 @ID INT
 AS
 IF(SELECT CateStatus FROM Categories WHERE CateID = @ID) = 'true'
@@ -361,17 +359,66 @@ CREATE PROC aLogin
 @Account NVARCHAR(25),
 @Password NVARCHAR(100)
 AS
-SELECT Account,Passwords,Permision.PerName
- FROM UserAdmin,Permision
- WHERE Permision.PerID = UserAdmin.PerID 
- AND Account = @Account AND Passwords = @Password 
+ SELECT Account,Passwords
+ FROM UserAdmin
+ WHERE Account = @Account 
+ AND Passwords = @Password 
+ 
+ exec aLogin 'admin','QUqujRWdjKI='
+ 
+ SELECT * FROM  UserAdmin
  
 GO
-ALTER PROC aShowCommentWdata
+CREATE PROC aShowCommentWdata
 @ID INT
 AS
 SELECT COUNT(FeedBackID) AS 'countcm' FROM FeedBack
 WHERE AlbumID = @ID
 
-EXEC aShowCommentWdata '1'
- 
+GO
+ALTER PROC aShowCommentAll
+@IDAlbum INT
+AS
+IF @IDAlbum = 0
+BEGIN
+	SELECT Album.AlbumName,
+		UserAccount,
+		FeedBackComment,
+		FeedBackDateCreate,
+		FeedBack.FeedBackStatus,
+		FeedBack.FeedBackID,
+		FeedBack.AlbumID
+		FROM FeedBack,Album,Users
+		WHERE FeedBack.AlbumID = Album.AlbumID AND Users.UserID = FeedBack.UserID
+		ORDER BY FeedBack.FeedBackID DESC
+END
+ELSE
+BEGIN
+	SELECT Album.AlbumName,
+		UserAccount,
+		FeedBackComment,
+		FeedBackDateCreate,
+		FeedBack.FeedBackStatus,
+		FeedBack.FeedBackID,
+		FeedBack.AlbumID
+		FROM FeedBack,Album,Users
+		 WHERE FeedBack.AlbumID = Album.AlbumID AND 
+		FeedBack.AlbumID = @IDAlbum AND Users.UserID = FeedBack.UserID 
+		ORDER BY FeedBack.FeedBackID DESC
+END
+
+GO
+ALTER PROC aUpdateComment
+@ID INT,
+@Status NVARCHAR
+AS
+IF @Status != 'true'
+BEGIN
+	UPDATE FeedBack SET FeedBackStatus = 'true' WHERE FeedBackID = @ID
+END
+
+GO
+CREATE PROC aDeleteComment
+@ID INT
+AS
+DELETE FeedBack WHERE FeedBackID = @ID
