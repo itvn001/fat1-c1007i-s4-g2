@@ -32,7 +32,7 @@
                                     <h:outputText value="Comment" />  
                                 </f:facet>  
                                 <span style="color:#e25d33">#{comm.userAccount} - </span>
-                                <h:commandLink style="font-weight: 600" value="#{comm.feedBackComment}"/>
+                                <a target="blank" href="../../DetailsAlbum.xhtml?id=#{comm.albumID}" style="font-weight: 600">#{comm.feedBackComment}</a>
                                 <div>album - <span>#{comm.albumName}</span></div>
                             </p:column>  
                             <p:column>

@@ -14,110 +14,107 @@ and open the template in the editor.
     </head>        
     <body>
         <ui:composition template="MasterPage.xhtml">
-              <ui:define name="deSlide">
-                
+            <ui:define name="deSlide">
             </ui:define>
             <ui:define name="contents">
                 <div style="width: 100%; background-image:url(''); background-repeat: no-repeat">
-                <div style="width:430px">
-                    <h2 class="DefaultCartH3">Regist new account</h2><br/>
-                    <fieldset style="border: 1px solid #d1d0d1">
-                        <legend>Info</legend>
-                        <div>
-                            <div >
-                                <div style="margin: 0 auto; width: 80%">
-                                    <h:form>
-                                        <table width="100%">
+                    <div style="width:430px">
+                        <h2 class="DefaultCartH3">Regist new account</h2><br/>
+                        <fieldset style="border: 1px solid #d1d0d1">
+                            <legend>Info</legend>
+                            <div>
+                                <div >
+                                    <div style="margin: 0 auto; width: 80%">
+                                        <h:form>
+                                            <table width="100%">
 
-                                            <tr>
-                                                <td>
-                                                    User Name : 
-                                                </td>
-                                                <td>
-                                                    <h:inputText value="#{userManager.userAccount}" style="width: 200px; height: 22px"/>
-                                                </td>
-                                            </tr>    
+                                                <tr>
+                                                    <td>
+                                                        User Name : 
+                                                    </td>
+                                                    <td>
+                                                        <h:inputText  value="#{userManager.userAccount}" requiredMessage="(*)" required="true" style="width: 200px; height: 22px"/>
+                                                    </td>
+                                                </tr>    
+                                                <tr>
+                                                    <td>
+                                                        Password : 
+                                                    </td>
+                                                    <td>
+                                                        <h:inputSecret id="password" validatorMessage="(*)"  value="#{userManager.userPassword}" style="width: 200px; height: 22px " >
+                                                            <f:validateLength minimum="8"/>   
+                                                        </h:inputSecret>
+                                                        <h:message for="password" style="color: red"/>
+                                                    </td>
+                                                </tr> 
+                                                <tr>
+                                                    <td>
+                                                        Re-password : 
+                                                    </td>
+                                                    <td>
+                                                        <h:inputSecret id="repassword" required="true" redisplay="true" style="width: 200px; height: 22px">
+                                                        </h:inputSecret>
+                                                    </td>
+                                                </tr> 
+                                                <tr>
+                                                    <td>
+                                                        Full Name : 
+                                                    </td>
+                                                    <td>
+                                                        <h:inputText value="#{userManager.userName}" style="width: 200px; height: 22px"/>
+                                                    </td>
 
-                                            <tr>
-                                                <td>
-                                                    Password : 
-                                                </td>
-                                                <td>
-                                                    <h:inputSecret id="password" value="#{userManager.userPassword}" style="width: 200px; height: 22px " >
-                                                        <f:validateLength minimum="8"/>   
+                                                </tr> 
+                                                <tr>
+                                                    <td>
+                                                        Age : 
+                                                    </td>
+                                                    <td>
+                                                        <h:inputText value="#{userManager.userAge}" style="width: 200px; height: 22px"/>
+                                                    </td>
+                                                </tr> 
+                                                <tr>
+                                                    <td>
+                                                        Phone Number : 
+                                                    </td>
+                                                    <td>
+                                                        <h:inputText value="#{userManager.userPhone}" style="width: 200px; height: 22px"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        Sex : 
+                                                    </td>
+                                                    <td>
+                                                        <h:selectOneMenu value="#{userManager.userSex}" style="width: 100px; height: 22px">
+                                                            <f:selectItem id="item1" itemLabel="Male" itemValue="male" />
+                                                            <f:selectItem id="item2" itemLabel="Female" itemValue="female" />
+                                                        </h:selectOneMenu>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
 
-                                                    </h:inputSecret>
-                                                    <h:message for="password"/>
-                                                </td>
-                                            </tr> 
-                                            <tr>
-                                                <td>
-                                                    Re-password : 
-                                                </td>
-                                                <td>
-                                                    <h:inputSecret id="repassword" required="true" redisplay="true" style="width: 200px; height: 22px">
-                                                    </h:inputSecret>
-                                                </td>
-                                            </tr> 
-                                            <tr>
-                                                <td>
-                                                    Full Name : 
-                                                </td>
-                                                <td>
-                                                    <h:inputText value="#{userManager.userName}" style="width: 200px; height: 22px"/>
-                                                </td>
+                                                    </td>
+                                                    <td>
+                                                        <h:commandButton onclick="checkPassExist();" style="border: none; cursor: pointer"
+                                                                         class="s-btnsa" action="#{userManager.createUserAccount}" value="Register" />
+                                                    </td>
 
-                                            </tr> 
-                                            <tr>
-                                                <td>
-                                                    Age : 
-                                                </td>
-                                                <td>
-                                                    <h:inputText value="#{userManager.userAge}" style="width: 200px; height: 22px"/>
-                                                </td>
-                                            </tr> 
-                                            <tr>
-                                                <td>
-                                                    Phone Number : 
-                                                </td>
-                                                <td>
-                                                    <h:inputText value="#{userManager.userPhone}" style="width: 200px; height: 22px"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Sex : 
-                                                </td>
-                                                <td>
-                                                    <h:selectOneMenu value="#{userManager.userSex}" style="width: 100px; height: 22px">
-                                                        <f:selectItem id="item1" itemLabel="Male" itemValue="male" />
-                                                        <f:selectItem id="item2" itemLabel="Female" itemValue="female" />
-                                                    </h:selectOneMenu>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-
-                                                </td>
-                                                <td>
-                                                    <h:commandButton onclick="checkPassExist();" style="border: none; cursor: pointer"
-                                                                     class="s-btnsa" action="#{userManager.createUserAccount}" value="Register" />
-                                                </td>
-
-                                            </tr>
-                                        </table>
-                                    </h:form>
-                                    <style>
-                                        table tr{
-                                            line-height: 32px;
-                                        }
-                                    </style>
+                                                </tr>
+                                            </table>
+                                        </h:form>
+                                        <style>
+                                            table tr{
+                                                line-height: 32px;
+                                            }
+                                        </style>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </fieldset>
-                </div>
+                        </fieldset>
                     </div>
+                </div>
             </ui:define>
         </ui:composition>
     </body>

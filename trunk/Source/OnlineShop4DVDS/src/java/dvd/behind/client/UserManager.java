@@ -5,6 +5,7 @@
 package dvd.behind.client;
 
 import dvd.libraries.Connection;
+import dvd.libraries.Encryption;
 import dvd.libraries.HandlingBusiness;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -88,17 +89,21 @@ public class UserManager {
     }
     Connection conn = new Connection();
 
-    public void createUserAccount() {
+    public String createUserAccount() {
+        dvd.libraries.Encryption enc = new Encryption();
         String[] parvalues = new String[]{
             this.userAccount,
-            this.userPassword,
+            enc.Encript_Pass(this.userPassword),
             this.userName,
             this.userAge,
             this.userPhone,
             this.userSex
         };
         dvd.libraries.HandlingBusiness handg = new HandlingBusiness();
-        handg.InsertToDB("CreateUserAccount", "?,?,?,?,?,?", parvalues);
-        
+        if(handg.InsertToDB("CreateUserAccount", "?,?,?,?,?,?", parvalues)==true){
+            return "SuccessRegister.xhtml";
+        }else{
+            return "#";
+        }
     }
 }
