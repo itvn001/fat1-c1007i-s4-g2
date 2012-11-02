@@ -52,7 +52,7 @@
                                 <f:facet name="header">  
                                     <h:outputText value="Option" />  
                                 </f:facet>  
-                                <a title="Comment" href="../../Default.xhtml" target="blank"><img src="../Iconpage/icon-comments.png"/><span style="padding-right: 10px; color: #191919" title="Comment">#{malbum_Index.showcountComment(album.albumID)}</span></a>
+                                <a title="Comment" href="../../DetailsAlbum.xhtml?id=#{album.albumID}" target="blank"><img src="../Iconpage/icon-comments.png"/><span style="padding-right: 10px; color: #191919" title="Comment">#{malbum_Index.showcountComment(album.albumID)}</span></a>
                                 <h:commandButton class="optionicon-#{album.albumStatus}" 
                                                  value="#{malbum_Index.returnStatus(album.albumStatus)}" 
                                                  id="btnOnOffAlbum" 
