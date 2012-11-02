@@ -66,13 +66,9 @@
                             #{pAIManagerBean.resetMessage()}
                         </div>
                     </c:if>
-                    <c:if test="#{(session.getAttribute('sUser') == null) || (session.getAttribute('sUser') == '')}">
-                        #{cartManager.redirectLogin()}
-                    </c:if>
                     <div class="DefaultAllbox">
                         <h2 class="PAIlblInformationH2">Import user information</h2>
-                        <h:commandLink class="PAIMLoadContact" value="Load Contact" 
-                                       action="#{pAIManagerBean.loadInforFromData()}"></h:commandLink>
+                        <h:commandLink class="PAIMLoadContact" value="Load Contact" action="#{pAIManagerBean.loadInforFromData()}"></h:commandLink>
                         <div style="float: left;">
                             <div class="PAIMlblTitle">First and last name:</div>
                             <h:inputText id="txtPAIName" style="width: 200px; float: left; margin: 5px;" value="#{pAIManagerBean.name}"></h:inputText>

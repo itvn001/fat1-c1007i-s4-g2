@@ -129,7 +129,7 @@
                         });
                         
                         function checkLogin(){
-                            if("#{session.getAttribute("userName")}" == null || "#{session.getAttribute("userName")}" == ""){
+                            if("#{session.getAttribute("UserId")}" == null || "#{session.getAttribute("UserId")}" == ""){
                                 window.location = "Login.xhtml";    
                             }
                         }
@@ -143,6 +143,7 @@
                         }
                         
                         function clickAlbumAddtoMyList(){
+                            checkLogin();
                             $("#formDA\\:btnAddList").val("Album");
                             $(".DetailsAlbumAddList").fadeIn(500);
                             $(".DetailsAlbumBackgroundAudio").fadeIn(500);
@@ -199,7 +200,7 @@
                                     <p class=""><a class="abtn" href="addToCartPage.xhtml?DataStoreId=#{album.albumID}">Add to Cart</a>
                                        <a class="abtn" onclick="playAudioAndVideo('#{detailAlbumManager.firstTitle}', 
                                                 '#{detailAlbumManager.firstPath}', '#{detailAlbumManager.firstImage}', true)" href="">Play all</a>
-                                        <a onclick="clickAlbumAddtoMyList()" class="abtn" href="">Add to my list</a>
+                                                  <a onclick="clickAlbumAddtoMyList()" class="abtn" href="">Add to my list</a>
                                     </p>
                                 </div>
                             </div>

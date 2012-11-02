@@ -9,17 +9,31 @@
     <h:body>
         <ui:composition template="MasterPage.xhtml">
             <ui:define name="contents">
-                <div class="menuUserPersonal">
-                    <a href="UserPersonalPage.xhtml">View Information</a>
-                    <a href="#">Update Information</a>
-                    <span class="menuUserPersonalActive">My Playlist</span>
-                    <a href="#">History Order</a>
-                </div>
-                <div class="UserPersonalPageContent">
-                    <h4 class="UserPersonalPageContentH4">Personal Information</h4>
-                    <div class="UserPersonalPageContentInfor">
+                <h:form>
+                    <script type="text/javascript">
+                        function askAgainDelete(playListName){
+                            return confirm('You want delete playlist: ' + playListName + ' ?');
+                        }
+                    </script>
+                    <div class="menuUserPersonal">
+                        <a href="UserPersonalPage.xhtml">View Information</a>
+                        <a href="#">Update Information</a>
+                        <span class="menuUserPersonalActive">My Playlist</span>
                     </div>
-                </div>
+                    <div class="UserPersonalPageContent">
+                        <h4 class="UserPersonalPageContentH4">My playlist</h4>
+                        <div class="UserPersonalPageContentInfor">
+                            <ui:repeat value="#{myPlaylistManager.showCollectionCateById()}" var="listItem">
+                                <div class="MyPlaylistPageItem">
+                                    <span class="MyPlaylistPageItemSN">#{myPlaylistManager.SNNumber}</span>
+                                    <a class="MyPlaylistPageItemName" href="DetailsPlaylistPage.xhtml?PlayListId=#{listItem.collecCateID}">#{listItem.collectCateName}</a>
+                                    <h:commandLink onclick="return askAgainDelete('#{listItem.collectCateName}');" class="MyPlaylistPageItemDelete" action="#{myPlaylistManager.deleteCollectionCate(listItem.collecCateID, listItem.collectCateName)}" value="Delete"></h:commandLink>
+                                    <a class="MyPlaylistPageItemPlay" href="playVideoMusic.xhtml?PlayListId=#{listItem.collecCateID}">Play</a>
+                                </div>
+                            </ui:repeat>
+                        </div>
+                    </div>
+                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>
