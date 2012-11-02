@@ -6,10 +6,14 @@ package dvd.behind.client;
 
 import dvd.business.client.CategoryManager;
 import dvd.entity.Categories;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -18,6 +22,8 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class MasterPageManagerBean {
+
+    HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 
     /**
      * Creates a new instance of MasterPageManagerBean
@@ -28,16 +34,40 @@ public class MasterPageManagerBean {
     private int count = 0;
 
     public int getCount() {
-        count ++;
+        count++;
         return count;
     }
 
     public void setCount(int count) {
         this.count = count;
     }
-    
-    public List<Categories> showMenuCategory()
-    {
+
+    public boolean checkLoginLogout() {
+        try {
+            if (session.getAttribute("UserId") == null || session.getAttribute("UserId") == "") {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
+    public void logoutAccount() {
+        try {
+            if (session.getAttribute("UserId") != null) {
+                session.setAttribute("UserId", null);
+                session.setAttribute("UserName", null);
+            }
+            FacesContext.getCurrentInstance().getExternalContext().redirect("Default.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(MasterPageManagerBean.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+        }
+    }
+
+    public List<Categories> showMenuCategory() {
         CategoryManager c = new CategoryManager();
         List<Categories> listCate = null;
         try {
@@ -46,6 +76,7 @@ public class MasterPageManagerBean {
         }
         return listCate;
     }
+
     /**
      * @return the cate
      */

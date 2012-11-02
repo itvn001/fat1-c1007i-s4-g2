@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="MasterPage.xhtml">
+            <ui:define name="contents">
+                <h:inputHidden value="#{detailsPlaylistManager.addIdPlaylist(param['PlayListId'])}"></h:inputHidden>
+                <h:form>
+                    <c:if test="#{detailsPlaylistManager.showDisplayMessage()}">
+                        <div class="DetailsAlbumMessage">
+                            <c:if test="#{detailsPlaylistManager.showTypeMessage()}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: white;">#{detailsPlaylistManager.showMessage()}</h5>
+                            </c:if>
+                            <c:if test="#{!detailsPlaylistManager.showTypeMessage()}">
+                                <h5 class="DetailsAlbumMessageOutputLabel" style="color: red;">#{detailsPlaylistManager.showMessage()}</h5>
+                            </c:if>
+                            #{detailsPlaylistManager.resetMessage()}
+                        </div>
+                    </c:if>
+                    <h1 style="color: #3333FF;margin: 0;padding-bottom: 1px;">#{detailsPlaylistManager.returnNamePlaylist()}</h1>
+                    <p style="color: #B8B8B8;margin: 0 20px 10px;">#{detailsPlaylistManager.returnDatePlaylist()}</p>
+                    <h3 style="color: #3333FF;">The list</h3>
+                    <ui:repeat value="#{detailsPlaylistManager.listDS}" var="listDataStore">
+                        <div class="DetailsAlbumItemDataStore">
+                            <div class="DetailsAlbumItemDataStoreImg">
+                                <div style="width: 400px; float: left" class="contentalbumeach"> 
+                                    <span class="numbercountS">#{detailsPlaylistManager.SNNumber}</span>
+                                    <span class="textinside">#{listDataStore.dataName}</span>
+                                </div>
+                                <div style="float: left" class="naviAlbumListens">3:39
+                                    <a class="listen" href="playVideoMusic.xhtml?DataStoreId=#{listDataStore.dataID}">Listen </a>
+                                    <span class="add">
+                                        <a href="deleteDataStoreInPlayist.xhtml?DataStoreId=#{listDataStore.dataID}" onclick="return confirm('You want to delete data store: #{listDataStore.dataName}');" class="listen">Delete</a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </ui:repeat>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

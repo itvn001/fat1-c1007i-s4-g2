@@ -13,36 +13,37 @@
                     <span class="menuUserPersonalActive">View Information</span>
                     <a href="#">Update Information</a>
                     <a href="MyPlaylistPage.xhtml">My Playlist</a>
-                    <a href="#">History Order</a>
                 </div>
                 <div class="UserPersonalPageContent">
                     <h4 class="UserPersonalPageContentH4">Personal Information</h4>
                     <div class="UserPersonalPageContentInfor">
                         <table class="UserPersonalPageContentInforTable">
-                            <tr>
-                                <td class="lable">Account:</td>
-                                <td class="input">vanthuc</td>
-                            </tr>
-                            <tr>
-                                <td class="lable">Full Name:</td>
-                                <td class="input">Phung Thuc</td>
-                            </tr>
-                            <tr>
-                                <td class="lable">Age:</td>
-                                <td class="input">21</td>
-                            </tr>
-                            <tr>
-                                <td class="lable">Phone:</td>
-                                <td class="input">0984574735</td>
-                            </tr>
-                            <tr>
-                                <td class="lable">Gender:</td>
-                                <td class="input">Male</td>
-                            </tr>
-                            <tr>
-                                <td class="lable">Address:</td>
-                                <td class="input">Thach Hoa - Thach That - Ha Noi</td>
-                            </tr>
+                            <ui:repeat value="#{userPersonalManager.showInforUser()}" var="us">
+                                <tr>
+                                    <td class="lable">Account:</td>
+                                    <td class="input">#{us.userAccount}</td>
+                                </tr>
+                                <tr>
+                                    <td class="lable">Full Name:</td>
+                                    <td class="input">#{us.userName}</td>
+                                </tr>
+                                <tr>
+                                    <td class="lable">Age:</td>
+                                    <td class="input">#{us.userAge}</td>
+                                </tr>
+                                <tr>
+                                    <td class="lable">Phone:</td>
+                                    <td class="input">#{us.userFone}</td>
+                                </tr>
+                                <tr>
+                                    <td class="lable">Gender:</td>
+                                    <td class="input">#{us.userSex}</td>
+                                </tr>
+                                <tr>
+                                    <td class="lable">Address:</td>
+                                    <td class="input">#{us.address}</td>
+                                </tr>
+                            </ui:repeat>
                         </table>
                     </div>
                 </div>

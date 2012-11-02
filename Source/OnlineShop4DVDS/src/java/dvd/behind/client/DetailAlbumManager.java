@@ -34,7 +34,7 @@ public class DetailAlbumManager {
      * Creates a new instance of DetailAlbumManager
      */
     private int albumId;
-    private int UserId = 1;
+    private int UserId;
     private String firstPath;
     private String firstImage;
     private String firstTitle;
@@ -50,13 +50,12 @@ public class DetailAlbumManager {
 
     public DetailAlbumManager() {
         titleAddtoList = "DataStore";
-//        if(session.getAttribute("UserId") == null || session.getAttribute("UserId") == ""){
-//            try {
-//                FacesContext.getCurrentInstance().getExternalContext().redirect("Login.xhtml");
-//            } catch (IOException ex) {
-//                Logger.getLogger(DetailAlbumManager.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
+        try {
+            if (session.getAttribute("UserId") != null && session.getAttribute("UserId") != "") {
+                UserId = Integer.parseInt("" + session.getAttribute("UserId"));
+            }
+        } catch (Exception e) {
+        }
     }
 
     public void resetMessage() {

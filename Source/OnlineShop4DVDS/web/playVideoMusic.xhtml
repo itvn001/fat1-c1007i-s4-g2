@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="MasterPage.xhtml">
+            <ui:define name="contents">
+                <h:inputHidden value="#{playVideoMusicManager.addIdAlbum(param['AlbumId'])}"></h:inputHidden>
+                <h:inputHidden value="#{playVideoMusicManager.addIdDatStore(param['DataStoreId'])}"></h:inputHidden>
+                <h:inputHidden value="#{playVideoMusicManager.addIdPlaylist(param['PlayListId'])}"></h:inputHidden>
+                <h:form>
+                    <script type="text/javascript" src="Script/jwplayer.js"></script>
+                    <h1 style="color: #3333FF;margin: 0;padding-bottom: 1px;">#{playVideoMusicManager.name}</h1>
+                    <p style="color: #B8B8B8;margin: 0 20px 10px;">#{playVideoMusicManager.date}</p>
+                    <div id='defaultmediaplayer'></div>
+                    <script type="text/javascript">
+                        $(window).ready(function(){
+                            checkTypeVideoMusic('#{playVideoMusicManager.loadDataVideoMusic()}');
+                        });
+                        
+                        function checkTypeVideoMusic(sPath){
+                            jwplayer('defaultmediaplayer').setup({
+                                'flashplayer': 'Script/player.swf',
+                                'id': 'playerID',
+                                'width': '700',
+                                'height': '550',
+                                'playlistfile': sPath,
+                                'repeat': 'list',
+                                'skin': 'Script/Skin jwPlayer/classic.zip',
+                                'autostart': 'true',
+                                'plugins': {
+                                    'flow-2': {
+                                        'position': 'bottom',
+                                        'showtext': 'true',
+                                        'size': '150'
+                                    }
+                                }
+                            });
+                        }
+                    </script>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

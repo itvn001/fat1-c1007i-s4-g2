@@ -120,6 +120,7 @@
     margin: -1px 5px 0 -30px;
     min-height: 50px;
     padding: 5px 10px;
+    overflow: hidden;
 }
 .UserPersonalPageContentH4{
     background: none repeat scroll 0 0 #CDE5F0;
@@ -144,4 +145,81 @@
     font-weight: bold;
     padding: 5px;
     text-align: left;
+}
+
+/*My playlist */
+.MyPlaylistPageItem{
+    border: 1px solid #EFEFEF;
+    float: left;
+    height: 30px;
+    margin-bottom: 5px;
+    width: 733px;
+    border-right: none;
+}
+.MyPlaylistPageItemSN{
+    border-right: 1px solid #E7E7E7;
+    float: left;
+    margin: 7px;
+    padding-right: 7px;
+}
+.MyPlaylistPageItemName{
+    color: #224E82;
+    float: left;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 7px;
+    cursor: pointer;
+}
+.MyPlaylistPageItemName:hover{
+    text-decoration: underline;
+    
+}
+.MyPlaylistPageItemPlay{
+    background: none repeat scroll 0 0 activecaption;
+    border-radius: 3px 3px 3px 3px;
+    float: right;
+    font-weight: bold;
+    margin: 2px 10px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+.MyPlaylistPageItemPlay:hover{
+    background: #2e74b2;
+    color: white;
+}
+.MyPlaylistPageItemDelete{
+    background: none repeat scroll 0 0 #FFDEDD;
+    border-radius: 3px 3px 3px 3px;
+    color: red;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    margin: 2px 0;
+    padding: 5px 9px;
+}
+.MyPlaylistPageItemDelete:hover{
+    background: #FF6766;
+    color: black;
+}
+#defaultmediaplayer_wrapper{
+    border: 5px solid #D0D0D0;
+    margin-left: -5px;
+}
+.naviAlbumListens{
+    padding-top: 5px;
+    text-align: right;
+    width: 300px;
+}
+.naviAlbumListens a.listen{
+    background-color: #47afaf;
+    color: #000;
+    font-weight: 600;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.naviAlbumListens a.listen:hover{
+    color: red;
+}
+.naviAlbumListens span.add{
+    padding-left: 10px;
 }

@@ -152,11 +152,22 @@
             <!-- begin #header -->
             <div id="header">
                 <div class="logo"><a href=""><img src="Images/logo.png" alt="" /></a></div>
-                <div class="cart"><span style="color: #666">Hello:</span>
-                    <a class="MasterPageUser" href="UserPersonalPage.xhtml">vanthuc</a>
-                    <a href="#" style="color: red">Logout</a><br/>Item Cart:&nbsp;
-                    <span class="quantityCartspan">#{cartManager.cartSize()} Item</span>&nbsp;|&nbsp;
-                    <a id="checkouths" href="DefaultCart.xhtml" style="color: #000; border-bottom: 2px solid #e47911">Checkout</a> </div>
+                <c:if test="#{masterPageManagerBean.checkLoginLogout()}">
+                    <div class="cart"><span style="color: #666">Hello:</span>
+                        <a class="MasterPageUser" href="UserPersonalPage.xhtml">#{session.getAttribute("UserName")}</a>
+                        <a href="Logout.xhtml" style="color: red;">Logout</a><br/>Item Cart:&nbsp;
+                        <span class="quantityCartspan">#{cartManager.cartSize()} Item</span>&nbsp;|&nbsp;
+                        <a id="checkouths" href="DefaultCart.xhtml" style="color: #000; border-bottom: 2px solid #e47911">Checkout</a>
+                    </div>
+                </c:if>
+                <c:if test="#{!masterPageManagerBean.checkLoginLogout()}">
+                    <div class="cart"><span style="color: #666">Hello:</span>
+                        <span style="font-weight: bold; color: #4393E9;" href="">Guest</span>
+                        <a href="Login.xhtml" style="color: red;float: right;font-weight: bold;margin-right: 21px;">Login</a><br/>Item Cart:&nbsp;
+                        <span class="quantityCartspan">#{cartManager.cartSize()} Item</span>&nbsp;|&nbsp;
+                        <a id="checkouths" href="DefaultCart.xhtml" style="color: #000; border-bottom: 2px solid #e47911">Checkout</a>
+                    </div>
+                </c:if>
                 <div class="slogan">ONLINE STORE</div>
                 <div class="clearfloat"></div>
                 <div class="headerTop">
@@ -197,7 +208,7 @@
 
                                 </div>
                                 <div>
-                                 
+
                                 </div>
                             </div>
                         </div>

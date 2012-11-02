@@ -26,26 +26,44 @@ public class HistoryOrdersManager {
     /**
      * Creates a new instance of HistoryOrdersManager
      */
-    private int UserId = 1;
+    private int UserId;
     HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
     private String message;
     private boolean displayMessage;
     private boolean typeMessage;
-    
-    public void resetMessage(){
+
+    public void resetMessage() {
         this.setMessage("");
         setDisplayMessage(false);
     }
 
     public HistoryOrdersManager() {
-//        if (session.getAttribute("UserId") == null) {
-//            UserId = 0;
-//        }
+        try {
+            if (session.getAttribute("UserId") == null || session.getAttribute("UserId") == "") {
+                try {
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("Login.xhtml");
+                } catch (IOException ex) {
+                    Logger.getLogger(DetailAlbumManager.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                UserId = Integer.parseInt("" + session.getAttribute("UserId"));
+            }
+        } catch (Exception e) {
+        }
     }
 
     public List<Order> listOrder() {
         List<Order> listO = null;
         try {
+            if (session.getAttribute("UserId") == null || session.getAttribute("UserId") == "") {
+                try {
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("Login.xhtml");
+                } catch (IOException ex) {
+                    Logger.getLogger(DetailAlbumManager.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                UserId = Integer.parseInt("" + session.getAttribute("UserId"));
+            }
             OrderManager om = new OrderManager();
             listO = om.listOrder(UserId);
             for (Order order : listO) {

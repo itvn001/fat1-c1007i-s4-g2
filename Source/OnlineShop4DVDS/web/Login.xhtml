@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -12,31 +13,61 @@
             </ui:define>
             <ui:define name="contents">
                 <div style="margin-left: -30px">
-                    <h2 class="" style="font-family: hagin; color: #333; font-weight: normal; font-size: 20px">Account Login</h2>
+                    <h2 class="" style="font-family: hagin; color: #333; font-weight: normal; font-size: 20px;padding-left: 295px;">Account Login</h2>
                     <style>
                         table tr{
                             line-height: 32px;
                         }
-
+                        table{
+                            width: 420px;
+                            margin: 0px auto;
+                        }
                     </style>
-                    <h:form>
+                    <h:form id="formLogin">
+                        <script type="text/javascript">
+                            function checkEmptyField(){
+                                if($("#formLogin\\:txtUserName").val() == ''){
+                                    $("#formLogin\\:lblUserName").text('UserName empty!');
+                                    return false;
+                                }else{
+                                    $("#formLogin\\:lblUserName").text('');
+                                    if($("#formLogin\\:txtPassword").val() == ''){
+                                        $("#formLogin\\:lblPassword").text('Password empty!');
+                                        return false;
+                                    }else{
+                                        $("#formLogin\\:lblPassword").text('');
+                                        return true;
+                                    }
+                                }
+                            }
+                        </script>
                         <table>
                             <tr>
                                 <td width="80px">Username:</td>
-                                <td><h:inputText style="width: 200px; height: 22px"/></td>
-                            </tr>
-                            <tr>
-                                <td>Password:</td>
-                                <td><h:inputText style="width: 200px; height: 22px"/></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" align="right">
-                                    you not have Account? <a href="formRegister.xhtml">Register</a>
+                                <td>
+                                    <h:inputText id="txtUserName" value="#{loginManager.userName}" style="width: 200px; height: 22px"/>
+                                </td>
+                                <td>
+                                    <h:outputLabel id="lblUserName" style="color: red;font-weight: bold;padding-left: 10px;"></h:outputLabel>
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
-                                    <h:commandButton value="Login" class="s-btnsa" style="border: none; cursor: pointer"/>
+                                <td>Password:</td>
+                                <td>
+                                    <h:inputSecret id="txtPassword" value="#{loginManager.passWord}" style="width: 200px; height: 22px"/>
+                                </td>
+                                <td>
+                                    <h:outputLabel id="lblPassword" style="color: red;font-weight: bold;padding-left: 10px;"></h:outputLabel>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align: right;">
+                                    <span style="padding-right: 125px;">you not have Account? <a href="formRegister.xhtml">Register</a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right;">
+                                    <h:commandButton onclick="return checkEmptyField()" action="#{loginManager.checkLogin()}" value="Login" class="s-btnsa" style="border: none; cursor: pointer; margin-right: 105px;"/>
                                 </td>
                             </tr>
                         </table>

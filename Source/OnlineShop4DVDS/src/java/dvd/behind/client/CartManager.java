@@ -114,12 +114,12 @@ public class CartManager {
         return listDataStore.size();
     }
 
-    public String ordering(String _UserName, String _FullName, String _Address) {
+    public String ordering(int _UserId, String _FullName, String _Address) {
         try {
             OrderManager om = new OrderManager();
             UsersManager um = new UsersManager();
             int UserId = 0;
-            for (Users us : um.loadInforFromData(_UserName)) {
+            for (Users us : um.loadInforFromData(_UserId)) {
                 UserId = us.getUserID();
                 break;
             }
@@ -147,14 +147,6 @@ public class CartManager {
             mm.setTypeMessage(false);
             return "ClientPrevieBills.xhtml?face-redirect=true";
         }
-    }
-
-    public void redirectLogin() {
-//        try {
-//            FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
-//        } catch (IOException ex) {
-//            Logger.getLogger(CartManager.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     /**
