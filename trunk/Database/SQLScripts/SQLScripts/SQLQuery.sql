@@ -84,11 +84,11 @@ GO
 -- BEGIN INSERT DEMO DATA --
 	-- INSERT FOR TYPE Music
 	INSERT INTO Album VALUES (1,1,'Legend : Bob Marley [CD Audio Disc]',10,GETDATE(),'true','DVDStore/album/112-bob-marley.jpg',6,'')
-		INSERT INTO Album VALUES (1,1,'Unforgettable Velvet Voice : Nat King Cole [CD Audio Disc]',7,GETDATE(),'true','DVDStore/album/13179909.jpg',6,'')
-			INSERT INTO Album VALUES (1,1,'Reasons To Be Cheerful - The Best Of Ian Dury',5,GETDATE(),'true','DVDStore/album/ian_dury_bestof_125.jpg',8,'')
-				INSERT INTO Album VALUES (1,1,'Aled Jones: Aled ''s Christmas Gift',7,GETDATE(),'true','DVDStore/album/aled_jones_xmasgift_125.jpg',10,'')
-					INSERT INTO Album VALUES (1,2,'100 Hits - 90s',8,GETDATE(),'true','DVDStore/album/100_hits_90s_125.jpg',4,'')
-						INSERT INTO Album VALUES (1,3,'Charlie Landsborough: Destination',23,GETDATE(),'true','DVDStore/album/charlie_landsborough_destination_125.jpg',7,'')
+	INSERT INTO Album VALUES (1,1,'Unforgettable Velvet Voice : Nat King Cole [CD Audio Disc]',7,GETDATE(),'true','DVDStore/album/13179909.jpg',6,'')
+	INSERT INTO Album VALUES (1,1,'Reasons To Be Cheerful - The Best Of Ian Dury',5,GETDATE(),'true','DVDStore/album/ian_dury_bestof_125.jpg',8,'')
+	INSERT INTO Album VALUES (1,1,'Aled Jones: Aled ''s Christmas Gift',7,GETDATE(),'true','DVDStore/album/aled_jones_xmasgift_125.jpg',10,'')
+	INSERT INTO Album VALUES (1,2,'100 Hits - 90s',8,GETDATE(),'true','DVDStore/album/100_hits_90s_125.jpg',4,'')
+	INSERT INTO Album VALUES (1,3,'Charlie Landsborough: Destination',23,GETDATE(),'true','DVDStore/album/charlie_landsborough_destination_125.jpg',7,'')
 -- END INSERT DDEMO DATA -- 
 --
 	-- Dvds Table
@@ -118,11 +118,15 @@ CREATE TABLE Users
 	UserAge NVARCHAR(5),
 	UserFone NVARCHAR(20),
 	UserSex NVARCHAR(10),
-	UserStatus BIT DEFAULT 'TRUE'	
+	UserStatus BIT DEFAULT 'TRUE',
+	Address NVARCHAR(200),
+	DateCreate NVARCHAR(25)
 )
 GO
-ALTER TABLE Users
-ADD DateCreate NVARCHAR(25)
+INSERT INTO Users(UserAccount,UserPassword,UserName,UserAge,UserFone,UserSex,UserStatus,Address,DateCreate)
+VALUES ('uers','QUqujRWdjKI=','Join dame','21','0987625253','male','true','Ha Noi',GETDATE())
+--password "admin"
+GO
 --
 	-- User Collection Cate
 --
@@ -164,14 +168,15 @@ CREATE TABLE FeedBack
 GO
 CREATE TABLE Orders
 (
-	OrderID INT PRIMARY KEY IDENTITY(1,1),
+	OrderID INT PRIMARY KEY IDENTITY(1000,2),
 	UserID INT REFERENCES Users(UserID),
 	OrderDate NVARCHAR(30),
 	ShipName NVARCHAR(30),
 	ShipAddress NVARCHAR(100),
-	ShipPostalCode NVARCHAR(20),
-	ShipStatus INT
+	ShipStatus INT,
+	FoneNumber NVARCHAR(20)
 )
+GO
 --
 	-- Order Details Table
 --
@@ -193,6 +198,10 @@ CREATE TABLE Permision
 	PerID INT PRIMARY KEY IDENTITY(1,1),
 	PerName NVARCHAR(20),
 )
+GO
+INSERT INTO Permision(PerName) VALUES('admin')
+INSERT INTO Permision(PerName) VALUES('disc')
+INSERT INTO Permision(PerName) VALUES('orders')
 --
 	-- UserAdmin Table
 --
@@ -207,5 +216,10 @@ CREATE TABLE UserAdmin
 	Email NVARCHAR(50)
 )
 GO
-ALTER TABLE Users
-ADD Address		NVARCHAR(200)
+INSERT INTO UserAdmin(Account,Passwords,PerID,Name,Email) 
+VALUES('admin','QUqujRWdjKI=',1,'job admin','admin@disc.com')
+GO
+INSERT INTO UserAdmin(Account,Passwords,PerID,Name,Email) 
+VALUES('user','QUqujRWdjKI=',1,'job admin','admin@disc.com')
+GO
+
