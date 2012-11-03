@@ -107,14 +107,14 @@ public class Mdata_Addnew {
             dvd.entity.DataStore dbs = new dvd.entity.DataStore();
             dbs.setAlbumID(Integer.parseInt(this.idAlbum));
             dbs.setAlbumName(this.dataAlbumName);
-            dbs.setDataPath("DVDStore/album/" + pathda);
+            dbs.setDataPath("DVDStore/data/" + pathda);
             Boolean useguest = true;
             if (this.typeGuestUser.equals("true")) {
                 dbs.setDataPublic(true);
             } else if (this.typeGuestUser.equals("false")) {
                 dbs.setDataPublic(false);
             }
-            dbs.setDataImage("DVDStore/album/" + pathimageData);
+            dbs.setDataImage("DVDStore/data/" + pathimageData);
             if (this.dataHand.CreateDataStore(dbs) == true) {
                 this.message = dvd.libraries.UImessage.generalMessage("blue", "Create Data Success", "", "");
             } else {

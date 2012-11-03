@@ -117,7 +117,7 @@ public class playVideoMusicManager {
     }
 
     public String loadDataVideoMusic() {
-        String nameListFile;
+        String nameListFile = "";
         String sPathList = "";
         ExternalContext extContext = FacesContext.getCurrentInstance().getExternalContext();
         try {
@@ -129,7 +129,6 @@ public class playVideoMusicManager {
                 File file = new File(nameListFile);
                 if (!file.exists()) {
                     file.createNewFile();
-                    writerFileXML(nameListFile);
                 }
             } else if (dataStoreId != 0) {
                 DataStoreManager dsm = new DataStoreManager();
@@ -139,7 +138,6 @@ public class playVideoMusicManager {
                 File file = new File(nameListFile);
                 if (!file.exists()) {
                     file.createNewFile();
-                    writerFileXML(nameListFile);
                 }
             } else if (playListId != 0) {
                 CollectionManager cm = new CollectionManager();
@@ -149,9 +147,9 @@ public class playVideoMusicManager {
                 File file = new File(nameListFile);
                 if (!file.exists()) {
                     file.createNewFile();
-                    writerFileXML(nameListFile);
                 }
             }
+            writerFileXML(nameListFile);
         } catch (Exception ex) {
         }
         return sPathList;

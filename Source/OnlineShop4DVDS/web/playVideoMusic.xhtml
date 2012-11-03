@@ -8,14 +8,16 @@
     </h:head>
     <h:body>
         <ui:composition template="MasterPage.xhtml">
+             <ui:define name="deSlide">
+            </ui:define>
             <ui:define name="contents">
                 <h:inputHidden value="#{playVideoMusicManager.addIdAlbum(param['AlbumId'])}"></h:inputHidden>
                 <h:inputHidden value="#{playVideoMusicManager.addIdDatStore(param['DataStoreId'])}"></h:inputHidden>
                 <h:inputHidden value="#{playVideoMusicManager.addIdPlaylist(param['PlayListId'])}"></h:inputHidden>
                 <h:form>
                     <script type="text/javascript" src="Script/jwplayer.js"></script>
-                    <h1 style="color: #3333FF;margin: 0;padding-bottom: 1px;">#{playVideoMusicManager.name}</h1>
-                    <p style="color: #B8B8B8;margin: 0 20px 10px;">#{playVideoMusicManager.date}</p>
+                    <h1 style="margin: 0;padding-bottom: 1px; font-weight: normal" class="DefaultCartH3">#{playVideoMusicManager.name}</h1>
+                    <p style="color: #B8B8B8;margin: 10px 20px 10px;">#{playVideoMusicManager.date}</p>
                     <div id='defaultmediaplayer'></div>
                     <script type="text/javascript">
                         $(window).ready(function(){
