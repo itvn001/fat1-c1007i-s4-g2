@@ -9,6 +9,8 @@
     </h:head>
     <h:body>
         <ui:composition template="MasterPage.xhtml">
+               <ui:define name="deSlide">
+            </ui:define>
             <ui:define name="contents">
                 <h:inputHidden value="#{detailsPlaylistManager.addIdPlaylist(param['PlayListId'])}"></h:inputHidden>
                 <h:form>

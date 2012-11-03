@@ -53,7 +53,7 @@
             */
 
             #slides .slides_container div {
-                width:570px;
+                width:700px;
                 height:170px;
                 display:block;
             }
@@ -155,15 +155,15 @@
                 <c:if test="#{masterPageManagerBean.checkLoginLogout()}">
                     <div class="cart"><span style="color: #666">Hello:</span>
                         <a class="MasterPageUser" href="UserPersonalPage.xhtml">#{session.getAttribute("UserName")}</a>
-                        <a href="Logout.xhtml" style="color: red;">Logout</a><br/>Item Cart:&nbsp;
+                        <a href="Logout.xhtml" style="color: #333;border-bottom: 2px solid #e47911">Logout</a><br/>Item Cart:&nbsp;
                         <span class="quantityCartspan">#{cartManager.cartSize()} Item</span>&nbsp;|&nbsp;
                         <a id="checkouths" href="DefaultCart.xhtml" style="color: #000; border-bottom: 2px solid #e47911">Checkout</a>
                     </div>
                 </c:if>
                 <c:if test="#{!masterPageManagerBean.checkLoginLogout()}">
-                    <div class="cart"><span style="color: #666">Hello:</span>
-                        <span style="font-weight: bold; color: #4393E9;" href="">Guest</span>
-                        <a href="Login.xhtml" style="color: red;float: right;font-weight: bold;margin-right: 21px;">Login</a><br/>Item Cart:&nbsp;
+                    <div class="cart">       
+                        <div style="right: 0px; float: right" class="ctlogintext"><a href="Login.xhtml" style="color: #000; border-bottom: 2px solid #e47911; right: 0px">Login</a></div>
+                        <br/>Item Cart:&nbsp;
                         <span class="quantityCartspan">#{cartManager.cartSize()} Item</span>&nbsp;|&nbsp;
                         <a id="checkouths" href="DefaultCart.xhtml" style="color: #000; border-bottom: 2px solid #e47911">Checkout</a>
                     </div>
@@ -199,16 +199,16 @@
                         <div id="slides">
                             <div class="slides_container">
                                 <div>
-                                    <img src="Images/banner/graphic-design-banner-disc-art1.jpg"/>
+                                    <img width="700px" height="250px"  src="Images/banner/Banner_music_sheet_with_flute.jpg"/>
                                 </div>
                                 <div>
-                                    <img src="Images/banner/2009-03-26-that70sshow_banner.jpg"/>
+                                    <img width="700px" src="Images/banner/46647-game-banner.png"/>
                                 </div>
                                 <div>
-
+                                    <img width="700px" src="Images/banner/game-banner.gif"/>
                                 </div>
                                 <div>
-
+                                    <img width="700px" src="Images/banner/the-last-of-us-game-banner.jpg"/>
                                 </div>
                             </div>
                         </div>
@@ -245,13 +245,13 @@
             <!-- end #mainContent -->
             <!-- This clearing element should immediately follow the #mainContent div in order to force the #container div to contain all child floats --><br class="clearfloat" />
             <!-- begin #footer -->
-            <div id="footer" style="border-top: 1px solid #d1d0d1; height: 100px; background-color: #fff">
+            <div id="footer" style="border-top: 1px solid #d1d0d1; height: 100px; background-color: #fff; padding-left: 10px">
                 <p>
                     <a style="color: #333">
                         Contact:04 85829507 
                         <br/><br/>
                         <a style="color: #666">
-                            Email:&nbsp;<span style="color: #ff6766">teamnoname@gmail.com,<br/> teamnoname@hotmail.com</span>
+                            Email:&nbsp;<span style="color: #ff6766">teamnoname@gmail.com,<br/></span>
                         </a>                
 
                         <br/>

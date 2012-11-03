@@ -105,6 +105,17 @@ CREATE TABLE DataStore
 	DataStatus BIT DEFAULT 'TRUE',
 	DataImage NVARCHAR(200)
 )
+GO
+INSERT INTO DataStore(AlbumID,DataName,DataPath,DataDescription,DataPublic,DataStatus,DataImage)
+VALUES(2,'Bob Marley - Song Data 1','DVDStore/data/Music- 4.mp3','','true','true','')
+INSERT INTO DataStore(AlbumID,DataName,DataPath,DataDescription,DataPublic,DataStatus,DataImage)
+VALUES(2,'Bob Marley - Song Data 2','DVDStore/data/Music- 4.mp3','','true','true','')
+INSERT INTO DataStore(AlbumID,DataName,DataPath,DataDescription,DataPublic,DataStatus,DataImage)
+VALUES(2,'Bob Marley - Song Data 3','DVDStore/data/Music- 4.mp3','','true','true','')
+INSERT INTO DataStore(AlbumID,DataName,DataPath,DataDescription,DataPublic,DataStatus,DataImage)
+VALUES(3,'Bob Marley - Song Data 1','DVDStore/data/Music- 4.mp3','','true','true','')
+INSERT INTO DataStore(AlbumID,DataName,DataPath,DataDescription,DataPublic,DataStatus,DataImage)
+VALUES(3,'Bob Marley - Song Data 1','DVDStore/data/Music- 4.mp3','','true','true','')
 --
 	-- Users Table
 --

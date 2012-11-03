@@ -8,6 +8,8 @@
     </h:head>
     <h:body>
         <ui:composition template="MasterPage.xhtml">
+               <ui:define name="deSlide">
+            </ui:define>
             <ui:define name="contents">
                 <h:form>
                     <script type="text/javascript">
@@ -18,7 +20,7 @@
                     <div class="menuUserPersonal">
                         <a href="UserPersonalPage.xhtml">View Information</a>
                         <a href="#">Update Information</a>
-                        <span class="menuUserPersonalActive">My Playlist</span>
+                        <span class="menuUserPersonalActive"><h3 class="DetailsAlbumItmeDataStoreH2">My Playlist</h3></span>
                     </div>
                     <div class="UserPersonalPageContent">
                         <h4 class="UserPersonalPageContentH4">My playlist</h4>
