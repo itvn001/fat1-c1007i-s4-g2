@@ -58,8 +58,8 @@ public class Mdata_Edit {
             dvd.entity.DataStore dt = new DataStore();
             dt.setDataID(id);
             dt.setDataName(name);
-            dt.setDataImage("DVDStore/album/" + imagelink);
-            dt.setDataPath("DVDStore/album/" + pathSong);
+            dt.setDataImage("DVDStore/data/" + imagelink);
+            dt.setDataPath("DVDStore/data/" + pathSong);
             // Initial
             this.daHand = new dvd.business.dashboard.DataStore();
             // Call method excute
